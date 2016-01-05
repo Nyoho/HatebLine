@@ -7,15 +7,31 @@
 //
 
 import Cocoa
+import Alamofire
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
+    var parser: RSSParser!
 
+    func setup() {
+        parser = RSSParser()
+    }
+    
+    func perform() {
+        dispatch_async(dispatch_get_global_queue(0, 0)) {
+            self.parser.parse(completionHandler: { items in
+                print(items)
+            })
+        }
+    }
+    
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
+        setup()
+        perform()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

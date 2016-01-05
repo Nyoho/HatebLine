@@ -15,6 +15,7 @@
 		55415B8C1C3961F90079B118 /* HatebLineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B8B1C3961F90079B118 /* HatebLineUITests.swift */; };
 		55415B9A1C39626C0079B118 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; };
 		55415B9D1C3962970079B118 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B9F1C3A3C880079B118 /* RSSParser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		55415B8B1C3961F90079B118 /* HatebLineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatebLineUITests.swift; sourceTree = "<group>"; };
 		55415B8D1C3961F90079B118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55415B991C39626C0079B118 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
+		55415B9F1C3A3C880079B118 /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				55415B6D1C3961F90079B118 /* AppDelegate.swift */,
+				55415B9F1C3A3C880079B118 /* RSSParser.swift */,
 				55415B721C3961F90079B118 /* Assets.xcassets */,
 				55415B741C3961F90079B118 /* MainMenu.xib */,
 				55415B771C3961F90079B118 /* Info.plist */,
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
+				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
 				55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
