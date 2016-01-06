@@ -202,6 +202,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
                 Alamofire.request(.GET, "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(username)/profile.gif")
                     .responseImage { response in
                         if let image = response.result.value {
+                            cell.imageView?.wantsLayer = true
+                            cell.imageView?.layer?.cornerRadius = 5.0
                             cell.imageView?.image = image
                         }
                 }

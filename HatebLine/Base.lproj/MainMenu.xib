@@ -720,7 +720,7 @@
                                                                 <constraint firstAttribute="height" constant="48" id="OOK-pp-Cwi"/>
                                                                 <constraint firstAttribute="width" constant="48" id="PV2-lf-Zgm"/>
                                                             </constraints>
-                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAddTemplate" id="DaA-6Q-7et"/>
+                                                            <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="DaA-6Q-7et"/>
                                                         </imageView>
                                                         <textField verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qg1-ly-Qpx">
                                                             <rect key="frame" x="57" y="3" width="417" height="48"/>
@@ -788,7 +788,4 @@
             <point key="canvasLocation" x="-219" y="-182"/>
         </window>
     </objects>
-    <resources>
-        <image name="NSAddTemplate" width="11" height="11"/>
-    </resources>
 </document>
