@@ -197,7 +197,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             let bookmark = bookmarks[row] as! NSMutableDictionary
                 let username = bookmark["creator"] as! String
                 cell.textField?.stringValue = username
-                cell.titleTextField?.stringValue = bookmark["title"] as! String
+                var com = bookmark["comment"] as! String
+                if com != "" { com += "\n" }
+                cell.titleTextField?.stringValue = "\(com)\(bookmark["title"] as! String)"
+//                cell.titleTextField?.stringValue = bookmark["title"] as! String
+                cell.countTextField?.stringValue = "\(bookmark["count"] as! String) users"
+                
+                let dateFormatter = NSDateFormatter()
+                let locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                dateFormatter.locale = locale
+                dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
+                dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+                let date = dateFormatter.dateFromString(bookmark["date"] as! String)
+                
+                cell.dateTextField?.stringValue = bookmark["date"] as! String
+                
                 let twoLetters = (username as NSString).substringToIndex(2)
                 Alamofire.request(.GET, "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(username)/profile.gif")
                     .responseImage { response in
@@ -213,5 +227,26 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         return nil
     }
 
+    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        var heightOfRow: CGFloat = 200
+        let bookmark = bookmarks[row] as! NSMutableDictionary
+        if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
+            let username = bookmark["creator"] as! String
+            cell.textField?.stringValue = username
+            var com = bookmark["comment"] as! String
+            if com != "" { com += "\n" }
+            cell.titleTextField?.stringValue = "\(com)\(bookmark["title"] as! String)"
+            cell.countTextField?.stringValue = "\(bookmark["count"] as! String) users"
+            tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: row))
+            cell.needsLayout = true
+            cell.layoutSubtreeIfNeeded()
+            NSAnimationContext.beginGrouping()
+            NSAnimationContext.currentContext().duration = 0.0
+            heightOfRow = cell.fittingSize.height
+            print(cell.fittingSize)
+            NSAnimationContext.endGrouping()
+        }
+        return heightOfRow < 10 ? 10 : heightOfRow
+    }
 }
 

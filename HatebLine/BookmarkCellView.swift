@@ -11,6 +11,8 @@ import Cocoa
 class BookmarkCellView: NSTableCellView {
 
     @IBOutlet weak var titleTextField: NSTextField!
+    @IBOutlet weak var countTextField: NSTextField!
+    @IBOutlet weak var dateTextField: NSTextField!
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)

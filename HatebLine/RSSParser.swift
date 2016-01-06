@@ -60,10 +60,11 @@ class RSSParser: NSObject, NSXMLParserDelegate {
             creator = NSMutableString()
             content = NSMutableString()
             count = NSMutableString()
+            comment = NSMutableString()
         }
     }
 
-    func parser(parser: NSXMLParser, foundCharacters string: String){
+    func parser(parser: NSXMLParser, foundCharacters string: String){        
         switch element {
         case "title":
             title.appendString(string)
@@ -93,6 +94,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
                 elements["date"] = condenseWhitespace(date)
                 elements["link"] = condenseWhitespace(link)
                 elements["creator"] = condenseWhitespace(creator)
+                elements["count"] = condenseWhitespace(count)
                 elements["content"] = condenseWhitespace(content)
                 elements["comment"] = condenseWhitespace(comment)
             }
