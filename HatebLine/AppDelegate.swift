@@ -8,6 +8,7 @@
 
 import Cocoa
 import Alamofire
+import AlamofireImage
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate {
@@ -194,10 +195,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         if tableColumn?.identifier == "Bookmark" {
             if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
             let bookmark = bookmarks[row] as! NSMutableDictionary
-                cell.textField?.stringValue = bookmark["creator"] as! String
-                cell.imageView?.image = NSWorkspace.sharedWorkspace().iconForFile("/Applications/Safari.app")
+                let username = bookmark["creator"] as! String
+                cell.textField?.stringValue = username
                 cell.titleTextField?.stringValue = bookmark["title"] as! String
-            return cell
+                let twoLetters = (username as NSString).substringToIndex(2)
+                Alamofire.request(.GET, "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(username)/profile.gif")
+                    .responseImage { response in
+                        if let image = response.result.value {
+                            cell.imageView?.image = image
+                        }
+                }
+                return cell
             }
         }
         return nil

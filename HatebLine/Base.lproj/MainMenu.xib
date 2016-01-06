@@ -671,7 +671,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="335" y="390" width="480" height="360"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -706,8 +706,8 @@
                                                     <rect key="frame" x="1" y="1" width="477" height="73"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-vo-7le">
-                                                            <rect key="frame" x="57" y="53" width="413" height="17"/>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-vo-7le">
+                                                            <rect key="frame" x="57" y="47" width="319" height="23"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="HHo-g3-o71">
                                                                 <font key="font" size="13" name=".HelveticaNeueDeskInterface-Heavy"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -722,18 +722,34 @@
                                                             </constraints>
                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="NSAddTemplate" id="DaA-6Q-7et"/>
                                                         </imageView>
-                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qg1-ly-Qpx">
-                                                            <rect key="frame" x="59" y="3" width="417" height="42"/>
-                                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Comment &amp; Title" id="mVN-9U-auB">
+                                                        <textField verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qg1-ly-Qpx">
+                                                            <rect key="frame" x="57" y="3" width="417" height="48"/>
+                                                            <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="mVN-9U-auB">
                                                                 <font key="font" metaFont="system"/>
+                                                                <string key="title">Comment &amp; Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                            </textFieldCell>
+                                                        </textField>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66l-1M-WV0">
+                                                            <rect key="frame" x="380" y="47" width="94" height="23"/>
+                                                            <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="30 users" id="aiL-4v-w3I">
+                                                                <font key="font" metaFont="smallSystem"/>
+                                                                <color key="textColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="FgR-vo-7le" firstAttribute="leading" secondItem="GzS-oU-vfO" secondAttribute="trailing" constant="8" id="HM2-4f-BzP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Qg1-ly-Qpx" secondAttribute="trailing" constant="5" id="L5r-Pi-qCO"/>
+                                                        <constraint firstAttribute="trailing" secondItem="66l-1M-WV0" secondAttribute="trailing" constant="5" id="StL-Ec-ReP"/>
                                                         <constraint firstItem="GzS-oU-vfO" firstAttribute="top" secondItem="jKu-aG-keP" secondAttribute="top" constant="3" id="XOd-cf-f6T"/>
+                                                        <constraint firstItem="FgR-vo-7le" firstAttribute="top" secondItem="jKu-aG-keP" secondAttribute="top" constant="3" id="clE-3h-gKh"/>
+                                                        <constraint firstItem="Qg1-ly-Qpx" firstAttribute="top" secondItem="66l-1M-WV0" secondAttribute="bottom" constant="2" id="ogB-Ig-Ej3"/>
+                                                        <constraint firstItem="66l-1M-WV0" firstAttribute="top" secondItem="jKu-aG-keP" secondAttribute="top" constant="3" id="tCc-1S-Sv7"/>
                                                         <constraint firstItem="GzS-oU-vfO" firstAttribute="leading" secondItem="jKu-aG-keP" secondAttribute="leading" constant="3" id="wiO-Az-TIY"/>
+                                                        <constraint firstItem="Qg1-ly-Qpx" firstAttribute="leading" secondItem="GzS-oU-vfO" secondAttribute="trailing" constant="8" id="zCs-e1-emQ"/>
                                                     </constraints>
                                                     <connections>
                                                         <outlet property="imageView" destination="GzS-oU-vfO" id="QFs-A8-aDt"/>
