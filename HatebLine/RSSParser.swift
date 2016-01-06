@@ -22,6 +22,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     var creator = NSMutableString()
     var content = NSMutableString()
     var count = NSMutableString()
+    var comment = NSMutableString()
     var bookmarkURL = String()
     var items = NSMutableArray()
     var handler: (NSArray) -> Void = { a in }
@@ -76,6 +77,8 @@ class RSSParser: NSObject, NSXMLParserDelegate {
             content.appendString(string)
         case "hatena:bookmarkcount":
             count.appendString(string)
+        case "description":
+            comment.appendString(string)
         default:
             break
         }
@@ -91,6 +94,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
                 elements["link"] = condenseWhitespace(link)
                 elements["creator"] = condenseWhitespace(creator)
                 elements["content"] = condenseWhitespace(content)
+                elements["comment"] = condenseWhitespace(comment)
             }
             items.addObject(elements)
         }

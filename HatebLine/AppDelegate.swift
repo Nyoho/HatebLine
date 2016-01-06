@@ -10,12 +10,14 @@ import Cocoa
 import Alamofire
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
     var parser: RSSParser!
-
+    @IBOutlet weak var tableView: NSTableView!
+    var bookmarks = NSArray()
+    
     func setup() {
         parser = RSSParser()
     }
@@ -23,7 +25,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func perform() {
         dispatch_async(dispatch_get_global_queue(0, 0)) {
             self.parser.parse(completionHandler: { items in
-                print(items)
+                self.bookmarks = items
+                dispatch_async(dispatch_get_main_queue()) {
+                    self.tableView.reloadData()
+                }
             })
         }
     }
@@ -32,6 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         setup()
         perform()
+        tableView.reloadData()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
@@ -177,6 +183,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         // If we got here, it is time to quit.
         return .TerminateNow
+    }
+
+    // MARK: - TableView
+    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+        return bookmarks.count
+    }
+    
+    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        if tableColumn?.identifier == "Bookmark" {
+            if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
+            let bookmark = bookmarks[row] as! NSMutableDictionary
+                cell.textField?.stringValue = bookmark["creator"] as! String
+                cell.imageView?.image = NSWorkspace.sharedWorkspace().iconForFile("/Applications/Safari.app")
+                cell.titleTextField?.stringValue = bookmark["title"] as! String
+            return cell
+            }
+        }
+        return nil
     }
 
 }

@@ -16,6 +16,7 @@
 		55415B9A1C39626C0079B118 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; };
 		55415B9D1C3962970079B118 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B9F1C3A3C880079B118 /* RSSParser.swift */; };
+		55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		55415B8D1C3961F90079B118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55415B991C39626C0079B118 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		55415B9F1C3A3C880079B118 /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
+		55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +120,7 @@
 			children = (
 				55415B6D1C3961F90079B118 /* AppDelegate.swift */,
 				55415B9F1C3A3C880079B118 /* RSSParser.swift */,
+				55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */,
 				55415B721C3961F90079B118 /* Assets.xcassets */,
 				55415B741C3961F90079B118 /* MainMenu.xib */,
 				55415B771C3961F90079B118 /* Info.plist */,
@@ -285,6 +288,7 @@
 			files = (
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
+				55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */,
 				55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +519,7 @@
 				55415B921C3961F90079B118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55415B931C3961F90079B118 /* Build configuration list for PBXNativeTarget "HatebLineTests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +528,7 @@
 				55415B951C3961F90079B118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		55415B961C3961F90079B118 /* Build configuration list for PBXNativeTarget "HatebLineUITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +537,7 @@
 				55415B981C3961F90079B118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
