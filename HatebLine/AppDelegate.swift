@@ -11,7 +11,7 @@ import Alamofire
 import AlamofireImage
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate, NSWindowDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
@@ -33,6 +33,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
             })
         }
     }
+    
+    @IBAction func reload(sender: AnyObject) {
+        tableView.setNeedsDisplay()
+        tableView.reloadData()
+    }
+    
+    // MARK: -
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
