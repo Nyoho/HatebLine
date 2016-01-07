@@ -625,6 +625,11 @@
                                     <action selector="runToolbarCustomizationPalette:" target="-1" id="pQI-g3-MTW"/>
                                 </connections>
                             </menuItem>
+                            <menuItem title="Reload" keyEquivalent="r" id="on7-18-yp9">
+                                <connections>
+                                    <action selector="reload:" target="Voe-Tx-rLC" id="YkX-Yf-Oex"/>
+                                </connections>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -706,8 +711,8 @@
                                                     <rect key="frame" x="1" y="1" width="477" height="80"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-vo-7le">
-                                                            <rect key="frame" x="57" y="54" width="319" height="23"/>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="FgR-vo-7le">
+                                                            <rect key="frame" x="57" y="60" width="80" height="17"/>
                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="HHo-g3-o71">
                                                                 <font key="font" size="13" name=".HelveticaNeueDeskInterface-Heavy"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -731,16 +736,16 @@
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ErR-4j-tOX">
-                                                            <rect key="frame" x="380" y="54" width="94" height="23"/>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ErR-4j-tOX">
+                                                            <rect key="frame" x="405" y="63" width="69" height="14"/>
                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="10 days ago" id="hro-am-fZO">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                             </textFieldCell>
                                                         </textField>
-                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="66l-1M-WV0">
-                                                            <rect key="frame" x="57" y="3" width="100" height="14"/>
+                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="66l-1M-WV0">
+                                                            <rect key="frame" x="57" y="3" width="50" height="14"/>
                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="32 users" id="aiL-4v-w3I">
                                                                 <font key="font" metaFont="smallSystem"/>
                                                                 <color key="textColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -755,6 +760,7 @@
                                                         <constraint firstItem="Qg1-ly-Qpx" firstAttribute="top" secondItem="jKu-aG-keP" secondAttribute="top" constant="22" id="Qb1-dO-wOK"/>
                                                         <constraint firstItem="GzS-oU-vfO" firstAttribute="top" secondItem="jKu-aG-keP" secondAttribute="top" constant="3" id="XOd-cf-f6T"/>
                                                         <constraint firstItem="ErR-4j-tOX" firstAttribute="top" secondItem="jKu-aG-keP" secondAttribute="top" constant="3" id="XRj-TL-RHz"/>
+                                                        <constraint firstItem="Qg1-ly-Qpx" firstAttribute="top" secondItem="FgR-vo-7le" secondAttribute="bottom" constant="2" id="Xfg-3U-7ZH"/>
                                                         <constraint firstItem="66l-1M-WV0" firstAttribute="leading" secondItem="jKu-aG-keP" secondAttribute="leading" constant="59" id="aYo-tA-pZf"/>
                                                         <constraint firstItem="FgR-vo-7le" firstAttribute="top" secondItem="jKu-aG-keP" secondAttribute="top" constant="3" id="clE-3h-gKh"/>
                                                         <constraint firstAttribute="trailing" secondItem="ErR-4j-tOX" secondAttribute="trailing" constant="5" id="iWw-UR-zYI"/>
@@ -798,6 +804,9 @@
                     <constraint firstItem="YuY-pI-Wta" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="-1" id="uCF-Yu-pN4"/>
                 </constraints>
             </view>
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="31N-Pn-PsT"/>
+            </connections>
             <point key="canvasLocation" x="-219" y="-182"/>
         </window>
     </objects>
