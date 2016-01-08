@@ -14,10 +14,12 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     var parser: RSSParser!
     @IBOutlet weak var tableView: NSTableView!
     var bookmarks = NSMutableArray()
-    
+    var timer = NSTimer()
+
     func setup() {
         parser = RSSParser()
-    }
+        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "updateData", userInfo: nil, repeats: true)
+   }
     
     func perform() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
@@ -51,6 +53,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     func refresh() {
         tableView.reloadData()
     }
+
+    func updateData() {
+        reload(self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +64,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         setup()
         perform()
     }
- 
+
     // MARK: - TableView
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return bookmarks.count
