@@ -20,6 +20,7 @@
 		55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; };
 		55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */; };
+		55E9B8DE1C3FE9C400742E49 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */; };
 		55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		55E079CB1C3D583800A72C05 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/Mac/AlamofireImage.framework; sourceTree = "<group>"; };
 		55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +131,7 @@
 			children = (
 				55415B6D1C3961F90079B118 /* AppDelegate.swift */,
 				55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */,
+				55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */,
 				55415B9F1C3A3C880079B118 /* RSSParser.swift */,
 				55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */,
 				55415B721C3961F90079B118 /* Assets.xcassets */,
@@ -301,6 +304,7 @@
 			files = (
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
+				55E9B8DE1C3FE9C400742E49 /* MainWindowController.swift in Sources */,
 				55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */,
 				55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */,
 				55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */,

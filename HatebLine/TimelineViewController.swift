@@ -48,7 +48,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         perform()
     }
     
-
+    func refresh() {
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -120,9 +123,4 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         return heightOfRow < 48 ? 48 : heightOfRow
     }
     
-    // MARK: - NSWindowDelegate
-    func windowDidResize(notification: NSNotification) {
-        tableView.reloadData()
-    }
-
 }
