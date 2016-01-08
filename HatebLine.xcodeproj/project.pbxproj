@@ -19,6 +19,8 @@
 		55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */; };
 		55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; };
 		55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */; };
+		55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +72,8 @@
 		55415B9F1C3A3C880079B118 /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
 		55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		55E079CB1C3D583800A72C05 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/Mac/AlamofireImage.framework; sourceTree = "<group>"; };
+		55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,10 +128,12 @@
 			isa = PBXGroup;
 			children = (
 				55415B6D1C3961F90079B118 /* AppDelegate.swift */,
+				55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */,
 				55415B9F1C3A3C880079B118 /* RSSParser.swift */,
 				55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */,
 				55415B721C3961F90079B118 /* Assets.xcassets */,
 				55415B741C3961F90079B118 /* MainMenu.xib */,
+				55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */,
 				55415B771C3961F90079B118 /* Info.plist */,
 				55415B6F1C3961F90079B118 /* HatebLine.xcdatamodeld */,
 			);
@@ -268,6 +274,7 @@
 			files = (
 				55415B731C3961F90079B118 /* Assets.xcassets in Resources */,
 				55415B761C3961F90079B118 /* MainMenu.xib in Resources */,
+				55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,6 +303,7 @@
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
 				55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */,
 				55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */,
+				55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
