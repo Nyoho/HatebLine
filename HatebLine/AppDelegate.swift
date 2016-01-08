@@ -17,16 +17,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
 
     var parser: RSSParser!
     @IBOutlet weak var tableView: NSTableView!
-    var bookmarks = NSArray()
+    var bookmarks = NSMutableArray()
     
     func setup() {
         parser = RSSParser()
     }
     
     func perform() {
-        dispatch_async(dispatch_get_global_queue(0, 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             self.parser.parse(completionHandler: { items in
-                self.bookmarks = items
+                self.mergeBookmarks(items)
                 dispatch_async(dispatch_get_main_queue()) {
                     self.tableView.reloadData()
                 }
@@ -34,9 +34,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         }
     }
     
+    func mergeBookmarks(items: NSArray) -> Void {
+        for item in items.reverse() {
+            let url = item["bookmarkURL"] as! NSString
+            let predicate = NSPredicate(format: "bookmarkURL == %@", url)
+            let results = bookmarks.filteredArrayUsingPredicate(predicate)
+            if results.count > 0 {
+                let b = results[0]
+                // update the value
+            } else {
+                bookmarks.insertObject(item, atIndex: 0)
+            }
+        }
+    }
+    
     @IBAction func reload(sender: AnyObject) {
-        tableView.setNeedsDisplay()
-        tableView.reloadData()
+        perform()
     }
     
     // MARK: -
@@ -45,7 +58,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTab
         // Insert code here to initialize your application
         setup()
         perform()
-        tableView.reloadData()
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {

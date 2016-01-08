@@ -10,6 +10,7 @@ import Cocoa
 
 class RSSParser: NSObject, NSXMLParserDelegate {
     let feedUrl = NSURL(string:"http://b.hatena.ne.jp/Nyoho/favorite.rss")!
+//    let feedUrl = NSURL(string:"file:///tmp/favorite.rss")!
 
     var currentElementName : String!
     
@@ -29,12 +30,12 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     
     override init() {
         super.init()
-        parser = NSXMLParser(contentsOfURL: feedUrl)!
-        parser.delegate = self
     }
     
     func parse(completionHandler completionHandler: (NSArray) -> Void) -> Void {
         handler = completionHandler
+        parser = NSXMLParser(contentsOfURL: feedUrl)!
+        parser.delegate = self
         parser.parse()
     }
     
