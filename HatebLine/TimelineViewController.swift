@@ -58,11 +58,12 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 bookmarks.insertObject(item, atIndex: 0)
                 shouldReload = true
                 let notification = NSUserNotification()
-                if let creator = item["creator"]!, let title = item["title"]! {
-                    notification.title = "\(creator) \(title)"
+                if let creator = item["creator"]! {
+                    notification.title = "\(creator) がブックマークを追加しました"
                 }
-                if let comment = item["comment"]! {
-                    notification.subtitle = "\(comment)"
+                if let comment = item["comment"]!, let title = item["title"]! {
+                    let separator: String = comment as! String == "" ? "" : " / "
+                    notification.subtitle = "\(comment)\(separator)\(title)"
                 }
                 if let count = item["count"]! {
                     notification.informativeText = "\(count) users"
