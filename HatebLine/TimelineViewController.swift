@@ -25,24 +25,38 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     func perform() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
             self.parser.parse(completionHandler: { items in
-                self.mergeBookmarks(items)
-                dispatch_async(dispatch_get_main_queue()) {
-                    self.tableView.reloadData()
+                if self.mergeBookmarks(items) {
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.tableView.reloadData()
+                    }
                 }
             })
         }
     }
     
-    func mergeBookmarks(items: NSArray) -> Void {
+    func mergeBookmarks(items: NSArray) -> Bool {
+        var shouldReload = false
         for item in items.reverse() {
             let url = item["bookmarkURL"] as! NSString
             let predicate = NSPredicate(format: "bookmarkURL == %@", url)
             let results = bookmarks.filteredArrayUsingPredicate(predicate)
             if results.count > 0 {
-//                let b = results[0]
-                // update the value
+                let b: NSMutableDictionary = results[0] as! NSMutableDictionary
+                if let count = item["count"]! {
+                    if count as! String != b["count"] as! String {
+                        b["count"] = count as! String
+                        shouldReload = true
+                    }
+                }
+                if let comment = item["comment"]! {
+                    if comment as! String != b["comment"] as! String {
+                        b["comment"] = comment as! String
+                        shouldReload = true
+                    }
+                }
             } else {
                 bookmarks.insertObject(item, atIndex: 0)
+                shouldReload = true
                 let notification = NSUserNotification()
                 if let creator = item["creator"]!, let title = item["title"]! {
                     notification.title = "\(creator) \(title)"
@@ -60,6 +74,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 print(notification)
             }
         }
+        return shouldReload
     }
     
     @IBAction func reload(sender: AnyObject) {
