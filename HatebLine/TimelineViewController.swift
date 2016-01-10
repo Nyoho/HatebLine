@@ -9,7 +9,7 @@
 import Cocoa
 import Alamofire
 
-class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate {
+class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSUserNotificationCenterDelegate {
 
     var parser: RSSParser!
     @IBOutlet weak var tableView: NSTableView!
@@ -18,6 +18,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     func setup() {
         parser = RSSParser()
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "updateData", userInfo: nil, repeats: true)
    }
     
@@ -42,6 +43,21 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 // update the value
             } else {
                 bookmarks.insertObject(item, atIndex: 0)
+                let notification = NSUserNotification()
+                if let creator = item["creator"]!, let title = item["title"]! {
+                    notification.title = "\(creator) \(title)"
+                }
+                if let comment = item["comment"]! {
+                    notification.subtitle = "\(comment)"
+                }
+                if let count = item["count"]! {
+                    notification.informativeText = "\(count) users"
+                }
+//                notification.contentImage = NSImage(named: "hoge")
+                notification.userInfo = ["hoge": "title"]
+                notification.soundName = NSUserNotificationDefaultSoundName
+                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                print(notification)
             }
         }
     }
@@ -129,4 +145,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         return heightOfRow < 48 ? 48 : heightOfRow
     }
     
+    
+    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
+        let info = notification.userInfo as! [String:String]
+        
+//        print(info["title"]!)
+    }
 }
