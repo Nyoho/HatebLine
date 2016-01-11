@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		551DB4FB1C42CD0300B198A8 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4F91C42CD0300B198A8 /* Bookmark.swift */; };
+		551DB5011C4374F400B198A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4FE1C4374F400B198A8 /* User.swift */; };
+		551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */; };
+		551DB5061C437E4500B198A8 /* Bookmark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */; };
 		55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B6D1C3961F90079B118 /* AppDelegate.swift */; };
 		55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55415B6F1C3961F90079B118 /* HatebLine.xcdatamodeld */; };
 		55415B731C3961F90079B118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55415B721C3961F90079B118 /* Assets.xcassets */; };
@@ -57,6 +61,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		551DB4F91C42CD0300B198A8 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookmark.swift; path = Models/Bookmark.swift; sourceTree = "<group>"; };
+		551DB4FE1C4374F400B198A8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
+		551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Models/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bookmark+CoreDataProperties.swift"; path = "Models/Bookmark+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55415B6A1C3961F90079B118 /* HatebLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HatebLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55415B6D1C3961F90079B118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55415B701C3961F90079B118 /* HatebLine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HatebLine.xcdatamodel; sourceTree = "<group>"; };
@@ -105,6 +113,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		551DB4FC1C42CD1A00B198A8 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */,
+				551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */,
+				551DB4FE1C4374F400B198A8 /* User.swift */,
+				551DB4F91C42CD0300B198A8 /* Bookmark.swift */,
+			);
+			name = Models;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		55415B611C3961F90079B118 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +149,7 @@
 		55415B6C1C3961F90079B118 /* HatebLine */ = {
 			isa = PBXGroup;
 			children = (
+				551DB4FC1C42CD1A00B198A8 /* Models */,
 				55415B6D1C3961F90079B118 /* AppDelegate.swift */,
 				55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */,
 				55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */,
@@ -305,9 +326,13 @@
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
 				55E9B8DE1C3FE9C400742E49 /* MainWindowController.swift in Sources */,
+				551DB5061C437E4500B198A8 /* Bookmark+CoreDataProperties.swift in Sources */,
 				55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */,
 				55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */,
 				55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */,
+				551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */,
+				551DB4FB1C42CD0300B198A8 /* Bookmark.swift in Sources */,
+				551DB5011C4374F400B198A8 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

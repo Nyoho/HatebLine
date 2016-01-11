@@ -13,9 +13,14 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     var parser: RSSParser!
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet var bookmarkArrayController: NSArrayController!
     var bookmarks = NSMutableArray()
     var timer = NSTimer()
 
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        return (NSApplication.sharedApplication().delegate
+            as? AppDelegate)?.managedObjectContext }()!    
+    
     func setup() {
         parser = RSSParser()
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
@@ -55,7 +60,59 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     }
                 }
             } else {
-                bookmarks.insertObject(item, atIndex: 0)
+                let moc = self.managedObjectContext
+                let entity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: moc)
+                let bookmark = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc) as! Bookmark
+                var user: NSManagedObject?
+                
+                let usersFetch = NSFetchRequest(entityName: "User")
+                if let creator = item["creator"]! {
+                    usersFetch.predicate = NSPredicate(format: "name == %@", creator as! String)
+                    do {
+                        let fetchedUsers = try moc.executeFetchRequest(usersFetch) as! [User]
+                        if (fetchedUsers.count > 0) {
+                            user = fetchedUsers.first!
+                        } else {
+                            let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: moc)
+                            user = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
+                            user?.setValue(creator as! String, forKey: "name")
+                        }
+                    } catch {
+                        fatalError("Failed to fetch users: \(error)")
+                    }
+
+                }
+
+                bookmark.setValue(user, forKey: "user")
+                if let b = item["bookmarkURL"]! {
+                    bookmark.setValue(b, forKey: "bookmarkUrl")
+                }
+                if let b = item["title"]! {
+                    bookmark.setValue(b, forKey: "title")
+                }
+                if let b = item["date"]! {
+                    let dateFormatter = NSDateFormatter()
+                    let locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                    dateFormatter.locale = locale
+                    dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
+                    dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+                    let date = dateFormatter.dateFromString(b as! String)
+                    bookmark.setValue(date, forKey: "date")
+                }
+                if let b = item["link"]! {
+                    bookmark.setValue(b, forKey: "url")
+                }
+                if let b = item["count"]! {
+                    bookmark.setValue(Int(b as! String), forKey: "count")
+                }
+                if let b = item["comment"]! {
+                    bookmark.setValue(b, forKey: "comment")
+                }
+//                if let creator = item["creator"]! {
+//                    bookmarkObject.setValue(creator, forKey: "user")
+//                }
+                
+//                bookmarks.insertObject(item, atIndex: 0)
                 shouldReload = true
                 let notification = NSUserNotification()
                 if let creator = item["creator"]! {
@@ -75,6 +132,15 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 print(notification)
             }
         }
+        dispatch_async(dispatch_get_main_queue(), {
+            if self.managedObjectContext.hasChanges {
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    fatalError("Failure to save context: \(error)")
+                }
+            }
+        })
         return shouldReload
     }
     
@@ -96,7 +162,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         setup()
         perform()
     }
-
+/*
     // MARK: - TableView
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return bookmarks.count
@@ -136,10 +202,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
         return nil
     }
+   */
     
     func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var heightOfRow: CGFloat = 48
-        let bookmark = bookmarks[row] as! NSMutableDictionary
+        var heightOfRow: CGFloat = 96
+/*        let bookmark = bookmarks[row] as! NSMutableDictionary
         if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
             let username = bookmark["creator"] as! String
             cell.textField?.stringValue = username
@@ -158,10 +225,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             heightOfRow = cell.fittingSize.height
             NSAnimationContext.endGrouping()
         }
+  */
         return heightOfRow < 48 ? 48 : heightOfRow
     }
-    
-    
+
     func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
         let info = notification.userInfo as! [String:String]
         

@@ -687,7 +687,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -706,8 +706,8 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView misplaced="YES" id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="475" height="80"/>
+                                                        <tableCellView id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
+                                                            <rect key="frame" x="1" y="1" width="477" height="80"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI">
@@ -717,6 +717,9 @@
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.name" id="nRV-ac-0zE"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tj6-8X-qXR">
                                                                     <rect key="frame" x="3" y="29" width="48" height="48"/>
@@ -734,6 +737,9 @@
                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.title" id="3Gh-oF-r61"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
                                                                     <rect key="frame" x="405" y="63" width="69" height="14"/>
@@ -742,6 +748,9 @@
                                                                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.date" id="1Rh-Rg-lJ1"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-P8-ETC">
                                                                     <rect key="frame" x="57" y="3" width="50" height="14"/>
@@ -750,6 +759,9 @@
                                                                         <color key="textColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.count" id="iL3-ce-i7J"/>
+                                                                    </connections>
                                                                 </textField>
                                                             </subviews>
                                                             <constraints>
@@ -779,6 +791,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <binding destination="bBU-oK-nBz" name="content" keyPath="arrangedObjects" id="0lB-gv-Aoq"/>
                                                 <outlet property="dataSource" destination="Fxg-Ub-YNW" id="97V-hk-aGu"/>
                                                 <outlet property="delegate" destination="Fxg-Ub-YNW" id="Q90-Mj-4IS"/>
                                             </connections>
@@ -804,10 +817,16 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="2eC-bg-4UH" id="CGb-lE-yHe"/>
+                        <outlet property="bookmarkArrayController" destination="bBU-oK-nBz" id="yOc-GW-Ota"/>
+                        <outlet property="tableView" destination="2eC-bg-4UH" id="RMK-jY-tD7"/>
                     </connections>
                 </viewController>
                 <customObject id="HHK-ti-pmZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <arrayController mode="entity" entityName="Bookmark" editable="NO" automaticallyPreparesContent="YES" id="bBU-oK-nBz" userLabel="Bookmark Array Controller">
+                    <connections>
+                        <binding destination="Fxg-Ub-YNW" name="managedObjectContext" keyPath="managedObjectContext" id="kYl-Er-Ai7"/>
+                    </connections>
+                </arrayController>
             </objects>
             <point key="canvasLocation" x="495" y="925"/>
         </scene>
