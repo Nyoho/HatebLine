@@ -132,7 +132,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     }
                     //                notification.contentImage = NSImage(named: "hoge")
                     notification.userInfo = ["hoge": "title"]
-                    notification.soundName = NSUserNotificationDefaultSoundName
                     NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                 }
             } catch {
