@@ -24,7 +24,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     var content = NSMutableString()
     var count = NSMutableString()
     var comment = NSMutableString()
-    var bookmarkURL = String()
+    var bookmarkUrl = String()
     var items = NSMutableArray()
     var handler: (NSArray) -> Void = { a in }
     
@@ -50,9 +50,9 @@ class RSSParser: NSObject, NSXMLParserDelegate {
         element = elementName
         
         if (elementName == "item") {
-            bookmarkURL = ""
+            bookmarkUrl = ""
             if let u = attributeDict["rdf:about"] {
-                bookmarkURL = u
+                bookmarkUrl = u
             }
             elements = NSMutableDictionary()
             title = NSMutableString()
@@ -90,7 +90,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
         if (elementName == "item") {
             //print("[\(condenseWhitespace(count)) users] title: \(condenseWhitespace(title)) / date: \(condenseWhitespace(date)) / user: \(condenseWhitespace(creator)).")
             if !title.isEqual(nil) {
-                elements["bookmarkURL"] = bookmarkURL
+                elements["bookmarkUrl"] = bookmarkUrl
                 elements["title"] = condenseWhitespace(title)
                 elements["date"] = condenseWhitespace(date)
                 elements["link"] = condenseWhitespace(link)

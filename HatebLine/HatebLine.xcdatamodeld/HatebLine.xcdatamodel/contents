@@ -12,11 +12,10 @@
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="profileImage" optional="YES" attributeType="Binary" syncable="YES"/>
         <relationship name="bookmarks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bookmark" inverseName="user" inverseEntity="Bookmark" syncable="YES"/>
     </entity>
     <elements>
         <element name="Bookmark" positionX="-263" positionY="-42" width="128" height="163"/>
-        <element name="User" positionX="-54" positionY="18" width="128" height="88"/>
+        <element name="User" positionX="-54" positionY="18" width="128" height="75"/>
     </elements>
 </model>

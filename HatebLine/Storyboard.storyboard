@@ -680,13 +680,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="82" horizontalPageScroll="10" verticalLineScroll="82" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
+                            <scrollView autohidesScrollers="YES" horizontalLineScroll="124" horizontalPageScroll="10" verticalLineScroll="124" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <clipView key="contentView" id="vOr-cm-ozy">
                                     <rect key="frame" x="1" y="1" width="478" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="80" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH">
+                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="122" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH">
                                             <rect key="frame" x="0.0" y="0.0" width="478" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
@@ -707,11 +707,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="477" height="80"/>
+                                                            <rect key="frame" x="1" y="1" width="495" height="122"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI">
-                                                                    <rect key="frame" x="57" y="60" width="80" height="17"/>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
+                                                                    <rect key="frame" x="57" y="102" width="80" height="17"/>
                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="8kb-Qm-j4H">
                                                                         <font key="font" size="13" name=".HelveticaNeueDeskInterface-Heavy"/>
                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -721,37 +721,17 @@
                                                                         <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.name" id="nRV-ac-0zE"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tj6-8X-qXR">
-                                                                    <rect key="frame" x="3" y="29" width="48" height="48"/>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tj6-8X-qXR" userLabel="Profile Image View">
+                                                                    <rect key="frame" x="3" y="71" width="48" height="48"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="48" id="AOQ-jy-qiD"/>
                                                                         <constraint firstAttribute="height" constant="48" id="sv3-EI-IU1"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="bDa-og-8dz"/>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.profileImage" id="sLr-2V-VdW"/>
+                                                                    </connections>
                                                                 </imageView>
-                                                                <textField verticalHuggingPriority="750" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
-                                                                    <rect key="frame" x="57" y="20" width="417" height="38"/>
-                                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="DnH-3B-zF7">
-                                                                        <font key="font" metaFont="system"/>
-                                                                        <string key="title">Comment &amp; Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                    <connections>
-                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.title" id="3Gh-oF-r61"/>
-                                                                    </connections>
-                                                                </textField>
-                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
-                                                                    <rect key="frame" x="405" y="63" width="69" height="14"/>
-                                                                    <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="10 days ago" id="vwn-Hu-luB">
-                                                                        <font key="font" metaFont="smallSystem"/>
-                                                                        <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                    </textFieldCell>
-                                                                    <connections>
-                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.date" id="1Rh-Rg-lJ1"/>
-                                                                    </connections>
-                                                                </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-P8-ETC">
                                                                     <rect key="frame" x="57" y="3" width="50" height="14"/>
                                                                     <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="32 users" id="cSL-C8-QlI">
@@ -763,21 +743,74 @@
                                                                         <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.count" id="iL3-ce-i7J"/>
                                                                     </connections>
                                                                 </textField>
+                                                                <textField verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
+                                                                    <rect key="frame" x="59" y="61" width="431" height="38"/>
+                                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="QoV-rO-qPS">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <string key="title">Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="hidden" keyPath="objectValue.comment" id="oXg-h3-feu">
+                                                                            <dictionary key="options">
+                                                                                <string key="NSValueTransformerName">NSIsNil</string>
+                                                                            </dictionary>
+                                                                        </binding>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.comment" id="tid-hU-xLY"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lsI-Ug-kRn" userLabel="Favicon Image View">
+                                                                    <rect key="frame" x="59" y="42" width="16" height="16"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="16" id="UpA-x2-8tE"/>
+                                                                        <constraint firstAttribute="height" constant="16" id="oH5-sY-v0l"/>
+                                                                    </constraints>
+                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="QvO-db-zYI"/>
+                                                                </imageView>
+                                                                <textField verticalHuggingPriority="750" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
+                                                                    <rect key="frame" x="75" y="20" width="417" height="38"/>
+                                                                    <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="DnH-3B-zF7">
+                                                                        <font key="font" metaFont="system"/>
+                                                                        <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                                        <color key="textColor" red="0.026777623057608425" green="0.27431031391996752" blue="0.71919177827380953" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.title" id="3Gh-oF-r61"/>
+                                                                    </connections>
+                                                                </textField>
+                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
+                                                                    <rect key="frame" x="423" y="102" width="69" height="14"/>
+                                                                    <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="10 days ago" id="vwn-Hu-luB">
+                                                                        <font key="font" metaFont="smallSystem"/>
+                                                                        <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                    </textFieldCell>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.date" id="1Rh-Rg-lJ1"/>
+                                                                    </connections>
+                                                                </textField>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="JlA-6m-wo4" firstAttribute="top" secondItem="qGh-RN-KYb" secondAttribute="top" constant="22" id="19j-MI-i9w"/>
                                                                 <constraint firstItem="YKK-aq-6lI" firstAttribute="leading" secondItem="tj6-8X-qXR" secondAttribute="trailing" constant="8" id="1ox-pZ-DgK"/>
                                                                 <constraint firstAttribute="trailing" secondItem="JlA-6m-wo4" secondAttribute="trailing" constant="5" id="3Ir-Aa-H0n"/>
-                                                                <constraint firstItem="JlA-6m-wo4" firstAttribute="leading" secondItem="tj6-8X-qXR" secondAttribute="trailing" constant="8" id="CuR-7k-AYJ"/>
+                                                                <constraint firstItem="ywu-P8-ETC" firstAttribute="top" secondItem="JlA-6m-wo4" secondAttribute="bottom" constant="3" id="3Z3-of-P1v"/>
+                                                                <constraint firstItem="JlA-6m-wo4" firstAttribute="top" secondItem="lsI-Ug-kRn" secondAttribute="top" id="3sA-T5-ZOY"/>
                                                                 <constraint firstItem="YKK-aq-6lI" firstAttribute="top" secondItem="qGh-RN-KYb" secondAttribute="top" constant="3" id="DNx-St-ezc"/>
                                                                 <constraint firstAttribute="bottom" secondItem="ywu-P8-ETC" secondAttribute="bottom" constant="3" id="GXo-QA-4DP"/>
+                                                                <constraint firstItem="JlA-6m-wo4" firstAttribute="leading" secondItem="lsI-Ug-kRn" secondAttribute="trailing" constant="2" id="LCi-Zr-ljS"/>
+                                                                <constraint firstItem="PkE-gD-a7k" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YKK-aq-6lI" secondAttribute="trailing" priority="750" constant="1" id="RFR-7Z-HoT"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Rlt-J0-ujV" secondAttribute="trailing" constant="5" id="S7S-0Y-80V"/>
+                                                                <constraint firstItem="Rlt-J0-ujV" firstAttribute="leading" secondItem="YKK-aq-6lI" secondAttribute="leading" id="Sgh-2g-W2v"/>
                                                                 <constraint firstItem="tj6-8X-qXR" firstAttribute="top" secondItem="qGh-RN-KYb" secondAttribute="top" constant="3" id="bbX-OU-rLn"/>
-                                                                <constraint firstItem="ywu-P8-ETC" firstAttribute="leading" secondItem="qGh-RN-KYb" secondAttribute="leading" constant="59" id="bs7-Wa-YaR"/>
-                                                                <constraint firstItem="JlA-6m-wo4" firstAttribute="top" secondItem="YKK-aq-6lI" secondAttribute="bottom" constant="2" id="i7l-XS-YtY"/>
+                                                                <constraint firstItem="ywu-P8-ETC" firstAttribute="leading" secondItem="YKK-aq-6lI" secondAttribute="leading" id="hRE-Cs-WQR"/>
                                                                 <constraint firstItem="tj6-8X-qXR" firstAttribute="leading" secondItem="qGh-RN-KYb" secondAttribute="leading" constant="3" id="nfp-3t-t65"/>
-                                                                <constraint firstItem="ywu-P8-ETC" firstAttribute="top" secondItem="JlA-6m-wo4" secondAttribute="bottom" constant="3" id="nsT-mx-vZb"/>
-                                                                <constraint firstItem="PkE-gD-a7k" firstAttribute="top" secondItem="qGh-RN-KYb" secondAttribute="top" constant="3" id="pvh-HI-oJx"/>
+                                                                <constraint firstItem="PkE-gD-a7k" firstAttribute="top" secondItem="qGh-RN-KYb" secondAttribute="top" constant="6" id="pvh-HI-oJx"/>
+                                                                <constraint firstItem="Rlt-J0-ujV" firstAttribute="top" secondItem="YKK-aq-6lI" secondAttribute="bottom" constant="3" id="s8e-yI-tCg"/>
+                                                                <constraint firstItem="lsI-Ug-kRn" firstAttribute="top" secondItem="Rlt-J0-ujV" secondAttribute="bottom" constant="3" id="vFo-j4-LK7"/>
                                                                 <constraint firstAttribute="trailing" secondItem="PkE-gD-a7k" secondAttribute="trailing" constant="5" id="wYO-Yv-3Vw"/>
+                                                                <constraint firstItem="lsI-Ug-kRn" firstAttribute="leading" secondItem="YKK-aq-6lI" secondAttribute="leading" id="ypt-Zj-opD"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="countTextField" destination="ywu-P8-ETC" id="8wB-X0-Xqm"/>
@@ -825,6 +858,7 @@
                 <arrayController mode="entity" entityName="Bookmark" editable="NO" automaticallyPreparesContent="YES" id="bBU-oK-nBz" userLabel="Bookmark Array Controller">
                     <connections>
                         <binding destination="Fxg-Ub-YNW" name="managedObjectContext" keyPath="managedObjectContext" id="kYl-Er-Ai7"/>
+                        <binding destination="Fxg-Ub-YNW" name="sortDescriptors" keyPath="sortDescriptors" id="q0m-3S-C71"/>
                     </connections>
                 </arrayController>
             </objects>

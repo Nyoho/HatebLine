@@ -117,8 +117,8 @@
 			isa = PBXGroup;
 			children = (
 				551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */,
-				551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */,
 				551DB4FE1C4374F400B198A8 /* User.swift */,
+				551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */,
 				551DB4F91C42CD0300B198A8 /* Bookmark.swift */,
 			);
 			name = Models;

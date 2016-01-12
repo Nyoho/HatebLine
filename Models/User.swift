@@ -8,10 +8,23 @@
 
 import Foundation
 import CoreData
-
+import Alamofire
+import Cocoa
 
 class User: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
+    var profileImage: NSImage?  {
+        var newImage: NSImage?
+        if let n = name {
+            let twoLetters = (n as NSString).substringToIndex(2)
+            let url = NSURL(string: "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(n)/profile.gif")
+            let data = NSData(contentsOfURL: url!)
+            newImage =  NSImage(data: data!)!
+            return newImage!
+        } else {
+            return nil
+        }
+    }
 
 }

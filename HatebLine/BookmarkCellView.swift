@@ -11,6 +11,7 @@ import Cocoa
 class BookmarkCellView: NSTableCellView {
 
     @IBOutlet weak var titleTextField: NSTextField!
+    @IBOutlet weak var commentTextField: NSTextField!
     @IBOutlet weak var countTextField: NSTextField!
     @IBOutlet weak var dateTextField: NSTextField!
     
