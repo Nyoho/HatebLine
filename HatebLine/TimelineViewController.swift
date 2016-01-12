@@ -126,12 +126,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     if let creator = item["creator"]! {
                         notification.title = "\(creator) がブックマークを追加しました"
                     }
-                    if let comment = item["comment"]!, let title = item["title"]! {
+                    if let comment = item["comment"]!, let title = item["title"]!, let count = item["count"]! {
                         let separator: String = comment as! String == "" ? "" : " / "
-                        notification.subtitle = "\(comment)\(separator)\(title)"
-                    }
-                    if let count = item["count"]! {
-                        notification.informativeText = "\(count) users"
+                        notification.informativeText = "[\(count)栞]\(comment)\(separator)\(title)"
                     }
                     //                notification.contentImage = NSImage(named: "hoge")
                     notification.userInfo = ["hoge": "title"]
