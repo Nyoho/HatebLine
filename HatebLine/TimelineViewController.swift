@@ -134,7 +134,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     notification.userInfo = ["hoge": "title"]
                     notification.soundName = NSUserNotificationDefaultSoundName
                     NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
-                    print(notification)
                 }
             } catch {
                 fatalError("Failed to fetch bookmarks: \(error)")
