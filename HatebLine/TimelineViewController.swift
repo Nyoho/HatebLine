@@ -128,7 +128,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     }
                     if let comment = item["comment"]!, let title = item["title"]!, let count = item["count"]! {
                         let separator: String = comment as! String == "" ? "" : " / "
-                        notification.informativeText = "[\(count)栞]\(comment)\(separator)\(title)"
+                        notification.informativeText = "(\(count)) \(comment)\(separator)\(title)"
                     }
                     //                notification.contentImage = NSImage(named: "hoge")
                     notification.userInfo = ["hoge": "title"]
