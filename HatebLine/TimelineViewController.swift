@@ -35,7 +35,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             self.parser.parse(completionHandler: { items in
                 if self.mergeBookmarks(items) {
                     dispatch_async(dispatch_get_main_queue()) {
-                        self.tableView.reloadData()
+                        //self.tableView.reloadData()
                     }
                 }
             })
