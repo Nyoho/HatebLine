@@ -31,7 +31,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
    }
     
     func perform() {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.parser.parse(completionHandler: { items in
                 if self.mergeBookmarks(items) {
                     dispatch_async(dispatch_get_main_queue()) {
