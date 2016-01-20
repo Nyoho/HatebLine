@@ -12,8 +12,23 @@ class GrowingTextField: NSTextField {
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-
-        // Drawing code here.
     }
     
+    // Thank you, http://stackoverflow.com/questions/10463680/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
+    override var intrinsicContentSize: NSSize {
+        if !self.cell!.wraps {
+            return super.intrinsicContentSize
+        }
+        var frame = self.frame
+        let width = frame.size.width
+        frame.size.height = CGFloat.max
+        let height = self.cell?.cellSizeForBounds(frame).height
+        return NSMakeSize(width, height!);
+    }
+    
+    // you need to invalidate the layout on text change, else it wouldn't grow by changing the text
+    override func textDidChange(notification: NSNotification) {
+        super.textDidChange(notification)
+        self.invalidateIntrinsicContentSize()
+    }
 }
