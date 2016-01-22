@@ -26,6 +26,8 @@
 		55D2E73C1C51DC76006D2475 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */; };
 		55D2E73D1C51DC76006D2475 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7391C51DC75006D2475 /* Page.swift */; };
 		55D2E7411C51FDBE006D2475 /* JKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7401C51FDBE006D2475 /* JKTableView.swift */; };
+		55D2E7441C523187006D2475 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7421C523187006D2475 /* NSDate+Extension.swift */; };
+		55D2E7451C523187006D2475 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */; };
 		55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */; };
 		55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; };
 		55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -91,6 +93,8 @@
 		55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "Models/Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55D2E7391C51DC75006D2475 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Models/Page.swift; sourceTree = "<group>"; };
 		55D2E7401C51FDBE006D2475 /* JKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKTableView.swift; sourceTree = "<group>"; };
+		55D2E7421C523187006D2475 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Extension.swift"; path = "NSDate+TimeAgo/NSDate+Extension.swift"; sourceTree = "<group>"; };
+		55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NSDateTimeAgo.bundle; path = "NSDate+TimeAgo/NSDateTimeAgo.bundle"; sourceTree = "<group>"; };
 		55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		55E079CB1C3D583800A72C05 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/Mac/AlamofireImage.framework; sourceTree = "<group>"; };
 		55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */,
 				55415B771C3961F90079B118 /* Info.plist */,
 				55415B6F1C3961F90079B118 /* HatebLine.xcdatamodeld */,
+				55D2E7421C523187006D2475 /* NSDate+Extension.swift */,
+				55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */,
 				55556F521C4FD33C00419440 /* Views */,
 			);
 			path = HatebLine;
@@ -324,6 +330,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55415B731C3961F90079B118 /* Assets.xcassets in Resources */,
+				55D2E7451C523187006D2475 /* NSDateTimeAgo.bundle in Resources */,
 				55415B761C3961F90079B118 /* MainMenu.xib in Resources */,
 				55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */,
 			);
@@ -358,6 +365,7 @@
 				55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */,
 				55E9B8DE1C3FE9C400742E49 /* MainWindowController.swift in Sources */,
 				55D2E7411C51FDBE006D2475 /* JKTableView.swift in Sources */,
+				55D2E7441C523187006D2475 /* NSDate+Extension.swift in Sources */,
 				551DB5061C437E4500B198A8 /* Bookmark+CoreDataProperties.swift in Sources */,
 				55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */,
 				55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */,

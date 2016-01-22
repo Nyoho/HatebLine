@@ -818,7 +818,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.date" id="1Rh-Rg-lJ1"/>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.date.timeAgo" id="F8l-8b-Kgk"/>
                                                                     </connections>
                                                                 </textField>
                                                             </subviews>
