@@ -27,8 +27,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         parser = RSSParser()
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "updateData", userInfo: nil, repeats: true)
-        tableView.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-   }
+        //tableView.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+    }
     
     func perform() {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
@@ -54,8 +54,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 if (fetchedBookmarks.count > 0) {
                     let b = fetchedBookmarks.first! as Bookmark
                     if let count = Int(item["count"]! as! String) {
-                        if count != b.count {
-                            b.count = count
+                        if count != b.page?.count {
+                            b.page?.count = count
                             shouldReload = true
                         }
                     }
@@ -68,9 +68,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         }
                     }
                 } else {
-                    let entity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: moc)
-                    let bookmark = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc) as! Bookmark
+                    let bmEntity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: moc)
+                    let bookmark = NSManagedObject(entity: bmEntity!, insertIntoManagedObjectContext: moc) as! Bookmark
                     var user: NSManagedObject?
+                    var page: NSManagedObject?
                     
                     let usersFetch = NSFetchRequest(entityName: "User")
                     if let creator = item["creator"]! {
@@ -88,13 +89,36 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                             fatalError("Failed to fetch users: \(error)")
                         }
                     }
+                    let pagesFetch = NSFetchRequest(entityName: "Page")
+                    if let url = item["link"]! {
+                        pagesFetch.predicate = NSPredicate(format: "url == %@", url as! String)
+                        do {
+                            let fetchedPages = try moc.executeFetchRequest(pagesFetch) as! [Page]
+                            if (fetchedPages.count > 0) {
+                                page = fetchedPages.first!
+                            } else {
+                                let entity = NSEntityDescription.entityForName("Page", inManagedObjectContext: moc)
+                                page = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
+                                page?.setValue(url as! String, forKey: "url")
+                                if let b = item["title"]! { page?.setValue(b, forKey: "title") }
+                                if let b = item["count"]! {
+                                    page?.setValue(Int(b as! String), forKey: "count")
+                                }
+                                if let b = item["content"]! {
+                                    if b as! String != "" {
+                                        page?.setValue(b, forKey: "content")
+                                    }
+                                }
+                            }
+                        } catch {
+                            fatalError("Failed to fetch pages: \(error)")
+                        }
+                    }
                     
                     bookmark.setValue(user, forKey: "user")
+                    bookmark.setValue(page, forKey: "page")
                     if let b = item["bookmarkUrl"]! {
                         bookmark.setValue(b, forKey: "bookmarkUrl")
-                    }
-                    if let b = item["title"]! {
-                        bookmark.setValue(b, forKey: "title")
                     }
                     if let b = item["date"]! {
                         let dateFormatter = NSDateFormatter()
@@ -104,12 +128,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
                         let date = dateFormatter.dateFromString(b as! String)
                         bookmark.setValue(date, forKey: "date")
-                    }
-                    if let b = item["link"]! {
-                        bookmark.setValue(b, forKey: "url")
-                    }
-                    if let b = item["count"]! {
-                        bookmark.setValue(Int(b as! String), forKey: "count")
                     }
                     if let b = item["comment"]! {
                         if b as! String != "" {
@@ -155,6 +173,15 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         perform()
     }
     
+    @IBAction func openInBrowser(sender: AnyObject) {
+        let array = bookmarkArrayController.selectedObjects as! [Bookmark]
+        if array.count > 0 {
+            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = NSURL(string: urlString) {
+                NSWorkspace.sharedWorkspace().openURL(url)
+            }
+        }
+    }
+
     func refresh() {
         tableView.reloadData()
     }
@@ -168,6 +195,17 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         // Do view setup here.
         setup()
         perform()
+    }
+    
+    override func keyDown(theEvent: NSEvent) {
+        switch theEvent.keyCode {
+        case 38:
+            print(theEvent)
+        case 40:
+            print(theEvent)
+        default:
+            break
+        }
     }
 /*
     // MARK: - TableView
@@ -224,7 +262,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 cell.commentTextField?.stringValue = comment
                 cell.commentTextField?.preferredMaxLayoutWidth = size.width - (5+8+3+48)
             }
-            if let title = bookmark.title {
+            if let title = bookmark.page?.title {
                 cell.titleTextField?.stringValue = title
                 // FIXME: temporarily, minus titleTextField's paddings
                 cell.titleTextField?.preferredMaxLayoutWidth = size.width - (5+8+3+48+16)

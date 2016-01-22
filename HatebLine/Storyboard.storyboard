@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1509" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F1605" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="9531"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -600,6 +601,11 @@
                                                 <action selector="reload:" target="Ady-hI-5gd" id="XYX-Zc-oC1"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Open in Browser" keyEquivalent="l" id="pg6-L4-Wp8">
+                                            <connections>
+                                                <action selector="openInBrowser:" target="Ady-hI-5gd" id="o2y-zB-oYI"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -660,6 +666,27 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="P2N-mB-OVv"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="g2c-DO-hxl"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="lQQ-mz-uDb"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="JZp-Xv-O40"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="jHQ-xa-KEq"/>
+                                <toolbarItem implicitItemIdentifier="580FEF6C-AD09-4659-8AFA-5DA95C641F81" label="Show web" paletteLabel="Show web" tag="-1" id="9Dt-cb-a6I">
+                                    <connections>
+                                        <segue destination="fhg-Lj-PwP" kind="modal" id="Kh6-ul-g3R"/>
+                                    </connections>
+                                </toolbarItem>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="P2N-mB-OVv"/>
+                                <toolbarItem reference="g2c-DO-hxl"/>
+                                <toolbarItem reference="jHQ-xa-KEq"/>
+                                <toolbarItem reference="lQQ-mz-uDb"/>
+                                <toolbarItem reference="9Dt-cb-a6I"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="17K-n7-ydr" id="En4-Wi-JBl"/>
                         </connections>
@@ -677,17 +704,17 @@
             <objects>
                 <viewController id="Fxg-Ub-YNW" customClass="TimelineViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="QEn-qU-JRA">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="370"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="124" horizontalPageScroll="10" verticalLineScroll="124" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <clipView key="contentView" id="vOr-cm-ozy">
-                                    <rect key="frame" x="1" y="1" width="478" height="268"/>
+                            <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="124" horizontalPageScroll="10" verticalLineScroll="124" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
+                                <rect key="frame" x="0.0" y="136" width="480" height="234"/>
+                                <clipView key="contentView" drawsBackground="NO" id="vOr-cm-ozy">
+                                    <rect key="frame" x="1" y="1" width="478" height="232"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="122" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="0.0"/>
+                                        <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="122" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH">
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="232"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -707,7 +734,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView misplaced="YES" id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="495" height="122"/>
+                                                            <rect key="frame" x="1" y="1" width="475" height="122"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
@@ -740,7 +767,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.count" id="iL3-ce-i7J"/>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.count" id="Jpb-4e-srr"/>
                                                                     </connections>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
@@ -748,16 +775,16 @@
                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="QoV-rO-qPS">
                                                                         <font key="font" metaFont="system"/>
                                                                         <string key="title">Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                                         <color key="backgroundColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>
                                                                     </textFieldCell>
                                                                     <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.comment" id="C2s-ox-RC3"/>
                                                                         <binding destination="qGh-RN-KYb" name="hidden" keyPath="objectValue.comment" id="oXg-h3-feu">
                                                                             <dictionary key="options">
                                                                                 <string key="NSValueTransformerName">NSIsNil</string>
                                                                             </dictionary>
                                                                         </binding>
-                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.comment" id="tid-hU-xLY"/>
                                                                     </connections>
                                                                 </textField>
                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lsI-Ug-kRn" userLabel="Favicon Image View">
@@ -767,17 +794,20 @@
                                                                         <constraint firstAttribute="height" constant="16" id="oH5-sY-v0l"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="QvO-db-zYI"/>
+                                                                    <connections>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.favicon" id="OU0-p0-wmP"/>
+                                                                    </connections>
                                                                 </imageView>
                                                                 <textField verticalHuggingPriority="750" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
                                                                     <rect key="frame" x="75" y="20" width="417" height="38"/>
                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="DnH-3B-zF7">
                                                                         <font key="font" metaFont="system"/>
                                                                         <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                                                        <color key="textColor" red="0.026777623057608425" green="0.27431031391996752" blue="0.71919177827380953" alpha="1" colorSpace="calibratedRGB"/>
+                                                                        <color key="textColor" red="0.026777623059999998" green="0.27431031389999999" blue="0.71919177830000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.title" id="3Gh-oF-r61"/>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.title" id="y46-Nf-QJa"/>
                                                                     </connections>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
@@ -813,6 +843,7 @@
                                                                 <constraint firstItem="lsI-Ug-kRn" firstAttribute="leading" secondItem="YKK-aq-6lI" secondAttribute="leading" id="ypt-Zj-opD"/>
                                                             </constraints>
                                                             <connections>
+                                                                <outlet property="commentTextField" destination="Rlt-J0-ujV" id="0W4-Ao-ORj"/>
                                                                 <outlet property="countTextField" destination="ywu-P8-ETC" id="8wB-X0-Xqm"/>
                                                                 <outlet property="dateTextField" destination="PkE-gD-a7k" id="gdG-du-Ejb"/>
                                                                 <outlet property="imageView" destination="tj6-8X-qXR" id="sD0-bp-8FC"/>
@@ -824,16 +855,17 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
-                                                <binding destination="bBU-oK-nBz" name="content" keyPath="arrangedObjects" id="0lB-gv-Aoq"/>
-                                                <outlet property="dataSource" destination="Fxg-Ub-YNW" id="97V-hk-aGu"/>
-                                                <outlet property="delegate" destination="Fxg-Ub-YNW" id="Q90-Mj-4IS"/>
+                                                <binding destination="bBU-oK-nBz" name="content" keyPath="arrangedObjects" id="bff-aH-BP5"/>
+                                                <binding destination="bBU-oK-nBz" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="bff-aH-BP5" id="CIL-zJ-XyG"/>
+                                                <outlet property="dataSource" destination="Fxg-Ub-YNW" id="CcQ-gQ-zcq"/>
+                                                <outlet property="delegate" destination="Fxg-Ub-YNW" id="x6N-WJ-yfl"/>
                                             </connections>
                                         </tableView>
                                     </subviews>
-                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ZDc-fa-z5r">
-                                    <rect key="frame" x="1" y="118" width="238" height="16"/>
+                                    <rect key="frame" x="1" y="253" width="478" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="hbN-cU-c7C">
@@ -841,28 +873,150 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMM-ET-3I2" userLabel="Favicon Image View">
+                                <rect key="frame" x="14" y="102" width="16" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="16" id="3Aa-1D-Q4s"/>
+                                    <constraint firstAttribute="height" constant="16" id="Vkg-04-b8M"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="7Sr-8s-Don"/>
+                                <connections>
+                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.favicon" id="ouI-Pi-PDI"/>
+                                </connections>
+                            </imageView>
+                            <textField verticalHuggingPriority="750" misplaced="YES" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-sZ-ZgT">
+                                <rect key="frame" x="32" y="80" width="440" height="38"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="0vZ-ti-W86">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                    <color key="textColor" red="0.026777623059999998" green="0.27431031389999999" blue="0.71919177830000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.title" id="QY4-1Y-LNq"/>
+                                </connections>
+                            </textField>
+                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PMZ-k0-mKt" customClass="GrowingTextField" customModule="HatebLine" customModuleProvider="target">
+                                <rect key="frame" x="32" y="13" width="360" height="59"/>
+                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="Vch-IP-imz">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.summary" id="Iv8-KQ-2Im"/>
+                                </connections>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
+                                <rect key="frame" x="404" y="13" width="61" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="OT8-nL-V6X"/>
+                                    <constraint firstAttribute="width" constant="64" id="avj-Gk-KiL"/>
+                                </constraints>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="MWJ-vD-euT"/>
+                                <connections>
+                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.entryImage" id="ylE-Md-8hR"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="VcD-Ui-scv" secondAttribute="trailing" id="1Gr-Wl-Flo"/>
-                            <constraint firstAttribute="bottom" secondItem="VcD-Ui-scv" secondAttribute="bottom" id="S1J-tM-r33"/>
+                            <constraint firstAttribute="trailing" secondItem="Mog-7A-RM4" secondAttribute="trailing" constant="10" id="1IS-IU-gD7"/>
+                            <constraint firstItem="XMM-ET-3I2" firstAttribute="top" secondItem="VcD-Ui-scv" secondAttribute="bottom" constant="8" id="H2T-vi-Z8x"/>
+                            <constraint firstItem="Mog-7A-RM4" firstAttribute="leading" secondItem="PMZ-k0-mKt" secondAttribute="trailing" constant="4" id="HF0-Pv-tje"/>
+                            <constraint firstAttribute="bottom" secondItem="Mog-7A-RM4" secondAttribute="bottom" constant="10" id="IWU-Sa-QLM"/>
+                            <constraint firstAttribute="bottom" secondItem="PMZ-k0-mKt" secondAttribute="bottom" constant="10" id="JB1-Ks-M8P"/>
+                            <constraint firstItem="XMM-ET-3I2" firstAttribute="leading" secondItem="QEn-qU-JRA" secondAttribute="leading" constant="14" id="JmD-b0-qPz"/>
+                            <constraint firstItem="PMZ-k0-mKt" firstAttribute="top" secondItem="dEm-sZ-ZgT" secondAttribute="bottom" constant="8" id="dWk-qS-0dI"/>
+                            <constraint firstItem="PMZ-k0-mKt" firstAttribute="leading" secondItem="dEm-sZ-ZgT" secondAttribute="leading" id="e8K-l5-cJ0"/>
                             <constraint firstItem="VcD-Ui-scv" firstAttribute="leading" secondItem="QEn-qU-JRA" secondAttribute="leading" id="i8z-BQ-cPn"/>
+                            <constraint firstAttribute="trailing" secondItem="dEm-sZ-ZgT" secondAttribute="trailing" constant="10" id="kda-OI-F0R"/>
                             <constraint firstItem="VcD-Ui-scv" firstAttribute="top" secondItem="QEn-qU-JRA" secondAttribute="top" id="p6P-wJ-1c4"/>
+                            <constraint firstItem="dEm-sZ-ZgT" firstAttribute="leading" secondItem="XMM-ET-3I2" secondAttribute="trailing" constant="4" id="yqs-Z1-Ksq"/>
+                            <constraint firstItem="dEm-sZ-ZgT" firstAttribute="top" secondItem="XMM-ET-3I2" secondAttribute="top" id="zlV-gq-PRv"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bookmarkArrayController" destination="bBU-oK-nBz" id="yOc-GW-Ota"/>
-                        <outlet property="tableView" destination="2eC-bg-4UH" id="RMK-jY-tD7"/>
+                        <outlet property="bookmarkArrayController" destination="bBU-oK-nBz" id="vML-tQ-gjA"/>
+                        <outlet property="tableView" destination="2eC-bg-4UH" id="Lmj-SK-UYq"/>
                     </connections>
                 </viewController>
                 <customObject id="HHK-ti-pmZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <arrayController mode="entity" entityName="Bookmark" editable="NO" automaticallyPreparesContent="YES" id="bBU-oK-nBz" userLabel="Bookmark Array Controller">
                     <connections>
-                        <binding destination="Fxg-Ub-YNW" name="managedObjectContext" keyPath="managedObjectContext" id="kYl-Er-Ai7"/>
-                        <binding destination="Fxg-Ub-YNW" name="sortDescriptors" keyPath="sortDescriptors" id="q0m-3S-C71"/>
+                        <binding destination="Fxg-Ub-YNW" name="managedObjectContext" keyPath="managedObjectContext" id="SDc-Hc-oeO"/>
+                        <binding destination="Fxg-Ub-YNW" name="sortDescriptors" keyPath="sortDescriptors" id="6JY-Zr-vRM"/>
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="495" y="925"/>
+            <point key="canvasLocation" x="451" y="1048"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="eG6-Rn-mHR">
+            <objects>
+                <viewController id="fhg-Lj-PwP" customClass="WebViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="c21-4Z-3j3">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NFa-zx-Fqx">
+                                <rect key="frame" x="360" y="-2" width="89" height="32"/>
+                                <buttonCell key="cell" type="push" title="Dismiss" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="e3Q-xo-5jY">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismiss:" target="fhg-Lj-PwP" id="oPA-hu-AWz"/>
+                                </connections>
+                            </button>
+                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="030-gy-OBg">
+                                <rect key="frame" x="0.0" y="35" width="450" height="265"/>
+                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
+                                    <nil key="identifier"/>
+                                </webPreferences>
+                            </webView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OlV-IS-Plv">
+                                <rect key="frame" x="63" y="-2" width="49" height="32"/>
+                                <buttonCell key="cell" type="push" title="&gt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="J63-QR-7KT">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="goForward:" target="030-gy-OBg" id="WXZ-1z-sfT"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dBa-AF-DTB">
+                                <rect key="frame" x="14" y="-2" width="49" height="32"/>
+                                <buttonCell key="cell" type="push" title="&lt;" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="QQO-1I-38I">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="goBack:" target="030-gy-OBg" id="xDY-DY-VIK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="030-gy-OBg" firstAttribute="leading" secondItem="c21-4Z-3j3" secondAttribute="leading" id="6Ca-ac-jYd"/>
+                            <constraint firstAttribute="trailing" secondItem="NFa-zx-Fqx" secondAttribute="trailing" constant="7" id="7Ln-JG-uBh"/>
+                            <constraint firstItem="NFa-zx-Fqx" firstAttribute="top" secondItem="030-gy-OBg" secondAttribute="bottom" constant="9" id="Brq-PK-njT"/>
+                            <constraint firstAttribute="bottom" secondItem="OlV-IS-Plv" secondAttribute="bottom" constant="5" id="E4V-6p-Wtc"/>
+                            <constraint firstAttribute="trailing" secondItem="030-gy-OBg" secondAttribute="trailing" id="Ft0-gl-gND"/>
+                            <constraint firstItem="030-gy-OBg" firstAttribute="top" secondItem="c21-4Z-3j3" secondAttribute="top" id="Osv-Ez-MhW"/>
+                            <constraint firstAttribute="bottom" secondItem="dBa-AF-DTB" secondAttribute="bottom" constant="5" id="a11-Tm-cjx"/>
+                            <constraint firstItem="dBa-AF-DTB" firstAttribute="leading" secondItem="c21-4Z-3j3" secondAttribute="leading" constant="20" id="cqX-Rx-bod"/>
+                            <constraint firstAttribute="bottom" secondItem="NFa-zx-Fqx" secondAttribute="bottom" constant="5" id="oLf-Cc-0AQ"/>
+                            <constraint firstItem="OlV-IS-Plv" firstAttribute="leading" secondItem="dBa-AF-DTB" secondAttribute="trailing" constant="12" id="ssv-Ju-bH2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="030-gy-OBg" id="Wva-pO-Iae"/>
+                    </connections>
+                </viewController>
+                <customObject id="vBi-QV-0yE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="993" y="1013"/>
         </scene>
     </scenes>
 </document>

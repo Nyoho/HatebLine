@@ -25,7 +25,9 @@ class User: NSManagedObject {
             if let url = NSURL(string: "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(n)/profile.gif") {
                 Alamofire.request(.GET, url).response { request, response, data, error in
                     if let d = data {
+                        self.willChangeValueForKey("profileImage")
                         self.__profileImage = NSImage(data: d)
+                        self.didChangeValueForKey("profileImage")
                     }
                 }
                 }

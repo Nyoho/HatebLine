@@ -8,10 +8,11 @@
 
 import Foundation
 import CoreData
-
+import Cocoa
 
 class Bookmark: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
+
 
 }

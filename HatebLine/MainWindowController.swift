@@ -21,7 +21,17 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     // MARK: - NSWindowDelegate
     func windowDidEndLiveResize(notification: NSNotification) {
         let vc: TimelineViewController? = self.contentViewController as! TimelineViewController?
-        vc?.refresh()
+//        vc?.refresh()
     }
 
+    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+        let webvc = segue.destinationController as! WebViewController
+        if let vc: TimelineViewController? = self.contentViewController as! TimelineViewController? {
+            if let obj = vc?.bookmarkArrayController.selectedObjects.first as! Bookmark? {
+                print(vc?.bookmarkArrayController.selectedObjects.count)
+                print(obj.page?.title)
+                webvc.representedObject = obj.page?.content
+            }
+        }
+    }
 }
