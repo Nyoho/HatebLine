@@ -197,16 +197,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         perform()
     }
     
-    override func keyDown(theEvent: NSEvent) {
-        switch theEvent.keyCode {
-        case 38:
-            print(theEvent)
-        case 40:
-            print(theEvent)
-        default:
-            break
-        }
-    }
 /*
     // MARK: - TableView
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
