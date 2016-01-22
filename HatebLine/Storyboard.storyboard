@@ -767,7 +767,7 @@
                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                     </textFieldCell>
                                                                     <connections>
-                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.count" id="Jpb-4e-srr"/>
+                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.countString" id="dvM-5m-ehD"/>
                                                                     </connections>
                                                                 </textField>
                                                                 <textField verticalHuggingPriority="750" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">

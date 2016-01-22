@@ -59,4 +59,13 @@ class Page: NSManagedObject {
             return nil
         }
     }
+    
+    var countString: String? {
+        if let n = count {
+            return n.integerValue > 1 ? "\(n) users" : "\(n) user"
+        } else {
+            return ""
+        }
+    }
+    
 }
