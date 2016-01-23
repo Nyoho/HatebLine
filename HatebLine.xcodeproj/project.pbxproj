@@ -11,6 +11,8 @@
 		551DB5011C4374F400B198A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4FE1C4374F400B198A8 /* User.swift */; };
 		551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */; };
 		551DB5061C437E4500B198A8 /* Bookmark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */; };
+		551E72041C5267FC00C366EF /* AccountPrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E72031C5267FC00C366EF /* AccountPrefViewController.swift */; };
+		551E72071C52682200C366EF /* NotificationPrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E72061C52682200C366EF /* NotificationPrefViewController.swift */; };
 		552453731C4E1E9E00F4EAA1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552453721C4E1E9E00F4EAA1 /* WebViewController.swift */; };
 		552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 552453741C4E211B00F4EAA1 /* WebKit.framework */; };
 		55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B6D1C3961F90079B118 /* AppDelegate.swift */; };
@@ -73,6 +75,8 @@
 		551DB4FE1C4374F400B198A8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Models/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bookmark+CoreDataProperties.swift"; path = "Models/Bookmark+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		551E72031C5267FC00C366EF /* AccountPrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPrefViewController.swift; sourceTree = "<group>"; };
+		551E72061C52682200C366EF /* NotificationPrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPrefViewController.swift; sourceTree = "<group>"; };
 		552453721C4E1E9E00F4EAA1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		552453741C4E211B00F4EAA1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		55415B6A1C3961F90079B118 /* HatebLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HatebLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +148,15 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		551E72051C52680500C366EF /* Prefs */ = {
+			isa = PBXGroup;
+			children = (
+				551E72031C5267FC00C366EF /* AccountPrefViewController.swift */,
+				551E72061C52682200C366EF /* NotificationPrefViewController.swift */,
+			);
+			name = Prefs;
+			sourceTree = "<group>";
+		};
 		55415B611C3961F90079B118 = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +196,7 @@
 				55D2E7421C523187006D2475 /* NSDate+Extension.swift */,
 				55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */,
 				55556F521C4FD33C00419440 /* Views */,
+				551E72051C52680500C366EF /* Prefs */,
 			);
 			path = HatebLine;
 			sourceTree = "<group>";
@@ -357,9 +371,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551E72041C5267FC00C366EF /* AccountPrefViewController.swift in Sources */,
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				552453731C4E1E9E00F4EAA1 /* WebViewController.swift in Sources */,
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
+				551E72071C52682200C366EF /* NotificationPrefViewController.swift in Sources */,
 				55D2E73C1C51DC76006D2475 /* Page+CoreDataProperties.swift in Sources */,
 				55D2E73D1C51DC76006D2475 /* Page.swift in Sources */,
 				55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */,

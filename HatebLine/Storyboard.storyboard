@@ -22,7 +22,11 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
-                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
+                                            <connections>
+                                                <segue destination="HxD-mZ-4Sf" kind="show" id="ewP-el-gjQ"/>
+                                            </connections>
+                                        </menuItem>
                                         <menuItem isSeparatorItem="YES" id="wFC-TO-SCJ"/>
                                         <menuItem title="Services" id="NMo-om-nkz">
                                             <modifierMask key="keyEquivalentModifierMask"/>
@@ -730,7 +734,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="122" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH" customClass="JKTableView" customModule="HatebLine" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -749,7 +753,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
+                                                        <tableCellView misplaced="YES" id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="495" height="122"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -981,6 +985,65 @@
                 </arrayController>
             </objects>
             <point key="canvasLocation" x="451" y="1048"/>
+        </scene>
+        <!--Preference Tab View Controller-->
+        <scene sceneID="IhN-XW-nuD">
+            <objects>
+                <tabViewController tabStyle="toolbar" id="HxD-mZ-4Sf" userLabel="Preference Tab View Controller" sceneMemberID="viewController">
+                    <tabViewItems>
+                        <tabViewItem identifier="" id="Rkt-NB-i1G"/>
+                    </tabViewItems>
+                    <tabView key="tabView" type="noTabsNoBorder" id="YE0-GA-z1g">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <font key="font" metaFont="message"/>
+                        <tabViewItems/>
+                    </tabView>
+                    <connections>
+                        <segue destination="QOF-DU-SET" kind="relationship" relationship="tabItems" id="mHW-2r-lFy"/>
+                    </connections>
+                </tabViewController>
+                <customObject id="NKg-Ff-YfN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1089" y="426"/>
+        </scene>
+        <!--Account-->
+        <scene sceneID="Lpw-Eu-VLC">
+            <objects>
+                <viewController title="Account" id="QOF-DU-SET" customClass="AccountPrefViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="agP-F9-Xj6">
+                        <rect key="frame" x="0.0" y="0.0" width="380" height="254"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hHd-4e-vrb">
+                                <rect key="frame" x="180" y="116" width="96" height="22"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="J7W-hb-kRz">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="lKB-gA-wTO" name="value" keyPath="values.hatenaID" id="F6F-dW-b0Y"/>
+                                </connections>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-P7-jbp">
+                                <rect key="frame" x="102" y="119" width="70" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hatena ID:" id="2QB-mK-nyw">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="hHd-4e-vrb" firstAttribute="leading" secondItem="hUM-P7-jbp" secondAttribute="trailing" constant="10" id="cVY-aL-Ga5"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="Pj8-Kr-jQX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController representsSharedInstance="YES" id="lKB-gA-wTO"/>
+            </objects>
+            <point key="canvasLocation" x="1724" y="222"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="eG6-Rn-mHR">

@@ -26,11 +26,18 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     func setup() {
         parser = RSSParser()
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-        timer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: "updateData", userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 60, target: self, selector: "updateData", userInfo: nil, repeats: true)
+        let runLoop = NSRunLoop.currentRunLoop()
+        runLoop.addTimer(timer, forMode: NSRunLoopCommonModes)
         //tableView.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     }
     
     func perform() {
+        guard let hatenaID = NSUserDefaults.standardUserDefaults().valueForKey("hatenaID") as! String? else {
+            // ID を入れるように促す
+            return
+        }
+        parser.userName = hatenaID
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
             self.parser.parse(completionHandler: { items in
                 if self.mergeBookmarks(items) {
