@@ -723,18 +723,18 @@
         <scene sceneID="LCo-im-LHN">
             <objects>
                 <viewController id="Fxg-Ub-YNW" customClass="TimelineViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="QEn-qU-JRA">
+                    <view key="view" wantsLayer="YES" id="QEn-qU-JRA">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="370"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <scrollView autohidesScrollers="YES" horizontalLineScroll="125" horizontalPageScroll="10" verticalLineScroll="125" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
+                            <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="125" horizontalPageScroll="10" verticalLineScroll="125" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
                                 <rect key="frame" x="0.0" y="100" width="480" height="270"/>
                                 <clipView key="contentView" drawsBackground="NO" id="vOr-cm-ozy">
                                     <rect key="frame" x="1" y="1" width="478" height="268"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="123" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH" customClass="JKTableView" customModule="HatebLine" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="0.0"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="268"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -777,7 +777,7 @@
                                                                             <rect key="frame" x="0.0" y="54" width="413" height="17"/>
                                                                             <beginningViews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
-                                                                                    <rect key="frame" x="-2" y="0.0" width="80" height="17"/>
+                                                                                    <rect key="frame" x="-2" y="0.0" width="344" height="17"/>
                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="8kb-Qm-j4H">
                                                                                         <font key="font" size="13" name=".HelveticaNeueDeskInterface-Heavy"/>
                                                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -787,9 +787,11 @@
                                                                                         <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.name" id="nRV-ac-0zE"/>
                                                                                     </connections>
                                                                                 </textField>
+                                                                            </beginningViews>
+                                                                            <endViews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
-                                                                                    <rect key="frame" x="82" y="0.0" width="69" height="14"/>
-                                                                                    <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="right" title="10 days ago" id="vwn-Hu-luB">
+                                                                                    <rect key="frame" x="-2" y="0.0" width="69" height="14"/>
+                                                                                    <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="10 days ago" id="vwn-Hu-luB">
                                                                                         <font key="font" metaFont="smallSystem"/>
                                                                                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -798,7 +800,7 @@
                                                                                         <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.date.timeAgo" id="F8l-8b-Kgk"/>
                                                                                     </connections>
                                                                                 </textField>
-                                                                            </beginningViews>
+                                                                            </endViews>
                                                                             <visibilityPriorities>
                                                                                 <integer value="1000"/>
                                                                                 <integer value="1000"/>
@@ -809,7 +811,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <textField verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
-                                                                            <rect key="frame" x="0.0" y="35" width="413" height="17"/>
+                                                                            <rect key="frame" x="-2" y="35" width="417" height="17"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="QoV-rO-qPS">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <string key="title">Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
@@ -934,82 +936,116 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XMM-ET-3I2" userLabel="Favicon Image View">
-                                <rect key="frame" x="14" y="76" width="16" height="16"/>
+                            <visualEffectView appearanceType="vibrantLight" misplaced="YES" blendingMode="behindWindow" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="5mF-t4-IJO">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="100"/>
+                                <subviews>
+                                    <stackView orientation="horizontal" alignment="top" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UFu-x9-adF">
+                                        <rect key="frame" x="0.0" y="0.0" width="472" height="92"/>
+                                        <beginningViews>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XMM-ET-3I2" userLabel="Favicon Image View">
+                                                <rect key="frame" x="0.0" y="92" width="0.0" height="0.0"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="16" id="3Aa-1D-Q4s"/>
+                                                    <constraint firstAttribute="height" constant="16" id="Vkg-04-b8M"/>
+                                                </constraints>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="7Sr-8s-Don"/>
+                                                <connections>
+                                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.favicon" id="ouI-Pi-PDI"/>
+                                                </connections>
+                                            </imageView>
+                                            <stackView orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdc-Xr-dZb">
+                                                <rect key="frame" x="8" y="0.0" width="456" height="92"/>
+                                                <beginningViews>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-sZ-ZgT">
+                                                        <rect key="frame" x="-2" y="36" width="460" height="17"/>
+                                                        <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="0vZ-ti-W86">
+                                                            <font key="font" metaFont="system"/>
+                                                            <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                            <color key="textColor" red="0.026777623059999998" green="0.27431031389999999" blue="0.71919177830000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.title" id="QY4-1Y-LNq"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PMZ-k0-mKt" customClass="GrowingTextField" customModule="HatebLine" customModuleProvider="target">
+                                                        <rect key="frame" x="-2" y="18" width="460" height="14"/>
+                                                        <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="Vch-IP-imz">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <string key="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+                                                            <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.summary" id="Iv8-KQ-2Im"/>
+                                                        </connections>
+                                                    </textField>
+                                                    <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umP-RH-BPX">
+                                                        <rect key="frame" x="-2" y="0.0" width="302" height="14"/>
+                                                        <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="https://www.apple.com/ipad/hiroshima-dialect-dubbing/" id="5Ec-RM-OIo">
+                                                            <font key="font" metaFont="smallSystem"/>
+                                                            <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                        </textFieldCell>
+                                                        <connections>
+                                                            <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.url" id="Bzr-2u-nhP"/>
+                                                        </connections>
+                                                    </textField>
+                                                </beginningViews>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="dEm-sZ-ZgT" secondAttribute="trailing" id="eYV-X7-5bP"/>
+                                                    <constraint firstAttribute="trailing" secondItem="PMZ-k0-mKt" secondAttribute="trailing" id="s10-g1-52e"/>
+                                                </constraints>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
+                                                <rect key="frame" x="472" y="92" width="0.0" height="0.0"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="MWJ-vD-euT"/>
+                                                <connections>
+                                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.entryImage" id="ylE-Md-8hR"/>
+                                                </connections>
+                                            </imageView>
+                                        </beginningViews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Mog-7A-RM4" secondAttribute="trailing" id="aZ5-16-BiO"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="16" id="3Aa-1D-Q4s"/>
-                                    <constraint firstAttribute="height" constant="16" id="Vkg-04-b8M"/>
+                                    <constraint firstAttribute="bottom" secondItem="UFu-x9-adF" secondAttribute="bottom" constant="8" id="K0F-1j-Fpe"/>
+                                    <constraint firstItem="UFu-x9-adF" firstAttribute="top" secondItem="5mF-t4-IJO" secondAttribute="top" constant="8" id="j3K-gA-yMQ"/>
+                                    <constraint firstItem="UFu-x9-adF" firstAttribute="leading" secondItem="5mF-t4-IJO" secondAttribute="leading" constant="8" id="tMU-HM-LrY"/>
+                                    <constraint firstAttribute="trailing" secondItem="UFu-x9-adF" secondAttribute="trailing" constant="8" id="vHv-TN-FRx"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="7Sr-8s-Don"/>
-                                <connections>
-                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.favicon" id="ouI-Pi-PDI"/>
-                                </connections>
-                            </imageView>
-                            <textField verticalHuggingPriority="750" placeholderIntrinsicWidth="413" placeholderIntrinsicHeight="38" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-sZ-ZgT">
-                                <rect key="frame" x="32" y="54" width="440" height="38"/>
-                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="0vZ-ti-W86">
-                                    <font key="font" metaFont="system"/>
-                                    <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                    <color key="textColor" red="0.026777623059999998" green="0.27431031389999999" blue="0.71919177830000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.title" id="QY4-1Y-LNq"/>
-                                </connections>
-                            </textField>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
-                                <rect key="frame" x="406" y="10" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="OT8-nL-V6X"/>
-                                    <constraint firstAttribute="width" constant="64" id="avj-Gk-KiL"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="MWJ-vD-euT"/>
-                                <connections>
-                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.entryImage" id="ylE-Md-8hR"/>
-                                </connections>
-                            </imageView>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="umP-RH-BPX">
-                                <rect key="frame" x="32" y="13" width="159" height="14"/>
-                                <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="https://www.apple.com/ipad/" id="5Ec-RM-OIo">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.url" id="Bzr-2u-nhP"/>
-                                </connections>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PMZ-k0-mKt" customClass="GrowingTextField" customModule="HatebLine" customModuleProvider="target">
-                                <rect key="frame" x="32" y="32" width="372" height="14"/>
-                                <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="Vch-IP-imz">
-                                    <font key="font" metaFont="smallSystem"/>
-                                    <string key="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
-                                    <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                                <connections>
-                                    <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.summary" id="Iv8-KQ-2Im"/>
-                                </connections>
-                            </textField>
+                            </visualEffectView>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="VcD-Ui-scv" secondAttribute="trailing" id="1Gr-Wl-Flo"/>
-                            <constraint firstAttribute="trailing" secondItem="Mog-7A-RM4" secondAttribute="trailing" constant="10" id="1IS-IU-gD7"/>
-                            <constraint firstItem="umP-RH-BPX" firstAttribute="top" secondItem="PMZ-k0-mKt" secondAttribute="bottom" constant="5" id="7Rm-rt-hRs"/>
-                            <constraint firstAttribute="bottom" secondItem="umP-RH-BPX" secondAttribute="bottom" constant="13" id="Com-76-uxV"/>
-                            <constraint firstItem="XMM-ET-3I2" firstAttribute="top" secondItem="VcD-Ui-scv" secondAttribute="bottom" constant="8" id="H2T-vi-Z8x"/>
-                            <constraint firstItem="Mog-7A-RM4" firstAttribute="leading" secondItem="PMZ-k0-mKt" secondAttribute="trailing" constant="4" id="HF0-Pv-tje"/>
-                            <constraint firstAttribute="bottom" secondItem="Mog-7A-RM4" secondAttribute="bottom" constant="10" id="IWU-Sa-QLM"/>
-                            <constraint firstItem="XMM-ET-3I2" firstAttribute="leading" secondItem="QEn-qU-JRA" secondAttribute="leading" constant="14" id="JmD-b0-qPz"/>
-                            <constraint firstItem="umP-RH-BPX" firstAttribute="leading" secondItem="dEm-sZ-ZgT" secondAttribute="leading" id="WNX-cH-kBf"/>
-                            <constraint firstItem="PMZ-k0-mKt" firstAttribute="top" secondItem="dEm-sZ-ZgT" secondAttribute="bottom" constant="8" id="dWk-qS-0dI"/>
-                            <constraint firstItem="PMZ-k0-mKt" firstAttribute="leading" secondItem="dEm-sZ-ZgT" secondAttribute="leading" id="e8K-l5-cJ0"/>
+                            <constraint firstAttribute="trailing" secondItem="5mF-t4-IJO" secondAttribute="trailing" id="2u7-Ib-4DK"/>
+                            <constraint firstItem="5mF-t4-IJO" firstAttribute="top" secondItem="VcD-Ui-scv" secondAttribute="bottom" id="DOT-ae-qox"/>
+                            <constraint firstAttribute="bottom" secondItem="5mF-t4-IJO" secondAttribute="bottom" id="JYD-QQ-5SB"/>
+                            <constraint firstItem="5mF-t4-IJO" firstAttribute="leading" secondItem="QEn-qU-JRA" secondAttribute="leading" id="VhP-5x-QZk"/>
                             <constraint firstItem="VcD-Ui-scv" firstAttribute="leading" secondItem="QEn-qU-JRA" secondAttribute="leading" id="i8z-BQ-cPn"/>
-                            <constraint firstAttribute="trailing" secondItem="dEm-sZ-ZgT" secondAttribute="trailing" constant="10" id="kda-OI-F0R"/>
                             <constraint firstItem="VcD-Ui-scv" firstAttribute="top" secondItem="QEn-qU-JRA" secondAttribute="top" id="p6P-wJ-1c4"/>
-                            <constraint firstItem="PMZ-k0-mKt" firstAttribute="leading" secondItem="dEm-sZ-ZgT" secondAttribute="leading" id="xBy-BC-iNk"/>
-                            <constraint firstItem="dEm-sZ-ZgT" firstAttribute="leading" secondItem="XMM-ET-3I2" secondAttribute="trailing" constant="4" id="yqs-Z1-Ksq"/>
-                            <constraint firstItem="dEm-sZ-ZgT" firstAttribute="top" secondItem="XMM-ET-3I2" secondAttribute="top" id="zlV-gq-PRv"/>
                         </constraints>
                     </view>
                     <connections>
