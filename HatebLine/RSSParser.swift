@@ -35,6 +35,8 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     var bookmarkUrl = String()
     var items = NSMutableArray()
     var handler: (NSArray) -> Void = { a in }
+    var tag = NSMutableString()
+    var tags: [String] = []
     
     override init() {
         super.init()
@@ -72,6 +74,8 @@ class RSSParser: NSObject, NSXMLParserDelegate {
             content = NSMutableString()
             count = NSMutableString()
             comment = NSMutableString()
+            tag = NSMutableString()
+            tags = []
         }
     }
 
@@ -91,13 +95,16 @@ class RSSParser: NSObject, NSXMLParserDelegate {
             count.appendString(string)
         case "description":
             comment.appendString(string)
+        case "dc:subject":
+            tag.appendString(string)
         default:
             break
         }
     }
 
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if (elementName == "item") {
+        switch elementName {
+        case "item":
             //print("[\(condenseWhitespace(count)) users] title: \(condenseWhitespace(title)) / date: \(condenseWhitespace(date)) / user: \(condenseWhitespace(creator)).")
             if !title.isEqual(nil) {
                 elements["bookmarkUrl"] = bookmarkUrl
@@ -108,8 +115,13 @@ class RSSParser: NSObject, NSXMLParserDelegate {
                 elements["count"] = condenseWhitespace(count)
                 elements["content"] = condenseWhitespace(content)
                 elements["comment"] = condenseWhitespace(comment)
+                elements["tags"] = tags
             }
             items.addObject(elements)
+        case "dc:subject":
+            tags.append(tag as String)
+        default:
+            break
         }
     }
     

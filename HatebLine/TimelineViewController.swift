@@ -58,7 +58,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
             do {
                 let fetchedBookmarks = try moc.executeFetchRequest(request) as! [Bookmark]
-                if (fetchedBookmarks.count > 0) {
+                if (fetchedBookmarks.count > 0) { // exists, so update
                     let b = fetchedBookmarks.first! as Bookmark
                     if let count = Int(item["count"]! as! String) {
                         if count != b.page?.count {
@@ -74,7 +74,13 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                             }
                         }
                     }
-                } else {
+                    let tags = NSMutableSet()
+                    for tagString in item["tags"] as! [String] {
+                        let tag = Tag.name(tagString, inManagedObjectContext: moc)
+                        tags.addObject(tag)
+                    }
+                    b.setValue(tags, forKey: "tags")
+                } else { // does not exsist, so create
                     let bmEntity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: moc)
                     let bookmark = NSManagedObject(entity: bmEntity!, insertIntoManagedObjectContext: moc) as! Bookmark
                     var user: NSManagedObject?
@@ -141,6 +147,12 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                             bookmark.setValue(b, forKey: "comment")
                         }
                     }
+                    let tags = NSMutableSet()
+                    for tagString in item["tags"] as! [String] {
+                        let tag = Tag.name(tagString, inManagedObjectContext: moc)
+                        tags.addObject(tag)
+                    }
+                    bookmark.setValue(tags, forKey: "tags")
                     //                if let creator = item["creator"]! {
                     //                    bookmarkObject.setValue(creator, forKey: "user")
                     //                }

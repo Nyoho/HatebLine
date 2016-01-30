@@ -10,11 +10,13 @@
 		551DB4FB1C42CD0300B198A8 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4F91C42CD0300B198A8 /* Bookmark.swift */; };
 		551DB5011C4374F400B198A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4FE1C4374F400B198A8 /* User.swift */; };
 		551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */; };
-		551DB5061C437E4500B198A8 /* Bookmark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */; };
 		551E72041C5267FC00C366EF /* AccountPrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E72031C5267FC00C366EF /* AccountPrefViewController.swift */; };
 		551E72071C52682200C366EF /* NotificationPrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E72061C52682200C366EF /* NotificationPrefViewController.swift */; };
 		552453731C4E1E9E00F4EAA1 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552453721C4E1E9E00F4EAA1 /* WebViewController.swift */; };
 		552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 552453741C4E211B00F4EAA1 /* WebKit.framework */; };
+		552F4A1B1C5C6100006962E9 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F4A191C5C6100006962E9 /* Tag+CoreDataProperties.swift */; };
+		552F4A1C1C5C6100006962E9 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F4A1A1C5C6100006962E9 /* Tag.swift */; };
+		552F4A1E1C5C624A006962E9 /* Bookmark+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 552F4A1D1C5C624A006962E9 /* Bookmark+CoreDataProperties.swift */; };
 		55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B6D1C3961F90079B118 /* AppDelegate.swift */; };
 		55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55415B6F1C3961F90079B118 /* HatebLine.xcdatamodeld */; };
 		55415B731C3961F90079B118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55415B721C3961F90079B118 /* Assets.xcassets */; };
@@ -74,11 +76,13 @@
 		551DB4F91C42CD0300B198A8 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookmark.swift; path = Models/Bookmark.swift; sourceTree = "<group>"; };
 		551DB4FE1C4374F400B198A8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Models/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bookmark+CoreDataProperties.swift"; path = "Models/Bookmark+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		551E72031C5267FC00C366EF /* AccountPrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountPrefViewController.swift; sourceTree = "<group>"; };
 		551E72061C52682200C366EF /* NotificationPrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationPrefViewController.swift; sourceTree = "<group>"; };
 		552453721C4E1E9E00F4EAA1 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		552453741C4E211B00F4EAA1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		552F4A191C5C6100006962E9 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Tag+CoreDataProperties.swift"; path = "Models/Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		552F4A1A1C5C6100006962E9 /* Tag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Tag.swift; path = Models/Tag.swift; sourceTree = "<group>"; };
+		552F4A1D1C5C624A006962E9 /* Bookmark+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Bookmark+CoreDataProperties.swift"; path = "Models/Bookmark+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55415B6A1C3961F90079B118 /* HatebLine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HatebLine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55415B6D1C3961F90079B118 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55415B701C3961F90079B118 /* HatebLine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HatebLine.xcdatamodel; sourceTree = "<group>"; };
@@ -139,10 +143,12 @@
 			children = (
 				551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */,
 				551DB4FE1C4374F400B198A8 /* User.swift */,
-				551DB5041C437E4500B198A8 /* Bookmark+CoreDataProperties.swift */,
+				552F4A1D1C5C624A006962E9 /* Bookmark+CoreDataProperties.swift */,
 				551DB4F91C42CD0300B198A8 /* Bookmark.swift */,
 				55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */,
 				55D2E7391C51DC75006D2475 /* Page.swift */,
+				552F4A191C5C6100006962E9 /* Tag+CoreDataProperties.swift */,
+				552F4A1A1C5C6100006962E9 /* Tag.swift */,
 			);
 			name = Models;
 			path = ..;
@@ -373,6 +379,7 @@
 			files = (
 				551E72041C5267FC00C366EF /* AccountPrefViewController.swift in Sources */,
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
+				552F4A1B1C5C6100006962E9 /* Tag+CoreDataProperties.swift in Sources */,
 				552453731C4E1E9E00F4EAA1 /* WebViewController.swift in Sources */,
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
 				551E72071C52682200C366EF /* NotificationPrefViewController.swift in Sources */,
@@ -382,7 +389,8 @@
 				55E9B8DE1C3FE9C400742E49 /* MainWindowController.swift in Sources */,
 				55D2E7411C51FDBE006D2475 /* JKTableView.swift in Sources */,
 				55D2E7441C523187006D2475 /* NSDate+Extension.swift in Sources */,
-				551DB5061C437E4500B198A8 /* Bookmark+CoreDataProperties.swift in Sources */,
+				552F4A1E1C5C624A006962E9 /* Bookmark+CoreDataProperties.swift in Sources */,
+				552F4A1C1C5C6100006962E9 /* Tag.swift in Sources */,
 				55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */,
 				55415B6E1C3961F90079B118 /* AppDelegate.swift in Sources */,
 				55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */,

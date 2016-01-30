@@ -1,5 +1,5 @@
 //
-//  Bookmark+CoreDataProperties.swift
+//  Tag+CoreDataProperties.swift
 //  HatebLine
 //
 //  Created by 北䑓 如法 on 16/1/30.
@@ -12,13 +12,9 @@
 import Foundation
 import CoreData
 
-extension Bookmark {
+extension Tag {
 
-    @NSManaged var bookmarkUrl: String?
-    @NSManaged var comment: String?
-    @NSManaged var date: NSDate?
-    @NSManaged var page: Page?
-    @NSManaged var user: User?
-    @NSManaged var tags: NSSet?
+    @NSManaged var name: String?
+    @NSManaged var bookmarks: NSSet?
 
 }
