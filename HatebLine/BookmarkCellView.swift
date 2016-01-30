@@ -21,4 +21,31 @@ class BookmarkCellView: NSTableCellView {
         // Drawing code here.
     }
     
+    // Thx http://stackoverflow.com/questions/28187909/why-nstablecellview-backgroundstyle-is-never-set-to-nsbackgroundstyle-dark-for-s
+    override var backgroundStyle: NSBackgroundStyle {
+        set {
+            if let rowView = self.superview as? NSTableRowView {
+                super.backgroundStyle = rowView.selected ? NSBackgroundStyle.Dark : NSBackgroundStyle.Light
+            } else {
+                super.backgroundStyle = newValue
+            }
+            self.updateSelectionHighlight()
+        }
+        get {
+            return super.backgroundStyle;
+        }
+    }
+    
+    func updateSelectionHighlight() {
+        if ( self.backgroundStyle == NSBackgroundStyle.Dark ) {
+            self.textField?.textColor = NSColor.whiteColor()
+            self.commentTextField?.textColor = NSColor.whiteColor()
+            self.titleTextField?.textColor = NSColor.controlColor()
+        } else {
+            self.textField?.textColor = NSColor.blackColor()
+            self.commentTextField?.textColor = NSColor.blackColor()
+            self.titleTextField?.textColor = NSColor.selectedMenuItemColor()
+        }
+    }
+
 }
