@@ -757,12 +757,16 @@
                                                             <rect key="frame" x="1" y="1" width="475" height="123"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
-                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tj6-8X-qXR" userLabel="Profile Image View">
+                                                                <box verticalHuggingPriority="750" misplaced="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="tYG-Uj-StO">
+                                                                    <rect key="frame" x="189" y="59" width="96" height="5"/>
+                                                                    <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                                                    <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                    <font key="titleFont" metaFont="system"/>
+                                                                </box>
+                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tj6-8X-qXR" userLabel="Profile Image View">
                                                                     <rect key="frame" x="3" y="72" width="48" height="48"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="2xE-aP-Lwt"/>
                                                                         <constraint firstAttribute="height" constant="48" id="e7x-k4-yyU"/>
-                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="rH3-h4-4tJ"/>
                                                                         <constraint firstAttribute="width" constant="48" id="wTR-A3-2BS"/>
                                                                     </constraints>
                                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="bDa-og-8dz"/>
@@ -770,11 +774,11 @@
                                                                         <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.profileImage" id="sLr-2V-VdW"/>
                                                                     </connections>
                                                                 </imageView>
-                                                                <stackView orientation="vertical" alignment="leading" spacing="2" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-jJ-ujT">
+                                                                <stackView orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nZc-jJ-ujT">
                                                                     <rect key="frame" x="59" y="3" width="413" height="117"/>
                                                                     <beginningViews>
                                                                         <stackView orientation="horizontal" alignment="bottom" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3B1-fS-V0t" userLabel="Name Date Stack View">
-                                                                            <rect key="frame" x="0.0" y="54" width="413" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="57" width="413" height="17"/>
                                                                             <beginningViews>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
                                                                                     <rect key="frame" x="-2" y="0.0" width="344" height="17"/>
@@ -811,7 +815,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <textField verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
-                                                                            <rect key="frame" x="-2" y="35" width="417" height="17"/>
+                                                                            <rect key="frame" x="-2" y="37" width="417" height="17"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" allowsEditingTextAttributes="YES" id="QoV-rO-qPS">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <string key="title">Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
@@ -823,7 +827,7 @@
                                                                             </connections>
                                                                         </textField>
                                                                         <stackView orientation="horizontal" alignment="top" spacing="7" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Pb-C2-47g">
-                                                                            <rect key="frame" x="0.0" y="16" width="413" height="17"/>
+                                                                            <rect key="frame" x="0.0" y="17" width="413" height="17"/>
                                                                             <beginningViews>
                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsI-Ug-kRn" userLabel="Favicon Image View">
                                                                                     <rect key="frame" x="0.0" y="17" width="0.0" height="0.0"/>
@@ -894,11 +898,15 @@
                                                                 </stackView>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="nZc-jJ-ujT" secondAttribute="trailing" constant="3" id="3lx-AI-pIH"/>
-                                                                <constraint firstItem="nZc-jJ-ujT" firstAttribute="top" secondItem="qGh-RN-KYb" secondAttribute="top" constant="3" id="7i2-dx-vt9"/>
-                                                                <constraint firstItem="nZc-jJ-ujT" firstAttribute="leading" secondItem="tj6-8X-qXR" secondAttribute="trailing" constant="3" id="E3j-lw-xxZ"/>
-                                                                <constraint firstItem="tj6-8X-qXR" firstAttribute="leading" secondItem="qGh-RN-KYb" secondAttribute="leading" constant="3" id="PSf-df-Oh5"/>
-                                                                <constraint firstAttribute="bottom" secondItem="nZc-jJ-ujT" secondAttribute="bottom" constant="3" id="mvo-va-8ws"/>
+                                                                <constraint firstAttribute="trailing" secondItem="nZc-jJ-ujT" secondAttribute="trailing" constant="12" id="3lx-AI-pIH"/>
+                                                                <constraint firstAttribute="trailing" secondItem="tYG-Uj-StO" secondAttribute="trailing" constant="4" id="7MR-7F-SGX"/>
+                                                                <constraint firstItem="nZc-jJ-ujT" firstAttribute="top" secondItem="qGh-RN-KYb" secondAttribute="top" constant="12" id="7i2-dx-vt9"/>
+                                                                <constraint firstItem="nZc-jJ-ujT" firstAttribute="leading" secondItem="tj6-8X-qXR" secondAttribute="trailing" constant="8" id="E3j-lw-xxZ"/>
+                                                                <constraint firstItem="tj6-8X-qXR" firstAttribute="leading" secondItem="qGh-RN-KYb" secondAttribute="leading" constant="12" id="PSf-df-Oh5"/>
+                                                                <constraint firstAttribute="bottom" secondItem="tYG-Uj-StO" secondAttribute="bottom" id="ULs-Bw-yFk"/>
+                                                                <constraint firstItem="tYG-Uj-StO" firstAttribute="leading" secondItem="qGh-RN-KYb" secondAttribute="leading" constant="4" id="msD-iY-wnF"/>
+                                                                <constraint firstAttribute="bottom" secondItem="nZc-jJ-ujT" secondAttribute="bottom" constant="12" id="mvo-va-8ws"/>
+                                                                <constraint firstItem="tj6-8X-qXR" firstAttribute="top" secondItem="nZc-jJ-ujT" secondAttribute="top" id="u9f-0W-dP5"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="commentTextField" destination="Rlt-J0-ujV" id="0W4-Ao-ORj"/>
@@ -1026,10 +1034,10 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="UFu-x9-adF" secondAttribute="bottom" constant="8" id="K0F-1j-Fpe"/>
-                                    <constraint firstItem="UFu-x9-adF" firstAttribute="top" secondItem="5mF-t4-IJO" secondAttribute="top" constant="8" id="j3K-gA-yMQ"/>
-                                    <constraint firstItem="UFu-x9-adF" firstAttribute="leading" secondItem="5mF-t4-IJO" secondAttribute="leading" constant="8" id="tMU-HM-LrY"/>
-                                    <constraint firstAttribute="trailing" secondItem="UFu-x9-adF" secondAttribute="trailing" constant="8" id="vHv-TN-FRx"/>
+                                    <constraint firstAttribute="bottom" secondItem="UFu-x9-adF" secondAttribute="bottom" constant="12" id="K0F-1j-Fpe"/>
+                                    <constraint firstItem="UFu-x9-adF" firstAttribute="top" secondItem="5mF-t4-IJO" secondAttribute="top" constant="12" id="j3K-gA-yMQ"/>
+                                    <constraint firstItem="UFu-x9-adF" firstAttribute="leading" secondItem="5mF-t4-IJO" secondAttribute="leading" constant="12" id="tMU-HM-LrY"/>
+                                    <constraint firstAttribute="trailing" secondItem="UFu-x9-adF" secondAttribute="trailing" constant="12" id="vHv-TN-FRx"/>
                                 </constraints>
                             </visualEffectView>
                         </subviews>
