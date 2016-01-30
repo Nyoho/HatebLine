@@ -12,11 +12,12 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     var feedUrl: NSURL? {
         if let n = userName {
             return NSURL(string:"http://b.hatena.ne.jp/\(n)/favorite.rss")!
+//            return NSURL(string:"file:///tmp/favorite.rss")!
         } else {
             return nil
         }
     }
-//    let feedUrl = NSURL(string:"file:///tmp/favorite.rss")!
+
     var userName: String?
     
     var currentElementName : String!
