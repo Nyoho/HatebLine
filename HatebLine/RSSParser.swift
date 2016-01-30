@@ -119,7 +119,8 @@ class RSSParser: NSObject, NSXMLParserDelegate {
             }
             items.addObject(elements)
         case "dc:subject":
-            tags.append(tag as String)
+            tags.append(condenseWhitespace(tag) as String)
+            tag = NSMutableString()
         default:
             break
         }
