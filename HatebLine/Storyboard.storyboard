@@ -701,10 +701,27 @@
                                         </searchFieldCell>
                                     </searchField>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="FDD6E327-FA41-4DD9-9F88-ADA47696EBAE" label="Quick Look" paletteLabel="Quick Look" id="VK7-Dk-n3E">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="43" height="32"/>
+                                    <size key="maxSize" width="82" height="54"/>
+                                    <button key="view" verticalHuggingPriority="750" id="MGM-kf-KDC">
+                                        <rect key="frame" x="12" y="14" width="43" height="54"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" title="👀" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rda-ln-G5r">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="13" name="AppleColorEmoji"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="quickLookPreviewItems:" target="9rp-fB-EiC" id="hP3-Id-cgr"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="sfg-Ze-hyS"/>
                                 <toolbarItem reference="61z-Yt-3XC"/>
+                                <toolbarItem reference="VK7-Dk-n3E"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -717,7 +734,7 @@
                 </windowController>
                 <customObject id="9rp-fB-EiC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="495" y="507"/>
+            <point key="canvasLocation" x="525" y="538"/>
         </scene>
         <!--Timeline View Controller-->
         <scene sceneID="LCo-im-LHN">
@@ -921,6 +938,7 @@
                                                 </tableColumn>
                                             </tableColumns>
                                             <connections>
+                                                <action trigger="doubleAction" selector="quickLookPreviewItems:" target="Fxg-Ub-YNW" id="JnS-Kn-Bvm"/>
                                                 <binding destination="bBU-oK-nBz" name="content" keyPath="arrangedObjects" id="bff-aH-BP5"/>
                                                 <binding destination="bBU-oK-nBz" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="bff-aH-BP5" id="CIL-zJ-XyG"/>
                                                 <outlet property="dataSource" destination="Fxg-Ub-YNW" id="CcQ-gQ-zcq"/>
@@ -1054,6 +1072,7 @@
                     <connections>
                         <outlet property="bookmarkArrayController" destination="bBU-oK-nBz" id="vML-tQ-gjA"/>
                         <outlet property="tableView" destination="2eC-bg-4UH" id="Lmj-SK-UYq"/>
+                        <segue destination="Hiq-ow-l6i" kind="custom" identifier="QuickLook" customClass="TablePopoverSegue" customModule="HatebLine" customModuleProvider="target" id="gAh-ho-Wvz"/>
                     </connections>
                 </viewController>
                 <customObject id="HHK-ti-pmZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1064,7 +1083,7 @@
                     </connections>
                 </arrayController>
             </objects>
-            <point key="canvasLocation" x="451" y="1048"/>
+            <point key="canvasLocation" x="490" y="1068"/>
         </scene>
         <!--Preference Tab View Controller-->
         <scene sceneID="IhN-XW-nuD">
@@ -1189,7 +1208,49 @@
                 </viewController>
                 <customObject id="vBi-QV-0yE" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="993" y="1013"/>
+            <point key="canvasLocation" x="1476" y="891"/>
+        </scene>
+        <!--Quick Look Web View Controller-->
+        <scene sceneID="vPD-Rc-nWP">
+            <objects>
+                <viewController id="Hiq-ow-l6i" customClass="QuickLookWebViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="uG7-JY-aTM">
+                        <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="MgM-zc-NjR">
+                                <rect key="frame" x="12" y="37" width="616" height="591"/>
+                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
+                                    <nil key="identifier"/>
+                                </webPreferences>
+                            </webView>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aF9-zL-iOB">
+                                <rect key="frame" x="561" y="1" width="73" height="32"/>
+                                <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Umb-Vj-1BR">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="dismissController:" target="Hiq-ow-l6i" id="mKZ-9Q-q9b"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="aF9-zL-iOB" secondAttribute="trailing" constant="12" id="6ko-Gd-pkL"/>
+                            <constraint firstAttribute="trailing" secondItem="MgM-zc-NjR" secondAttribute="trailing" constant="12" id="7tF-Mq-Z6u"/>
+                            <constraint firstItem="MgM-zc-NjR" firstAttribute="top" secondItem="uG7-JY-aTM" secondAttribute="top" constant="12" id="IJ0-mo-SQs"/>
+                            <constraint firstItem="MgM-zc-NjR" firstAttribute="leading" secondItem="uG7-JY-aTM" secondAttribute="leading" constant="12" id="Kbt-Wa-lSd"/>
+                            <constraint firstItem="aF9-zL-iOB" firstAttribute="top" secondItem="MgM-zc-NjR" secondAttribute="bottom" constant="8" id="eaI-Gc-IUT"/>
+                            <constraint firstAttribute="bottom" secondItem="aF9-zL-iOB" secondAttribute="bottom" constant="8" id="h1r-Ke-Avx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView" destination="MgM-zc-NjR" id="0ar-xF-kNq"/>
+                    </connections>
+                </viewController>
+                <customObject id="VBX-du-xlm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="1718"/>
         </scene>
     </scenes>
 </document>

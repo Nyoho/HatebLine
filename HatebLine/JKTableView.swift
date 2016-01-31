@@ -29,6 +29,8 @@ class JKTableView: NSTableView {
             selectRowIndexes(NSIndexSet(index: row), byExtendingSelection: false)
             scrollRowToVisible(row)
             setNeedsDisplay()
+        case 49: // space
+            delegate()?.performSelector("quickLookPreviewItems:", withObject: self)
         default:
             super.keyDown(theEvent)
             break

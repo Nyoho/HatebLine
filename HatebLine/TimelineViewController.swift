@@ -201,6 +201,37 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
 
+    @IBAction override func quickLookPreviewItems(sender: AnyObject?) {
+        let indexes = tableView.selectedRowIndexes
+        if (indexes.count > 0) {
+            performSegueWithIdentifier("QuickLook", sender: self)
+        }
+    }
+
+    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case "QuickLook":
+                if segue.isKindOfClass(TablePopoverSegue) {
+                    let popoverSegue = segue as! TablePopoverSegue
+                    popoverSegue.preferredEdge = NSRectEdge.MaxX
+                    popoverSegue.popoverBehavior = .Transient
+                    popoverSegue.anchorTableView = tableView
+                let indexes = tableView.selectedRowIndexes
+                if (indexes.count > 0) {
+                    if let bookmark = bookmarkArrayController.arrangedObjects[indexes.firstIndex] as? Bookmark {
+                        let vc = segue.destinationController as? QuickLookWebViewController
+                        vc?.representedObject = bookmark.page?.url
+                    }
+                }
+                }
+            default:
+                break
+            }
+            
+        }
+    }
+    
     func refresh() {
         tableView.reloadData()
     }
@@ -259,14 +290,14 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
    */
     
     func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var heightOfRow: CGFloat = 96
+        var heightOfRow: CGFloat = 48
         let bookmark = self.bookmarkArrayController.arrangedObjects[row] as! Bookmark
         if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
             tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
-            if let username = bookmark.user?.name {
-                cell.textField?.stringValue = username
-            }
+//            if let username = bookmark.user?.name {
+//                cell.textField?.stringValue = username
+//            }
             if let comment = bookmark.comment {
                 cell.commentTextField?.stringValue = comment
                 cell.commentTextField?.preferredMaxLayoutWidth = size.width - (5+8+3+48)
@@ -277,17 +308,34 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 cell.titleTextField?.preferredMaxLayoutWidth = size.width - (5+8+3+48+16)
             }
             // cell.countTextField?.stringValue = "\(bookmark.count) users"
-            cell.needsLayout = true
-            cell.layoutSubtreeIfNeeded()
-            NSAnimationContext.beginGrouping()
-            NSAnimationContext.currentContext().duration = 0.0
+//            cell.needsLayout = true
+//            cell.layoutSubtreeIfNeeded()
+//            NSAnimationContext.beginGrouping()
+//            NSAnimationContext.currentContext().duration = 0.0
             heightOfRow = cell.fittingSize.height
-            NSAnimationContext.endGrouping()
+//            NSAnimationContext.endGrouping()
         }
-        
         return heightOfRow < 48 ? 48 : heightOfRow
     }
 
+    func tableView(tableView: NSTableView, willDisplayCell cell: AnyObject, forTableColumn tableColumn: NSTableColumn?, row: Int) {
+        if let c = cell as? NSTableRowView {
+        if (tableView.selectedRowIndexes.containsIndex(row)) {
+            c.backgroundColor = NSColor.yellowColor()
+        } else {
+            c.backgroundColor = NSColor.whiteColor()
+        }
+//        c.drawsBackground = true
+        }
+    }
+
+    func tableView(tableView: NSTableView, shouldTypeSelectForEvent event: NSEvent, withCurrentSearchString searchString: String?) -> Bool {
+        print(event.keyCode)
+        return true
+    }
+    
+
+    
     func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
         let info = notification.userInfo as! [String:String]
         

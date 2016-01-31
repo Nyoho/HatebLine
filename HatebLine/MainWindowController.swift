@@ -26,13 +26,25 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
 
     override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
-        let webvc = segue.destinationController as! WebViewController
-        if let vc: TimelineViewController? = self.contentViewController as! TimelineViewController? {
-            if let obj = vc?.bookmarkArrayController.selectedObjects.first as! Bookmark? {
-                print(vc?.bookmarkArrayController.selectedObjects.count)
-                print(obj.page?.title)
-                webvc.representedObject = obj.page?.content
+        guard let identifier = segue.identifier else {
+            return
+        }
+        switch identifier {
+        case "QuickLook":
+            if let qvc = segue.destinationController as? QuickLookWebViewController {
+                qvc.representedObject = ""
             }
+        case "ShowWeb":
+            let webvc = segue.destinationController as! WebViewController
+            if let vc: TimelineViewController? = self.contentViewController as! TimelineViewController? {
+                if let obj = vc?.bookmarkArrayController.selectedObjects.first as! Bookmark? {
+                    print(vc?.bookmarkArrayController.selectedObjects.count)
+                    print(obj.page?.title)
+                    webvc.representedObject = obj.page?.content
+                }
+            }
+        default:
+            return
         }
     }
 }
