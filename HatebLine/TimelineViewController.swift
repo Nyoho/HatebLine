@@ -168,7 +168,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         notification.informativeText = "(\(count)) \(comment)\(separator)\(title)"
                     }
                     //                notification.contentImage = NSImage(named: "hoge")
-                    notification.userInfo = ["hoge": "title"]
+                    notification.userInfo = ["bookmarkUrl":bookmarkUrl]
                     NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                 }
             } catch {
@@ -337,8 +337,24 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     
     func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
-        let info = notification.userInfo as! [String:String]
-        
-//        print(info["title"]!)
+        if let info = notification.userInfo as? [String:String] {
+            if let bookmarkUrl = info["bookmarkUrl"] {
+                let moc = managedObjectContext
+                do {
+                    let request = NSFetchRequest(entityName: "Bookmark")
+                    request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
+                    let results = try moc.executeFetchRequest(request) as! [Bookmark]
+                    if (results.count > 0) {
+                        bookmarkArrayController.setSelectedObjects(results)
+                        NSAnimationContext.runAnimationGroup({ context in
+                            self.tableView.animator().scrollRowToVisible(self.tableView.selectedRow)
+                            }, completionHandler: nil)
+                    }
+                } catch {
+                    fatalError("Failure: \(error)")
+                }
+            }
+
+        }
     }
 }
