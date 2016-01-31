@@ -1234,17 +1234,24 @@
                                     <action selector="dismissController:" target="Hiq-ow-l6i" id="mKZ-9Q-q9b"/>
                                 </connections>
                             </button>
+                            <progressIndicator misplaced="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="jcE-Ke-mtX">
+                                <rect key="frame" x="12" y="620" width="616" height="22"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstItem="jcE-Ke-mtX" firstAttribute="leading" secondItem="uG7-JY-aTM" secondAttribute="leading" constant="12" id="1vf-2d-C44"/>
                             <constraint firstAttribute="trailing" secondItem="aF9-zL-iOB" secondAttribute="trailing" constant="12" id="6ko-Gd-pkL"/>
                             <constraint firstAttribute="trailing" secondItem="MgM-zc-NjR" secondAttribute="trailing" constant="12" id="7tF-Mq-Z6u"/>
                             <constraint firstItem="MgM-zc-NjR" firstAttribute="top" secondItem="uG7-JY-aTM" secondAttribute="top" constant="12" id="IJ0-mo-SQs"/>
                             <constraint firstItem="MgM-zc-NjR" firstAttribute="leading" secondItem="uG7-JY-aTM" secondAttribute="leading" constant="12" id="Kbt-Wa-lSd"/>
                             <constraint firstItem="aF9-zL-iOB" firstAttribute="top" secondItem="MgM-zc-NjR" secondAttribute="bottom" constant="8" id="eaI-Gc-IUT"/>
                             <constraint firstAttribute="bottom" secondItem="aF9-zL-iOB" secondAttribute="bottom" constant="8" id="h1r-Ke-Avx"/>
+                            <constraint firstAttribute="trailing" secondItem="jcE-Ke-mtX" secondAttribute="trailing" constant="12" id="ty7-tt-wp3"/>
+                            <constraint firstItem="jcE-Ke-mtX" firstAttribute="top" secondItem="uG7-JY-aTM" secondAttribute="top" id="zTP-Fo-vDV"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="progressIndicator" destination="jcE-Ke-mtX" id="ajM-9N-Wco"/>
                         <outlet property="webView" destination="MgM-zc-NjR" id="0ar-xF-kNq"/>
                     </connections>
                 </viewController>
