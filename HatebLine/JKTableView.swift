@@ -31,6 +31,8 @@ class JKTableView: NSTableView {
             setNeedsDisplay()
         case 49: // space
             delegate()?.performSelector("quickLookPreviewItems:", withObject: self)
+        case 53: // esc
+            selectRowIndexes(NSIndexSet(), byExtendingSelection: false)
         default:
             super.keyDown(theEvent)
             break
