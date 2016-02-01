@@ -50,8 +50,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
     
     func mergeBookmarks(items: NSArray) -> Bool {
-        let moc = self.managedObjectContext
+        let moc = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
+        moc.persistentStoreCoordinator = self.managedObjectContext.persistentStoreCoordinator
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "mergeChanges:", name: NSManagedObjectContextDidSaveNotification, object: moc)
         var shouldReload = false
+        moc.performBlock {
         for item in items.reverse() {
             let bookmarkUrl = item["bookmarkUrl"] as! NSString
             let request = NSFetchRequest(entityName: "Bookmark")
@@ -176,15 +179,15 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
             
         }
-        dispatch_async(dispatch_get_main_queue(), {
-            if self.managedObjectContext.hasChanges {
-                do {
-                    try self.managedObjectContext.save()
-                } catch {
-                    fatalError("Failure to save context: \(error)")
-                }
+        if moc.hasChanges {
+            do {
+                try moc.save()
+            } catch {
+                fatalError("Failure to save context: \(error)")
             }
-        })
+        }
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        }
         return shouldReload
     }
     
@@ -375,4 +378,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
         }
     }
+    
+    func mergeChanges(notification: NSNotification) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
+            })
+    }
+
 }
