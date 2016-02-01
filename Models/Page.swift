@@ -78,4 +78,10 @@ class Page: NSManagedObject {
         }
     }
     
+    var manyBookmarked: Bool {
+        guard let n = count else {
+            return false
+        }
+        return n.integerValue > 5 ? true : false
+    }
 }
