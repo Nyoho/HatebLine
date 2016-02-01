@@ -208,6 +208,24 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
 
+    @IBAction func openBookmarkPageInBrowser(sender: AnyObject) {
+        let array = bookmarkArrayController.selectedObjects as! [Bookmark]
+        if array.count > 0 {
+            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = NSURL(string: "http://b.hatena.ne.jp/entry/\(urlString)") {
+                NSWorkspace.sharedWorkspace().openURL(url)
+            }
+        }
+    }
+
+    @IBAction func openUserPageInBrowser(sender: AnyObject) {
+        let array = bookmarkArrayController.selectedObjects as! [Bookmark]
+        if array.count > 0 {
+            if let bookmark = array.first, let name = bookmark.user?.name, let url = NSURL(string: "http://b.hatena.ne.jp/\(name)/") {
+                NSWorkspace.sharedWorkspace().openURL(url)
+            }
+        }
+    }
+
     override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
