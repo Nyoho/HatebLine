@@ -38,157 +38,142 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             return
         }
         parser.userName = hatenaID
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             self.parser.parse(completionHandler: { items in
-                if self.mergeBookmarks(items) {
-                    dispatch_async(dispatch_get_main_queue()) {
-                        //self.tableView.reloadData()
-                    }
-                }
+                self.mergeBookmarks(items)
             })
-        }
+        })
     }
     
-    func mergeBookmarks(items: NSArray) -> Bool {
+    func mergeBookmarks(items: NSArray) {
         let moc = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
         moc.persistentStoreCoordinator = self.managedObjectContext.persistentStoreCoordinator
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "mergeChanges:", name: NSManagedObjectContextDidSaveNotification, object: moc)
-        var shouldReload = false
         moc.performBlock {
-        for item in items.reverse() {
-            let bookmarkUrl = item["bookmarkUrl"] as! NSString
-            let request = NSFetchRequest(entityName: "Bookmark")
-            request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
-            do {
-                let fetchedBookmarks = try moc.executeFetchRequest(request) as! [Bookmark]
-                if (fetchedBookmarks.count > 0) { // exists, so update
-                    let b = fetchedBookmarks.first! as Bookmark
-                    if let count = Int(item["count"]! as! String) {
-                        if count != b.page?.count {
-                            b.page?.count = count
-                            shouldReload = true
-                        }
-                    }
-                    if let comment = item["comment"]! {
-                        if comment as! String != b.comment {
-                            if comment as! String != "" {
-                                b.comment = comment as! String
-                                shouldReload = true
+            for item in items.reverse() {
+                let bookmarkUrl = item["bookmarkUrl"] as! NSString
+                let request = NSFetchRequest(entityName: "Bookmark")
+                request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
+                do {
+                    let fetchedBookmarks = try moc.executeFetchRequest(request) as! [Bookmark]
+                    if (fetchedBookmarks.count > 0) { // exists, so update
+                        let b = fetchedBookmarks.first! as Bookmark
+                        if let count = Int(item["count"]! as! String) {
+                            if count != b.page?.count {
+                                b.page?.count = count
                             }
                         }
-                    }
-                    let tags = NSMutableSet()
-                    for tagString in item["tags"] as! [String] {
-                        let tag = Tag.name(tagString, inManagedObjectContext: moc)
-                        tags.addObject(tag)
-                    }
-                    b.setValue(tags, forKey: "tags")
-                } else { // does not exsist, so create
-                    let bmEntity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: moc)
-                    let bookmark = NSManagedObject(entity: bmEntity!, insertIntoManagedObjectContext: moc) as! Bookmark
-                    var user: NSManagedObject?
-                    var page: NSManagedObject?
-                    
-                    let usersFetch = NSFetchRequest(entityName: "User")
-                    if let creator = item["creator"]! {
-                        usersFetch.predicate = NSPredicate(format: "name == %@", creator as! String)
-                        do {
-                            let fetchedUsers = try moc.executeFetchRequest(usersFetch) as! [User]
-                            if (fetchedUsers.count > 0) {
-                                user = fetchedUsers.first!
-                            } else {
-                                let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: moc)
-                                user = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
-                                user?.setValue(creator as! String, forKey: "name")
+                        if let comment = item["comment"] as? String {
+                            if comment != b.comment {
+                                b.comment = comment
                             }
-                        } catch {
-                            fatalError("Failed to fetch users: \(error)")
                         }
-                    }
-                    let pagesFetch = NSFetchRequest(entityName: "Page")
-                    if let url = item["link"]! {
-                        pagesFetch.predicate = NSPredicate(format: "url == %@", url as! String)
-                        do {
-                            let fetchedPages = try moc.executeFetchRequest(pagesFetch) as! [Page]
-                            if (fetchedPages.count > 0) {
-                                page = fetchedPages.first!
-                            } else {
-                                let entity = NSEntityDescription.entityForName("Page", inManagedObjectContext: moc)
-                                page = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
-                                page?.setValue(url as! String, forKey: "url")
-                                if let b = item["title"]! { page?.setValue(b, forKey: "title") }
-                                if let b = item["count"]! {
-                                    page?.setValue(Int(b as! String), forKey: "count")
+                        let tags = NSMutableSet()
+                        for tagString in item["tags"] as! [String] {
+                            let tag = Tag.name(tagString, inManagedObjectContext: moc)
+                            tags.addObject(tag)
+                        }
+                        b.setValue(tags, forKey: "tags")
+                    } else { // does not exsist, so create
+                        let bmEntity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: moc)
+                        let bookmark = NSManagedObject(entity: bmEntity!, insertIntoManagedObjectContext: moc) as! Bookmark
+                        var user: NSManagedObject?
+                        var page: NSManagedObject?
+                        
+                        let usersFetch = NSFetchRequest(entityName: "User")
+                        if let creator = item["creator"]! {
+                            usersFetch.predicate = NSPredicate(format: "name == %@", creator as! String)
+                            do {
+                                let fetchedUsers = try moc.executeFetchRequest(usersFetch) as! [User]
+                                if (fetchedUsers.count > 0) {
+                                    user = fetchedUsers.first!
+                                } else {
+                                    let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: moc)
+                                    user = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
+                                    user?.setValue(creator as! String, forKey: "name")
                                 }
-                                if let b = item["content"]! {
-                                    if b as! String != "" {
-                                        page?.setValue(b, forKey: "content")
+                            } catch {
+                                fatalError("Failed to fetch users: \(error)")
+                            }
+                        }
+                        let pagesFetch = NSFetchRequest(entityName: "Page")
+                        if let url = item["link"]! {
+                            pagesFetch.predicate = NSPredicate(format: "url == %@", url as! String)
+                            do {
+                                let fetchedPages = try moc.executeFetchRequest(pagesFetch) as! [Page]
+                                if (fetchedPages.count > 0) {
+                                    page = fetchedPages.first!
+                                } else {
+                                    let entity = NSEntityDescription.entityForName("Page", inManagedObjectContext: moc)
+                                    page = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
+                                    page?.setValue(url as! String, forKey: "url")
+                                    if let b = item["title"]! { page?.setValue(b, forKey: "title") }
+                                    if let b = item["count"]! {
+                                        page?.setValue(Int(b as! String), forKey: "count")
+                                    }
+                                    if let b = item["content"]! {
+                                        if b as! String != "" {
+                                            page?.setValue(b, forKey: "content")
+                                        }
                                     }
                                 }
+                            } catch {
+                                fatalError("Failed to fetch pages: \(error)")
                             }
-                        } catch {
-                            fatalError("Failed to fetch pages: \(error)")
                         }
-                    }
-                    
-                    bookmark.setValue(user, forKey: "user")
-                    bookmark.setValue(page, forKey: "page")
-                    if let b = item["bookmarkUrl"]! {
-                        bookmark.setValue(b, forKey: "bookmarkUrl")
-                    }
-                    if let b = item["date"]! {
-                        let dateFormatter = NSDateFormatter()
-                        let locale = NSLocale(localeIdentifier: "en_US_POSIX")
-                        dateFormatter.locale = locale
-                        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
-                        dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-                        let date = dateFormatter.dateFromString(b as! String)
-                        bookmark.setValue(date, forKey: "date")
-                    }
-                    if let b = item["comment"]! {
-                        if b as! String != "" {
-                            bookmark.setValue(b, forKey: "comment")
+                        
+                        bookmark.setValue(user, forKey: "user")
+                        bookmark.setValue(page, forKey: "page")
+                        if let b = item["bookmarkUrl"]! {
+                            bookmark.setValue(b, forKey: "bookmarkUrl")
                         }
+                        if let b = item["date"]! {
+                            let dateFormatter = NSDateFormatter()
+                            let locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                            dateFormatter.locale = locale
+                            dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
+                            dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
+                            let date = dateFormatter.dateFromString(b as! String)
+                            bookmark.setValue(date, forKey: "date")
+                        }
+                        if let b = item["comment"]! {
+                            if b as! String != "" {
+                                bookmark.setValue(b, forKey: "comment")
+                            }
+                        }
+                        let tags = NSMutableSet()
+                        for tagString in item["tags"] as! [String] {
+                            let tag = Tag.name(tagString, inManagedObjectContext: moc)
+                            tags.addObject(tag)
+                        }
+                        bookmark.setValue(tags, forKey: "tags")
+                        
+                        let notification = NSUserNotification()
+                        if let creator = item["creator"]! {
+                            notification.title = "\(creator) がブックマークを追加しました"
+                        }
+                        if let comment = item["comment"]!, let title = item["title"]!, let count = item["count"]! {
+                            let separator: String = comment as! String == "" ? "" : " / "
+                            notification.informativeText = "(\(count)) \(comment)\(separator)\(title)"
+                        }
+                        //                notification.contentImage = NSImage(named: "hoge")
+                        notification.userInfo = ["bookmarkUrl":bookmarkUrl]
+                        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
                     }
-                    let tags = NSMutableSet()
-                    for tagString in item["tags"] as! [String] {
-                        let tag = Tag.name(tagString, inManagedObjectContext: moc)
-                        tags.addObject(tag)
-                    }
-                    bookmark.setValue(tags, forKey: "tags")
-                    //                if let creator = item["creator"]! {
-                    //                    bookmarkObject.setValue(creator, forKey: "user")
-                    //                }
-                    
-                    //                bookmarks.insertObject(item, atIndex: 0)
-                    shouldReload = true
-                    let notification = NSUserNotification()
-                    if let creator = item["creator"]! {
-                        notification.title = "\(creator) がブックマークを追加しました"
-                    }
-                    if let comment = item["comment"]!, let title = item["title"]!, let count = item["count"]! {
-                        let separator: String = comment as! String == "" ? "" : " / "
-                        notification.informativeText = "(\(count)) \(comment)\(separator)\(title)"
-                    }
-                    //                notification.contentImage = NSImage(named: "hoge")
-                    notification.userInfo = ["bookmarkUrl":bookmarkUrl]
-                    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                } catch {
+                    fatalError("Failed to fetch bookmarks: \(error)")
                 }
-            } catch {
-                fatalError("Failed to fetch bookmarks: \(error)")
+                
             }
-            
-        }
-        if moc.hasChanges {
-            do {
-                try moc.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
+            if moc.hasChanges {
+                do {
+                    try moc.save()
+                } catch {
+                    fatalError("Failure to save context: \(error)")
+                }
             }
+            NSNotificationCenter.defaultCenter().removeObserver(self)
         }
-        NSNotificationCenter.defaultCenter().removeObserver(self)
-        }
-        return shouldReload
     }
     
     @IBAction func reload(sender: AnyObject) {
