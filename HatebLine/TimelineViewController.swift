@@ -47,9 +47,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     func mergeBookmarks(items: NSArray) {
         let moc = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        moc.persistentStoreCoordinator = self.managedObjectContext.persistentStoreCoordinator
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "mergeChanges:", name: NSManagedObjectContextDidSaveNotification, object: moc)
+        moc.parentContext = managedObjectContext
         moc.performBlock {
+            var newBookmarks = [Bookmark]()
             for item in items.reverse() {
                 let bookmarkUrl = item["bookmarkUrl"] as! NSString
                 let request = NSFetchRequest(entityName: "Bookmark")
@@ -148,17 +148,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         }
                         bookmark.setValue(tags, forKey: "tags")
                         
-                        let notification = NSUserNotification()
-                        if let creator = item["creator"]! {
-                            notification.title = "\(creator) がブックマークを追加しました"
-                        }
-                        if let comment = item["comment"]!, let title = item["title"]!, let count = item["count"]! {
-                            let separator: String = comment as! String == "" ? "" : " / "
-                            notification.informativeText = "(\(count)) \(comment)\(separator)\(title)"
-                        }
-                        //                notification.contentImage = NSImage(named: "hoge")
-                        notification.userInfo = ["bookmarkUrl":bookmarkUrl]
-                        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                        newBookmarks.append(bookmark)
                     }
                 } catch {
                     fatalError("Failed to fetch bookmarks: \(error)")
@@ -168,11 +158,36 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if moc.hasChanges {
                 do {
                     try moc.save()
+                    for bookmark: Bookmark in newBookmarks {
+                        let notification = NSUserNotification()
+                        if let creator = bookmark.user?.name {
+                            notification.title = "\(creator) がブックマークを追加しました"
+                        }
+                        var commentString = ""
+                        if let comment = bookmark.comment {
+                            commentString = comment
+                        }
+                        if let title = bookmark.page?.title, let count = bookmark.page?.count {
+                            let separator = commentString == "" ? "" : " / "
+                            notification.informativeText = "(\(count)) \(commentString)\(separator)\(title)"
+                        }
+                        //                notification.contentImage = NSImage(named: "hoge")
+                        if let url = bookmark.bookmarkUrl {
+                            notification.userInfo = ["bookmarkUrl": url]
+                        }
+                        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                    }
                 } catch {
                     fatalError("Failure to save context: \(error)")
                 }
             }
-            NSNotificationCenter.defaultCenter().removeObserver(self)
+            self.managedObjectContext.performBlock {
+                do {
+                    try self.managedObjectContext.save()
+                } catch {
+                    fatalError("Failure to save main context: \(error)")
+                }
+            }
         }
     }
     
@@ -362,12 +377,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
 
         }
-    }
-    
-    func mergeChanges(notification: NSNotification) {
-        dispatch_async(dispatch_get_main_queue(), {
-            self.managedObjectContext.mergeChangesFromContextDidSaveNotification(notification)
-            })
     }
 
 }
