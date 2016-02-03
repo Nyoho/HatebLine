@@ -229,6 +229,20 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
 
+    @IBAction func updateSearchString(sender: AnyObject) {
+        if sender.isKindOfClass(NSSearchField) {
+            let field = sender as! NSSearchField
+            let s = field.stringValue
+            bookmarkArrayController.filterPredicate = { () -> NSPredicate? in
+                if s == "" {
+                    return nil
+                } else {
+                    return NSPredicate(format: "(page.title contains[c] %@) OR (comment contains[c] %@) OR (user.name contains[c] %@)", s, s, s)
+                }
+            }()
+        }
+    }
+    
     override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
