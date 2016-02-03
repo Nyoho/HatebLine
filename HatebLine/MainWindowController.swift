@@ -10,7 +10,6 @@ import Cocoa
 
 class MainWindowController: NSWindowController, NSWindowDelegate {
 
-    @IBOutlet weak var good:TimelineViewController? = nil
     @IBOutlet weak var searchField: NSSearchField!
     
     override func windowDidLoad() {
