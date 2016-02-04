@@ -17,6 +17,12 @@ class CommentCellView: NSTableCellView {
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
+        let path = NSBezierPath()
+        NSColor.lightGrayColor().set()
+        path.lineWidth = 0.5
+        path.moveToPoint(NSMakePoint(8, 0))
+        path.lineToPoint(NSMakePoint(self.bounds.width-8, 0))
+        path.stroke()
     }
     
 }
