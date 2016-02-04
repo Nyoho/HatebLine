@@ -1,5 +1,26 @@
 * HatebLine
 
+A Mac application that shows your favorites of Hatena Bookmark as a time line like [[http://hbfav.bloghackers.net/][HBFav]]
+
+** Build
+
+First, install [[https://github.com/Carthage/Carthage][Carthage]]. (If you use [[http://brew.sh/][Homebrew]], just 'brew install carthage')
+
+And then, do
+#+BEGIN_SRC sh
+carthage update --platform Mac
+#+END_SRC
+Then, build it in Xcode.
+
+
+** Quick reference
+
+| key   |                                         |
+| space | Quick Look                              |
+| ⌘ + L | Open in browser                         |
+| ⌘ + K | Open the bookmark entry page in browser |
+| C     | View comments                           |
+
 ** Thanks
 - [[https://github.com/Alamofire/Alamofire][Alamofire/Alamofire]]
 - [[https://github.com/kevinlawler/NSDate-TimeAgo][kevinlawler/NSDate-TimeAgo]]
