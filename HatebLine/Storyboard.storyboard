@@ -803,7 +803,7 @@
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
+                                                        <tableCellView misplaced="YES" id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="537" height="149"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -844,7 +844,7 @@
                                                                             </beginningViews>
                                                                             <endViews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
-                                                                                    <rect key="frame" x="375" y="0.0" width="84" height="14"/>
+                                                                                    <rect key="frame" x="375" y="0.0" width="84" height="14.5"/>
                                                                                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="10 minutes ago" id="vwn-Hu-luB">
                                                                                         <font key="font" metaFont="smallSystem"/>
                                                                                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -993,7 +993,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="ZDc-fa-z5r">
-                                    <rect key="frame" x="1" y="253" width="478" height="16"/>
+                                    <rect key="frame" x="1" y="189" width="478" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="hbN-cU-c7C">
@@ -1118,6 +1118,7 @@
                         <outlet property="tableView" destination="2eC-bg-4UH" id="Lmj-SK-UYq"/>
                         <segue destination="Hiq-ow-l6i" kind="custom" identifier="QuickLook" customClass="TablePopoverSegue" customModule="HatebLine" customModuleProvider="target" id="gAh-ho-Wvz"/>
                         <segue destination="RuE-us-RLc" kind="custom" identifier="ShowComments" customClass="TablePopoverSegue" customModule="HatebLine" customModuleProvider="target" id="Ary-SU-k7l"/>
+                        <segue destination="HxD-mZ-4Sf" kind="show" identifier="ShowAccountSetting" id="cwI-oc-Fym"/>
                     </connections>
                 </viewController>
                 <customObject id="HHK-ti-pmZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1177,6 +1178,21 @@
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vD-U8-Lcg">
+                                <rect key="frame" x="178" y="146" width="141" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="⬇Input your Hatena ID" id="2Sz-6o-7DH">
+                                    <font key="font" size="13" name=".HiraKakuInterface-W3"/>
+                                    <color key="textColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="lKB-gA-wTO" name="hidden" keyPath="values.hatenaID" id="XHn-pP-ohp">
+                                        <dictionary key="options">
+                                            <string key="NSValueTransformerName">NSIsNotNil</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
                             </textField>
                         </subviews>
                         <constraints>
@@ -1395,7 +1411,7 @@
                                     <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="xJM-fk-RRk">
-                                    <rect key="frame" x="1" y="545" width="0.0" height="16"/>
+                                    <rect key="frame" x="1" y="523" width="448" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="0Z4-yj-Jes">
@@ -1478,4 +1494,7 @@
             <point key="canvasLocation" x="985" y="1718"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cwI-oc-Fym"/>
+    </inferredMetricsTieBreakers>
 </document>

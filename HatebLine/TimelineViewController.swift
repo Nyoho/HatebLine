@@ -34,7 +34,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     func perform() {
         guard let hatenaID = NSUserDefaults.standardUserDefaults().valueForKey("hatenaID") as! String? else {
-            // ID を入れるように促す
+            performSegueWithIdentifier("ShowAccountSetting", sender: self)
             return
         }
         parser.userName = hatenaID
@@ -281,6 +281,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         }
                     }
                 }
+            case "ShowAccountSetting":
+                break
             default:
                 break
             }
