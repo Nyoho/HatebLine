@@ -3,3 +3,7 @@
 ** Thanks
 - [[https://github.com/Alamofire/Alamofire][Alamofire/Alamofire]]
 - [[https://github.com/kevinlawler/NSDate-TimeAgo][kevinlawler/NSDate-TimeAgo]]
+- [[https://github.com/ikesyo/Himotoki][ikesyo/Himotoki: A type-safe JSON decoding library purely written in Swift]]
+
+** Special thanks to
+[[https://twitter.com/naoya_ito/status/690484404846653440][Naoya Ito @naoya_ito]]

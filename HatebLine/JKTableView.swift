@@ -33,6 +33,8 @@ class JKTableView: NSTableView {
             delegate()?.performSelector("quickLookPreviewItems:", withObject: self)
         case 53: // esc
             selectRowIndexes(NSIndexSet(), byExtendingSelection: false)
+        case 8: // c
+            delegate()?.performSelector("showComments:", withObject: self)            
         default:
             super.keyDown(theEvent)
             break

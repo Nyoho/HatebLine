@@ -243,6 +243,13 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
     
+    @IBAction func showComments(sender: AnyObject) {
+        let indexes = tableView.selectedRowIndexes
+        if (indexes.count > 0) {
+            performSegueWithIdentifier("ShowComments", sender: self)
+        }
+    }
+    
     override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
@@ -259,6 +266,20 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         vc?.representedObject = bookmark.page?.url
                     }
                 }
+                }
+            case "ShowComments":
+                if segue.isKindOfClass(TablePopoverSegue) {
+                    let popoverSegue = segue as! TablePopoverSegue
+                    popoverSegue.preferredEdge = NSRectEdge.MaxX
+                    popoverSegue.popoverBehavior = .Transient
+                    popoverSegue.anchorTableView = tableView
+                    let indexes = tableView.selectedRowIndexes
+                    if (indexes.count > 0) {
+                        if let bookmark = bookmarkArrayController.arrangedObjects[indexes.firstIndex] as? Bookmark {
+                            let vc = segue.destinationController as? CommentsViewController
+                            vc?.representedObject = bookmark.page?.url
+                        }
+                    }
                 }
             default:
                 break

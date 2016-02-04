@@ -30,6 +30,9 @@
 		5542D74E1C5DB0F40056CA91 /* TablePopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */; };
 		5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */; };
 		55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55556F501C4FD33600419440 /* GrowingTextField.swift */; };
+		55AB0D8E1C63146E00132CE0 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */; };
+		55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D941C63828D00132CE0 /* CommentCellView.swift */; };
+		55AB0D9A1C63961800132CE0 /* Himotoki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55AB0D991C63961800132CE0 /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55D2E73C1C51DC76006D2475 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */; };
 		55D2E73D1C51DC76006D2475 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7391C51DC75006D2475 /* Page.swift */; };
 		55D2E7411C51FDBE006D2475 /* JKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7401C51FDBE006D2475 /* JKTableView.swift */; };
@@ -69,6 +72,7 @@
 			files = (
 				55415B9D1C3962970079B118 /* Alamofire.framework in Embed Frameworks */,
 				55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */,
+				55AB0D9A1C63961800132CE0 /* Himotoki.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +108,9 @@
 		5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePopoverSegue.swift; sourceTree = "<group>"; };
 		5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManyNumberToColorTransformer.swift; sourceTree = "<group>"; };
 		55556F501C4FD33600419440 /* GrowingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextField.swift; sourceTree = "<group>"; };
+		55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		55AB0D941C63828D00132CE0 /* CommentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCellView.swift; sourceTree = "<group>"; };
+		55AB0D991C63961800132CE0 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
 		55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "Models/Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55D2E7391C51DC75006D2475 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Models/Page.swift; sourceTree = "<group>"; };
 		55D2E7401C51FDBE006D2475 /* JKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKTableView.swift; sourceTree = "<group>"; };
@@ -199,8 +206,10 @@
 				55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */,
 				552453721C4E1E9E00F4EAA1 /* WebViewController.swift */,
 				552251671C5D1133004C2B48 /* QuickLookWebViewController.swift */,
+				55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */,
 				55415B9F1C3A3C880079B118 /* RSSParser.swift */,
 				55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */,
+				55AB0D941C63828D00132CE0 /* CommentCellView.swift */,
 				55415B721C3961F90079B118 /* Assets.xcassets */,
 				55415B741C3961F90079B118 /* MainMenu.xib */,
 				55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */,
@@ -238,6 +247,7 @@
 				55E079CB1C3D583800A72C05 /* AlamofireImage.framework */,
 				55415B991C39626C0079B118 /* Alamofire.framework */,
 				552453741C4E211B00F4EAA1 /* WebKit.framework */,
+				55AB0D991C63961800132CE0 /* Himotoki.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -386,7 +396,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55AB0D8E1C63146E00132CE0 /* CommentsViewController.swift in Sources */,
 				551E72041C5267FC00C366EF /* AccountPrefViewController.swift in Sources */,
+				55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */,
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */,
 				552F4A1B1C5C6100006962E9 /* Tag+CoreDataProperties.swift in Sources */,
@@ -572,6 +584,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = HatebLineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
@@ -585,6 +601,10 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = HatebLineTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
