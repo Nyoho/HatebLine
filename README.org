@@ -16,6 +16,8 @@ Then, build it in Xcode.
 ** Quick reference
 
 | key   |                                         |
+| J     | Move down                               |
+| K     | Move up                                 |
 | space | Quick Look                              |
 | ⌘ + L | Open in browser                         |
 | ⌘ + K | Open the bookmark entry page in browser |
