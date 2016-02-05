@@ -104,7 +104,6 @@ class CommentsViewController: NSViewController {
                         let dateString = formatter.stringFromDate(date)
                         let permalink = "http://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
                         if let encodedString = permalink.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
-                            print("http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
                             Alamofire.request(.GET, "http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
                                 .responseImage { response in
                                     if let image = response.result.value {
