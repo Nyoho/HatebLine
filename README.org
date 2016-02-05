@@ -2,6 +2,11 @@
 
 A Mac application that shows your favorites of Hatena Bookmark as a time line like [[http://hbfav.bloghackers.net/][HBFav]]
 
+** Requirements
+
+OS X 10.11+
+
+
 ** Build
 
 First, install [[https://github.com/Carthage/Carthage][Carthage]]. (If you use [[http://brew.sh/][Homebrew]], just 'brew install carthage')
