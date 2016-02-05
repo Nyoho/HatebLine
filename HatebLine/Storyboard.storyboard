@@ -659,6 +659,12 @@
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem title="Acknowledgments" id="Dz9-hQ-Enr">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <segue destination="MWi-ID-abz" kind="show" id="1wY-LL-5cu"/>
+                                            </connections>
+                                        </menuItem>
                                     </items>
                                 </menu>
                             </menuItem>
@@ -1152,6 +1158,58 @@
             </objects>
             <point key="canvasLocation" x="1089" y="426"/>
         </scene>
+        <!--Acknowledgments View Controller-->
+        <scene sceneID="Mgw-O5-gUv">
+            <objects>
+                <viewController title="Acknowledgments" showSeguePresentationStyle="single" id="MWi-ID-abz" userLabel="Acknowledgments View Controller" customClass="AcknowledgmentsViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="N5L-Lb-U0z">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRa-d9-hBG">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <clipView key="contentView" id="Cnm-fT-Z6I">
+                                    <rect key="frame" x="1" y="1" width="448" height="298"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="jKx-lk-fEG">
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <size key="minSize" width="448" height="298"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                            <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                            <size key="minSize" width="448" height="298"/>
+                                            <size key="maxSize" width="463" height="10000000"/>
+                                        </textView>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </clipView>
+                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="56l-m8-Osh">
+                                    <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                                <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="ZDV-QP-K5s">
+                                    <rect key="frame" x="433" y="1" width="16" height="298"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </scroller>
+                            </scrollView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="CRa-d9-hBG" firstAttribute="top" secondItem="N5L-Lb-U0z" secondAttribute="top" id="RXy-UY-eue"/>
+                            <constraint firstAttribute="trailing" secondItem="CRa-d9-hBG" secondAttribute="trailing" id="UCa-yz-IGi"/>
+                            <constraint firstAttribute="bottom" secondItem="CRa-d9-hBG" secondAttribute="bottom" id="cvz-mg-Mtm"/>
+                            <constraint firstItem="CRa-d9-hBG" firstAttribute="leading" secondItem="N5L-Lb-U0z" secondAttribute="leading" id="f8f-gV-5sh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="textView" destination="jKx-lk-fEG" id="HsI-RT-0oJ"/>
+                    </connections>
+                </viewController>
+                <customObject id="CAo-yL-hxF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1135" y="-42"/>
+        </scene>
         <!--Account-->
         <scene sceneID="Lpw-Eu-VLC">
             <objects>
@@ -1286,7 +1344,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="364" rowSizeStyle="automatic" viewBased="YES" id="zzz-tt-SJ0">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="560"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="538"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1526,6 +1584,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cwI-oc-Fym"/>
+        <segue reference="ewP-el-gjQ"/>
     </inferredMetricsTieBreakers>
 </document>

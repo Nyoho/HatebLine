@@ -30,6 +30,8 @@
 		5542D74E1C5DB0F40056CA91 /* TablePopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */; };
 		5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */; };
 		55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55556F501C4FD33600419440 /* GrowingTextField.swift */; };
+		557906871C656507003DA09F /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 557906861C656507003DA09F /* Acknowledgments.rtf */; };
+		557906891C656525003DA09F /* AcknowledgmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557906881C656525003DA09F /* AcknowledgmentsViewController.swift */; };
 		55AB0D8E1C63146E00132CE0 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */; };
 		55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D941C63828D00132CE0 /* CommentCellView.swift */; };
 		55AB0D9A1C63961800132CE0 /* Himotoki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55AB0D991C63961800132CE0 /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -108,6 +110,8 @@
 		5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePopoverSegue.swift; sourceTree = "<group>"; };
 		5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManyNumberToColorTransformer.swift; sourceTree = "<group>"; };
 		55556F501C4FD33600419440 /* GrowingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextField.swift; sourceTree = "<group>"; };
+		557906861C656507003DA09F /* Acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Acknowledgments.rtf; sourceTree = "<group>"; };
+		557906881C656525003DA09F /* AcknowledgmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgmentsViewController.swift; sourceTree = "<group>"; };
 		55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		55AB0D941C63828D00132CE0 /* CommentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCellView.swift; sourceTree = "<group>"; };
 		55AB0D991C63961800132CE0 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
@@ -219,6 +223,7 @@
 				55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */,
 				55556F521C4FD33C00419440 /* Views */,
 				551E72051C52680500C366EF /* Prefs */,
+				557906851C656507003DA09F /* Acknowledgments */,
 			);
 			path = HatebLine;
 			sourceTree = "<group>";
@@ -261,6 +266,15 @@
 				5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		557906851C656507003DA09F /* Acknowledgments */ = {
+			isa = PBXGroup;
+			children = (
+				557906861C656507003DA09F /* Acknowledgments.rtf */,
+				557906881C656525003DA09F /* AcknowledgmentsViewController.swift */,
+			);
+			path = Acknowledgments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				55415B731C3961F90079B118 /* Assets.xcassets in Resources */,
+				557906871C656507003DA09F /* Acknowledgments.rtf in Resources */,
 				55D2E7451C523187006D2475 /* NSDateTimeAgo.bundle in Resources */,
 				55415B761C3961F90079B118 /* MainMenu.xib in Resources */,
 				55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */,
@@ -421,6 +436,7 @@
 				551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */,
 				551DB4FB1C42CD0300B198A8 /* Bookmark.swift in Sources */,
 				551DB5011C4374F400B198A8 /* User.swift in Sources */,
+				557906891C656525003DA09F /* AcknowledgmentsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
