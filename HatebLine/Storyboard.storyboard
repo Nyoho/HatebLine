@@ -784,7 +784,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView appearanceType="vibrantLight" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="149" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH" customClass="JKTableView" customModule="HatebLine" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="478" height="204"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="478" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -844,7 +844,7 @@
                                                                             </beginningViews>
                                                                             <endViews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
-                                                                                    <rect key="frame" x="375" y="0.0" width="84" height="14.5"/>
+                                                                                    <rect key="frame" x="375" y="0.0" width="84" height="14"/>
                                                                                     <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="10 minutes ago" id="vwn-Hu-luB">
                                                                                         <font key="font" metaFont="smallSystem"/>
                                                                                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -1326,14 +1326,34 @@
                                                                                 <stackView distribution="equalSpacing" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQT-6e-lDr">
                                                                                     <rect key="frame" x="0.0" y="140" width="379" height="17"/>
                                                                                     <subviews>
-                                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fcr-HE-XlL">
-                                                                                            <rect key="frame" x="-2" y="0.0" width="80" height="17"/>
-                                                                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="Yqs-dR-ass">
-                                                                                                <font key="font" metaFont="systemHeavy" size="13"/>
-                                                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                                                            </textFieldCell>
-                                                                                        </textField>
+                                                                                        <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" misplaced="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GN1-vE-uYX">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="129" height="17"/>
+                                                                                            <subviews>
+                                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fcr-HE-XlL">
+                                                                                                    <rect key="frame" x="-2" y="0.0" width="80" height="17"/>
+                                                                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="Yqs-dR-ass">
+                                                                                                        <font key="font" metaFont="systemHeavy" size="13"/>
+                                                                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                                                                    </textFieldCell>
+                                                                                                </textField>
+                                                                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yX6-gh-mkZ">
+                                                                                                    <rect key="frame" x="79" y="3" width="50" height="9"/>
+                                                                                                    <constraints>
+                                                                                                        <constraint firstAttribute="height" constant="9" id="d8c-yH-y1F"/>
+                                                                                                    </constraints>
+                                                                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="4Pw-FG-wrY"/>
+                                                                                                </imageView>
+                                                                                            </subviews>
+                                                                                            <visibilityPriorities>
+                                                                                                <integer value="1000"/>
+                                                                                                <integer value="1000"/>
+                                                                                            </visibilityPriorities>
+                                                                                            <customSpacing>
+                                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                                <real value="3.4028234663852886e+38"/>
+                                                                                            </customSpacing>
+                                                                                        </stackView>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0gi-mb-0Lp">
                                                                                             <rect key="frame" x="297" y="0.0" width="84" height="14"/>
                                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="10 minutes ago" id="0aH-SK-toA">
@@ -1363,6 +1383,7 @@
                                                                                 </textField>
                                                                             </subviews>
                                                                             <constraints>
+                                                                                <constraint firstAttribute="trailing" secondItem="aQT-6e-lDr" secondAttribute="trailing" id="GY0-fb-Lcd"/>
                                                                                 <constraint firstItem="aQT-6e-lDr" firstAttribute="trailing" secondItem="QkQ-B2-vKy" secondAttribute="trailing" id="ztp-Pi-Ca3"/>
                                                                             </constraints>
                                                                             <visibilityPriorities>
@@ -1375,6 +1396,9 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                     </subviews>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="trailing" secondItem="p2k-9x-aGV" secondAttribute="trailing" id="RSY-lr-p3Q"/>
+                                                                    </constraints>
                                                                     <visibilityPriorities>
                                                                         <integer value="1000"/>
                                                                         <integer value="1000"/>
@@ -1395,6 +1419,7 @@
                                                                 <outlet property="commentField" destination="QkQ-B2-vKy" id="A8n-Ks-fZK"/>
                                                                 <outlet property="dateField" destination="0gi-mb-0Lp" id="RZf-bb-E8g"/>
                                                                 <outlet property="profileImageView" destination="Zj1-0R-9tJ" id="deI-nl-IfD"/>
+                                                                <outlet property="starImageView" destination="yX6-gh-mkZ" id="Wi3-D2-WCs"/>
                                                                 <outlet property="textField" destination="fcr-HE-XlL" id="uud-pn-Ygp"/>
                                                                 <outlet property="userNameField" destination="fcr-HE-XlL" id="CeQ-Yy-oEb"/>
                                                             </connections>

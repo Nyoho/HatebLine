@@ -14,6 +14,7 @@ class CommentCellView: NSTableCellView {
     @IBOutlet weak var profileImageView: NSImageView!
     @IBOutlet weak var dateField: NSTextField!
     @IBOutlet weak var commentField: NSTextField!
+    @IBOutlet weak var starImageView: NSImageView!
     
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)

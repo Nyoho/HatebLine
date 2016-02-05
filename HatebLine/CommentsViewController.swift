@@ -35,12 +35,15 @@ class CommentsViewController: NSViewController {
     
     struct Comments: Decodable {
         let comments: [Comment]
+        let eid: Int
+        let entryUrl: String
         static func decode(e: Extractor) throws -> Comments {
-            return try build(self.init)( e <|| ["bookmarks"])
+            return try build(self.init)(e <|| ["bookmarks"], e <| "eid", e <| "entry_url")
         }
     }
     
     var items = [Comment]()
+    var eid = 0
     
     @IBOutlet weak var tableView: NSTableView!
     
@@ -59,6 +62,9 @@ class CommentsViewController: NSViewController {
                     let comments: Comments? = try? decode(json)
                     if let a = comments?.comments {
                         self.items = a
+                    }
+                    if let e = comments?.eid {
+                        self.eid = e
                     }
                     self.tableView.reloadData()
                 }
@@ -90,8 +96,24 @@ class CommentsViewController: NSViewController {
                                 cell.profileImageView?.image = image
                             }
                     }
-
-                return cell
+                    
+                    // star
+                    if let date = item.date {
+                        let formatter = NSDateFormatter()
+                        formatter.dateFormat = "yyyyMMdd"
+                        let dateString = formatter.stringFromDate(date)
+                        let permalink = "http://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
+                        if let encodedString = permalink.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
+                            print("http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
+                            Alamofire.request(.GET, "http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
+                                .responseImage { response in
+                                    if let image = response.result.value {
+                                        cell.starImageView?.image = image
+                                    }
+                            }
+                        }
+                    }
+                    return cell
             }
         }
         return nil
