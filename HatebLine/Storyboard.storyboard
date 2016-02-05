@@ -1286,7 +1286,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="364" rowSizeStyle="automatic" viewBased="YES" id="zzz-tt-SJ0">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="538"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="560"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1451,10 +1451,15 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                             </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
+                                <rect key="frame" x="10" y="8" width="16" height="16"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="WFZ-ct-ARM" secondAttribute="bottom" constant="8" id="0Fm-LC-1jc"/>
                             <constraint firstItem="tVP-ST-Uq3" firstAttribute="top" secondItem="gfJ-He-968" secondAttribute="top" constant="8" id="J3Q-uZ-wzs"/>
                             <constraint firstAttribute="bottom" secondItem="uWC-5P-xDx" secondAttribute="bottom" constant="8" id="XvR-QC-HW0"/>
+                            <constraint firstItem="WFZ-ct-ARM" firstAttribute="leading" secondItem="gfJ-He-968" secondAttribute="leading" constant="10" id="YvU-ca-jba"/>
                             <constraint firstItem="tVP-ST-Uq3" firstAttribute="leading" secondItem="gfJ-He-968" secondAttribute="leading" constant="8" id="Z6s-iG-u0F"/>
                             <constraint firstAttribute="trailing" secondItem="uWC-5P-xDx" secondAttribute="trailing" constant="8" id="ewG-6g-0ff"/>
                             <constraint firstAttribute="trailing" secondItem="tVP-ST-Uq3" secondAttribute="trailing" constant="8" id="sx0-ip-2Yw"/>
@@ -1462,6 +1467,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="progressIndicator" destination="WFZ-ct-ARM" id="RGS-7I-NKC"/>
                         <outlet property="tableView" destination="zzz-tt-SJ0" id="qj9-PV-Cdp"/>
                     </connections>
                 </viewController>

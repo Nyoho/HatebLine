@@ -46,6 +46,7 @@ class CommentsViewController: NSViewController {
     var eid = 0
     
     @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet weak var progressIndicator: NSProgressIndicator!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +57,7 @@ class CommentsViewController: NSViewController {
     }
 
     func parse(url: String) {
+        progressIndicator.startAnimation(self)
         Alamofire.request(.GET, "http://b.hatena.ne.jp/entry/json/", parameters: ["url": url])
             .responseJSON { response in
                 if let json = response.result.value {
@@ -67,6 +69,11 @@ class CommentsViewController: NSViewController {
                         self.eid = e
                     }
                     self.tableView.reloadData()
+                    self.progressIndicator.stopAnimation(self)
+                    NSAnimationContext.runAnimationGroup({ context in
+                        context.duration = 0.3
+                        self.progressIndicator.animator().alphaValue = 0
+                        }, completionHandler: nil)
                 }
         }
 //        let jsonPopular = JSON.fromURL("http://b.hatena.ne.jp/api/viewer.popular_bookmarks?url=\(url)")
