@@ -13,20 +13,8 @@ import Cocoa
 class Bookmark: NSManagedObject {
 
     var commentWithTags: NSAttributedString? {
-        let t = NSMutableAttributedString()
-        if let s = comment {
-            t.appendAttributedString(NSAttributedString(string: s))
-        }
-        if let set = tags {
-            var first = true
-            for tag in set {
-                let space = t.isEqualToAttributedString(NSAttributedString()) ? "" : " "
-                let comma = first ? "" : ","
-                t.appendAttributedString(NSAttributedString(string: comma + space + "\((tag as! Tag).name!)", attributes: [NSForegroundColorAttributeName: NSColor.secondaryLabelColor(), NSFontAttributeName: NSFont.systemFontOfSize(NSFont.smallSystemFontSize())]))
-                first = false
-            }
-        }
-        return t
+        let stringTags = tags?.flatMap { ($0 as! Tag).name ?? "" }
+        return Helper.commentWithTags(comment, tags: stringTags)
     }
 
 }
