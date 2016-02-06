@@ -77,23 +77,22 @@ class CommentsViewController: NSViewController {
                     if let e = comments?.eid {
                         self.eid = e
                     }
-                    self.tableView.reloadData()
-                    self.progressIndicator.stopAnimation(self)
-                    NSAnimationContext.runAnimationGroup({ context in
-                        context.duration = 0.3
-                        self.progressIndicator.animator().alphaValue = 0
-                        }, completionHandler: nil)
-                }
-        }
-        Alamofire.request(.GET, "http://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
-            .responseJSON { response in
-                if let json = response.result.value {
-                    let comments: Comments? = try? decode(json)
-                    if let a = comments?.comments {
-                        self.items.insertContentsOf(a, at: 0)
-                        self.populars = a
+                    Alamofire.request(.GET, "http://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
+                        .responseJSON { response in
+                            if let json = response.result.value {
+                                let comments: Comments? = try? decode(json)
+                                if let a = comments?.comments {
+                                    self.items.insertContentsOf(a, at: 0)
+                                    self.populars = a
+                                }
+                                self.tableView.reloadData()
+                                self.progressIndicator.stopAnimation(self)
+                                NSAnimationContext.runAnimationGroup({ context in
+                                    context.duration = 0.3
+                                    self.progressIndicator.animator().alphaValue = 0
+                                    }, completionHandler: nil)
+                            }
                     }
-                    self.tableView.reloadData()
                 }
         }
     }
