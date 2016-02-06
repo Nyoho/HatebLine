@@ -91,6 +91,7 @@ class CommentsViewController: NSViewController {
                     let comments: Comments? = try? decode(json)
                     if let a = comments?.comments {
                         self.items.insertContentsOf(a, at: 0)
+                        self.populars = a
                     }
                     self.tableView.reloadData()
                 }
@@ -106,6 +107,8 @@ class CommentsViewController: NSViewController {
         if tableColumn?.identifier == "CommentColumn" {
             if let cell = tableView.makeViewWithIdentifier("CommentColumn", owner: self) as? CommentCellView,
                 let item = items[row] as Comment? {
+                    cell.isPopular = row < populars.count
+                    cell.needsDisplay = true
                     cell.userNameField?.stringValue = item.userName
                     if let date = item.date {
                         cell.dateField?.stringValue = date.timeAgo
