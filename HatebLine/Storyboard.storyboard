@@ -701,7 +701,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <buttonCell key="cell" type="push" title="B!" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="V1z-xh-bvT">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="systemHeavy" size="13"/>
                                         </buttonCell>
                                     </button>
                                 </toolbarItem>
@@ -722,14 +722,14 @@
                                         <action selector="updateSearchString:" target="9rp-fB-EiC" id="0KQ-g3-Wr3"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="FDD6E327-FA41-4DD9-9F88-ADA47696EBAE" label="Quick Look" paletteLabel="Quick Look" id="VK7-Dk-n3E">
+                                <toolbarItem implicitItemIdentifier="FDD6E327-FA41-4DD9-9F88-ADA47696EBAE" label="Quick Look" paletteLabel="Quick Look" image="NSQuickLookTemplate" id="VK7-Dk-n3E">
                                     <nil key="toolTip"/>
-                                    <size key="minSize" width="43" height="32"/>
+                                    <size key="minSize" width="42" height="32"/>
                                     <size key="maxSize" width="82" height="54"/>
                                     <button key="view" verticalHuggingPriority="750" id="MGM-kf-KDC">
                                         <rect key="frame" x="12" y="14" width="43" height="54"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="👀" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rda-ln-G5r">
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSQuickLookTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Rda-ln-G5r">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" size="13" name="AppleColorEmoji"/>
                                         </buttonCell>
@@ -743,23 +743,41 @@
                                     <size key="minSize" width="39" height="32"/>
                                     <size key="maxSize" width="82" height="32"/>
                                     <button key="view" verticalHuggingPriority="750" id="FjA-y2-U0Q">
-                                        <rect key="frame" x="29" y="14" width="39" height="32"/>
+                                        <rect key="frame" x="27" y="14" width="43" height="32"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <buttonCell key="cell" type="push" title="C" bezelStyle="rounded" alignment="center" borderStyle="border" inset="2" id="8e4-tu-rBM">
+                                        <buttonCell key="cell" type="push" title="C!" bezelStyle="rounded" imagePosition="overlaps" alignment="center" borderStyle="border" inset="2" id="8e4-tu-rBM">
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="systemHeavy" size="13"/>
                                         </buttonCell>
                                     </button>
                                     <connections>
                                         <action selector="showComments:" target="9rp-fB-EiC" id="bvi-9S-gP0"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="D8FE9BAA-0E1F-4EF9-B0C8-D6285E2D752D" label="Reload" paletteLabel="Reload" image="NSRefreshTemplate" id="78m-WC-aMX">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="28" height="32"/>
+                                    <size key="maxSize" width="82" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="Iap-Aa-wJn">
+                                        <rect key="frame" x="0.0" y="14" width="43" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSRefreshTemplate" imagePosition="overlaps" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BSA-Gy-AUW">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                    <connections>
+                                        <action selector="reload:" target="9rp-fB-EiC" id="7f7-I0-cHB"/>
+                                    </connections>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="sfg-Ze-hyS"/>
+                                <toolbarItem reference="78m-WC-aMX"/>
                                 <toolbarItem reference="61z-Yt-3XC"/>
                                 <toolbarItem reference="VK7-Dk-n3E"/>
                                 <toolbarItem reference="uZN-ui-dWO"/>
+                                <toolbarItem reference="jHQ-xa-KEq"/>
+                                <toolbarItem reference="sfg-Ze-hyS"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -1588,6 +1606,10 @@
             <point key="canvasLocation" x="985" y="1718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSQuickLookTemplate" width="19" height="12"/>
+        <image name="NSRefreshTemplate" width="11" height="15"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ewP-el-gjQ"/>
     </inferredMetricsTieBreakers>
