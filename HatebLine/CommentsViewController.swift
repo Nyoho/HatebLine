@@ -35,15 +35,23 @@ class CommentsViewController: NSViewController {
     
     struct Comments: Decodable {
         let comments: [Comment]
-        let eid: Int
+        let eid: String
         let entryUrl: String
         static func decode(e: Extractor) throws -> Comments {
-            return try build(self.init)(e <|| ["bookmarks"], e <| "eid", e <| "entry_url")
+            var eid = ""
+            do {
+                eid = try e <| "eid"
+            } catch {
+                let eidNum: Int = try e <| "eid"
+                eid = String(eidNum)
+            }
+            return try build(self.init)(e <|| ["bookmarks"], eid, e <| "entry_url")
         }
     }
     
     var items = [Comment]()
-    var eid = 0
+    var populars = [Comment]()
+    var eid = ""
     
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
@@ -63,7 +71,7 @@ class CommentsViewController: NSViewController {
                 if let json = response.result.value {
                     let comments: Comments? = try? decode(json)
                     if let a = comments?.comments {
-                        self.items = a
+                        self.items.appendContentsOf(a)
                     }
                     if let e = comments?.eid {
                         self.eid = e
@@ -76,7 +84,16 @@ class CommentsViewController: NSViewController {
                         }, completionHandler: nil)
                 }
         }
-//        let jsonPopular = JSON.fromURL("http://b.hatena.ne.jp/api/viewer.popular_bookmarks?url=\(url)")
+        Alamofire.request(.GET, "http://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
+            .responseJSON { response in
+                if let json = response.result.value {
+                    let comments: Comments? = try? decode(json)
+                    if let a = comments?.comments {
+                        self.items.insertContentsOf(a, at: 0)
+                    }
+                    self.tableView.reloadData()
+                }
+        }
     }
 
     // MARK: - TableView
