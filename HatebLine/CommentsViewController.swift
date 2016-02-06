@@ -14,9 +14,9 @@ class CommentsViewController: NSViewController {
 
     struct Comment: Decodable {
         let userName: String
-        let comment: String
+        let comment: String?
         let date: NSDate?
-//        let tags = []
+        let tags: [String]?
 
         static func decode(e: Extractor) throws -> Comment {
             let dateFormatter = NSDateFormatter()
@@ -27,8 +27,9 @@ class CommentsViewController: NSViewController {
             let date = dateFormatter.dateFromString(try e <| "timestamp")!
             return try Comment(
                 userName: e <| "user",
-                comment: e <| "comment",
-                date: date
+                comment: e <|? "comment",
+                date: date,
+                tags: e  <||? "tags"
             )
         }
     }
@@ -109,8 +110,8 @@ class CommentsViewController: NSViewController {
                     if let date = item.date {
                         cell.dateField?.stringValue = date.timeAgo
                     }
-                    cell.commentField?.stringValue = item.comment
-                    
+                    cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
+
                     let twoLetters = (item.userName as NSString).substringToIndex(2)
                     Alamofire.request(.GET, "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(item.userName)/profile.gif")
                         .responseImage { response in
@@ -148,7 +149,7 @@ class CommentsViewController: NSViewController {
         if let cell = tableView.makeViewWithIdentifier("CommentColumn", owner: self) as? CommentCellView {
             tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
-            cell.commentField?.stringValue = item.comment
+            cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
             cell.commentField?.preferredMaxLayoutWidth = size.width - (8+8+8+42)
             heightOfRow = cell.fittingSize.height
         }

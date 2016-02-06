@@ -45,6 +45,7 @@
 		55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */; };
 		55E9B8DE1C3FE9C400742E49 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */; };
+		55F8E5BC1C658B71009D2F79 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F8E5BB1C658B71009D2F79 /* Helper.swift */; };
 		55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +125,7 @@
 		55E079CB1C3D583800A72C05 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/Mac/AlamofireImage.framework; sourceTree = "<group>"; };
 		55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		55F8E5BB1C658B71009D2F79 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -224,6 +226,7 @@
 				55556F521C4FD33C00419440 /* Views */,
 				551E72051C52680500C366EF /* Prefs */,
 				557906851C656507003DA09F /* Acknowledgments */,
+				55F8E5BB1C658B71009D2F79 /* Helper.swift */,
 			);
 			path = HatebLine;
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 				55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */,
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */,
+				55F8E5BC1C658B71009D2F79 /* Helper.swift in Sources */,
 				552F4A1B1C5C6100006962E9 /* Tag+CoreDataProperties.swift in Sources */,
 				552453731C4E1E9E00F4EAA1 /* WebViewController.swift in Sources */,
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
