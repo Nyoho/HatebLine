@@ -21,7 +21,7 @@ class Helper{
             for tag in set {
                 let space = t.isEqualToAttributedString(NSAttributedString()) ? "" : " "
                 let comma = first ? "" : ","
-                t.appendAttributedString(NSAttributedString(string: comma + space + "\(tag)", attributes: [NSForegroundColorAttributeName: NSColor.secondaryLabelColor(), NSFontAttributeName: NSFont.systemFontOfSize(NSFont.smallSystemFontSize())]))
+                t.appendAttributedString(NSAttributedString(string: comma + space + "\(tag)", attributes: [NSForegroundColorAttributeName: NSColor.headerColor(), NSFontAttributeName: NSFont.systemFontOfSize(NSFont.smallSystemFontSize())]))
                 first = false
             }
         }
