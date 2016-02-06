@@ -1508,6 +1508,10 @@
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="updateFiltering:" target="RuE-us-RLc" id="7yz-47-8H9"/>
+                                    <binding destination="mkN-fw-sMy" name="value" keyPath="values.IncludeNoComment" id="SGa-1H-c6N"/>
+                                </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
                                 <rect key="frame" x="10" y="8" width="16" height="16"/>
@@ -1530,6 +1534,7 @@
                     </connections>
                 </viewController>
                 <customObject id="UJY-6f-Px7" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <userDefaultsController id="mkN-fw-sMy"/>
             </objects>
             <point key="canvasLocation" x="254" y="1780"/>
         </scene>

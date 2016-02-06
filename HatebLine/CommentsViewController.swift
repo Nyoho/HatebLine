@@ -51,7 +51,10 @@ class CommentsViewController: NSViewController {
     }
     
     var items = [Comment]()
+    var regulars = [Comment]()
+    var allRegulars = [Comment]()
     var populars = [Comment]()
+    var allPopulars = [Comment]()
     var eid = ""
     
     @IBOutlet weak var tableView: NSTableView!
@@ -72,7 +75,7 @@ class CommentsViewController: NSViewController {
                 if let json = response.result.value {
                     let comments: Comments? = try? decode(json)
                     if let a = comments?.comments {
-                        self.items.appendContentsOf(a)
+                        self.allRegulars = a
                     }
                     if let e = comments?.eid {
                         self.eid = e
@@ -82,9 +85,9 @@ class CommentsViewController: NSViewController {
                             if let json = response.result.value {
                                 let comments: Comments? = try? decode(json)
                                 if let a = comments?.comments {
-                                    self.items.insertContentsOf(a, at: 0)
-                                    self.populars = a
+                                    self.allPopulars = a
                                 }
+                                self.filter()
                                 self.tableView.reloadData()
                                 self.progressIndicator.stopAnimation(self)
                                 NSAnimationContext.runAnimationGroup({ context in
@@ -97,6 +100,28 @@ class CommentsViewController: NSViewController {
         }
     }
 
+    func filter() {
+        if NSUserDefaults.standardUserDefaults().boolForKey("IncludeNoComment") {
+            populars = allPopulars
+            regulars = allRegulars
+        } else {
+            populars = allPopulars.filter({ (c: Comment) -> Bool in
+                !(c.comment ?? "").isEmpty || !(c.tags ?? []).isEmpty
+            })
+            regulars = allRegulars.filter({ (c: Comment) -> Bool in
+                !(c.comment ?? "").isEmpty || !(c.tags ?? []).isEmpty
+            })
+        }
+        
+        items = populars
+        items.appendContentsOf(regulars)
+    }
+    
+    @IBAction func updateFiltering(sender: AnyObject) {
+        filter()
+        tableView.reloadData()
+    }
+    
     // MARK: - TableView
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
         return items.count
