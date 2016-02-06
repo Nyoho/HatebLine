@@ -356,8 +356,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 //            if let username = bookmark.user?.name {
 //                cell.textField?.stringValue = username
 //            }
-            if let comment = bookmark.comment {
-                cell.commentTextField?.stringValue = comment
+            if let comment = bookmark.commentWithTags {
+                cell.commentTextField?.attributedStringValue = comment
                 cell.commentTextField?.preferredMaxLayoutWidth = size.width - (5+8+3+48)
             }
             if let title = bookmark.page?.title {
