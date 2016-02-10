@@ -770,6 +770,22 @@
                                         <action selector="reload:" target="9rp-fB-EiC" id="7f7-I0-cHB"/>
                                     </connections>
                                 </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="3FA92523-1C82-4D7A-986F-0F0F2232A895" label="Share" paletteLabel="Share" image="NSShareTemplate" id="XRz-PP-1Na">
+                                    <nil key="toolTip"/>
+                                    <size key="minSize" width="42" height="32"/>
+                                    <size key="maxSize" width="82" height="32"/>
+                                    <button key="view" verticalHuggingPriority="750" id="mSJ-wl-hZr">
+                                        <rect key="frame" x="0.0" y="14" width="42" height="32"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <buttonCell key="cell" type="push" bezelStyle="rounded" image="NSShareTemplate" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WPN-lm-2mU">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="showSharingServicePicker:" target="9rp-fB-EiC" id="KfG-wC-L7V"/>
+                                        </connections>
+                                    </button>
+                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
                                 <toolbarItem reference="78m-WC-aMX"/>
@@ -778,6 +794,7 @@
                                 <toolbarItem reference="uZN-ui-dWO"/>
                                 <toolbarItem reference="jHQ-xa-KEq"/>
                                 <toolbarItem reference="sfg-Ze-hyS"/>
+                                <toolbarItem reference="XRz-PP-1Na"/>
                             </defaultToolbarItems>
                         </toolbar>
                         <connections>
@@ -786,6 +803,7 @@
                     </window>
                     <connections>
                         <outlet property="searchField" destination="ZO6-C0-pXG" id="OGb-Na-cp2"/>
+                        <outlet property="shareButton" destination="mSJ-wl-hZr" id="hpi-Rl-i5U"/>
                         <segue destination="Fxg-Ub-YNW" kind="relationship" relationship="window.shadowedContentViewController" id="uIC-bC-DuP"/>
                     </connections>
                 </windowController>
@@ -1609,6 +1627,7 @@
     <resources>
         <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
+        <image name="NSShareTemplate" width="11" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="ewP-el-gjQ"/>

@@ -11,12 +11,14 @@ import Cocoa
 class MainWindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var searchField: NSSearchField!
+    @IBOutlet weak var shareButton: NSButton!
     
     override func windowDidLoad() {
         super.windowDidLoad()
     
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         self.window?.titleVisibility = .Hidden
+        shareButton.sendActionOn(Int(NSEventMask.LeftMouseDownMask.rawValue))
     }
 
     // MARK: - NSWindowDelegate

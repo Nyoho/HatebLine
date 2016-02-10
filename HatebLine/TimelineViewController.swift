@@ -250,6 +250,19 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
     
+    @IBAction func showSharingServicePicker(sender: AnyObject) {
+        if sender.isKindOfClass(NSView) {
+            if let array = bookmarkArrayController.selectedObjects as? [Bookmark] {
+                if array.count > 0 {
+                    if let bookmark = array.first, let title = bookmark.page?.title, let url = NSURL(string: bookmark.page?.url ?? "") {
+                        let sharingServicePicker = NSSharingServicePicker(items: [title, url])
+                        sharingServicePicker.showRelativeToRect(sender.bounds, ofView: sender as! NSView, preferredEdge: NSRectEdge.MinY)
+                    }
+                }
+            }
+        }
+    }
+    
     override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
