@@ -12,6 +12,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var shareButton: NSButton!
+    var tableRowSelected: Bool = true
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -27,6 +28,10 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 //        vc?.refresh()
     }
 
+    func changeTabbarItemsWithState(state: Bool) {
+        self.tableRowSelected = state
+    }
+    
     override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
         guard let identifier = segue.identifier else {
             return
