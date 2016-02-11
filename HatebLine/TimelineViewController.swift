@@ -157,24 +157,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if moc.hasChanges {
                 do {
                     try moc.save()
-                    for bookmark: Bookmark in newBookmarks {
-                        let notification = NSUserNotification()
-                        if let creator = bookmark.user?.name {
-                            notification.title = "\(creator) がブックマークを追加しました"
-                        }
-                        var commentString = ""
-                        if let comment = bookmark.comment {
-                            commentString = comment
-                        }
-                        if let title = bookmark.page?.title, let count = bookmark.page?.count {
-                            let separator = commentString == "" ? "" : " / "
-                            notification.informativeText = "(\(count)) \(commentString)\(separator)\(title)"
-                        }
-
-                        if let url = bookmark.bookmarkUrl {
-                            notification.userInfo = ["bookmarkUrl": url]
-                        }
-                        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+                    if let enabled = NSUserDefaults.standardUserDefaults().valueForKey("enableNotification") as? Bool where enabled {
+                        self.notififyNewObjects(newBookmarks)
                     }
                 } catch {
                     fatalError("Failure to save context: \(error)")
@@ -187,6 +171,28 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     fatalError("Failure to save main context: \(error)")
                 }
             }
+        }
+    }
+
+    func notififyNewObjects(bookmarks: [Bookmark]) {
+        for bookmark: Bookmark in bookmarks {
+            let notification = NSUserNotification()
+            if let creator = bookmark.user?.name {
+                notification.title = "\(creator) がブックマークを追加しました"
+            }
+            var commentString = ""
+            if let comment = bookmark.comment {
+                commentString = comment
+            }
+            if let title = bookmark.page?.title, let count = bookmark.page?.count {
+                let separator = commentString == "" ? "" : " / "
+                notification.informativeText = "(\(count)) \(commentString)\(separator)\(title)"
+            }
+            
+            if let url = bookmark.bookmarkUrl {
+                notification.userInfo = ["bookmarkUrl": url]
+            }
+            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         }
     }
     
