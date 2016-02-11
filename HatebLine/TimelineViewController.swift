@@ -29,7 +29,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         timer = NSTimer(timeInterval: 60, target: self, selector: "updateData", userInfo: nil, repeats: true)
         let runLoop = NSRunLoop.currentRunLoop()
         runLoop.addTimer(timer, forMode: NSRunLoopCommonModes)
-        //tableView.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
     }
     
     func perform() {
@@ -171,7 +170,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                             let separator = commentString == "" ? "" : " / "
                             notification.informativeText = "(\(count)) \(commentString)\(separator)\(title)"
                         }
-                        //                notification.contentImage = NSImage(named: "hoge")
+
                         if let url = bookmark.bookmarkUrl {
                             notification.userInfo = ["bookmarkUrl": url]
                         }
@@ -274,7 +273,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     popoverSegue.anchorTableView = tableView
                 let indexes = tableView.selectedRowIndexes
                 if (indexes.count > 0) {
-                    if let bookmark = bookmarkArrayController.arrangedObjects[indexes.firstIndex] as? Bookmark {
+                    if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.firstIndex] as? Bookmark {
                         let vc = segue.destinationController as? QuickLookWebViewController
                         vc?.representedObject = bookmark.page?.url
                     }
@@ -288,7 +287,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     popoverSegue.anchorTableView = tableView
                     let indexes = tableView.selectedRowIndexes
                     if (indexes.count > 0) {
-                        if let bookmark = bookmarkArrayController.arrangedObjects[indexes.firstIndex] as? Bookmark {
+                        if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.firstIndex] as? Bookmark {
                             let vc = segue.destinationController as? CommentsViewController
                             vc?.representedObject = bookmark.page?.url
                         }
@@ -362,7 +361,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
-        let bookmark = self.bookmarkArrayController.arrangedObjects[row] as! Bookmark
+        guard let objects = self.bookmarkArrayController.arrangedObjects as? [Bookmark] else {
+            return heightOfRow
+        }
+        let bookmark = objects[row]
         if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
             tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
@@ -405,6 +407,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         return true
     }
     
+    func tableViewSelectionDidChange(notification: NSNotification) {
+        if let tv = notification.object as? NSTableView {
+            (view.window?.windowController as? MainWindowController)?.changeTabbarItemsWithState(tv.selectedRow >= 0)
+        }
+    }
 
     
     func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {

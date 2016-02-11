@@ -24,7 +24,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 
     // MARK: - NSWindowDelegate
     func windowDidEndLiveResize(notification: NSNotification) {
-        let vc: TimelineViewController? = self.contentViewController as! TimelineViewController?
+//        let vc: TimelineViewController? = self.contentViewController as! TimelineViewController?
 //        vc?.refresh()
     }
 
