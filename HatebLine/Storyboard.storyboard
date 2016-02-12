@@ -1176,7 +1176,7 @@
         <!--Preference Tab View Controller-->
         <scene sceneID="IhN-XW-nuD">
             <objects>
-                <tabViewController tabStyle="toolbar" id="HxD-mZ-4Sf" userLabel="Preference Tab View Controller" sceneMemberID="viewController">
+                <tabViewController showSeguePresentationStyle="single" tabStyle="toolbar" id="HxD-mZ-4Sf" userLabel="Preference Tab View Controller" sceneMemberID="viewController">
                     <tabViewItems>
                         <tabViewItem identifier="" id="Rkt-NB-i1G"/>
                     </tabViewItems>
