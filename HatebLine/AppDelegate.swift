@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     // MARK: -
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        // Insert code here to initialize your application
+        NSUserDefaults.standardUserDefaults().registerDefaults(["enableNotification" : true])
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
