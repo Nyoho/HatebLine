@@ -431,7 +431,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     if (results.count > 0) {
                         bookmarkArrayController.setSelectedObjects(results)
                         NSAnimationContext.runAnimationGroup({ context in
-                            self.tableView.animator().scrollRowToVisible(self.tableView.selectedRow)
+                            context.allowsImplicitAnimation = true
+                            self.tableView.scrollRowToVisible(self.tableView.selectedRow)
                             }, completionHandler: nil)
                     }
                 } catch {
