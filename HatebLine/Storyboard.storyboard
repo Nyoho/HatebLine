@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10109" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10109"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="10109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="9532"/>
         <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
@@ -1385,15 +1385,15 @@
                         <subviews>
                             <scrollView misplaced="YES" autohidesScrollers="YES" horizontalLineScroll="366" horizontalPageScroll="10" verticalLineScroll="366" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVP-ST-Uq3">
                                 <rect key="frame" x="0.0" y="30" width="450" height="540"/>
-                                <clipView key="contentView" id="cKY-qZ-The">
+                                <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="cKY-qZ-The">
                                     <rect key="frame" x="1" y="1" width="448" height="538"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="364" rowSizeStyle="automatic" viewBased="YES" id="zzz-tt-SJ0">
-                                            <rect key="frame" x="0.0" y="0.0" width="448" height="538"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="448" height="560"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="CommentColumn" width="445" minWidth="40" maxWidth="1000" id="DIQ-FJ-v7q">
@@ -1559,17 +1559,17 @@
                                     <binding destination="mkN-fw-sMy" name="value" keyPath="values.IncludeNoComment" id="SGa-1H-c6N"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
-                                <rect key="frame" x="10" y="8" width="16" height="16"/>
+                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
+                                <rect key="frame" x="209" y="284" width="32" height="32"/>
                             </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="WFZ-ct-ARM" secondAttribute="bottom" constant="8" id="0Fm-LC-1jc"/>
+                            <constraint firstItem="WFZ-ct-ARM" firstAttribute="centerY" secondItem="gfJ-He-968" secondAttribute="centerY" id="1SL-fp-hPM"/>
                             <constraint firstItem="tVP-ST-Uq3" firstAttribute="top" secondItem="gfJ-He-968" secondAttribute="top" constant="8" id="J3Q-uZ-wzs"/>
                             <constraint firstAttribute="bottom" secondItem="uWC-5P-xDx" secondAttribute="bottom" constant="8" id="XvR-QC-HW0"/>
-                            <constraint firstItem="WFZ-ct-ARM" firstAttribute="leading" secondItem="gfJ-He-968" secondAttribute="leading" constant="10" id="YvU-ca-jba"/>
                             <constraint firstItem="tVP-ST-Uq3" firstAttribute="leading" secondItem="gfJ-He-968" secondAttribute="leading" constant="8" id="Z6s-iG-u0F"/>
                             <constraint firstAttribute="trailing" secondItem="uWC-5P-xDx" secondAttribute="trailing" constant="8" id="ewG-6g-0ff"/>
+                            <constraint firstItem="WFZ-ct-ARM" firstAttribute="centerX" secondItem="gfJ-He-968" secondAttribute="centerX" id="k4N-Nc-tuw"/>
                             <constraint firstAttribute="trailing" secondItem="tVP-ST-Uq3" secondAttribute="trailing" constant="8" id="sx0-ip-2Yw"/>
                             <constraint firstItem="uWC-5P-xDx" firstAttribute="top" secondItem="tVP-ST-Uq3" secondAttribute="bottom" constant="8" id="uiB-Vx-5Dr"/>
                         </constraints>
