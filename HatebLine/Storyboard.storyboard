@@ -1393,7 +1393,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="560"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="CommentColumn" width="445" minWidth="40" maxWidth="1000" id="DIQ-FJ-v7q">
@@ -1548,6 +1548,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
+                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
+                                <rect key="frame" x="217" y="8" width="16" height="16"/>
+                            </progressIndicator>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="uWC-5P-xDx">
                                 <rect key="frame" x="298" y="6" width="146" height="18"/>
                                 <buttonCell key="cell" type="check" title="Include no comment" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="0R6-R3-4Kb">
@@ -1559,17 +1562,14 @@
                                     <binding destination="mkN-fw-sMy" name="value" keyPath="values.IncludeNoComment" id="SGa-1H-c6N"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
-                                <rect key="frame" x="209" y="284" width="32" height="32"/>
-                            </progressIndicator>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="WFZ-ct-ARM" firstAttribute="centerY" secondItem="gfJ-He-968" secondAttribute="centerY" id="1SL-fp-hPM"/>
                             <constraint firstItem="tVP-ST-Uq3" firstAttribute="top" secondItem="gfJ-He-968" secondAttribute="top" constant="8" id="J3Q-uZ-wzs"/>
                             <constraint firstAttribute="bottom" secondItem="uWC-5P-xDx" secondAttribute="bottom" constant="8" id="XvR-QC-HW0"/>
                             <constraint firstItem="tVP-ST-Uq3" firstAttribute="leading" secondItem="gfJ-He-968" secondAttribute="leading" constant="8" id="Z6s-iG-u0F"/>
+                            <constraint firstItem="WFZ-ct-ARM" firstAttribute="centerX" secondItem="gfJ-He-968" secondAttribute="centerX" id="Zm2-k6-33c"/>
                             <constraint firstAttribute="trailing" secondItem="uWC-5P-xDx" secondAttribute="trailing" constant="8" id="ewG-6g-0ff"/>
-                            <constraint firstItem="WFZ-ct-ARM" firstAttribute="centerX" secondItem="gfJ-He-968" secondAttribute="centerX" id="k4N-Nc-tuw"/>
+                            <constraint firstAttribute="bottom" secondItem="WFZ-ct-ARM" secondAttribute="bottom" constant="8" id="fbh-MF-p6C"/>
                             <constraint firstAttribute="trailing" secondItem="tVP-ST-Uq3" secondAttribute="trailing" constant="8" id="sx0-ip-2Yw"/>
                             <constraint firstItem="uWC-5P-xDx" firstAttribute="top" secondItem="tVP-ST-Uq3" secondAttribute="bottom" constant="8" id="uiB-Vx-5Dr"/>
                         </constraints>
