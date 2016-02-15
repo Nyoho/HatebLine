@@ -89,10 +89,10 @@ class CommentsViewController: NSViewController {
                                 }
                                 self.filter()
                                 self.tableView.reloadData()
-                                self.progressIndicator.stopAnimation(self)
                                 NSAnimationContext.runAnimationGroup({ context in
                                     context.duration = 0.3
                                     self.progressIndicator.animator().alphaValue = 0
+                                    self.progressIndicator.stopAnimation(self)
                                     }, completionHandler: nil)
                             }
                     }
