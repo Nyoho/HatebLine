@@ -44,6 +44,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     
     func parse(completionHandler completionHandler: (NSArray) -> Void) -> Void {
         if let url = feedUrl {
+            items = NSMutableArray()
             parser = NSXMLParser(contentsOfURL: url)!
             handler = completionHandler
             parser.delegate = self
