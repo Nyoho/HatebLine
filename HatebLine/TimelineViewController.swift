@@ -8,6 +8,7 @@
 
 import Cocoa
 import Alamofire
+import AwesomeCache
 
 class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSUserNotificationCenterDelegate {
 
@@ -16,7 +17,17 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBOutlet var bookmarkArrayController: NSArrayController!
     var bookmarks = NSMutableArray()
     var timer = NSTimer()
-
+    var heightCache: Cache<NSNumber>? = { () -> Cache<NSNumber>? in
+        var cache: Cache<NSNumber>
+        do {
+            cache = try Cache<NSNumber>(name: "heightCache")
+        } catch _ {
+            print("Something went wrong :(")
+            return nil
+        }
+        return cache
+    }()
+    
     lazy var managedObjectContext: NSManagedObjectContext = {
         return (NSApplication.sharedApplication().delegate
             as? AppDelegate)?.managedObjectContext }()!    
@@ -367,10 +378,15 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
-        guard let objects = self.bookmarkArrayController.arrangedObjects as? [Bookmark] else {
+        guard let bookmark = self.bookmarkArrayController.arrangedObjects[row] as? Bookmark else {
             return heightOfRow
         }
-        let bookmark = objects[row]
+        guard let cache = heightCache else {
+            return heightOfRow
+        }
+        if let u = bookmark.bookmarkUrl, let height = cache[u] {
+            return CGFloat(height)
+        }
         if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
             tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
@@ -393,6 +409,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 //            NSAnimationContext.currentContext().duration = 0.0
             heightOfRow = cell.fittingSize.height
 //            NSAnimationContext.endGrouping()
+            if let u = bookmark.bookmarkUrl {
+                cache[u] = NSNumber(float: Float(heightOfRow))
+            }
         }
         return heightOfRow < 48 ? 48 : heightOfRow
     }

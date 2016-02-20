@@ -29,6 +29,8 @@
 		55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B9F1C3A3C880079B118 /* RSSParser.swift */; };
 		5542D74E1C5DB0F40056CA91 /* TablePopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */; };
 		5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */; };
+		554E42541C7830CA00958E84 /* AwesomeCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554E42531C7830CA00958E84 /* AwesomeCache.framework */; };
+		554E42551C7830CA00958E84 /* AwesomeCache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 554E42531C7830CA00958E84 /* AwesomeCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55556F501C4FD33600419440 /* GrowingTextField.swift */; };
 		557906871C656507003DA09F /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 557906861C656507003DA09F /* Acknowledgments.rtf */; };
 		557906891C656525003DA09F /* AcknowledgmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557906881C656525003DA09F /* AcknowledgmentsViewController.swift */; };
@@ -78,6 +80,7 @@
 				55415B9D1C3962970079B118 /* Alamofire.framework in Embed Frameworks */,
 				55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */,
 				55AB0D9A1C63961800132CE0 /* Himotoki.framework in Embed Frameworks */,
+				554E42551C7830CA00958E84 /* AwesomeCache.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +115,7 @@
 		55415B9F1C3A3C880079B118 /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
 		5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePopoverSegue.swift; sourceTree = "<group>"; };
 		5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManyNumberToColorTransformer.swift; sourceTree = "<group>"; };
+		554E42531C7830CA00958E84 /* AwesomeCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AwesomeCache.framework; path = Carthage/Build/Mac/AwesomeCache.framework; sourceTree = "<group>"; };
 		55556F501C4FD33600419440 /* GrowingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextField.swift; sourceTree = "<group>"; };
 		557906861C656507003DA09F /* Acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Acknowledgments.rtf; sourceTree = "<group>"; };
 		557906881C656525003DA09F /* AcknowledgmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgmentsViewController.swift; sourceTree = "<group>"; };
@@ -141,6 +145,7 @@
 				552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */,
 				55415B9A1C39626C0079B118 /* Alamofire.framework in Frameworks */,
 				55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */,
+				554E42541C7830CA00958E84 /* AwesomeCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +263,7 @@
 		55415B9B1C3962780079B118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				554E42531C7830CA00958E84 /* AwesomeCache.framework */,
 				55E079CB1C3D583800A72C05 /* AlamofireImage.framework */,
 				55415B991C39626C0079B118 /* Alamofire.framework */,
 				552453741C4E211B00F4EAA1 /* WebKit.framework */,
