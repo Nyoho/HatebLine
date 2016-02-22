@@ -197,9 +197,13 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
             if let title = bookmark.page?.title, let count = bookmark.page?.count {
                 let separator = commentString == "" ? "" : " / "
-                notification.informativeText = "(\(count)) \(commentString)\(separator)\(title)"
+                var countString = ""
+                if let enabled = NSUserDefaults.standardUserDefaults().valueForKey("includeBookmarkCount") as? Bool where enabled {
+                    countString = "(\(count)) "
+                }
+                notification.informativeText = "\(countString)\(commentString)\(separator)\(title)"
             }
-            
+//            notification.contentImage = bookmark.user?.profileImage
             if let url = bookmark.bookmarkUrl {
                 notification.userInfo = ["bookmarkUrl": url]
             }

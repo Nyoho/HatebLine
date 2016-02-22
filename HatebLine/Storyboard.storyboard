@@ -1298,6 +1298,16 @@
                                     <binding destination="Nzo-y4-bAO" name="value" keyPath="defaults.values.enableNotification" id="7qH-Rz-LFo"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="02M-Cv-0VJ">
+                                <rect key="frame" x="82" y="55" width="259" height="18"/>
+                                <buttonCell key="cell" type="check" title="Include Bookmark Count in Notification" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="paB-h3-wC4">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <binding destination="Nzo-y4-bAO" name="value" keyPath="defaults.values.includeBookmarkCount" id="78m-2J-AcC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="hHd-4e-vrb" firstAttribute="leading" secondItem="hUM-P7-jbp" secondAttribute="trailing" constant="10" id="cVY-aL-Ga5"/>
