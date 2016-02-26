@@ -68,6 +68,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     let fetchedBookmarks = try moc.executeFetchRequest(request) as! [Bookmark]
                     if (fetchedBookmarks.count > 0) { // exists, so update
                         let b = fetchedBookmarks.first! as Bookmark
+                        if let cache = self.heightCache, let u = b.bookmarkUrl {
+                            cache[u] = nil
+                        }
                         if let count = Int(item["count"]! as! String) {
                             if count != b.page?.count {
                                 b.page?.count = count
