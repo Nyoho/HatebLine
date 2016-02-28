@@ -385,7 +385,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
-        guard let bookmark = self.bookmarkArrayController.arrangedObjects[row] as? Bookmark else {
+        guard let array = bookmarkArrayController.arrangedObjects as? NSArray, let bookmark = array[row] as? Bookmark else {
             return heightOfRow
         }
         guard let cache = heightCache else {
