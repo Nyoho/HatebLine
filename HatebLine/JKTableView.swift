@@ -30,13 +30,13 @@ class JKTableView: NSTableView {
             scrollRowToVisible(row)
             setNeedsDisplay()
         case 37: // l
-            delegate()?.performSelector("openInBrowser:", withObject: self)
+            delegate()?.performSelector(#selector(TimelineViewController.openInBrowser(_:)), withObject: self)
         case 49: // space
-            delegate()?.performSelector("quickLookPreviewItems:", withObject: self)
+            delegate()?.performSelector(#selector(NSResponder.quickLookPreviewItems(_:)), withObject: self)
         case 53: // esc
             selectRowIndexes(NSIndexSet(), byExtendingSelection: false)
         case 8: // c
-            delegate()?.performSelector("showComments:", withObject: self)            
+            delegate()?.performSelector(#selector(TimelineViewController.showComments(_:)), withObject: self)
         default:
             super.keyDown(theEvent)
             break
