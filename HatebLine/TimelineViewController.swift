@@ -34,8 +34,20 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     var sortDescriptors:[NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
     
+    func favoriteUrl() -> NSURL? {
+        guard let hatenaID = NSUserDefaults.standardUserDefaults().valueForKey("hatenaID") as? String else {
+            performSegueWithIdentifier("ShowAccountSetting", sender: self)
+            return nil
+        }
+        guard let url = NSURL(string: "http://b.hatena.ne.jp/\(hatenaID)/favorite.rss") else { return nil }
+        //NSURL(string: "file:///tmp/favorite.rss")
+        return url
+    }
+
     func setup() {
-        parser = RSSParser()
+        //QuestionBookmarkManager.sharedManager().setConsumerKey("ov8uPcRifosmAg==", consumerSecret: "/AMycQm6+fNeEFtvl1GPMWsKEFI=")
+        guard let url = favoriteUrl() else { return }
+        parser = RSSParser(url: url)
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         timer = NSTimer(timeInterval: 60, target: self, selector: "updateData", userInfo: nil, repeats: true)
         let runLoop = NSRunLoop.currentRunLoop()
@@ -43,11 +55,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
     
     func perform() {
-        guard let hatenaID = NSUserDefaults.standardUserDefaults().valueForKey("hatenaID") as? String else {
-            performSegueWithIdentifier("ShowAccountSetting", sender: self)
-            return
-        }
-        parser.userName = hatenaID
+        guard let url = favoriteUrl() else { return }
+        parser.feedUrl = url
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
             self.parser.parse(completionHandler: { items in
                 self.mergeBookmarks(items)

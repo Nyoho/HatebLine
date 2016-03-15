@@ -9,16 +9,7 @@
 import Cocoa
 
 class RSSParser: NSObject, NSXMLParserDelegate {
-    var feedUrl: NSURL? {
-        if let n = userName {
-            return NSURL(string:"http://b.hatena.ne.jp/\(n)/favorite.rss")!
-//            return NSURL(string:"file:///tmp/favorite.rss")!
-        } else {
-            return nil
-        }
-    }
-
-    var userName: String?
+    var feedUrl: NSURL
     
     var currentElementName : String!
     
@@ -38,18 +29,16 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     var tag = NSMutableString()
     var tags: [String] = []
     
-    override init() {
-        super.init()
+    init(url: NSURL) {
+        self.feedUrl = url
     }
     
     func parse(completionHandler completionHandler: (NSArray) -> Void) -> Void {
-        if let url = feedUrl {
-            items = NSMutableArray()
-            parser = NSXMLParser(contentsOfURL: url)!
-            handler = completionHandler
-            parser.delegate = self
-            parser.parse()
-        }
+        items = NSMutableArray()
+        parser = NSXMLParser(contentsOfURL: feedUrl)!
+        handler = completionHandler
+        parser.delegate = self
+        parser.parse()
     }
     
     func parserDidStartDocument(parser: NSXMLParser) {
