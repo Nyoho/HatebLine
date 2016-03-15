@@ -49,7 +49,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         guard let url = favoriteUrl() else { return }
         parser = RSSParser(url: url)
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-        timer = NSTimer(timeInterval: 60, target: self, selector: "updateData", userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 60, target: self, selector: #selector(TimelineViewController.updateData), userInfo: nil, repeats: true)
         let runLoop = NSRunLoop.currentRunLoop()
         runLoop.addTimer(timer, forMode: NSRunLoopCommonModes)
     }
