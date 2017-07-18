@@ -13,19 +13,19 @@ import CoreData
 class Tag: NSManagedObject {
     
     // Insert code here to add functionality to your managed object subclass
-    class func name(name: String, inManagedObjectContext moc: NSManagedObjectContext) -> Tag {
+    class func name(_ name: String, inManagedObjectContext moc: NSManagedObjectContext) -> Tag {
         let tag: Tag
         do {
-            let request = NSFetchRequest(entityName: "Tag")
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
             request.predicate = NSPredicate(format: "name == %@", name)
-            let results = try moc.executeFetchRequest(request) as! [Tag]
+            let results = try moc.fetch(request) as! [Tag]
             
             if (results.count > 0) {
                 // Exist tag
                 tag = results[0]
             } else {
                 // Create tag
-                tag = NSEntityDescription.insertNewObjectForEntityForName("Tag", inManagedObjectContext: moc) as! Tag
+                tag = NSEntityDescription.insertNewObject(forEntityName: "Tag", into: moc) as! Tag
                 tag.name = name
             }
         } catch {

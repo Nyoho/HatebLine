@@ -8,12 +8,12 @@
 
 import Cocoa
 
-class RSSParser: NSObject, NSXMLParserDelegate {
-    var feedUrl: NSURL
+class RSSParser: NSObject, XMLParserDelegate {
+    var feedUrl: URL
     
     var currentElementName : String!
     
-    var parser = NSXMLParser()
+    var parser = XMLParser()
     var elements = NSMutableDictionary()
     var element = NSString()
     var title = NSMutableString()
@@ -24,32 +24,34 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     var count = NSMutableString()
     var comment = NSMutableString()
     var bookmarkUrl = String()
-    var items = NSMutableArray()
-    var handler: (NSArray) -> Void = { a in }
+    var items = [[String: Any]]()
+    var handler: (([[String: Any]]) -> Void)?
     var tag = NSMutableString()
     var tags: [String] = []
     
-    init(url: NSURL) {
+    init(url: URL) {
         self.feedUrl = url
     }
     
-    func parse(completionHandler completionHandler: (NSArray) -> Void) -> Void {
-        items = NSMutableArray()
-        parser = NSXMLParser(contentsOfURL: feedUrl)!
+    func parse(completionHandler: @escaping ([[String: Any]]) -> Void) -> Void {
+        items = [[String: Any]]()
+        parser = XMLParser(contentsOf: feedUrl)!
         handler = completionHandler
         parser.delegate = self
         parser.parse()
     }
     
-    func parserDidStartDocument(parser: NSXMLParser) {
+    func parserDidStartDocument(_ parser: XMLParser) {
     }
     
-    func parserDidEndDocument(parser: NSXMLParser) {
-        handler(items)
+    func parserDidEndDocument(_ parser: XMLParser) {
+        if let handler = handler {
+            handler(items)
+        }
     }
 
-    func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        element = elementName
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        element = elementName as NSString
         
         if (elementName == "item") {
             bookmarkUrl = ""
@@ -69,30 +71,30 @@ class RSSParser: NSObject, NSXMLParserDelegate {
         }
     }
 
-    func parser(parser: NSXMLParser, foundCharacters string: String){        
+    func parser(_ parser: XMLParser, foundCharacters string: String){        
         switch element {
         case "title":
-            title.appendString(string)
+            title.append(string)
         case "dc:date":
-            date.appendString(string)
+            date.append(string)
         case "link":
-            link.appendString(string)
+            link.append(string)
         case "dc:creator":
-            creator.appendString(string)
+            creator.append(string)
         case "content:encoded":
-            content.appendString(string)
+            content.append(string)
         case "hatena:bookmarkcount":
-            count.appendString(string)
+            count.append(string)
         case "description":
-            comment.appendString(string)
+            comment.append(string)
         case "dc:subject":
-            tag.appendString(string)
+            tag.append(string)
         default:
             break
         }
     }
 
-    func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         switch elementName {
         case "item":
             //print("[\(condenseWhitespace(count)) users] title: \(condenseWhitespace(title)) / date: \(condenseWhitespace(date)) / user: \(condenseWhitespace(creator)).")
@@ -107,7 +109,7 @@ class RSSParser: NSObject, NSXMLParserDelegate {
                 elements["comment"] = condenseWhitespace(comment)
                 elements["tags"] = tags
             }
-            items.addObject(elements)
+            items.append(elements as! [String: Any])
         case "dc:subject":
             tags.append(condenseWhitespace(tag) as String)
             tag = NSMutableString()
@@ -117,8 +119,8 @@ class RSSParser: NSObject, NSXMLParserDelegate {
     }
     
     
-    func condenseWhitespace(string: NSMutableString) -> NSString {
-        return string.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    func condenseWhitespace(_ string: NSMutableString) -> NSString {
+        return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
     }
 
 }

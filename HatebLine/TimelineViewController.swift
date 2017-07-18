@@ -9,14 +9,16 @@
 import Cocoa
 import Alamofire
 import AwesomeCache
+import Question
 
 class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSUserNotificationCenterDelegate {
 
     var parser: RSSParser!
+    var parserOfMyFeed: RSSParser!
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet var bookmarkArrayController: NSArrayController!
     var bookmarks = NSMutableArray()
-    var timer = NSTimer()
+    var timer = Timer()
     var heightCache: Cache<NSNumber>? = { () -> Cache<NSNumber>? in
         var cache: Cache<NSNumber>
         do {
@@ -29,18 +31,27 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }()
     
     lazy var managedObjectContext: NSManagedObjectContext = {
-        return (NSApplication.sharedApplication().delegate
+        return (NSApplication.shared().delegate
             as? AppDelegate)?.managedObjectContext }()!    
     
     var sortDescriptors:[NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
     
-    func favoriteUrl() -> NSURL? {
-        guard let hatenaID = NSUserDefaults.standardUserDefaults().valueForKey("hatenaID") as? String else {
-            performSegueWithIdentifier("ShowAccountSetting", sender: self)
+    func favoriteUrl() -> URL? {
+        guard let hatenaID = UserDefaults.standard.value(forKey: "hatenaID") as? String else {
+            performSegue(withIdentifier: "ShowAccountSetting", sender: self)
             return nil
         }
-        guard let url = NSURL(string: "http://b.hatena.ne.jp/\(hatenaID)/favorite.rss") else { return nil }
+        guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/favorite.rss") else { return nil }
         //NSURL(string: "file:///tmp/favorite.rss")
+        return url
+    }
+
+    func myFeedUrl() -> URL? {
+        guard let hatenaID = UserDefaults.standard.value(forKey: "hatenaID") as? String else {
+            performSegue(withIdentifier: "ShowAccountSetting", sender: self)
+            return nil
+        }
+        guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/rss") else { return nil }
         return url
     }
 
@@ -48,41 +59,52 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         //QuestionBookmarkManager.sharedManager().setConsumerKey("ov8uPcRifosmAg==", consumerSecret: "/AMycQm6+fNeEFtvl1GPMWsKEFI=")
         guard let url = favoriteUrl() else { return }
         parser = RSSParser(url: url)
-        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
-        timer = NSTimer(timeInterval: 60, target: self, selector: #selector(TimelineViewController.updateData), userInfo: nil, repeats: true)
-        let runLoop = NSRunLoop.currentRunLoop()
-        runLoop.addTimer(timer, forMode: NSRunLoopCommonModes)
+        guard let myUrl = myFeedUrl() else { return }
+        parserOfMyFeed = RSSParser(url: myUrl)
+        NSUserNotificationCenter.default.delegate = self
+        timer = Timer(timeInterval: 60, target: self, selector: #selector(TimelineViewController.updateData), userInfo: nil, repeats: true)
+        let runLoop = RunLoop.current
+        runLoop.add(timer, forMode: RunLoopMode.commonModes)
     }
     
     func perform() {
         guard let url = favoriteUrl() else { return }
         parser.feedUrl = url
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
             self.parser.parse(completionHandler: { items in
                 self.mergeBookmarks(items)
+
+                guard let url = self.myFeedUrl() else { return }
+                self.parserOfMyFeed.feedUrl = url
+                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
+                    self.parserOfMyFeed.parse(completionHandler: { items in
+                        self.mergeBookmarks(items)
+                    })
+                })
+                
             })
         })
     }
     
-    func mergeBookmarks(items: NSArray) {
-        let moc = NSManagedObjectContext(concurrencyType: .PrivateQueueConcurrencyType)
-        moc.parentContext = managedObjectContext
-        moc.performBlock {
+    func mergeBookmarks(_ items: [[String: Any]]) {
+        let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
+        moc.parent = managedObjectContext
+        moc.perform {
             var newBookmarks = [Bookmark]()
-            for item in items.reverse() {
-                let bookmarkUrl = item["bookmarkUrl"] as! NSString
-                let request = NSFetchRequest(entityName: "Bookmark")
+            for item in items.reversed() {
+                guard let bookmarkUrl = item["bookmarkUrl"] as? String else { continue }
+                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
                 request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
                 do {
-                    let fetchedBookmarks = try moc.executeFetchRequest(request) as! [Bookmark]
+                    let fetchedBookmarks = try moc.fetch(request) as! [Bookmark]
                     if (fetchedBookmarks.count > 0) { // exists, so update
                         let b = fetchedBookmarks.first! as Bookmark
                         if let cache = self.heightCache, let u = b.bookmarkUrl {
                             cache[u] = nil
                         }
-                        if let count = Int(item["count"]! as! String) {
-                            if count != b.page?.count {
-                                b.page?.count = count
+                        if let count = item["count"] as? Int, let bcount = b.page?.count {
+                            if count != Int(bcount) {
+                                b.page?.count = NSNumber(value: count)
                             }
                         }
                         if let comment = item["comment"] as? String {
@@ -91,50 +113,51 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                             }
                         }
                         let tags = NSMutableSet()
-                        for tagString in item["tags"] as! [String] {
+                        guard let tagsArray = item["tags"] as? [String] else { continue }
+                        for tagString in tagsArray {
                             let tag = Tag.name(tagString, inManagedObjectContext: moc)
-                            tags.addObject(tag)
+                            tags.add(tag)
                         }
                         b.setValue(tags, forKey: "tags")
                     } else { // does not exsist, so create
-                        let bmEntity = NSEntityDescription.entityForName("Bookmark", inManagedObjectContext: moc)
-                        let bookmark = NSManagedObject(entity: bmEntity!, insertIntoManagedObjectContext: moc) as! Bookmark
+                        let bmEntity = NSEntityDescription.entity(forEntityName: "Bookmark", in: moc)
+                        let bookmark = NSManagedObject(entity: bmEntity!, insertInto: moc) as! Bookmark
                         var user: NSManagedObject?
                         var page: NSManagedObject?
                         
-                        let usersFetch = NSFetchRequest(entityName: "User")
-                        if let creator = item["creator"]! {
-                            usersFetch.predicate = NSPredicate(format: "name == %@", creator as! String)
+                        let usersFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+                        if let creator = item["creator"] as? String {
+                            usersFetch.predicate = NSPredicate(format: "name == %@", creator)
                             do {
-                                let fetchedUsers = try moc.executeFetchRequest(usersFetch) as! [User]
+                                let fetchedUsers = try moc.fetch(usersFetch) as! [User]
                                 if (fetchedUsers.count > 0) {
                                     user = fetchedUsers.first!
                                 } else {
-                                    let entity = NSEntityDescription.entityForName("User", inManagedObjectContext: moc)
-                                    user = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
-                                    user?.setValue(creator as! String, forKey: "name")
+                                    let entity = NSEntityDescription.entity(forEntityName: "User", in: moc)
+                                    user = NSManagedObject(entity: entity!, insertInto: moc)
+                                    user?.setValue(creator, forKey: "name")
                                 }
                             } catch {
                                 fatalError("Failed to fetch users: \(error)")
                             }
                         }
-                        let pagesFetch = NSFetchRequest(entityName: "Page")
-                        if let url = item["link"]! {
-                            pagesFetch.predicate = NSPredicate(format: "url == %@", url as! String)
+                        let pagesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Page")
+                        if let url = item["link"] as? String {
+                            pagesFetch.predicate = NSPredicate(format: "url == %@", url)
                             do {
-                                let fetchedPages = try moc.executeFetchRequest(pagesFetch) as! [Page]
+                                let fetchedPages = try moc.fetch(pagesFetch) as! [Page]
                                 if (fetchedPages.count > 0) {
                                     page = fetchedPages.first!
                                 } else {
-                                    let entity = NSEntityDescription.entityForName("Page", inManagedObjectContext: moc)
-                                    page = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: moc)
-                                    page?.setValue(url as! String, forKey: "url")
-                                    if let b = item["title"]! { page?.setValue(b, forKey: "title") }
-                                    if let b = item["count"]! {
-                                        page?.setValue(Int(b as! String), forKey: "count")
+                                    let entity = NSEntityDescription.entity(forEntityName: "Page", in: moc)
+                                    page = NSManagedObject(entity: entity!, insertInto: moc)
+                                    page?.setValue(url, forKey: "url")
+                                    if let b = item["title"] as? String { page?.setValue(b, forKey: "title") }
+                                    if let b = item["count"] as? Int {
+                                        page?.setValue(b, forKey: "count")
                                     }
-                                    if let b = item["content"]! {
-                                        if b as! String != "" {
+                                    if let b = item["content"] as? String {
+                                        if b != "" {
                                             page?.setValue(b, forKey: "content")
                                         }
                                     }
@@ -146,27 +169,27 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         
                         bookmark.setValue(user, forKey: "user")
                         bookmark.setValue(page, forKey: "page")
-                        if let b = item["bookmarkUrl"]! {
+                        if let b = item["bookmarkUrl"] as? String {
                             bookmark.setValue(b, forKey: "bookmarkUrl")
                         }
-                        if let b = item["date"]! {
-                            let dateFormatter = NSDateFormatter()
-                            let locale = NSLocale(localeIdentifier: "en_US_POSIX")
+                        if let b = item["date"] as? String {
+                            let dateFormatter = DateFormatter()
+                            let locale = Locale(identifier: "en_US_POSIX")
                             dateFormatter.locale = locale
                             dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssZ"
-                            dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 0)
-                            let date = dateFormatter.dateFromString(b as! String)
+                            dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                            let date = dateFormatter.date(from: b)
                             bookmark.setValue(date, forKey: "date")
                         }
-                        if let b = item["comment"]! {
-                            if b as! String != "" {
+                        if let b = item["comment"] as? String {
+                            if b != "" {
                                 bookmark.setValue(b, forKey: "comment")
                             }
                         }
                         let tags = NSMutableSet()
                         for tagString in item["tags"] as! [String] {
                             let tag = Tag.name(tagString, inManagedObjectContext: moc)
-                            tags.addObject(tag)
+                            tags.add(tag)
                         }
                         bookmark.setValue(tags, forKey: "tags")
                         
@@ -180,14 +203,16 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if moc.hasChanges {
                 do {
                     try moc.save()
-                    if let enabled = NSUserDefaults.standardUserDefaults().valueForKey("enableNotification") as? Bool where enabled {
+                    self.managedObjectContext.performAndWait {
+                    if let enabled = UserDefaults.standard.value(forKey: "enableNotification") as? Bool, enabled {
                         self.notififyNewObjects(newBookmarks)
+                    }
                     }
                 } catch {
                     fatalError("Failure to save context: \(error)")
                 }
             }
-            self.managedObjectContext.performBlock {
+            self.managedObjectContext.perform {
                 do {
                     try self.managedObjectContext.save()
                 } catch {
@@ -197,7 +222,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
 
-    func notififyNewObjects(bookmarks: [Bookmark]) {
+    func notififyNewObjects(_ bookmarks: [Bookmark]) {
         for bookmark: Bookmark in bookmarks {
             let notification = NSUserNotification()
             if let creator = bookmark.user?.name {
@@ -210,7 +235,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if let title = bookmark.page?.title, let count = bookmark.page?.count {
                 let separator = commentString == "" ? "" : " / "
                 var countString = ""
-                if let enabled = NSUserDefaults.standardUserDefaults().valueForKey("includeBookmarkCount") as? Bool where enabled {
+                if let enabled = UserDefaults.standard.value(forKey: "includeBookmarkCount") as? Bool, enabled {
                     countString = "(\(count)) "
                 }
                 notification.informativeText = "\(countString)\(commentString)\(separator)\(title)"
@@ -219,50 +244,50 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if let url = bookmark.bookmarkUrl {
                 notification.userInfo = ["bookmarkUrl": url]
             }
-            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+            NSUserNotificationCenter.default.deliver(notification)
         }
     }
     
-    @IBAction func reload(sender: AnyObject) {
+    @IBAction func reload(_ sender: AnyObject) {
         perform()
     }
     
-    @IBAction func openInBrowser(sender: AnyObject) {
+    @IBAction func openInBrowser(_ sender: AnyObject) {
         let array = bookmarkArrayController.selectedObjects as! [Bookmark]
         if array.count > 0 {
-            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = NSURL(string: urlString) {
-                NSWorkspace.sharedWorkspace().openURL(url)
+            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: urlString) {
+                NSWorkspace.shared().open(url)
             }
         }
     }
 
-    @IBAction override func quickLookPreviewItems(sender: AnyObject?) {
+    @IBAction override func quickLookPreviewItems(_ sender: Any?) {
         let indexes = tableView.selectedRowIndexes
         if (indexes.count > 0) {
-            performSegueWithIdentifier("QuickLook", sender: self)
+            performSegue(withIdentifier: "QuickLook", sender: self)
         }
     }
 
-    @IBAction func openBookmarkPageInBrowser(sender: AnyObject) {
+    @IBAction func openBookmarkPageInBrowser(_ sender: AnyObject) {
         let array = bookmarkArrayController.selectedObjects as! [Bookmark]
         if array.count > 0 {
-            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = NSURL(string: "http://b.hatena.ne.jp/entry/\(urlString)") {
-                NSWorkspace.sharedWorkspace().openURL(url)
+            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: "http://b.hatena.ne.jp/entry/\(urlString)") {
+                NSWorkspace.shared().open(url)
             }
         }
     }
 
-    @IBAction func openUserPageInBrowser(sender: AnyObject) {
+    @IBAction func openUserPageInBrowser(_ sender: AnyObject) {
         let array = bookmarkArrayController.selectedObjects as! [Bookmark]
         if array.count > 0 {
-            if let bookmark = array.first, let name = bookmark.user?.name, let url = NSURL(string: "http://b.hatena.ne.jp/\(name)/") {
-                NSWorkspace.sharedWorkspace().openURL(url)
+            if let bookmark = array.first, let name = bookmark.user?.name, let url = URL(string: "http://b.hatena.ne.jp/\(name)/") {
+                NSWorkspace.shared().open(url)
             }
         }
     }
 
-    @IBAction func updateSearchString(sender: AnyObject) {
-        if sender.isKindOfClass(NSSearchField) {
+    @IBAction func updateSearchString(_ sender: AnyObject) {
+        if sender is NSSearchField {
             let field = sender as! NSSearchField
             let s = field.stringValue
             bookmarkArrayController.filterPredicate = { () -> NSPredicate? in
@@ -275,52 +300,52 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
     
-    @IBAction func showComments(sender: AnyObject) {
+    @IBAction func showComments(_ sender: AnyObject) {
         let indexes = tableView.selectedRowIndexes
         if (indexes.count > 0) {
-            performSegueWithIdentifier("ShowComments", sender: self)
+            performSegue(withIdentifier: "ShowComments", sender: self)
         }
     }
     
-    @IBAction func showSharingServicePicker(sender: AnyObject) {
-        if sender.isKindOfClass(NSView) {
+    @IBAction func showSharingServicePicker(_ sender: AnyObject) {
+        if sender is NSView {
             if let array = bookmarkArrayController.selectedObjects as? [Bookmark] {
                 if array.count > 0 {
-                    if let bookmark = array.first, let title = bookmark.page?.title, let url = NSURL(string: bookmark.page?.url ?? "") {
+                    if let bookmark = array.first, let title = bookmark.page?.title, let url = URL(string: bookmark.page?.url ?? "") {
                         let sharingServicePicker = NSSharingServicePicker(items: [title, url])
-                        sharingServicePicker.showRelativeToRect(sender.bounds, ofView: sender as! NSView, preferredEdge: NSRectEdge.MinY)
+                        sharingServicePicker.show(relativeTo: sender.bounds, of: sender as! NSView, preferredEdge: NSRectEdge.minY)
                     }
                 }
             }
         }
     }
     
-    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "QuickLook":
-                if segue.isKindOfClass(TablePopoverSegue) {
+                if segue.isKind(of: TablePopoverSegue.self) {
                     let popoverSegue = segue as! TablePopoverSegue
-                    popoverSegue.preferredEdge = NSRectEdge.MaxX
-                    popoverSegue.popoverBehavior = .Transient
+                    popoverSegue.preferredEdge = NSRectEdge.maxX
+                    popoverSegue.popoverBehavior = .transient
                     popoverSegue.anchorTableView = tableView
                 let indexes = tableView.selectedRowIndexes
                 if (indexes.count > 0) {
-                    if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.firstIndex] as? Bookmark {
+                    if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.first!] as? Bookmark {
                         let vc = segue.destinationController as? QuickLookWebViewController
                         vc?.representedObject = bookmark.page?.url
                     }
                 }
                 }
             case "ShowComments":
-                if segue.isKindOfClass(TablePopoverSegue) {
+                if segue.isKind(of: TablePopoverSegue.self) {
                     let popoverSegue = segue as! TablePopoverSegue
-                    popoverSegue.preferredEdge = NSRectEdge.MaxX
-                    popoverSegue.popoverBehavior = .Transient
+                    popoverSegue.preferredEdge = NSRectEdge.maxX
+                    popoverSegue.popoverBehavior = .transient
                     popoverSegue.anchorTableView = tableView
                     let indexes = tableView.selectedRowIndexes
                     if (indexes.count > 0) {
-                        if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.firstIndex] as? Bookmark {
+                        if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.first!] as? Bookmark {
                             let vc = segue.destinationController as? CommentsViewController
                             vc?.representedObject = bookmark.page?.url
                         }
@@ -392,7 +417,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
    */
     
-    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
         guard let array = bookmarkArrayController.arrangedObjects as? NSArray, let bookmark = array[row] as? Bookmark else {
             return heightOfRow
@@ -403,8 +428,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         if let u = bookmark.bookmarkUrl, let height = cache[u] {
             return CGFloat(height)
         }
-        if let cell = tableView.makeViewWithIdentifier("Bookmark", owner: self) as! BookmarkCellView? {
-            tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: row))
+        if let cell = tableView.make(withIdentifier: "Bookmark", owner: self) as! BookmarkCellView? {
+            tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
 //            if let username = bookmark.user?.name {
 //                cell.textField?.stringValue = username
@@ -426,43 +451,43 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             heightOfRow = cell.fittingSize.height
 //            NSAnimationContext.endGrouping()
             if let u = bookmark.bookmarkUrl {
-                cache[u] = NSNumber(float: Float(heightOfRow))
+                cache[u] = NSNumber(value: Float(heightOfRow) as Float)
             }
         }
         return heightOfRow < 48 ? 48 : heightOfRow
     }
 
-    func tableView(tableView: NSTableView, willDisplayCell cell: AnyObject, forTableColumn tableColumn: NSTableColumn?, row: Int) {
+    func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for tableColumn: NSTableColumn?, row: Int) {
         if let c = cell as? NSTableRowView {
-        if (tableView.selectedRowIndexes.containsIndex(row)) {
-            c.backgroundColor = NSColor.yellowColor()
+        if (tableView.selectedRowIndexes.contains(row)) {
+            c.backgroundColor = NSColor.yellow
         } else {
-            c.backgroundColor = NSColor.whiteColor()
+            c.backgroundColor = NSColor.white
         }
 //        c.drawsBackground = true
         }
     }
 
-    func tableView(tableView: NSTableView, shouldTypeSelectForEvent event: NSEvent, withCurrentSearchString searchString: String?) -> Bool {
+    func tableView(_ tableView: NSTableView, shouldTypeSelectFor event: NSEvent, withCurrentSearch searchString: String?) -> Bool {
         print(event.keyCode)
         return true
     }
     
-    func tableViewSelectionDidChange(notification: NSNotification) {
+    func tableViewSelectionDidChange(_ notification: Notification) {
         if let tv = notification.object as? NSTableView {
             (view.window?.windowController as? MainWindowController)?.changeTabbarItemsWithState(tv.selectedRow >= 0)
         }
     }
 
     
-    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification) {
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
         if let info = notification.userInfo as? [String:String] {
             if let bookmarkUrl = info["bookmarkUrl"] {
                 let moc = managedObjectContext
                 do {
-                    let request = NSFetchRequest(entityName: "Bookmark")
+                    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
                     request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
-                    let results = try moc.executeFetchRequest(request) as! [Bookmark]
+                    let results = try moc.fetch(request) as! [Bookmark]
                     if (results.count > 0) {
                         bookmarkArrayController.setSelectedObjects(results)
                         NSAnimationContext.runAnimationGroup({ context in

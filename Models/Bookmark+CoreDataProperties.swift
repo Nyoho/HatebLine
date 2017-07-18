@@ -16,7 +16,7 @@ extension Bookmark {
 
     @NSManaged var bookmarkUrl: String?
     @NSManaged var comment: String?
-    @NSManaged var date: NSDate?
+    @NSManaged var date: Date?
     @NSManaged var page: Page?
     @NSManaged var user: User?
     @NSManaged var tags: NSSet?

@@ -15,16 +15,16 @@ class CommentsViewController: NSViewController {
     struct Comment: Decodable {
         let userName: String
         let comment: String?
-        let date: NSDate?
+        let date: Date?
         let tags: [String]?
 
-        static func decode(e: Extractor) throws -> Comment {
-            let dateFormatter = NSDateFormatter()
-            let locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        static func decode(_ e: Extractor) throws -> Comment {
+            let dateFormatter = DateFormatter()
+            let locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.locale = locale
             dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-            dateFormatter.timeZone = NSTimeZone(abbreviation: "JST")
-            let date = dateFormatter.dateFromString(try e <| "timestamp")!
+            dateFormatter.timeZone = TimeZone(abbreviation: "JST")
+            let date = dateFormatter.date(from: try e <| "timestamp")!
             return try Comment(
                 userName: e <| "user",
                 comment: e <|? "comment",
@@ -38,7 +38,7 @@ class CommentsViewController: NSViewController {
         let comments: [Comment]
         let eid: String
         let entryUrl: String
-        static func decode(e: Extractor) throws -> Comments {
+        static func decode(_ e: Extractor) throws -> Comments {
             var eid = ""
             do {
                 eid = try e <| "eid"
@@ -46,7 +46,11 @@ class CommentsViewController: NSViewController {
                 let eidNum: Int = try e <| "eid"
                 eid = String(eidNum)
             }
-            return try build(self.init)(e <|| ["bookmarks"], eid, e <| "entry_url")
+            return try Comments(
+                comments: e <|| ["bookmarks"],
+                eid: eid,
+                entryUrl: e <| "entry_url"
+            )
         }
     }
     
@@ -68,22 +72,22 @@ class CommentsViewController: NSViewController {
         }
     }
 
-    func parse(url: String) {
+    func parse(_ url: String) {
         progressIndicator.startAnimation(self)
-        Alamofire.request(.GET, "http://b.hatena.ne.jp/entry/json/", parameters: ["url": url])
+        Alamofire.request("http://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: JSONEncoding.default)
             .responseJSON { response in
                 if let json = response.result.value {
-                    let comments: Comments? = try? decode(json)
+                    let comments = try? Comments.decodeValue(json)
                     if let a = comments?.comments {
                         self.allRegulars = a
                     }
                     if let e = comments?.eid {
                         self.eid = e
                     }
-                    Alamofire.request(.GET, "http://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
+                    Alamofire.request("http://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
                         .responseJSON { response in
                             if let json = response.result.value {
-                                let comments: Comments? = try? decode(json)
+                                let comments: Comments? = try? decodeValue(json)
                                 if let a = comments?.comments {
                                     self.allPopulars = a
                                 }
@@ -101,7 +105,7 @@ class CommentsViewController: NSViewController {
     }
 
     func filter() {
-        if NSUserDefaults.standardUserDefaults().boolForKey("IncludeNoComment") {
+        if UserDefaults.standard.bool(forKey: "IncludeNoComment") {
             populars = allPopulars
             regulars = allRegulars
         } else {
@@ -114,22 +118,22 @@ class CommentsViewController: NSViewController {
         }
         
         items = populars
-        items.appendContentsOf(regulars)
+        items.append(contentsOf: regulars)
     }
     
-    @IBAction func updateFiltering(sender: AnyObject) {
+    @IBAction func updateFiltering(_ sender: AnyObject) {
         filter()
         tableView.reloadData()
     }
     
     // MARK: - TableView
-    func numberOfRowsInTableView(tableView: NSTableView) -> Int {
+    func numberOfRowsInTableView(_ tableView: NSTableView) -> Int {
         return items.count
     }
     
-    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if tableColumn?.identifier == "CommentColumn" {
-            if let cell = tableView.makeViewWithIdentifier("CommentColumn", owner: self) as? CommentCellView,
+            if let cell = tableView.make(withIdentifier: "CommentColumn", owner: self) as? CommentCellView,
                 let item = items[row] as Comment? {
                     cell.isPopular = row < populars.count
                     cell.needsDisplay = true
@@ -139,11 +143,11 @@ class CommentsViewController: NSViewController {
                     }
                     cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
 
-                    let twoLetters = (item.userName as NSString).substringToIndex(2)
-                    Alamofire.request(.GET, "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(item.userName)/profile.gif")
+                    let twoLetters = (item.userName as NSString).substring(to: 2)
+                    Alamofire.request("http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(item.userName)/profile.gif")
                         .responseImage { response in
                             if let image = response.result.value {
-                                dispatch_async(dispatch_get_main_queue(), {
+                                DispatchQueue.main.async(execute: {
 //                                cell.profileImageView.wantsLayer = true
 //                                cell.profileImageView?.layer?.cornerRadius = 5.0
                                     cell.profileImageView?.image = image
@@ -153,15 +157,15 @@ class CommentsViewController: NSViewController {
                     
                     // star
                     if let date = item.date {
-                        let formatter = NSDateFormatter()
+                        let formatter = DateFormatter()
                         formatter.dateFormat = "yyyyMMdd"
-                        let dateString = formatter.stringFromDate(date)
+                        let dateString = formatter.string(from: date)
                         let permalink = "http://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
-                        if let encodedString = permalink.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet()) {
-                            Alamofire.request(.GET, "http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
+                        if let encodedString = permalink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+                            Alamofire.request("http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
                                 .responseImage { response in
                                     if let image = response.result.value {
-                                        dispatch_async(dispatch_get_main_queue(), {
+                                        DispatchQueue.main.async(execute: {
                                             cell.starImageView?.image = image
                                         })
                                     }
@@ -174,11 +178,11 @@ class CommentsViewController: NSViewController {
         return nil
     }
 
-    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
         let item = items[row] as Comment
-        if let cell = tableView.makeViewWithIdentifier("CommentColumn", owner: self) as? CommentCellView {
-            tableView.noteHeightOfRowsWithIndexesChanged(NSIndexSet(index: row))
+        if let cell = tableView.make(withIdentifier: "CommentColumn", owner: self) as? CommentCellView {
+            tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
             cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
             cell.commentField?.preferredMaxLayoutWidth = size.width - (8+8+8+42)

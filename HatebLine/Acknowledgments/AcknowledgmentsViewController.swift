@@ -18,8 +18,8 @@ class AcknowledgmentsViewController: NSViewController {
     }
 
     func loadRTF() {
-        if let path = NSBundle.mainBundle().pathForResource("Acknowledgments", ofType: "rtf") {
-            textView.readRTFDFromFile(path)
+        if let path = Bundle.main.path(forResource: "Acknowledgments", ofType: "rtf") {
+            textView.readRTFD(fromFile: path)
         }
     }
 }

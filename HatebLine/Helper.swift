@@ -11,17 +11,17 @@ import Cocoa
 
 class Helper{
 
-    static func commentWithTags(comment: String?, tags: [String]?) -> NSAttributedString? {
+    static func commentWithTags(_ comment: String?, tags: [String]?) -> NSAttributedString? {
         let t = NSMutableAttributedString()
         if let s = comment {
-            t.appendAttributedString(NSAttributedString(string: s))
+            t.append(NSAttributedString(string: s))
         }
         if let set = tags {
             var first = true
             for tag in set {
-                let space = t.isEqualToAttributedString(NSAttributedString()) ? "" : " "
+                let space = t.isEqual(to: NSAttributedString()) ? "" : " "
                 let comma = first ? "" : ","
-                t.appendAttributedString(NSAttributedString(string: comma + space + "\(tag)", attributes: [NSForegroundColorAttributeName: NSColor.headerColor(), NSFontAttributeName: NSFont.systemFontOfSize(NSFont.smallSystemFontSize())]))
+                t.append(NSAttributedString(string: comma + space + "\(tag)", attributes: [NSForegroundColorAttributeName: NSColor.headerColor, NSFontAttributeName: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize())]))
                 first = false
             }
         }
