@@ -15,8 +15,8 @@ class BookmarkCellView: NSTableCellView {
     @IBOutlet weak var countTextField: NSTextField!
     @IBOutlet weak var dateTextField: NSTextField!
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }
@@ -25,7 +25,7 @@ class BookmarkCellView: NSTableCellView {
     override var backgroundStyle: NSBackgroundStyle {
         set {
             if let rowView = self.superview as? NSTableRowView {
-                super.backgroundStyle = rowView.selected ? NSBackgroundStyle.Dark : NSBackgroundStyle.Light
+                super.backgroundStyle = rowView.isSelected ? NSBackgroundStyle.dark : NSBackgroundStyle.light
             } else {
                 super.backgroundStyle = newValue
             }
@@ -37,14 +37,14 @@ class BookmarkCellView: NSTableCellView {
     }
     
     func updateSelectionHighlight() {
-        if ( self.backgroundStyle == NSBackgroundStyle.Dark ) {
-            self.textField?.textColor = NSColor.whiteColor()
-            self.commentTextField?.textColor = NSColor.whiteColor()
-            self.titleTextField?.textColor = NSColor.controlColor()
+        if ( self.backgroundStyle == NSBackgroundStyle.dark ) {
+            self.textField?.textColor = NSColor.white
+            self.commentTextField?.textColor = NSColor.white
+            self.titleTextField?.textColor = NSColor.controlColor
         } else {
-            self.textField?.textColor = NSColor.blackColor()
-            self.commentTextField?.textColor = NSColor.blackColor()
-            self.titleTextField?.textColor = NSColor.selectedMenuItemColor()
+            self.textField?.textColor = NSColor.black
+            self.commentTextField?.textColor = NSColor.black
+            self.titleTextField?.textColor = NSColor.selectedMenuItemColor
         }
     }
 

@@ -16,29 +16,29 @@ class QuickLookWebViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let urlString = representedObject as? String, let url = NSURL(string: urlString) {
-            let request = NSURLRequest(URL: url)
-            webView.mainFrame.loadRequest(request)
+        if let urlString = representedObject as? String, let url = URL(string: urlString) {
+            let request = URLRequest(url: url)
+            webView.mainFrame.load(request)
 
-            let nc = NSNotificationCenter.defaultCenter()
-            nc.addObserver(self, selector: "progressNotification:", name: WebViewProgressStartedNotification, object: nil)
-            nc.addObserver(self, selector: "progressNotification:", name: WebViewProgressEstimateChangedNotification, object: nil)
-            nc.addObserver(self, selector: "progressNotification:", name: WebViewProgressFinishedNotification, object: nil)
+            let nc = NotificationCenter.default
+            nc.addObserver(self, selector: #selector(QuickLookWebViewController.progressNotification(_:)), name: NSNotification.Name.WebViewProgressStarted, object: nil)
+            nc.addObserver(self, selector: #selector(QuickLookWebViewController.progressNotification(_:)), name: NSNotification.Name.WebViewProgressEstimateChanged, object: nil)
+            nc.addObserver(self, selector: #selector(QuickLookWebViewController.progressNotification(_:)), name: NSNotification.Name.WebViewProgressFinished, object: nil)
         }
     }
     
     override func viewWillDisappear() {
-        NSNotificationCenter.defaultCenter().removeObserver(self)
+        NotificationCenter.default.removeObserver(self)
     }
     
-    func progressNotification(notification: NSNotification) {
+    func progressNotification(_ notification: Notification) {
         switch notification.name {
-        case WebViewProgressStartedNotification:
+        case NSNotification.Name.WebViewProgressStarted:
             progressIndicator.startAnimation(self)
             self.progressIndicator.alphaValue = 1
-        case WebViewProgressEstimateChangedNotification:
+        case NSNotification.Name.WebViewProgressEstimateChanged:
             progressIndicator.doubleValue = webView.estimatedProgress
-        case WebViewProgressFinishedNotification:
+        case NSNotification.Name.WebViewProgressFinished:
             progressIndicator.stopAnimation(self)
             NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 1.0

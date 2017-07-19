@@ -10,35 +10,35 @@ import Cocoa
 
 class JKTableView: NSTableView {
 
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
 
         // Drawing code here.
     }
     
-    override func keyDown(theEvent: NSEvent) {
+    override func keyDown(with theEvent: NSEvent) {
         var row = selectedRow
         switch theEvent.keyCode {
         case 38: // j
             row = row + 1
-            selectRowIndexes(NSIndexSet(index: row), byExtendingSelection: false)
+            selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
             scrollRowToVisible(row)
             setNeedsDisplay()
         case 40: // k
             row = row - 1
-            selectRowIndexes(NSIndexSet(index: row), byExtendingSelection: false)
+            selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
             scrollRowToVisible(row)
             setNeedsDisplay()
         case 37: // l
-            delegate()?.performSelector(#selector(TimelineViewController.openInBrowser(_:)), withObject: self)
+            delegate?.perform(#selector(TimelineViewController.openInBrowser(_:)), with: self)
         case 49: // space
-            delegate()?.performSelector(#selector(NSResponder.quickLookPreviewItems(_:)), withObject: self)
+            delegate?.perform(#selector(NSResponder.quickLookPreviewItems(_:)), with: self)
         case 53: // esc
-            selectRowIndexes(NSIndexSet(), byExtendingSelection: false)
+            selectRowIndexes(IndexSet(), byExtendingSelection: false)
         case 8: // c
-            delegate()?.performSelector(#selector(TimelineViewController.showComments(_:)), withObject: self)
+            delegate?.perform(#selector(TimelineViewController.showComments(_:)), with: self)
         default:
-            super.keyDown(theEvent)
+            super.keyDown(with: theEvent)
             break
         }
     }

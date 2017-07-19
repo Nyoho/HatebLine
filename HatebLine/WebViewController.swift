@@ -20,11 +20,11 @@ class WebViewController: NSViewController {
 
     override func viewWillAppear() {
         if let content = self.representedObject as! NSString? {
-            webView.mainFrame.loadHTMLString(content as String, baseURL: NSURL())
+            webView.mainFrame.loadHTMLString(content as String, baseURL: URL(string: ""))
         }
     }
     
-    @IBAction func dismiss(sender: AnyObject) {
+    @IBAction func dismiss(_ sender: AnyObject) {
         self.dismissViewController(self)
     }
 }

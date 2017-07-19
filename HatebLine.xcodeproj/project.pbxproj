@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55048C471C8DDC17000A3A64 /* Question.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55048C461C8DDC17000A3A64 /* Question.framework */; };
+		55048C481C8DDC17000A3A64 /* Question.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55048C461C8DDC17000A3A64 /* Question.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		551BC62B1C9C7250003F0AF1 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */; };
+		551BC62C1C9C7250003F0AF1 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		551BC62E1C9C7279003F0AF1 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */; };
+		551BC62F1C9C7279003F0AF1 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		551DB4FB1C42CD0300B198A8 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4F91C42CD0300B198A8 /* Bookmark.swift */; };
 		551DB5011C4374F400B198A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4FE1C4374F400B198A8 /* User.swift */; };
 		551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */; };
@@ -76,10 +82,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				551BC62C1C9C7250003F0AF1 /* KeychainAccess.framework in Embed Frameworks */,
 				55415B9D1C3962970079B118 /* Alamofire.framework in Embed Frameworks */,
 				55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */,
 				55AB0D9A1C63961800132CE0 /* Himotoki.framework in Embed Frameworks */,
+				55048C481C8DDC17000A3A64 /* Question.framework in Embed Frameworks */,
 				554E42551C7830CA00958E84 /* AwesomeCache.framework in Embed Frameworks */,
+				551BC62F1C9C7279003F0AF1 /* OAuthSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +96,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		55048C461C8DDC17000A3A64 /* Question.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Question.framework; path = Carthage/Build/Mac/Question.framework; sourceTree = "<group>"; };
+		551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/Mac/KeychainAccess.framework; sourceTree = "<group>"; };
+		551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/Mac/OAuthSwift.framework; sourceTree = "<group>"; };
 		551DB4F91C42CD0300B198A8 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookmark.swift; path = Models/Bookmark.swift; sourceTree = "<group>"; };
 		551DB4FE1C4374F400B198A8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Models/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -140,10 +152,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551BC62B1C9C7250003F0AF1 /* KeychainAccess.framework in Frameworks */,
+				55048C471C8DDC17000A3A64 /* Question.framework in Frameworks */,
 				552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */,
 				55415B9A1C39626C0079B118 /* Alamofire.framework in Frameworks */,
 				55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */,
 				554E42541C7830CA00958E84 /* AwesomeCache.framework in Frameworks */,
+				551BC62E1C9C7279003F0AF1 /* OAuthSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +275,9 @@
 		55415B9B1C3962780079B118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */,
+				551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */,
+				55048C461C8DDC17000A3A64 /* Question.framework */,
 				554E42531C7830CA00958E84 /* AwesomeCache.framework */,
 				55E079CB1C3D583800A72C05 /* AlamofireImage.framework */,
 				55415B991C39626C0079B118 /* Alamofire.framework */,
@@ -358,13 +376,16 @@
 				TargetAttributes = {
 					55415B691C3961F90079B118 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 					};
 					55415B7B1C3961F90079B118 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = 55415B691C3961F90079B118;
 					};
 					55415B861C3961F90079B118 = {
 						CreatedOnToolsVersion = 7.2;
+						LastSwiftMigration = 0820;
 						TestTargetID = 55415B691C3961F90079B118;
 					};
 				};
@@ -522,7 +543,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -560,7 +581,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 			};
@@ -577,8 +598,10 @@
 				);
 				INFOPLIST_FILE = HatebLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -593,8 +616,10 @@
 				);
 				INFOPLIST_FILE = HatebLine/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -611,6 +636,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HatebLine.app/Contents/MacOS/HatebLine";
 			};
 			name = Debug;
@@ -628,6 +654,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HatebLine.app/Contents/MacOS/HatebLine";
 			};
 			name = Release;
@@ -640,6 +667,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HatebLine;
 				USES_XCTRUNNER = YES;
 			};
@@ -653,6 +681,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HatebLine;
 				USES_XCTRUNNER = YES;
 			};

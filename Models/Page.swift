@@ -24,31 +24,31 @@ class Page: NSManagedObject {
         if let image = self.__favicon {
             return image
         } else {
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
             do {
-                let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?</cite>(?:.*?<img src=\"(http.*?entryimage.*?)\".*?)?<p>(.*?)</p>", options: [.CaseInsensitive])
+                let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?</cite>(?:.*?<img src=\"(http.*?entryimage.*?)\".*?)?<p>(.*?)</p>", options: [.caseInsensitive])
                 
-                let matches = regex.matchesInString(str as String, options: [], range: NSMakeRange(0, str.characters.count))
+                let matches = regex.matches(in: str as String, options: [], range: NSMakeRange(0, str.characters.count))
                 if let match = matches.first {
                     var r: NSRange
-                    r = match.rangeAtIndex(2)
+                    r = match.rangeAt(2)
                     if r.length != 0 {
-                        self.entryImageUrl = (str as NSString).substringWithRange(r)
-                        if let url = self.entryImageUrl, let u = NSURL(string: url) {
-                            self.__entryImage = NSImage(contentsOfURL: u)
+                        self.entryImageUrl = (str as NSString).substring(with: r)
+                        if let url = self.entryImageUrl, let u = URL(string: url) {
+                            self.__entryImage = NSImage(contentsOf: u)
                         }
                     }
-                    r = match.rangeAtIndex(3)
+                    r = match.rangeAt(3)
                     if r.length != 0 {
-                        self.willChangeValueForKey("summary")
-                        self.__summary = (str as NSString).substringWithRange(r)
-                        self.didChangeValueForKey("summary")
+                        self.willChangeValue(forKey: "summary")
+                        self.__summary = (str as NSString).substring(with: r)
+                        self.didChangeValue(forKey: "summary")
                     }
-                    let faviconUrl = (str as NSString).substringWithRange(match.rangeAtIndex(1))
-                    if let u = NSURL(string: faviconUrl) {
-                        self.willChangeValueForKey("favicon")
-                        self.__favicon = NSImage(contentsOfURL: u)
-                        self.didChangeValueForKey("favicon")
+                    let faviconUrl = (str as NSString).substring(with: match.rangeAt(1))
+                    if let u = URL(string: faviconUrl) {
+                        self.willChangeValue(forKey: "favicon")
+                        self.__favicon = NSImage(contentsOf: u)
+                        self.didChangeValue(forKey: "favicon")
                     }
                 }
             } catch let error {
@@ -72,7 +72,7 @@ class Page: NSManagedObject {
     
     var countString: String? {
         if let n = count {
-            return n.integerValue > 1 ? "\(n) users" : "\(n) user"
+            return n.intValue > 1 ? "\(n) users" : "\(n) user"
         } else {
             return ""
         }
@@ -82,6 +82,6 @@ class Page: NSManagedObject {
         guard let n = count else {
             return false
         }
-        return n.integerValue > 5 ? true : false
+        return n.intValue > 5 ? true : false
     }
 }
