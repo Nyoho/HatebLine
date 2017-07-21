@@ -74,7 +74,7 @@ class CommentsViewController: NSViewController {
 
     func parse(_ url: String) {
         progressIndicator.startAnimation(self)
-        Alamofire.request("http://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: JSONEncoding.default)
+        Alamofire.request("http://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
             .responseJSON { response in
                 if let json = response.result.value {
                     let comments = try? Comments.decodeValue(json)
