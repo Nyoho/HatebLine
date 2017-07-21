@@ -102,9 +102,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         if let cache = self.heightCache, let u = b.bookmarkUrl {
                             cache[u] = nil
                         }
-                        if let count = item["count"] as? Int, let bcount = b.page?.count {
-                            if count != Int(bcount) {
-                                b.page?.count = NSNumber(value: count)
+                        if let count = item["count"] as? String, let bcount = b.page?.count {
+                            if let n = Int(count), n != Int(bcount) {
+                                b.page?.count = NSNumber(value: n)
                             }
                         }
                         if let comment = item["comment"] as? String {
@@ -153,8 +153,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                                     page = NSManagedObject(entity: entity!, insertInto: moc)
                                     page?.setValue(url, forKey: "url")
                                     if let b = item["title"] as? String { page?.setValue(b, forKey: "title") }
-                                    if let b = item["count"] as? Int {
-                                        page?.setValue(b, forKey: "count")
+                                    if let b = item["count"] as? String {
+                                        if let n = Int(b) { page?.setValue(n, forKey: "count") }
                                     }
                                     if let b = item["content"] as? String {
                                         if b != "" {
