@@ -16,5 +16,9 @@ class Bookmark: NSManagedObject {
         let stringTags = tags?.flatMap { ($0 as! Tag).name ?? "" }
         return Helper.commentWithTags(comment, tags: stringTags)
     }
+    
+    var timeAgo: String? {
+        return self.date?.timeAgo
+    }
 
 }

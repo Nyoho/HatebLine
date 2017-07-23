@@ -892,6 +892,9 @@
                                                                                         <color key="textColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
+                                                                                    <connections>
+                                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.timeAgo" id="4bd-ge-rJh"/>
+                                                                                    </connections>
                                                                                 </textField>
                                                                             </endViews>
                                                                             <constraints>
@@ -908,7 +911,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <textField verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
-                                                                            <rect key="frame" x="-2" y="102" width="398" height="51"/>
+                                                                            <rect key="frame" x="-2" y="102" width="409" height="51"/>
                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" allowsEditingTextAttributes="YES" id="QoV-rO-qPS">
                                                                                 <font key="font" metaFont="system"/>
                                                                                 <string key="title">Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
@@ -920,7 +923,7 @@
                                                                             </connections>
                                                                         </textField>
                                                                         <stackView orientation="horizontal" alignment="top" spacing="4" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Pb-C2-47g" userLabel="Title Stack View">
-                                                                            <rect key="frame" x="0.0" y="48" width="385" height="51"/>
+                                                                            <rect key="frame" x="0.0" y="48" width="405" height="51"/>
                                                                             <beginningViews>
                                                                                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lsI-Ug-kRn" userLabel="Favicon Image View">
                                                                                     <rect key="frame" x="0.0" y="51" width="0.0" height="0.0"/>
@@ -934,7 +937,7 @@
                                                                                     </connections>
                                                                                 </imageView>
                                                                                 <textField verticalHuggingPriority="750" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
-                                                                                    <rect key="frame" x="2" y="0.0" width="385" height="51"/>
+                                                                                    <rect key="frame" x="2" y="0.0" width="405" height="51"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="DnH-3B-zF7">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
@@ -960,7 +963,7 @@
                                                                             </customSpacing>
                                                                         </stackView>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-P8-ETC">
-                                                                            <rect key="frame" x="-2" y="31" width="50" height="14"/>
+                                                                            <rect key="frame" x="-2" y="31" width="409" height="14"/>
                                                                             <textFieldCell key="cell" controlSize="small" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" alignment="left" title="32 users" id="cSL-C8-QlI">
                                                                                 <font key="font" metaFont="smallSystem"/>
                                                                                 <color key="textColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>

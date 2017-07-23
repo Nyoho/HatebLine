@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9525" systemVersion="14F1605" minimumToolsVersion="Automatic">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16F73" minimumToolsVersion="Xcode 7.3" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Bookmark" representedClassName=".Bookmark" syncable="YES">
         <attribute name="bookmarkUrl" attributeType="String" indexed="YES" syncable="YES"/>
         <attribute name="comment" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="page" maxCount="1" deletionRule="Nullify" destinationEntity="Page" inverseName="bookmarks" inverseEntity="Page" syncable="YES"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="bookmarks" inverseEntity="Tag" syncable="YES"/>
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="bookmarks" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Page" representedClassName=".Page" syncable="YES">
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="count" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="count" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="url" attributeType="String" indexed="YES" syncable="YES"/>
         <relationship name="bookmarks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Bookmark" inverseName="page" inverseEntity="Bookmark" syncable="YES"/>
@@ -25,8 +25,8 @@
     </entity>
     <elements>
         <element name="Bookmark" positionX="-261" positionY="-85" width="128" height="135"/>
-        <element name="Page" positionX="-261" positionY="138" width="128" height="118"/>
-        <element name="User" positionX="-54" positionY="18" width="128" height="75"/>
-        <element name="Tag" positionX="-153" positionY="63" width="128" height="75"/>
+        <element name="Page" positionX="-2" positionY="-189" width="128" height="118"/>
+        <element name="Tag" positionX="-27" positionY="-39" width="128" height="75"/>
+        <element name="User" positionX="-45" positionY="96" width="128" height="75"/>
     </elements>
 </model>
