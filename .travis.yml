@@ -3,6 +3,5 @@ osx_image: xcode8.3
 
 before_install:
 - brew update
-- brew install carthage
 - carthage update --platform Mac
 
