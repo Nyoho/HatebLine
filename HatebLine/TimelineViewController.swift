@@ -38,7 +38,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     func favoriteUrl() -> URL? {
         guard let hatenaID = UserDefaults.standard.value(forKey: "hatenaID") as? String else {
-            performSegue(withIdentifier: "ShowAccountSetting", sender: self)
+            performSegueShowAccountSetting()
             return nil
         }
         guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/favorite.rss") else { return nil }
@@ -48,7 +48,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     func myFeedUrl() -> URL? {
         guard let hatenaID = UserDefaults.standard.value(forKey: "hatenaID") as? String else {
-            performSegue(withIdentifier: "ShowAccountSetting", sender: self)
+            performSegueShowAccountSetting()
             return nil
         }
         guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/rss") else { return nil }
@@ -264,7 +264,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBAction override func quickLookPreviewItems(_ sender: Any?) {
         let indexes = tableView.selectedRowIndexes
         if (indexes.count > 0) {
-            performSegue(withIdentifier: "QuickLook", sender: self)
+            performSegueQuickLook()
         }
     }
 
@@ -303,7 +303,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBAction func showComments(_ sender: AnyObject) {
         let indexes = tableView.selectedRowIndexes
         if (indexes.count > 0) {
-            performSegue(withIdentifier: "ShowComments", sender: self)
+            performSegueShowComments()
         }
     }
     
@@ -321,9 +321,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
+        if let identifierString = segue.identifier,
+           let identifier = SegueIdentifier.init(rawValue: identifierString) {
             switch identifier {
-            case "QuickLook":
+            case .QuickLook:
                 if segue.isKind(of: TablePopoverSegue.self) {
                     let popoverSegue = segue as! TablePopoverSegue
                     popoverSegue.preferredEdge = NSRectEdge.maxX
@@ -337,7 +338,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     }
                 }
                 }
-            case "ShowComments":
+            case .ShowComments:
                 if segue.isKind(of: TablePopoverSegue.self) {
                     let popoverSegue = segue as! TablePopoverSegue
                     popoverSegue.preferredEdge = NSRectEdge.maxX
@@ -351,9 +352,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         }
                     }
                 }
-            case "ShowAccountSetting":
-                break
-            default:
+            case .ShowAccountSetting:
                 break
             }
             
@@ -503,4 +502,26 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
 
+    // MARK: - performSegueHelper
+    enum SegueIdentifier: String {
+        case ShowAccountSetting
+        case QuickLook
+        case ShowComments
+    }
+
+    func performSegueHelper(identifier: SegueIdentifier) {
+        performSegue(withIdentifier: identifier.rawValue, sender: self)
+    }
+
+    func performSegueShowAccountSetting() {
+        performSegueHelper(identifier: .ShowAccountSetting)
+    }
+
+    func performSegueQuickLook() {
+        performSegueHelper(identifier: .QuickLook)
+    }
+
+    func performSegueShowComments() {
+        performSegueHelper(identifier: .ShowComments)
+    }
 }
