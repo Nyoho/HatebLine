@@ -322,9 +322,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let identifierString = segue.identifier,
-           let identifier = SegueIdentifier.init(rawValue: identifierString) {
+           let identifier = SegueIdentifier.init(rawValue: identifierString) { // TODO: 変換に失敗したときはログにだすべき
             switch identifier {
-            case .QuickLook:
+            case .quickLook:
                 if segue.isKind(of: TablePopoverSegue.self) {
                     let popoverSegue = segue as! TablePopoverSegue
                     popoverSegue.preferredEdge = NSRectEdge.maxX
@@ -338,7 +338,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     }
                 }
                 }
-            case .ShowComments:
+            case .showComments:
                 if segue.isKind(of: TablePopoverSegue.self) {
                     let popoverSegue = segue as! TablePopoverSegue
                     popoverSegue.preferredEdge = NSRectEdge.maxX
@@ -352,7 +352,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         }
                     }
                 }
-            case .ShowAccountSetting:
+            case .showAccountSetting:
                 break
             }
             
@@ -504,9 +504,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     // MARK: - performSegueHelper
     enum SegueIdentifier: String {
-        case ShowAccountSetting
-        case QuickLook
-        case ShowComments
+        case showAccountSetting = "ShowAccountSetting"
+        case quickLook = "QuickLook"
+        case showComments = "ShowComments"
     }
 
     func performSegueHelper(identifier: SegueIdentifier) {
@@ -514,14 +514,14 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     func performSegueShowAccountSetting() {
-        performSegueHelper(identifier: .ShowAccountSetting)
+        performSegueHelper(identifier: .showAccountSetting)
     }
 
     func performSegueQuickLook() {
-        performSegueHelper(identifier: .QuickLook)
+        performSegueHelper(identifier: .quickLook)
     }
 
     func performSegueShowComments() {
-        performSegueHelper(identifier: .ShowComments)
+        performSegueHelper(identifier: .showComments)
     }
 }
