@@ -29,13 +29,13 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
         return cache
     }()
-    
+
     lazy var managedObjectContext: NSManagedObjectContext = {
         return (NSApplication.shared().delegate
-            as? AppDelegate)?.managedObjectContext }()!    
-    
-    var sortDescriptors:[NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
-    
+            as? AppDelegate)?.managedObjectContext }()!
+
+    var sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
+
     func favoriteUrl() -> URL? {
         guard let hatenaID = UserDefaults.standard.value(forKey: "hatenaID") as? String else {
             performSegueShowAccountSetting()
@@ -66,7 +66,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         let runLoop = RunLoop.current
         runLoop.add(timer, forMode: RunLoopMode.commonModes)
     }
-    
+
     func perform() {
         guard let url = favoriteUrl() else { return }
         parser.feedUrl = url
@@ -81,11 +81,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         self.mergeBookmarks(items)
                     })
                 })
-                
+
             })
         })
     }
-    
+
     func mergeBookmarks(_ items: [[String: Any]]) {
         let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         moc.parent = managedObjectContext
@@ -124,7 +124,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         let bookmark = NSManagedObject(entity: bmEntity!, insertInto: moc) as! Bookmark
                         var user: NSManagedObject?
                         var page: NSManagedObject?
-                        
+
                         let usersFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
                         if let creator = item["creator"] as? String {
                             usersFetch.predicate = NSPredicate(format: "name == %@", creator)
@@ -166,7 +166,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                                 fatalError("Failed to fetch pages: \(error)")
                             }
                         }
-                        
+
                         bookmark.setValue(user, forKey: "user")
                         bookmark.setValue(page, forKey: "page")
                         if let b = item["bookmarkUrl"] as? String {
@@ -192,13 +192,13 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                             tags.add(tag)
                         }
                         bookmark.setValue(tags, forKey: "tags")
-                        
+
                         newBookmarks.append(bookmark)
                     }
                 } catch {
                     fatalError("Failed to fetch bookmarks: \(error)")
                 }
-                
+
             }
             if moc.hasChanges {
                 do {
@@ -247,11 +247,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             NSUserNotificationCenter.default.deliver(notification)
         }
     }
-    
+
     @IBAction func reload(_ sender: AnyObject) {
         perform()
     }
-    
+
     @IBAction func openInBrowser(_ sender: AnyObject) {
         let array = bookmarkArrayController.selectedObjects as! [Bookmark]
         if array.count > 0 {
@@ -299,14 +299,14 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }()
         }
     }
-    
+
     @IBAction func showComments(_ sender: AnyObject) {
         let indexes = tableView.selectedRowIndexes
         if (indexes.count > 0) {
             performSegueShowComments()
         }
     }
-    
+
     @IBAction func showSharingServicePicker(_ sender: AnyObject) {
         if sender is NSView {
             if let array = bookmarkArrayController.selectedObjects as? [Bookmark] {
@@ -319,7 +319,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
         }
     }
-    
+
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         if let identifierString = segue.identifier,
            let identifier = SegueIdentifier.init(rawValue: identifierString) { // TODO: 変換に失敗したときはログにだすべき
@@ -355,10 +355,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             case .showAccountSetting:
                 break
             }
-            
+
         }
     }
-    
+
     func refresh() {
         tableView.reloadData()
     }
@@ -366,14 +366,14 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     func updateData() {
         reload(self)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         setup()
         perform()
     }
-    
+
 /*
     // MARK: - TableView
     func numberOfRowsInTableView(tableView: NSTableView) -> Int {
@@ -415,7 +415,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         return nil
     }
    */
-    
+
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
         guard let array = bookmarkArrayController.arrangedObjects as? NSArray, let bookmark = array[row] as? Bookmark else {
@@ -429,7 +429,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
         if let cell = tableView.make(withIdentifier: "Bookmark", owner: self) as! BookmarkCellView? {
             tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
-            let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
+            let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
 //            if let username = bookmark.user?.name {
 //                cell.textField?.stringValue = username
 //            }
@@ -471,14 +471,13 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         print(event.keyCode)
         return true
     }
-    
+
     func tableViewSelectionDidChange(_ notification: Notification) {
         if let tv = notification.object as? NSTableView {
             (view.window?.windowController as? MainWindowController)?.changeTabbarItemsWithState(tv.selectedRow >= 0)
         }
     }
 
-    
     func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
         if let info = notification.userInfo as? [String:String] {
             if let bookmarkUrl = info["bookmarkUrl"] {

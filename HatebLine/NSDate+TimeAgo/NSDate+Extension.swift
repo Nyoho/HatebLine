@@ -33,7 +33,7 @@ func NSDateTimeAgoLocalizedStrings(_ key: String) -> String {
 }
 
 extension Date {
-    
+
     // shows 1 or two letter abbreviation for units.
     // does not include 'ago' text ... just {value}{unit-abbreviation}
     // does not include interim summary options such as 'Just now'
@@ -105,7 +105,7 @@ extension Date {
         if components.day! > 0 {
             if components.day! < 2 {
                 return NSDateTimeAgoLocalizedStrings("Yesterday")
-            } else  {
+            } else {
                 return stringFromFormat("%%d %@days ago", withValue: components.day!)
             }
         }
@@ -113,7 +113,7 @@ extension Date {
         if components.hour! > 0 {
             if components.hour! < 2 {
                 return NSDateTimeAgoLocalizedStrings("An hour ago")
-            } else  {
+            } else {
                 return stringFromFormat("%%d %@hours ago", withValue: components.hour!)
             }
         }
@@ -133,7 +133,7 @@ extension Date {
                 return stringFromFormat("%%d %@seconds ago", withValue: components.second!)
             }
         }
-        
+
         return ""
     }
 
@@ -146,12 +146,12 @@ extension Date {
         let localeFormat = String(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
         return String(format: NSDateTimeAgoLocalizedStrings(localeFormat), value)
     }
-    
+
     fileprivate func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String {
         guard let localeCode = Locale.preferredLanguages.first else {
             return ""
         }
-        
+
         // Russian (ru) and Ukrainian (uk)
         if localeCode == "ru" || localeCode == "uk" {
             let XY = Int(floor(value)) % 100
@@ -169,9 +169,8 @@ extension Date {
                 return "__"
             }
         }
-        
+
         return ""
     }
-    
-}
 
+}

@@ -14,8 +14,8 @@ import Cocoa
 class User: NSManagedObject {
 
 // Insert code here to add functionality to your managed object subclass
-    var __profileImage: NSImage? = nil
-    
+    var __profileImage: NSImage?
+
     var profileImage: NSImage? {
         if let image = self.__profileImage {
             return image

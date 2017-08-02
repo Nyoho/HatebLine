@@ -16,7 +16,7 @@ class Page: NSManagedObject {
     var __favicon: NSImage?
     var __summary: String?
     var __entryImage: NSImage?
-    
+
     var favicon: NSImage? {
         guard let str = content else {
             return nil
@@ -27,7 +27,7 @@ class Page: NSManagedObject {
         DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
             do {
                 let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?</cite>(?:.*?<img src=\"(http.*?entryimage.*?)\".*?)?<p>(.*?)</p>", options: [.caseInsensitive])
-                
+
                 let matches = regex.matches(in: str as String, options: [], range: NSMakeRange(0, str.characters.count))
                 if let match = matches.first {
                     var r: NSRange
@@ -59,17 +59,16 @@ class Page: NSManagedObject {
         return nil
     }
 
-    
     var summary: String? {
         return __summary
     }
-    
-    var entryImageUrl: String? = nil
-    
+
+    var entryImageUrl: String?
+
     var entryImage: NSImage? {
         return __entryImage
     }
-    
+
     var countString: String? {
         if let n = count {
             return n.intValue > 1 ? "\(n) users" : "\(n) user"
@@ -77,7 +76,7 @@ class Page: NSManagedObject {
             return ""
         }
     }
-    
+
     var manyBookmarked: Bool {
         guard let n = count else {
             return false

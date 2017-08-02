@@ -33,7 +33,7 @@ class CommentsViewController: NSViewController {
             )
         }
     }
-    
+
     struct Comments: Decodable {
         let comments: [Comment]
         let eid: String
@@ -53,17 +53,17 @@ class CommentsViewController: NSViewController {
             )
         }
     }
-    
+
     var items = [Comment]()
     var regulars = [Comment]()
     var allRegulars = [Comment]()
     var populars = [Comment]()
     var allPopulars = [Comment]()
     var eid = ""
-    
+
     @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -116,21 +116,21 @@ class CommentsViewController: NSViewController {
                 !(c.comment ?? "").isEmpty || !(c.tags ?? []).isEmpty
             })
         }
-        
+
         items = populars
         items.append(contentsOf: regulars)
     }
-    
+
     @IBAction func updateFiltering(_ sender: AnyObject) {
         filter()
         tableView.reloadData()
     }
-    
+
     // MARK: - TableView
     func numberOfRowsInTableView(_ tableView: NSTableView) -> Int {
         return items.count
     }
-    
+
     func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if tableColumn?.identifier == "CommentColumn" {
             if let cell = tableView.make(withIdentifier: "CommentColumn", owner: self) as? CommentCellView,
@@ -154,7 +154,7 @@ class CommentsViewController: NSViewController {
                                 })
                             }
                     }
-                    
+
                     // star
                     if let date = item.date {
                         let formatter = DateFormatter()
@@ -183,7 +183,7 @@ class CommentsViewController: NSViewController {
         let item = items[row] as Comment
         if let cell = tableView.make(withIdentifier: "CommentColumn", owner: self) as? CommentCellView {
             tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
-            let size = NSMakeSize(tableView.tableColumns[0].width, 43.0);
+            let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
             cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
             cell.commentField?.preferredMaxLayoutWidth = size.width - (8+8+8+42)
             heightOfRow = cell.fittingSize.height

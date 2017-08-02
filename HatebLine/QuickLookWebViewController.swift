@@ -13,7 +13,7 @@ class QuickLookWebViewController: NSViewController {
 
     @IBOutlet weak var webView: WebView!
     @IBOutlet weak var progressIndicator: NSProgressIndicator!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         if let urlString = representedObject as? String, let url = URL(string: urlString) {
@@ -26,11 +26,11 @@ class QuickLookWebViewController: NSViewController {
             nc.addObserver(self, selector: #selector(QuickLookWebViewController.progressNotification(_:)), name: NSNotification.Name.WebViewProgressFinished, object: nil)
         }
     }
-    
+
     override func viewWillDisappear() {
         NotificationCenter.default.removeObserver(self)
     }
-    
+
     func progressNotification(_ notification: Notification) {
         switch notification.name {
         case NSNotification.Name.WebViewProgressStarted:

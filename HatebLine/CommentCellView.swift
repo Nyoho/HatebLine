@@ -9,23 +9,23 @@
 import Cocoa
 
 class CommentCellView: NSTableCellView {
-    
+
     @IBOutlet weak var userNameField: NSTextField!
     @IBOutlet weak var profileImageView: NSImageView!
     @IBOutlet weak var dateField: NSTextField!
     @IBOutlet weak var commentField: NSTextField!
     @IBOutlet weak var starImageView: NSImageView!
     var isPopular = false
-    
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         let path = NSBezierPath()
         NSColor.lightGray.set()
         path.lineWidth = 0.5
-        path.move(to: NSMakePoint(8, 0))
+        path.move(to: NSPoint(x: 8, y: 0))
         path.line(to: NSMakePoint(self.bounds.width-8, 0))
         path.stroke()
-        
+
         if isPopular {
             drawPopular()
         }
@@ -40,7 +40,7 @@ class CommentCellView: NSTableCellView {
         path.line(to: NSMakePoint(bounds.width - size*3.0, bounds.height))
         path.line(to: NSMakePoint(bounds.width, bounds.height))
         path.fill()
-        
+
         if let context = NSGraphicsContext.current() {
             var transform = AffineTransform.identity
             transform.translate(x: bounds.width - size - 3.0, y: bounds.height - 3.0)
@@ -49,8 +49,8 @@ class CommentCellView: NSTableCellView {
             (transform as NSAffineTransform).concat()
             var attr: [String: AnyObject]?
             attr = [NSFontAttributeName: NSFont.boldSystemFont(ofSize: size), NSForegroundColorAttributeName: NSColor.white]
-            NSString(string: "Popular").draw(at: NSMakePoint(0, 0), withAttributes: attr)
-            
+            NSString(string: "Popular").draw(at: NSPoint(x: 0, y: 0), withAttributes: attr)
+
             context.restoreGraphicsState()
         }
     }

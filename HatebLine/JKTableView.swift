@@ -15,7 +15,7 @@ class JKTableView: NSTableView {
 
         // Drawing code here.
     }
-    
+
     override func keyDown(with theEvent: NSEvent) {
         var row = selectedRow
         switch theEvent.keyCode {

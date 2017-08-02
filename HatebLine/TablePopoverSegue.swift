@@ -9,11 +9,11 @@
 import Cocoa
 
 class TablePopoverSegue: NSStoryboardSegue {
-    
+
     @IBOutlet weak var anchorTableView: NSTableView!
     var preferredEdge: NSRectEdge!
     var popoverBehavior: NSPopoverBehavior!
-    
+
     override func perform() {
         let selectedColumn = anchorTableView.selectedColumn
         let selectedRow = anchorTableView.selectedRow

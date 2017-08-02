@@ -9,9 +9,8 @@
 import Foundation
 import CoreData
 
-
 class Tag: NSManagedObject {
-    
+
     // Insert code here to add functionality to your managed object subclass
     class func name(_ name: String, inManagedObjectContext moc: NSManagedObjectContext) -> Tag {
         let tag: Tag
@@ -19,7 +18,7 @@ class Tag: NSManagedObject {
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Tag")
             request.predicate = NSPredicate(format: "name == %@", name)
             let results = try moc.fetch(request) as! [Tag]
-            
+
             if (results.count > 0) {
                 // Exist tag
                 tag = results[0]
