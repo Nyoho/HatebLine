@@ -9,7 +9,7 @@ OS X 10.11+
 
 ** Build
 
-First, install [[https://github.com/Carthage/Carthage][Carthage]]. (If you use [[http://brew.sh/][Homebrew]], just 'brew install carthage')
+First, install [[https://github.com/Carthage/Carthage][Carthage]] and [[SwiftLint][https://github.com/realm/SwiftLint]]. (If you use [[http://brew.sh/][Homebrew]], just 'brew install carthage swiftlint')
 
 And then, do
 #+BEGIN_SRC sh
