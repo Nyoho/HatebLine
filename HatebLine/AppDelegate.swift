@@ -16,9 +16,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     @IBOutlet weak var window: NSWindow!
 
     // MARK: -
-    
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        UserDefaults.standard.register(defaults: ["enableNotification" : true])
+        UserDefaults.standard.register(defaults: ["enableNotification": true])
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -54,7 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 failureReason = "Expected a folder to store application data, found a file \(self.applicationDocumentsDirectory.path)."
                 shouldFail = true
             }
-        } catch  {
+        } catch {
             let nserror = error as NSError
             if nserror.code == NSFileReadNoSuchFileError {
                 do {
@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 failError = nserror
             }
         }
-        
+
         // Create the coordinator and store
         var coordinator: NSPersistentStoreCoordinator? = nil
         if failError == nil {
@@ -78,7 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 failError = error as NSError
             }
         }
-        
+
         if shouldFail || (failError != nil) {
             // Report any error we got.
             var dict = [String: AnyObject]()
@@ -127,16 +127,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
         // Save changes in the application's managed object context before the application terminates.
-        
+
         if !managedObjectContext.commitEditing() {
             NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing to terminate")
             return .terminateCancel
         }
-        
+
         if !managedObjectContext.hasChanges {
             return .terminateNow
         }
-        
+
         do {
             try managedObjectContext.save()
         } catch {
@@ -146,9 +146,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             if (result) {
                 return .terminateCancel
             }
-            
+
             let question = NSLocalizedString("Could not save changes while quitting. Quit anyway?", comment: "Quit without saves error question message")
-            let info = NSLocalizedString("Quitting now will lose any changes you have made since the last successful save", comment: "Quit without saves error question info");
+            let info = NSLocalizedString("Quitting now will lose any changes you have made since the last successful save", comment: "Quit without saves error question info")
             let quitButton = NSLocalizedString("Quit anyway", comment: "Quit anyway button title")
             let cancelButton = NSLocalizedString("Cancel", comment: "Cancel button title")
             let alert = NSAlert()
@@ -156,7 +156,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             alert.informativeText = info
             alert.addButton(withTitle: quitButton)
             alert.addButton(withTitle: cancelButton)
-            
+
             let answer = alert.runModal()
             if answer == NSAlertFirstButtonReturn {
                 return .terminateCancel
@@ -167,4 +167,3 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
 
 }
-

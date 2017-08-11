@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 
-
 extension Page {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Page> {

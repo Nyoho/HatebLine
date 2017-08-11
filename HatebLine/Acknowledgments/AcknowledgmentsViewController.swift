@@ -11,7 +11,7 @@ import Cocoa
 class AcknowledgmentsViewController: NSViewController {
 
     @IBOutlet var textView: NSTextView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         loadRTF()

@@ -14,5 +14,5 @@ class GeneralPrefViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
-    
+
 }

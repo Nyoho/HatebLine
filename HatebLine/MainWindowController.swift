@@ -13,10 +13,10 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     @IBOutlet weak var searchField: NSSearchField!
     @IBOutlet weak var shareButton: NSButton!
     var tableRowSelected: Bool = true
-    
+
     override func windowDidLoad() {
         super.windowDidLoad()
-    
+
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         self.window?.titleVisibility = .hidden
         shareButton.sendAction(on: NSEventMask(rawValue: UInt64(Int(NSEventMask.leftMouseDown.rawValue))))
@@ -31,7 +31,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     func changeTabbarItemsWithState(_ state: Bool) {
         self.tableRowSelected = state
     }
-    
+
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
         guard let identifier = segue.identifier else {
             return
@@ -54,7 +54,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
             return
         }
     }
-    
+
     func performFindPanelAction(_ sender: AnyObject) {
         searchField.selectText(sender)
     }

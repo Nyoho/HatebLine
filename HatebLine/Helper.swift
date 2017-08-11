@@ -9,7 +9,7 @@
 import Foundation
 import Cocoa
 
-class Helper{
+class Helper {
 
     static func commentWithTags(_ comment: String?, tags: [String]?) -> NSAttributedString? {
         let t = NSMutableAttributedString()

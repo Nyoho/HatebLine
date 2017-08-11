@@ -14,13 +14,13 @@ class BookmarkCellView: NSTableCellView {
     @IBOutlet weak var commentTextField: NSTextField!
     @IBOutlet weak var countTextField: NSTextField!
     @IBOutlet weak var dateTextField: NSTextField!
-    
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
 
         // Drawing code here.
     }
-    
+
     // Thx http://stackoverflow.com/questions/28187909/why-nstablecellview-backgroundstyle-is-never-set-to-nsbackgroundstyle-dark-for-s
     override var backgroundStyle: NSBackgroundStyle {
         set {
@@ -32,10 +32,10 @@ class BookmarkCellView: NSTableCellView {
             self.updateSelectionHighlight()
         }
         get {
-            return super.backgroundStyle;
+            return super.backgroundStyle
         }
     }
-    
+
     func updateSelectionHighlight() {
         if ( self.backgroundStyle == NSBackgroundStyle.dark ) {
             self.textField?.textColor = NSColor.white

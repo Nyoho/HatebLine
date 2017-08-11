@@ -10,9 +10,9 @@ import Cocoa
 
 class RSSParser: NSObject, XMLParserDelegate {
     var feedUrl: URL
-    
-    var currentElementName : String!
-    
+
+    var currentElementName: String!
+
     var parser = XMLParser()
     var elements = NSMutableDictionary()
     var element = NSString()
@@ -28,22 +28,22 @@ class RSSParser: NSObject, XMLParserDelegate {
     var handler: (([[String: Any]]) -> Void)?
     var tag = NSMutableString()
     var tags: [String] = []
-    
+
     init(url: URL) {
         self.feedUrl = url
     }
-    
-    func parse(completionHandler: @escaping ([[String: Any]]) -> Void) -> Void {
+
+    func parse(completionHandler: @escaping ([[String: Any]]) -> Void) {
         items = [[String: Any]]()
         parser = XMLParser(contentsOf: feedUrl)!
         handler = completionHandler
         parser.delegate = self
         parser.parse()
     }
-    
+
     func parserDidStartDocument(_ parser: XMLParser) {
     }
-    
+
     func parserDidEndDocument(_ parser: XMLParser) {
         if let handler = handler {
             handler(items)
@@ -52,7 +52,7 @@ class RSSParser: NSObject, XMLParserDelegate {
 
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         element = elementName as NSString
-        
+
         if (elementName == "item") {
             bookmarkUrl = ""
             if let u = attributeDict["rdf:about"] {
@@ -71,7 +71,7 @@ class RSSParser: NSObject, XMLParserDelegate {
         }
     }
 
-    func parser(_ parser: XMLParser, foundCharacters string: String){        
+    func parser(_ parser: XMLParser, foundCharacters string: String) {
         switch element {
         case "title":
             title.append(string)
@@ -117,8 +117,7 @@ class RSSParser: NSObject, XMLParserDelegate {
             break
         }
     }
-    
-    
+
     func condenseWhitespace(_ string: NSMutableString) -> NSString {
         return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
     }

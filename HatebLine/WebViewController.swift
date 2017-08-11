@@ -12,7 +12,7 @@ import WebKit
 class WebViewController: NSViewController {
 
     @IBOutlet weak var webView: WebView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -23,7 +23,7 @@ class WebViewController: NSViewController {
             webView.mainFrame.loadHTMLString(content as String, baseURL: URL(string: ""))
         }
     }
-    
+
     @IBAction func dismiss(_ sender: AnyObject) {
         self.dismissViewController(self)
     }

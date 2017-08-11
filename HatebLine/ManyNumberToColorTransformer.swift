@@ -9,16 +9,16 @@
 import Cocoa
 
 @objc(ManyNumberToColorTransformer) class ManyNumberToColorTransformer: ValueTransformer {
-    
+
     override class func transformedValueClass() -> AnyClass {
         return NSNumber.self
     }
-    
+
     override func transformedValue(_ value: Any?) -> Any? {
         if let b = (value as AnyObject).boolValue {
             return b ? NSColor.red : NSColor.blue
         }
         return NSColor.gray
     }
-    
+
 }
