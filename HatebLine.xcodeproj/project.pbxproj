@@ -314,6 +314,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55415B901C3961F90079B118 /* Build configuration list for PBXNativeTarget "HatebLine" */;
 			buildPhases = (
+				900E194E1F3D8B5700932F34 /* ShellScript */,
 				55415B661C3961F90079B118 /* Sources */,
 				55415B671C3961F90079B118 /* Frameworks */,
 				55415B681C3961F90079B118 /* Resources */,
@@ -437,6 +438,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		900E194E1F3D8B5700932F34 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftformat >/dev/null; then\n  swiftformat . --exclude Carthage\nelse\n  echo \"warning: SwiftFormat not installed, download from https://github.com/nicklockwood/SwiftFormat\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		55415B661C3961F90079B118 /* Sources */ = {
