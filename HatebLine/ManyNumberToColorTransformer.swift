@@ -20,5 +20,4 @@ import Cocoa
         }
         return NSColor.gray
     }
-
 }

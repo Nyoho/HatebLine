@@ -29,6 +29,6 @@ class GrowingTextField: NSTextField {
     // you need to invalidate the layout on text change, else it wouldn't grow by changing the text
     override func textDidChange(_ notification: Notification) {
         super.textDidChange(notification)
-        self.invalidateIntrinsicContentSize()
+        invalidateIntrinsicContentSize()
     }
 }

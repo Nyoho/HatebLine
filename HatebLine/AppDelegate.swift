@@ -17,11 +17,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     // MARK: -
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
+    func applicationDidFinishLaunching(_: Notification) {
         UserDefaults.standard.register(defaults: ["enableNotification": true])
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
+    func applicationWillTerminate(_: Notification) {
         // Insert code here to tear down your application
     }
 
@@ -43,7 +43,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.) This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
         let fileManager = FileManager.default
-        var failError: NSError? = nil
+        var failError: NSError?
         var shouldFail = false
         var failureReason = "There was an error creating or loading the application's saved data."
 
@@ -68,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
 
         // Create the coordinator and store
-        var coordinator: NSPersistentStoreCoordinator? = nil
+        var coordinator: NSPersistentStoreCoordinator?
         if failError == nil {
             coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
             let url = self.applicationDocumentsDirectory.appendingPathComponent("CocoaAppCD.storedata")
@@ -105,7 +105,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     // MARK: - Core Data Saving and Undo support
 
-    @IBAction func saveAction(_ sender: AnyObject!) {
+    @IBAction func saveAction(_: AnyObject!) {
         // Performs the save action for the application, which is to send the save: message to the application's managed object context. Any encountered errors are presented to the user.
         if !managedObjectContext.commitEditing() {
             NSLog("\(NSStringFromClass(type(of: self))) unable to commit editing before saving")
@@ -120,7 +120,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         }
     }
 
-    func windowWillReturnUndoManager(_ window: NSWindow) -> UndoManager? {
+    func windowWillReturnUndoManager(_: NSWindow) -> UndoManager? {
         // Returns the NSUndoManager for the application. In this case, the manager returned is that of the managed object context for the application.
         return managedObjectContext.undoManager
     }
@@ -143,7 +143,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             let nserror = error as NSError
             // Customize this code block to include application-specific recovery steps.
             let result = sender.presentError(nserror)
-            if (result) {
+            if result {
                 return .terminateCancel
             }
 
@@ -165,5 +165,4 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         // If we got here, it is time to quit.
         return .terminateNow
     }
-
 }

@@ -18,21 +18,21 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         super.windowDidLoad()
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
-        self.window?.titleVisibility = .hidden
+        window?.titleVisibility = .hidden
         shareButton.sendAction(on: NSEventMask(rawValue: UInt64(Int(NSEventMask.leftMouseDown.rawValue))))
     }
 
     // MARK: - NSWindowDelegate
-    func windowDidEndLiveResize(_ notification: Notification) {
-//        let vc: TimelineViewController? = self.contentViewController as! TimelineViewController?
-//        vc?.refresh()
+    func windowDidEndLiveResize(_: Notification) {
+        //        let vc: TimelineViewController? = self.contentViewController as! TimelineViewController?
+        //        vc?.refresh()
     }
 
     func changeTabbarItemsWithState(_ state: Bool) {
-        self.tableRowSelected = state
+        tableRowSelected = state
     }
 
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: NSStoryboardSegue, sender _: Any?) {
         guard let identifier = segue.identifier else {
             return
         }

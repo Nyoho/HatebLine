@@ -20,5 +20,4 @@ extension Bookmark {
     @NSManaged var page: Page?
     @NSManaged var user: User?
     @NSManaged var tags: NSSet?
-
 }

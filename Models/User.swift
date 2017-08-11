@@ -13,7 +13,7 @@ import Cocoa
 
 class User: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+    // Insert code here to add functionality to your managed object subclass
     var __profileImage: NSImage?
 
     var profileImage: NSImage? {
@@ -21,15 +21,15 @@ class User: NSManagedObject {
             return image
         } else {
             if let n = name {
-            let twoLetters = (n as NSString).substring(to: 2)
-            if let url = URL(string: "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(n)/profile.gif") {
-                Alamofire.request(url).response { response in
-                    if let d = response.data {
-                        self.willChangeValue(forKey: "profileImage")
-                        self.__profileImage = NSImage(data: d)
-                        self.didChangeValue(forKey: "profileImage")
+                let twoLetters = (n as NSString).substring(to: 2)
+                if let url = URL(string: "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(n)/profile.gif") {
+                    Alamofire.request(url).response { response in
+                        if let d = response.data {
+                            self.willChangeValue(forKey: "profileImage")
+                            self.__profileImage = NSImage(data: d)
+                            self.didChangeValue(forKey: "profileImage")
+                        }
                     }
-                }
                 }
             }
             return nil

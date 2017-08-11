@@ -16,5 +16,4 @@ extension User {
 
     @NSManaged var name: String?
     @NSManaged var bookmarks: NSSet?
-
 }

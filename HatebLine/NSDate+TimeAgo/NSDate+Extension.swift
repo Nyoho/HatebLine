@@ -38,7 +38,7 @@ extension Date {
     // does not include 'ago' text ... just {value}{unit-abbreviation}
     // does not include interim summary options such as 'Just now'
     public var timeAgoSimple: String {
-        let components = self.dateComponents()
+        let components = dateComponents()
 
         if components.year! > 0 {
             return stringFromFormat("%%d%@yr", withValue: components.year!)
@@ -50,7 +50,7 @@ extension Date {
 
         // TODO: localize for other calanders
         if components.day! >= 7 {
-            let value = components.day!/7
+            let value = components.day! / 7
             return stringFromFormat("%%d%@w", withValue: value)
         }
 
@@ -67,14 +67,14 @@ extension Date {
         }
 
         if components.second! > 0 {
-            return stringFromFormat("%%d%@s", withValue: components.second! )
+            return stringFromFormat("%%d%@s", withValue: components.second!)
         }
 
         return ""
     }
 
     public var timeAgo: String {
-        let components = self.dateComponents()
+        let components = dateComponents()
 
         if components.year! > 0 {
             if components.year! < 2 {
@@ -94,7 +94,7 @@ extension Date {
 
         // TODO: localize for other calanders
         if components.day! >= 7 {
-            let week = components.day!/7
+            let week = components.day! / 7
             if week < 2 {
                 return NSDateTimeAgoLocalizedStrings("Last week")
             } else {
@@ -172,5 +172,4 @@ extension Date {
 
         return ""
     }
-
 }
