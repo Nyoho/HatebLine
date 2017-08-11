@@ -42,13 +42,14 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
                 qvc.representedObject = ""
             }
         case "ShowWeb":
-            let webvc = segue.destinationController as! WebViewController
-            if let vc: TimelineViewController? = self.contentViewController as! TimelineViewController? {
-                if let obj = vc?.bookmarkArrayController.selectedObjects.first as! Bookmark? {
-                    print(vc?.bookmarkArrayController.selectedObjects.count)
-                    print(obj.page?.title)
-                    webvc.representedObject = obj.page?.content
-                }
+            guard let webvc = segue.destinationController as? WebViewController else {
+                preconditionFailure("segue.destinationController must be WebViewController")
+            }
+            if let vc: TimelineViewController = self.contentViewController as? TimelineViewController,
+                let obj = vc.bookmarkArrayController.selectedObjects.first as? Bookmark {
+                print(vc.bookmarkArrayController.selectedObjects.count)
+                print(obj.page?.title)
+                webvc.representedObject = obj.page?.content
             }
         default:
             return

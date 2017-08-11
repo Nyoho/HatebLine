@@ -41,7 +41,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }()
 
     lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. (The directory for the store is created, if necessary.) This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+        /*
+         The persistent store coordinator for the application.
+         This implementation creates and returns a coordinator, having added the store for the application to it.
+         (The directory for the store is created, if necessary.)
+         This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+         */
         let fileManager = FileManager.default
         var failError: NSError?
         var shouldFail = false
@@ -96,7 +101,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }()
 
     lazy var managedObjectContext: NSManagedObjectContext = {
-        // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
+        /* Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.)
+         This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
+         */
         let coordinator = self.persistentStoreCoordinator
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator

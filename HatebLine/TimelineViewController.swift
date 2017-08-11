@@ -96,7 +96,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
                 request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
                 do {
-                    let fetchedBookmarks = try moc.fetch(request) as! [Bookmark]
+                    guard let fetchedBookmarks = try moc.fetch(request) as? [Bookmark] else {
+                        preconditionFailure("Fetched object must be [Bookmark]")
+                    }
                     if fetchedBookmarks.count > 0 { // exists, so update
                         let b = fetchedBookmarks.first! as Bookmark
                         if let cache = self.heightCache, let u = b.bookmarkUrl {
@@ -121,7 +123,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         b.setValue(tags, forKey: "tags")
                     } else { // does not exsist, so create
                         let bmEntity = NSEntityDescription.entity(forEntityName: "Bookmark", in: moc)
-                        let bookmark = NSManagedObject(entity: bmEntity!, insertInto: moc) as! Bookmark
+                        guard let bookmark = NSManagedObject(entity: bmEntity!, insertInto: moc) as? Bookmark else {
+                            preconditionFailure("bookmark must be Bookmark")
+                        }
                         var user: NSManagedObject?
                         var page: NSManagedObject?
 
@@ -129,7 +133,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         if let creator = item["creator"] as? String {
                             usersFetch.predicate = NSPredicate(format: "name == %@", creator)
                             do {
-                                let fetchedUsers = try moc.fetch(usersFetch) as! [User]
+                                guard let fetchedUsers = try moc.fetch(usersFetch) as? [User] else {
+                                    preconditionFailure("fetched object must be [User]")
+                                }
                                 if fetchedUsers.count > 0 {
                                     user = fetchedUsers.first!
                                 } else {
@@ -145,7 +151,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         if let url = item["link"] as? String {
                             pagesFetch.predicate = NSPredicate(format: "url == %@", url)
                             do {
-                                let fetchedPages = try moc.fetch(pagesFetch) as! [Page]
+                                guard let fetchedPages = try moc.fetch(pagesFetch) as? [Page] else {
+                                    preconditionFailure("fetched object must be [Page]")
+                                }
                                 if fetchedPages.count > 0 {
                                     page = fetchedPages.first!
                                 } else {
@@ -187,7 +195,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                             }
                         }
                         let tags = NSMutableSet()
-                        for tagString in item["tags"] as! [String] {
+                        for tagString in (item["tags"] as? [String])! {
                             let tag = Tag.name(tagString, inManagedObjectContext: moc)
                             tags.add(tag)
                         }
@@ -252,7 +260,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     @IBAction func openInBrowser(_: AnyObject) {
-        let array = bookmarkArrayController.selectedObjects as! [Bookmark]
+        guard let array = bookmarkArrayController.selectedObjects as? [Bookmark] else {
+            preconditionFailure("selectedObjects must be Bookmark")
+        }
         if array.count > 0 {
             if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: urlString) {
                 NSWorkspace.shared().open(url)
@@ -268,7 +278,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     @IBAction func openBookmarkPageInBrowser(_: AnyObject) {
-        let array = bookmarkArrayController.selectedObjects as! [Bookmark]
+        guard let array = bookmarkArrayController.selectedObjects as? [Bookmark] else {
+            preconditionFailure("selectedObjects must be Bookmark")
+        }
         if array.count > 0 {
             if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: "http://b.hatena.ne.jp/entry/\(urlString)") {
                 NSWorkspace.shared().open(url)
@@ -277,7 +289,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     @IBAction func openUserPageInBrowser(_: AnyObject) {
-        let array = bookmarkArrayController.selectedObjects as! [Bookmark]
+        guard let array = bookmarkArrayController.selectedObjects as? [Bookmark] else {
+            preconditionFailure("selectedObjects must be Bookmark")
+        }
         if array.count > 0 {
             if let bookmark = array.first, let name = bookmark.user?.name, let url = URL(string: "http://b.hatena.ne.jp/\(name)/") {
                 NSWorkspace.shared().open(url)
@@ -286,17 +300,17 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     @IBAction func updateSearchString(_ sender: AnyObject) {
-        if sender is NSSearchField {
-            let field = sender as! NSSearchField
-            let s = field.stringValue
-            bookmarkArrayController.filterPredicate = { () -> NSPredicate? in
-                if s == "" {
-                    return nil
-                } else {
-                    return NSPredicate(format: "(page.title contains[c] %@) OR (comment contains[c] %@) OR (user.name contains[c] %@)", s, s, s)
-                }
-            }()
+        guard let field = sender as? NSSearchField else {
+            preconditionFailure("sender must be NSSearchField")
         }
+        let s = field.stringValue
+        bookmarkArrayController.filterPredicate = { () -> NSPredicate? in
+            if s == "" {
+                return nil
+            } else {
+                return NSPredicate(format: "(page.title contains[c] %@) OR (comment contains[c] %@) OR (user.name contains[c] %@)", s, s, s)
+            }
+        }()
     }
 
     @IBAction func showComments(_: AnyObject) {
@@ -307,13 +321,14 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     @IBAction func showSharingServicePicker(_ sender: AnyObject) {
-        if sender is NSView {
-            if let array = bookmarkArrayController.selectedObjects as? [Bookmark] {
-                if array.count > 0 {
-                    if let bookmark = array.first, let title = bookmark.page?.title, let url = URL(string: bookmark.page?.url ?? "") {
-                        let sharingServicePicker = NSSharingServicePicker(items: [title, url])
-                        sharingServicePicker.show(relativeTo: sender.bounds, of: sender as! NSView, preferredEdge: NSRectEdge.minY)
-                    }
+        guard let view = sender as? NSView else {
+            preconditionFailure("sender must be NSView")
+        }
+        if let array = bookmarkArrayController.selectedObjects as? [Bookmark] {
+            if array.count > 0 {
+                if let bookmark = array.first, let title = bookmark.page?.title, let url = URL(string: bookmark.page?.url ?? "") {
+                    let sharingServicePicker = NSSharingServicePicker(items: [title, url])
+                    sharingServicePicker.show(relativeTo: sender.bounds, of: view, preferredEdge: NSRectEdge.minY)
                 }
             }
         }
@@ -324,31 +339,31 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             let identifier = SegueIdentifier(rawValue: identifierString) { // TODO: 変換に失敗したときはログにだすべき
             switch identifier {
             case .quickLook:
-                if segue.isKind(of: TablePopoverSegue.self) {
-                    let popoverSegue = segue as! TablePopoverSegue
-                    popoverSegue.preferredEdge = NSRectEdge.maxX
-                    popoverSegue.popoverBehavior = .transient
-                    popoverSegue.anchorTableView = tableView
-                    let indexes = tableView.selectedRowIndexes
-                    if indexes.count > 0 {
-                        if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.first!] as? Bookmark {
-                            let vc = segue.destinationController as? QuickLookWebViewController
-                            vc?.representedObject = bookmark.page?.url
-                        }
+                guard let tps = segue as? TablePopoverSegue else {
+                    preconditionFailure("segue must be TablePopoverSegue")
+                }
+                tps.preferredEdge = NSRectEdge.maxX
+                tps.popoverBehavior = .transient
+                tps.anchorTableView = tableView
+                let indexes = tableView.selectedRowIndexes
+                if indexes.count > 0 {
+                    if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.first!] as? Bookmark {
+                        let vc = segue.destinationController as? QuickLookWebViewController
+                        vc?.representedObject = bookmark.page?.url
                     }
                 }
             case .showComments:
-                if segue.isKind(of: TablePopoverSegue.self) {
-                    let popoverSegue = segue as! TablePopoverSegue
-                    popoverSegue.preferredEdge = NSRectEdge.maxX
-                    popoverSegue.popoverBehavior = .transient
-                    popoverSegue.anchorTableView = tableView
-                    let indexes = tableView.selectedRowIndexes
-                    if indexes.count > 0 {
-                        if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.first!] as? Bookmark {
-                            let vc = segue.destinationController as? CommentsViewController
-                            vc?.representedObject = bookmark.page?.url
-                        }
+                guard let tps = segue as? TablePopoverSegue else {
+                    preconditionFailure("segue must be TablePopoverSegue")
+                }
+                tps.preferredEdge = NSRectEdge.maxX
+                tps.popoverBehavior = .transient
+                tps.anchorTableView = tableView
+                let indexes = tableView.selectedRowIndexes
+                if indexes.count > 0 {
+                    if let objects = bookmarkArrayController.arrangedObjects as? [AnyObject], let bookmark = objects[indexes.first!] as? Bookmark {
+                        let vc = segue.destinationController as? CommentsViewController
+                        vc?.representedObject = bookmark.page?.url
                     }
                 }
             case .showAccountSetting:
@@ -366,7 +381,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     override func viewDidLoad() {
-        super.viewDidLoad()
+        viewDidLoad()
         // Do view setup here.
         setup()
         perform()
@@ -425,7 +440,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         if let u = bookmark.bookmarkUrl, let height = cache[u] {
             return CGFloat(height)
         }
-        if let cell = tableView.make(withIdentifier: "Bookmark", owner: self) as! BookmarkCellView? {
+        if let cell = tableView.make(withIdentifier: "Bookmark", owner: self) as? BookmarkCellView {
             tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
             //            if let username = bookmark.user?.name {
@@ -483,7 +498,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 do {
                     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
                     request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
-                    let results = try moc.fetch(request) as! [Bookmark]
+                    guard let results = try moc.fetch(request) as? [Bookmark] else {
+                        preconditionFailure("Fetched object must be [Bookmark]")
+                    }
                     if results.count > 0 {
                         bookmarkArrayController.setSelectedObjects(results)
                         NSAnimationContext.runAnimationGroup({ context in

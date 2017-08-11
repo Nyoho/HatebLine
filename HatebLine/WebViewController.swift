@@ -19,7 +19,8 @@ class WebViewController: NSViewController {
     }
 
     override func viewWillAppear() {
-        if let content = self.representedObject as! NSString? {
+
+        if let content = self.representedObject as? NSString {
             webView.mainFrame.loadHTMLString(content as String, baseURL: URL(string: ""))
         }
     }

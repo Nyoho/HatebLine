@@ -18,18 +18,18 @@ class CommentsViewController: NSViewController {
         let date: Date?
         let tags: [String]?
 
-        static func decode(_ e: Extractor) throws -> Comment {
+        static func decode(_ extractor: Extractor) throws -> Comment {
             let dateFormatter = DateFormatter()
             let locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.locale = locale
             dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
             dateFormatter.timeZone = TimeZone(abbreviation: "JST")
-            let date = dateFormatter.date(from: try e <| "timestamp")!
+            let date = dateFormatter.date(from: try extractor <| "timestamp")!
             return try Comment(
-                userName: e <| "user",
-                comment: e <|? "comment",
+                userName: extractor <| "user",
+                comment: extractor <|? "comment",
                 date: date,
-                tags: e <||? "tags"
+                tags: extractor <||? "tags"
             )
         }
     }
@@ -38,18 +38,18 @@ class CommentsViewController: NSViewController {
         let comments: [Comment]
         let eid: String
         let entryUrl: String
-        static func decode(_ e: Extractor) throws -> Comments {
+        static func decode(_ extractor: Extractor) throws -> Comments {
             var eid = ""
             do {
-                eid = try e <| "eid"
+                eid = try extractor <| "eid"
             } catch {
-                let eidNum: Int = try e <| "eid"
+                let eidNum: Int = try extractor <| "eid"
                 eid = String(eidNum)
             }
             return try Comments(
-                comments: e <|| ["bookmarks"],
+                comments: extractor <|| ["bookmarks"],
                 eid: eid,
-                entryUrl: e <| "entry_url"
+                entryUrl: extractor <| "entry_url"
             )
         }
     }
@@ -109,11 +109,11 @@ class CommentsViewController: NSViewController {
             populars = allPopulars
             regulars = allRegulars
         } else {
-            populars = allPopulars.filter({ (c: Comment) -> Bool in
-                !(c.comment ?? "").isEmpty || !(c.tags ?? []).isEmpty
+            populars = allPopulars.filter({ (comment: Comment) -> Bool in
+                !(comment.comment ?? "").isEmpty || !(comment.tags ?? []).isEmpty
             })
-            regulars = allRegulars.filter({ (c: Comment) -> Bool in
-                !(c.comment ?? "").isEmpty || !(c.tags ?? []).isEmpty
+            regulars = allRegulars.filter({ (comment: Comment) -> Bool in
+                !(comment.comment ?? "").isEmpty || !(comment.tags ?? []).isEmpty
             })
         }
 

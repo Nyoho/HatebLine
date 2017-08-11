@@ -109,7 +109,10 @@ class RSSParser: NSObject, XMLParserDelegate {
                 elements["comment"] = condenseWhitespace(comment)
                 elements["tags"] = tags
             }
-            items.append(elements as! [String: Any])
+            guard let elems = elements as? [String: Any] else {
+                preconditionFailure("elements must be [String: Any]")
+            }
+            items.append(elems)
         case "dc:subject":
             tags.append(condenseWhitespace(tag) as String)
             tag = NSMutableString()
