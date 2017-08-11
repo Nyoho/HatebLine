@@ -35,7 +35,7 @@ class QuickLookWebViewController: NSViewController {
         switch notification.name {
         case NSNotification.Name.WebViewProgressStarted:
             progressIndicator.startAnimation(self)
-            self.progressIndicator.alphaValue = 1
+            progressIndicator.alphaValue = 1
         case NSNotification.Name.WebViewProgressEstimateChanged:
             progressIndicator.doubleValue = webView.estimatedProgress
         case NSNotification.Name.WebViewProgressFinished:
@@ -43,7 +43,7 @@ class QuickLookWebViewController: NSViewController {
             NSAnimationContext.runAnimationGroup({ context in
                 context.duration = 1.0
                 self.progressIndicator.animator().alphaValue = 0
-                }, completionHandler: nil)
+            }, completionHandler: nil)
         default:
             break
         }

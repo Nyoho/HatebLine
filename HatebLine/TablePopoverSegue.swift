@@ -18,12 +18,11 @@ class TablePopoverSegue: NSStoryboardSegue {
         let selectedColumn = anchorTableView.selectedColumn
         let selectedRow = anchorTableView.selectedRow
         var anchorView = anchorTableView as NSView
-        if (selectedRow >= 0) {
+        if selectedRow >= 0 {
             if let view = anchorTableView.view(atColumn: selectedColumn, row: selectedRow, makeIfNecessary: false) {
                 anchorView = view
             }
         }
         (sourceController as AnyObject).presentViewController(destinationController as! NSViewController, asPopoverRelativeTo: anchorView.bounds, of: anchorView, preferredEdge: preferredEdge, behavior: popoverBehavior)
     }
-
 }

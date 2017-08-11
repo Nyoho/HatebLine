@@ -29,7 +29,7 @@ class CommentsViewController: NSViewController {
                 userName: e <| "user",
                 comment: e <|? "comment",
                 date: date,
-                tags: e  <||? "tags"
+                tags: e <||? "tags"
             )
         }
     }
@@ -97,11 +97,11 @@ class CommentsViewController: NSViewController {
                                     context.duration = 0.3
                                     self.progressIndicator.animator().alphaValue = 0
                                     self.progressIndicator.stopAnimation(self)
-                                    }, completionHandler: nil)
+                                }, completionHandler: nil)
                             }
-                    }
+                        }
                 }
-        }
+            }
     }
 
     func filter() {
@@ -121,13 +121,13 @@ class CommentsViewController: NSViewController {
         items.append(contentsOf: regulars)
     }
 
-    @IBAction func updateFiltering(_ sender: AnyObject) {
+    @IBAction func updateFiltering(_: AnyObject) {
         filter()
         tableView.reloadData()
     }
 
     // MARK: - TableView
-    func numberOfRowsInTableView(_ tableView: NSTableView) -> Int {
+    func numberOfRowsInTableView(_: NSTableView) -> Int {
         return items.count
     }
 
@@ -135,44 +135,44 @@ class CommentsViewController: NSViewController {
         if tableColumn?.identifier == "CommentColumn" {
             if let cell = tableView.make(withIdentifier: "CommentColumn", owner: self) as? CommentCellView,
                 let item = items[row] as Comment? {
-                    cell.isPopular = row < populars.count
-                    cell.needsDisplay = true
-                    cell.userNameField?.stringValue = item.userName
-                    if let date = item.date {
-                        cell.dateField?.stringValue = date.timeAgo
-                    }
-                    cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
+                cell.isPopular = row < populars.count
+                cell.needsDisplay = true
+                cell.userNameField?.stringValue = item.userName
+                if let date = item.date {
+                    cell.dateField?.stringValue = date.timeAgo
+                }
+                cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
 
-                    let twoLetters = (item.userName as NSString).substring(to: 2)
-                    Alamofire.request("http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(item.userName)/profile.gif")
-                        .responseImage { response in
-                            if let image = response.result.value {
-                                DispatchQueue.main.async(execute: {
-//                                cell.profileImageView.wantsLayer = true
-//                                cell.profileImageView?.layer?.cornerRadius = 5.0
-                                    cell.profileImageView?.image = image
-                                })
-                            }
-                    }
-
-                    // star
-                    if let date = item.date {
-                        let formatter = DateFormatter()
-                        formatter.dateFormat = "yyyyMMdd"
-                        let dateString = formatter.string(from: date)
-                        let permalink = "http://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
-                        if let encodedString = permalink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-                            Alamofire.request("http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
-                                .responseImage { response in
-                                    if let image = response.result.value {
-                                        DispatchQueue.main.async(execute: {
-                                            cell.starImageView?.image = image
-                                        })
-                                    }
-                            }
+                let twoLetters = (item.userName as NSString).substring(to: 2)
+                Alamofire.request("http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(item.userName)/profile.gif")
+                    .responseImage { response in
+                        if let image = response.result.value {
+                            DispatchQueue.main.async(execute: {
+                                //                                cell.profileImageView.wantsLayer = true
+                                //                                cell.profileImageView?.layer?.cornerRadius = 5.0
+                                cell.profileImageView?.image = image
+                            })
                         }
                     }
-                    return cell
+
+                // star
+                if let date = item.date {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "yyyyMMdd"
+                    let dateString = formatter.string(from: date)
+                    let permalink = "http://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
+                    if let encodedString = permalink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+                        Alamofire.request("http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
+                            .responseImage { response in
+                                if let image = response.result.value {
+                                    DispatchQueue.main.async(execute: {
+                                        cell.starImageView?.image = image
+                                    })
+                                }
+                            }
+                    }
+                }
+                return cell
             }
         }
         return nil
@@ -185,10 +185,9 @@ class CommentsViewController: NSViewController {
             tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
             cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
-            cell.commentField?.preferredMaxLayoutWidth = size.width - (8+8+8+42)
+            cell.commentField?.preferredMaxLayoutWidth = size.width - (8 + 8 + 8 + 42)
             heightOfRow = cell.fittingSize.height
         }
         return heightOfRow < 48 ? 48 : heightOfRow
     }
-
 }

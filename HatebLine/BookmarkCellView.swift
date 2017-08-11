@@ -29,7 +29,7 @@ class BookmarkCellView: NSTableCellView {
             } else {
                 super.backgroundStyle = newValue
             }
-            self.updateSelectionHighlight()
+            updateSelectionHighlight()
         }
         get {
             return super.backgroundStyle
@@ -37,15 +37,14 @@ class BookmarkCellView: NSTableCellView {
     }
 
     func updateSelectionHighlight() {
-        if ( self.backgroundStyle == NSBackgroundStyle.dark ) {
-            self.textField?.textColor = NSColor.white
-            self.commentTextField?.textColor = NSColor.white
-            self.titleTextField?.textColor = NSColor.controlColor
+        if backgroundStyle == NSBackgroundStyle.dark {
+            textField?.textColor = NSColor.white
+            commentTextField?.textColor = NSColor.white
+            titleTextField?.textColor = NSColor.controlColor
         } else {
-            self.textField?.textColor = NSColor.black
-            self.commentTextField?.textColor = NSColor.black
-            self.titleTextField?.textColor = NSColor.selectedMenuItemColor
+            textField?.textColor = NSColor.black
+            commentTextField?.textColor = NSColor.black
+            titleTextField?.textColor = NSColor.selectedMenuItemColor
         }
     }
-
 }

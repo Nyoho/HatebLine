@@ -20,7 +20,6 @@ extension Page {
     @NSManaged public var title: String?
     @NSManaged public var url: String?
     @NSManaged public var bookmarks: NSSet?
-
 }
 
 // MARK: Generated accessors for bookmarks
@@ -37,5 +36,4 @@ extension Page {
 
     @objc(removeBookmarks:)
     @NSManaged public func removeFromBookmarks(_ values: NSSet)
-
 }

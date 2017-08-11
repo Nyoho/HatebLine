@@ -14,5 +14,4 @@ class AccountPrefViewController: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
     }
-
 }

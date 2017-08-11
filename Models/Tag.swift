@@ -19,7 +19,7 @@ class Tag: NSManagedObject {
             request.predicate = NSPredicate(format: "name == %@", name)
             let results = try moc.fetch(request) as! [Tag]
 
-            if (results.count > 0) {
+            if results.count > 0 {
                 // Exist tag
                 tag = results[0]
             } else {

@@ -23,7 +23,7 @@ class CommentCellView: NSTableCellView {
         NSColor.lightGray.set()
         path.lineWidth = 0.5
         path.move(to: NSPoint(x: 8, y: 0))
-        path.line(to: NSMakePoint(self.bounds.width-8, 0))
+        path.line(to: NSMakePoint(bounds.width - 8, 0))
         path.stroke()
 
         if isPopular {
@@ -37,7 +37,7 @@ class CommentCellView: NSTableCellView {
         NSColor.orange.setFill()
         path.move(to: NSMakePoint(bounds.width, bounds.height))
         path.line(to: NSMakePoint(bounds.width, bounds.height - 56.0))
-        path.line(to: NSMakePoint(bounds.width - size*3.0, bounds.height))
+        path.line(to: NSMakePoint(bounds.width - size * 3.0, bounds.height))
         path.line(to: NSMakePoint(bounds.width, bounds.height))
         path.fill()
 

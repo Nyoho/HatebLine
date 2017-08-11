@@ -18,7 +18,6 @@ class Bookmark: NSManagedObject {
     }
 
     var timeAgo: String? {
-        return self.date?.timeAgo
+        return date?.timeAgo
     }
-
 }

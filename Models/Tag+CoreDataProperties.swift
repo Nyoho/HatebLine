@@ -16,5 +16,4 @@ extension Tag {
 
     @NSManaged var name: String?
     @NSManaged var bookmarks: NSSet?
-
 }

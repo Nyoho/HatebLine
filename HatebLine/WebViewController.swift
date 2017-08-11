@@ -24,7 +24,7 @@ class WebViewController: NSViewController {
         }
     }
 
-    @IBAction func dismiss(_ sender: AnyObject) {
-        self.dismissViewController(self)
+    @IBAction func dismiss(_: AnyObject) {
+        dismissViewController(self)
     }
 }

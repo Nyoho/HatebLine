@@ -30,7 +30,7 @@ class RSSParser: NSObject, XMLParserDelegate {
     var tags: [String] = []
 
     init(url: URL) {
-        self.feedUrl = url
+        feedUrl = url
     }
 
     func parse(completionHandler: @escaping ([[String: Any]]) -> Void) {
@@ -41,19 +41,19 @@ class RSSParser: NSObject, XMLParserDelegate {
         parser.parse()
     }
 
-    func parserDidStartDocument(_ parser: XMLParser) {
+    func parserDidStartDocument(_: XMLParser) {
     }
 
-    func parserDidEndDocument(_ parser: XMLParser) {
+    func parserDidEndDocument(_: XMLParser) {
         if let handler = handler {
             handler(items)
         }
     }
 
-    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+    func parser(_: XMLParser, didStartElement elementName: String, namespaceURI _: String?, qualifiedName _: String?, attributes attributeDict: [String: String]) {
         element = elementName as NSString
 
-        if (elementName == "item") {
+        if elementName == "item" {
             bookmarkUrl = ""
             if let u = attributeDict["rdf:about"] {
                 bookmarkUrl = u
@@ -71,7 +71,7 @@ class RSSParser: NSObject, XMLParserDelegate {
         }
     }
 
-    func parser(_ parser: XMLParser, foundCharacters string: String) {
+    func parser(_: XMLParser, foundCharacters string: String) {
         switch element {
         case "title":
             title.append(string)
@@ -94,10 +94,10 @@ class RSSParser: NSObject, XMLParserDelegate {
         }
     }
 
-    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+    func parser(_: XMLParser, didEndElement elementName: String, namespaceURI _: String?, qualifiedName _: String?) {
         switch elementName {
         case "item":
-            //print("[\(condenseWhitespace(count)) users] title: \(condenseWhitespace(title)) / date: \(condenseWhitespace(date)) / user: \(condenseWhitespace(creator)).")
+            // print("[\(condenseWhitespace(count)) users] title: \(condenseWhitespace(title)) / date: \(condenseWhitespace(date)) / user: \(condenseWhitespace(creator)).")
             if !title.isEqual(nil) {
                 elements["bookmarkUrl"] = bookmarkUrl
                 elements["title"] = condenseWhitespace(title)
@@ -121,5 +121,4 @@ class RSSParser: NSObject, XMLParserDelegate {
     func condenseWhitespace(_ string: NSMutableString) -> NSString {
         return string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) as NSString
     }
-
 }
