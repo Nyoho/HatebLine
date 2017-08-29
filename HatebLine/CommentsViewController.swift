@@ -109,12 +109,12 @@ class CommentsViewController: NSViewController {
             populars = allPopulars
             regulars = allRegulars
         } else {
-            populars = allPopulars.filter({ (comment: Comment) -> Bool in
-                !(comment.comment ?? "").isEmpty || !(comment.tags ?? []).isEmpty
-            })
-            regulars = allRegulars.filter({ (comment: Comment) -> Bool in
-                !(comment.comment ?? "").isEmpty || !(comment.tags ?? []).isEmpty
-            })
+            populars = allPopulars.filter {
+                ($0.comment ?? "").isEmpty || !($0.tags ?? []).isEmpty
+            }
+            regulars = allRegulars.filter {
+                !($0.comment ?? "").isEmpty || !($0.tags ?? []).isEmpty
+            }
         }
 
         items = populars
