@@ -18,18 +18,18 @@ class CommentsViewController: NSViewController {
         let date: Date?
         let tags: [String]?
 
-        static func decode(_ extractor: Extractor) throws -> Comment {
+        static func decode(_ e: Extractor) throws -> Comment {
             let dateFormatter = DateFormatter()
             let locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.locale = locale
             dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
             dateFormatter.timeZone = TimeZone(abbreviation: "JST")
-            let date = dateFormatter.date(from: try extractor <| "timestamp")!
+            let date = dateFormatter.date(from: try e <| "timestamp")!
             return try Comment(
-                userName: extractor <| "user",
-                comment: extractor <|? "comment",
+                userName: e <| "user",
+                comment: e <|? "comment",
                 date: date,
-                tags: extractor <||? "tags"
+                tags: e <||? "tags"
             )
         }
     }
@@ -38,18 +38,18 @@ class CommentsViewController: NSViewController {
         let comments: [Comment]
         let eid: String
         let entryUrl: String
-        static func decode(_ extractor: Extractor) throws -> Comments {
+        static func decode(_ e: Extractor) throws -> Comments {
             var eid = ""
             do {
-                eid = try extractor <| "eid"
+                eid = try e <| "eid"
             } catch {
-                let eidNum: Int = try extractor <| "eid"
+                let eidNum: Int = try e <| "eid"
                 eid = String(eidNum)
             }
             return try Comments(
-                comments: extractor <|| ["bookmarks"],
+                comments: e <|| ["bookmarks"],
                 eid: eid,
-                entryUrl: extractor <| "entry_url"
+                entryUrl: e <| "entry_url"
             )
         }
     }
