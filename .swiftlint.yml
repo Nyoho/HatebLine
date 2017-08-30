@@ -1,2 +1,4 @@
 excluded:
   Carthage
+identifier_name:
+  min_length: 1
