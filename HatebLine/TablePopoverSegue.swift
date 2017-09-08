@@ -23,6 +23,9 @@ class TablePopoverSegue: NSStoryboardSegue {
                 anchorView = view
             }
         }
-        (sourceController as AnyObject).presentViewController(destinationController as! NSViewController, asPopoverRelativeTo: anchorView.bounds, of: anchorView, preferredEdge: preferredEdge, behavior: popoverBehavior)
+        guard let dc = destinationController as? NSViewController else {
+            preconditionFailure("destinationController must be NSViewController")
+        }
+        (sourceController as AnyObject).presentViewController(dc, asPopoverRelativeTo: anchorView.bounds, of: anchorView, preferredEdge: preferredEdge, behavior: popoverBehavior)
     }
 }

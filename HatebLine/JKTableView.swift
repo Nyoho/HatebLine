@@ -20,12 +20,12 @@ class JKTableView: NSTableView {
         var row = selectedRow
         switch theEvent.keyCode {
         case 38: // j
-            row = row + 1
+            row += 1
             selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
             scrollRowToVisible(row)
             setNeedsDisplay()
         case 40: // k
-            row = row - 1
+            row -= 1
             selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
             scrollRowToVisible(row)
             setNeedsDisplay()
