@@ -12,7 +12,7 @@ import Alamofire
 
 class CommentsViewController: NSViewController {
 
-    struct Comment: Decodable {
+    struct Comment: Himotoki.Decodable {
         let userName: String
         let comment: String?
         let date: Date?
@@ -34,7 +34,7 @@ class CommentsViewController: NSViewController {
         }
     }
 
-    struct Comments: Decodable {
+    struct Comments: Himotoki.Decodable {
         let comments: [Comment]
         let eid: String
         let entryUrl: String
