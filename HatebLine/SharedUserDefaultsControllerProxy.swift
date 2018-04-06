@@ -7,8 +7,8 @@
 //
 //  Thx: http://stackoverflow.com/questions/29312106/xcode-6-os-x-storyboard-multiple-user-defaults-controllers-bug-with-multiple-sce
 
-import Foundation
 import Cocoa
+import Foundation
 
 @objc(SharedUserDefaultsControllerProxy)
 open class SharedUserDefaultsControllerProxy: NSObject {

@@ -6,11 +6,10 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import XCTest
 @testable import HatebLine
+import XCTest
 
 class HatebLineTests: XCTestCase {
-
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.

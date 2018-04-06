@@ -9,12 +9,11 @@
 import Cocoa
 
 class CommentCellView: NSTableCellView {
-
-    @IBOutlet weak var userNameField: NSTextField!
-    @IBOutlet weak var profileImageView: NSImageView!
-    @IBOutlet weak var dateField: NSTextField!
-    @IBOutlet weak var commentField: NSTextField!
-    @IBOutlet weak var starImageView: NSImageView!
+    @IBOutlet var userNameField: NSTextField!
+    @IBOutlet var profileImageView: NSImageView!
+    @IBOutlet var dateField: NSTextField!
+    @IBOutlet var commentField: NSTextField!
+    @IBOutlet var starImageView: NSImageView!
     var isPopular = false
 
     override func draw(_ dirtyRect: NSRect) {

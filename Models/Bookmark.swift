@@ -6,12 +6,11 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import Foundation
-import CoreData
 import Cocoa
+import CoreData
+import Foundation
 
 class Bookmark: NSManagedObject {
-
     var commentWithTags: NSAttributedString? {
         let stringTags = tags?.flatMap { ($0 as! Tag).name ?? "" }
         return Helper.commentWithTags(comment, tags: stringTags)

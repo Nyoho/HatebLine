@@ -6,12 +6,11 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
+import Alamofire
 import Cocoa
 import Himotoki
-import Alamofire
 
 class CommentsViewController: NSViewController {
-
     struct Comment: Himotoki.Decodable {
         let userName: String
         let comment: String?
@@ -61,8 +60,8 @@ class CommentsViewController: NSViewController {
     var allPopulars = [Comment]()
     var eid = ""
 
-    @IBOutlet weak var tableView: NSTableView!
-    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet var tableView: NSTableView!
+    @IBOutlet var progressIndicator: NSProgressIndicator!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,6 +126,7 @@ class CommentsViewController: NSViewController {
     }
 
     // MARK: - TableView
+
     func numberOfRowsInTableView(_: NSTableView) -> Int {
         return items.count
     }

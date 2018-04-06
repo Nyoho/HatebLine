@@ -6,16 +6,15 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import Cocoa
 import Alamofire
 import AwesomeCache
+import Cocoa
 import Question
 
 class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSUserNotificationCenterDelegate {
-
     var parser: RSSParser!
     var parserOfMyFeed: RSSParser!
-    @IBOutlet weak var tableView: NSTableView!
+    @IBOutlet var tableView: NSTableView!
     @IBOutlet var bookmarkArrayController: NSArrayController!
     var bookmarks = NSMutableArray()
     var timer = Timer()
@@ -70,6 +69,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     func perform() {
         guard let url = favoriteUrl() else { return }
         parser.feedUrl = url
+        deleteOldBookmarks()
         DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
             self.parser.parse(completionHandler: { items in
                 self.mergeBookmarks(items)
@@ -84,6 +84,20 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
             })
         })
+    }
+
+    func deleteOldBookmarks() {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        let date = NSDate(timeIntervalSinceNow: -3600 * 24 * 100)
+        fetchRequest.predicate = NSPredicate(format: "date <= %@", date)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+
+        do {
+            try managedObjectContext.execute(deleteRequest)
+        } catch let error as NSError {
+            // handle error here
+            NSLog("\(error)")
+        }
     }
 
     func mergeBookmarks(_ items: [[String: Any]]) {
@@ -531,6 +545,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     // MARK: - performSegueHelper
+
     enum SegueIdentifier: String {
         case showAccountSetting = "ShowAccountSetting"
         case quickLook = "QuickLook"

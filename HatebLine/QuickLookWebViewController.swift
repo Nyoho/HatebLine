@@ -10,9 +10,8 @@ import Cocoa
 import WebKit
 
 class QuickLookWebViewController: NSViewController {
-
-    @IBOutlet weak var webView: WebView!
-    @IBOutlet weak var progressIndicator: NSProgressIndicator!
+    @IBOutlet var webView: WebView!
+    @IBOutlet var progressIndicator: NSProgressIndicator!
 
     override func viewDidLoad() {
         super.viewDidLoad()

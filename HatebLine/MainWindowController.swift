@@ -9,9 +9,8 @@
 import Cocoa
 
 class MainWindowController: NSWindowController, NSWindowDelegate {
-
-    @IBOutlet weak var searchField: NSSearchField!
-    @IBOutlet weak var shareButton: NSButton!
+    @IBOutlet var searchField: NSSearchField!
+    @IBOutlet var shareButton: NSButton!
     var tableRowSelected: Bool = true
 
     override func windowDidLoad() {
@@ -23,6 +22,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
     }
 
     // MARK: - NSWindowDelegate
+
     func windowDidEndLiveResize(_: Notification) {
         //        let vc: TimelineViewController? = self.contentViewController as! TimelineViewController?
         //        vc?.refresh()

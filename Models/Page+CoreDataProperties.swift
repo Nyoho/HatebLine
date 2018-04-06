@@ -6,11 +6,10 @@
 //  Copyright © 2017年 北䑓 如法. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 extension Page {
-
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Page> {
         return NSFetchRequest<Page>(entityName: "Page")
     }
@@ -23,8 +22,8 @@ extension Page {
 }
 
 // MARK: Generated accessors for bookmarks
-extension Page {
 
+extension Page {
     @objc(addBookmarksObject:)
     @NSManaged public func addToBookmarks(_ value: Bookmark)
 

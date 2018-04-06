@@ -6,14 +6,13 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import Cocoa
 import Alamofire
 import AlamofireImage
+import Cocoa
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
-
-    @IBOutlet weak var window: NSWindow!
+    @IBOutlet var window: NSWindow!
 
     // MARK: -
 

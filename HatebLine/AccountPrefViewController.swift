@@ -9,7 +9,6 @@
 import Cocoa
 
 class AccountPrefViewController: NSViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.

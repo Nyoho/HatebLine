@@ -6,13 +6,12 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import Foundation
-import CoreData
 import Alamofire
 import Cocoa
+import CoreData
+import Foundation
 
 class User: NSManagedObject {
-
     // Insert code here to add functionality to your managed object subclass
     var __profileImage: NSImage?
 

@@ -9,7 +9,6 @@
 import Cocoa
 
 @objc(ManyNumberToColorTransformer) class ManyNumberToColorTransformer: ValueTransformer {
-
     override class func transformedValueClass() -> AnyClass {
         return NSNumber.self
     }

@@ -6,11 +6,10 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import Foundation
 import Cocoa
+import Foundation
 
 class Helper {
-
     static func commentWithTags(_ comment: String?, tags: [String]?) -> NSAttributedString? {
         let t = NSMutableAttributedString()
         if let s = comment {

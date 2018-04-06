@@ -9,8 +9,7 @@
 import Cocoa
 
 class TablePopoverSegue: NSStoryboardSegue {
-
-    @IBOutlet weak var anchorTableView: NSTableView!
+    @IBOutlet var anchorTableView: NSTableView!
     var preferredEdge: NSRectEdge!
     var popoverBehavior: NSPopoverBehavior!
 

@@ -9,7 +9,6 @@
 import Cocoa
 
 class GrowingTextField: NSTextField {
-
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
     }

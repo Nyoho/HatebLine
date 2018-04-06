@@ -10,8 +10,7 @@ import Cocoa
 import WebKit
 
 class WebViewController: NSViewController {
-
-    @IBOutlet weak var webView: WebView!
+    @IBOutlet var webView: WebView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +18,6 @@ class WebViewController: NSViewController {
     }
 
     override func viewWillAppear() {
-
         if let content = self.representedObject as? NSString {
             webView.mainFrame.loadHTMLString(content as String, baseURL: URL(string: ""))
         }

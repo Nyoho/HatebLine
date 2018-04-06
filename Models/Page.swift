@@ -6,12 +6,11 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import Foundation
-import CoreData
 import Cocoa
+import CoreData
+import Foundation
 
 class Page: NSManagedObject {
-
     // Insert code here to add functionality to your managed object subclass
     var __favicon: NSImage?
     var __summary: String?

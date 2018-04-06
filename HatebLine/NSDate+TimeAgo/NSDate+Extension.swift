@@ -33,7 +33,6 @@ func NSDateTimeAgoLocalizedStrings(_ key: String) -> String {
 }
 
 extension Date {
-
     // shows 1 or two letter abbreviation for units.
     // does not include 'ago' text ... just {value}{unit-abbreviation}
     // does not include interim summary options such as 'Just now'

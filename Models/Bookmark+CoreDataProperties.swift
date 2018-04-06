@@ -9,11 +9,10 @@
 //  to delete and recreate this implementation file for your updated model.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 extension Bookmark {
-
     @NSManaged var bookmarkUrl: String?
     @NSManaged var comment: String?
     @NSManaged var date: Date?

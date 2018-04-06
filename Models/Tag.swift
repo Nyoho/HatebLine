@@ -6,11 +6,10 @@
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 class Tag: NSManagedObject {
-
     // Insert code here to add functionality to your managed object subclass
     class func name(_ name: String, inManagedObjectContext moc: NSManagedObjectContext) -> Tag {
         let tag: Tag
