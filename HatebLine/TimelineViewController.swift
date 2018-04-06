@@ -92,7 +92,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         moc.perform {
             var newBookmarks = [Bookmark]()
             for item in items.reversed() {
-                if let bookmark = self.newBoorkmark(moc: moc, item: item) {
+                if let bookmark = self.newBookmark(moc: moc, item: item) {
                     newBookmarks.append(bookmark)
                 }
             }
@@ -225,7 +225,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         return bookmark
     }
 
-    func newBoorkmark(moc: NSManagedObjectContext, item: [String: Any]) -> Bookmark? {
+    func newBookmark(moc: NSManagedObjectContext, item: [String: Any]) -> Bookmark? {
         guard let bookmarkUrl = item["bookmarkUrl"] as? String else { return nil }
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
         request.predicate = NSPredicate(format: "bookmarkUrl == %@", bookmarkUrl)
