@@ -40,7 +40,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             performSegueShowAccountSetting()
             return nil
         }
-        guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/favorite.rss") else { return nil }
+        guard let feedToken = UserDefaults.standard.value(forKey: "feedToken") as? String else {
+            performSegueShowAccountSetting()
+            return nil
+        }
+        guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/favorite.rss?key=\(feedToken)") else { return nil }
         // NSURL(string: "file:///tmp/favorite.rss")
         return url
     }
