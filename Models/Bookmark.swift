@@ -19,4 +19,8 @@ class Bookmark: NSManagedObject {
     var timeAgo: String? {
         return date?.timeAgo
     }
+
+    var isCommentEmpty: Bool {
+        return ((comment ?? "").isEmpty && (tags == nil || tags?.count == 0)) ? true : false
+    }
 }

@@ -483,6 +483,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 cell.commentTextField?.attributedStringValue = comment
                 cell.commentTextField?.preferredMaxLayoutWidth = size.width - (5 + 8 + 3 + 48)
             }
+            if bookmark.isCommentEmpty {
+                cell.commentTextField?.isHidden = true
+            }
             if let title = bookmark.page?.title {
                 cell.titleTextField?.stringValue = title
                 // FIXME: temporarily, minus titleTextField's paddings
