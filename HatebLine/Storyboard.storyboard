@@ -1075,10 +1075,10 @@
                                                 </connections>
                                             </imageView>
                                             <stackView orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sdc-Xr-dZb">
-                                                <rect key="frame" x="8" y="0.0" width="405" height="154"/>
+                                                <rect key="frame" x="8" y="14" width="404" height="140"/>
                                                 <beginningViews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-sZ-ZgT">
-                                                        <rect key="frame" x="-2" y="120" width="409" height="34"/>
+                                                        <rect key="frame" x="-2" y="106" width="408" height="34"/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="0vZ-ti-W86">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
@@ -1090,7 +1090,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PMZ-k0-mKt" customClass="GrowingTextField" customModule="HatebLine" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="32" width="409" height="84"/>
+                                                        <rect key="frame" x="-2" y="18" width="408" height="84"/>
                                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="Vch-IP-imz">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <string key="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
@@ -1102,7 +1102,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="umP-RH-BPX">
-                                                        <rect key="frame" x="-2" y="14" width="409" height="14"/>
+                                                        <rect key="frame" x="-2" y="0.0" width="408" height="14"/>
                                                         <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="https://www.apple.com/ipad/hiroshima-dialect-dubbing/" id="5Ec-RM-OIo">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -1128,8 +1128,8 @@
                                                     <real value="3.4028234663852886e+38"/>
                                                 </customSpacing>
                                             </stackView>
-                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
-                                                <rect key="frame" x="421" y="154" width="0.0" height="0.0"/>
+                                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
+                                                <rect key="frame" x="420" y="154" width="0.0" height="0.0"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="MWJ-vD-euT"/>
                                                 <connections>
                                                     <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.entryImage" id="ylE-Md-8hR"/>
