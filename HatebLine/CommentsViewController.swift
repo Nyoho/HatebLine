@@ -23,7 +23,7 @@ class CommentsViewController: NSViewController {
             dateFormatter.locale = locale
             dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
             dateFormatter.timeZone = TimeZone(abbreviation: "JST")
-            let date = dateFormatter.date(from: try e <| "timestamp")!
+            let date = dateFormatter.date(from: try e <| "timestamp")
             return try Comment(
                 userName: e <| "user",
                 comment: e <|? "comment",
