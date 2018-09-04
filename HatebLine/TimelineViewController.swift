@@ -254,7 +254,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if fetchedBookmarks.count > 0 { // exists, so update
                 updateBookmark(moc: moc, fetchedBookmarks: fetchedBookmarks, item: item)
             } else { // does not exsist, so create
-                createBookmark(moc: moc, item: item)
+                return createBookmark(moc: moc, item: item)
             }
         } catch {
             fatalError("Failed to fetch bookmarks: \(error)")
