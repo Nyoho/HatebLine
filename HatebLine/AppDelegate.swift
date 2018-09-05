@@ -92,7 +92,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 dict[NSUnderlyingErrorKey] = failError
             }
             let error = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-            NSApplication.shared().presentError(error)
+            NSApplication.shared.presentError(error)
             abort()
         } else {
             return coordinator!
@@ -121,7 +121,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
                 try managedObjectContext.save()
             } catch {
                 let nserror = error as NSError
-                NSApplication.shared().presentError(nserror)
+                NSApplication.shared.presentError(nserror)
             }
         }
     }
@@ -131,7 +131,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         return managedObjectContext.undoManager
     }
 
-    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplicationTerminateReply {
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
         // Save changes in the application's managed object context before the application terminates.
 
         if !managedObjectContext.commitEditing() {
@@ -164,7 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
             alert.addButton(withTitle: cancelButton)
 
             let answer = alert.runModal()
-            if answer == NSAlertFirstButtonReturn {
+            if answer == NSApplication.ModalResponse.alertFirstButtonReturn {
                 return .terminateCancel
             }
         }

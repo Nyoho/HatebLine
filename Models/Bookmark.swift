@@ -12,7 +12,7 @@ import Foundation
 
 class Bookmark: NSManagedObject {
     var commentWithTags: NSAttributedString? {
-        let stringTags = tags?.flatMap { ($0 as! Tag).name ?? "" }
+        let stringTags = tags?.compactMap { ($0 as! Tag).name ?? "" }
         return Helper.commentWithTags(comment, tags: stringTags)
     }
 

@@ -11,7 +11,7 @@ import Cocoa
 class TablePopoverSegue: NSStoryboardSegue {
     @IBOutlet var anchorTableView: NSTableView!
     var preferredEdge: NSRectEdge!
-    var popoverBehavior: NSPopoverBehavior!
+    var popoverBehavior: NSPopover.Behavior!
 
     override func perform() {
         let selectedColumn = anchorTableView.selectedColumn

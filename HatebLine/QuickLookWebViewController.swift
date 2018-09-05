@@ -30,7 +30,7 @@ class QuickLookWebViewController: NSViewController {
         NotificationCenter.default.removeObserver(self)
     }
 
-    func progressNotification(_ notification: Notification) {
+    @objc func progressNotification(_ notification: Notification) {
         switch notification.name {
         case NSNotification.Name.WebViewProgressStarted:
             progressIndicator.startAnimation(self)

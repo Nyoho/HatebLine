@@ -18,7 +18,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
 
         // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         window?.titleVisibility = .hidden
-        shareButton.sendAction(on: NSEventMask(rawValue: UInt64(Int(NSEventMask.leftMouseDown.rawValue))))
+        shareButton.sendAction(on: NSEvent.EventTypeMask(rawValue: UInt64(Int(NSEvent.EventTypeMask.leftMouseDown.rawValue))))
     }
 
     // MARK: - NSWindowDelegate
@@ -36,7 +36,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         guard let identifier = segue.identifier else {
             return
         }
-        switch identifier {
+        switch identifier.rawValue {
         case "QuickLook":
             if let qvc = segue.destinationController as? QuickLookWebViewController {
                 qvc.representedObject = ""

@@ -30,7 +30,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }()
 
     lazy var managedObjectContext: NSManagedObjectContext = {
-        (NSApplication.shared().delegate
+        (NSApplication.shared.delegate
             as? AppDelegate)?.managedObjectContext }()!
 
     var sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
@@ -298,7 +298,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
         if array.count > 0 {
             if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: urlString) {
-                NSWorkspace.shared().open(url)
+                NSWorkspace.shared.open(url)
             }
         }
     }
@@ -316,7 +316,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
         if array.count > 0 {
             if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: "http://b.hatena.ne.jp/entry/\(urlString)") {
-                NSWorkspace.shared().open(url)
+                NSWorkspace.shared.open(url)
             }
         }
     }
@@ -327,7 +327,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
         if array.count > 0 {
             if let bookmark = array.first, let name = bookmark.user?.name, let url = URL(string: "http://b.hatena.ne.jp/\(name)/") {
-                NSWorkspace.shared().open(url)
+                NSWorkspace.shared.open(url)
             }
         }
     }
@@ -369,7 +369,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     override func prepare(for segue: NSStoryboardSegue, sender _: Any?) {
         if let identifierString = segue.identifier,
-            let identifier = SegueIdentifier(rawValue: identifierString) { // TODO: 変換に失敗したときはログにだすべき
+            let identifier = SegueIdentifier(rawValue: identifierString.rawValue) { // TODO: 変換に失敗したときはログにだすべき
             switch identifier {
             case .quickLook:
                 guard let tps = segue as? TablePopoverSegue else {
@@ -409,7 +409,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         tableView.reloadData()
     }
 
-    func updateData() {
+    @objc func updateData() {
         reload(self)
     }
 
@@ -473,7 +473,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         if let u = bookmark.bookmarkUrl, let height = cache[u] {
             return CGFloat(height)
         }
-        if let cell = tableView.make(withIdentifier: "Bookmark", owner: self) as? BookmarkCellView {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Bookmark"), owner: self) as? BookmarkCellView {
             tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
             //            if let username = bookmark.user?.name {
@@ -560,7 +560,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     func performSegueHelper(identifier: SegueIdentifier) {
-        performSegue(withIdentifier: identifier.rawValue, sender: self)
+        performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: identifier.rawValue), sender: self)
     }
 
     func performSegueShowAccountSetting() {

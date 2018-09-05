@@ -140,8 +140,8 @@ class CommentsViewController: NSViewController {
     }
 
     func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if tableColumn?.identifier == "CommentColumn" {
-            if let cell = tableView.make(withIdentifier: "CommentColumn", owner: self) as? CommentCellView,
+        if tableColumn?.identifier.rawValue == "CommentColumn" {
+            if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView,
                 let item = items[row] as Comment? {
                 cell.isPopular = row < populars.count
                 cell.needsDisplay = true
@@ -189,7 +189,7 @@ class CommentsViewController: NSViewController {
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
         let item = items[row] as Comment
-        if let cell = tableView.make(withIdentifier: "CommentColumn", owner: self) as? CommentCellView {
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView {
             tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
             let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
             cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()

@@ -30,20 +30,20 @@ class Page: NSManagedObject {
                     let matches = regex.matches(in: str as String, options: [], range: NSMakeRange(0, str.characters.count))
                     if let match = matches.first {
                         var r: NSRange
-                        r = match.rangeAt(2)
+                        r = match.range(at: 2)
                         if r.length != 0 {
                             self.entryImageUrl = (str as NSString).substring(with: r)
                             if let url = self.entryImageUrl, let u = URL(string: url) {
                                 self.__entryImage = NSImage(contentsOf: u)
                             }
                         }
-                        r = match.rangeAt(3)
+                        r = match.range(at: 3)
                         if r.length != 0 {
                             self.willChangeValue(forKey: "summary")
                             self.__summary = (str as NSString).substring(with: r)
                             self.didChangeValue(forKey: "summary")
                         }
-                        let faviconUrl = (str as NSString).substring(with: match.rangeAt(1))
+                        let faviconUrl = (str as NSString).substring(with: match.range(at: 1))
                         if let u = URL(string: faviconUrl) {
                             self.willChangeValue(forKey: "favicon")
                             self.__favicon = NSImage(contentsOf: u)

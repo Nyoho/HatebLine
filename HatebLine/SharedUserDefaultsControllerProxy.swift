@@ -12,5 +12,5 @@ import Foundation
 
 @objc(SharedUserDefaultsControllerProxy)
 open class SharedUserDefaultsControllerProxy: NSObject {
-    lazy var defaults = NSUserDefaultsController.shared()
+    lazy var defaults = NSUserDefaultsController.shared
 }

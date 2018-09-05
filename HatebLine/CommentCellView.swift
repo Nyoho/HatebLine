@@ -40,14 +40,14 @@ class CommentCellView: NSTableCellView {
         path.line(to: NSMakePoint(bounds.width, bounds.height))
         path.fill()
 
-        if let context = NSGraphicsContext.current() {
+        if let context = NSGraphicsContext.current {
             var transform = AffineTransform.identity
             transform.translate(x: bounds.width - size - 3.0, y: bounds.height - 3.0)
             transform.rotate(byDegrees: -90.0)
             context.saveGraphicsState()
             (transform as NSAffineTransform).concat()
-            var attr: [String: AnyObject]?
-            attr = [NSFontAttributeName: NSFont.boldSystemFont(ofSize: size), NSForegroundColorAttributeName: NSColor.white]
+            var attr: [NSAttributedStringKey: AnyObject]?
+            attr = [NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: size), NSAttributedStringKey.foregroundColor: NSColor.white]
             NSString(string: "Popular").draw(at: NSPoint(x: 0, y: 0), withAttributes: attr)
 
             context.restoreGraphicsState()
