@@ -18,18 +18,26 @@ class CommentsViewController: NSViewController {
         let tags: [String]?
 
         static func decode(_ e: Extractor) throws -> Comment {
+            let timestamp: String = try e <| "timestamp"
             let dateFormatter = DateFormatter()
             let locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.locale = locale
-            dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+            dateFormatter.dateFormat = containingSecondDate(timestamp) ? "yyyy/MM/dd HH:mm:ss" : "yyyy/MM/dd HH:mm"
             dateFormatter.timeZone = TimeZone(abbreviation: "JST")
-            let date = dateFormatter.date(from: try e <| "timestamp")
+            let date = dateFormatter.date(from: timestamp)
             return try Comment(
                 userName: e <| "user",
                 comment: e <|? "comment",
                 date: date,
                 tags: e <||? "tags"
             )
+        }
+
+        static func containingSecondDate(_ string: String) -> Bool {
+            // "yyyy/MM/dd HH:mm:ss" style?
+            let regex = "(\\d{4}/(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01]))\\s*\\d+:\\d+:\\d+"
+            guard let range = string.range(of: regex, options: .regularExpression, range: nil, locale: nil) else { return false }
+            return !range.isEmpty
         }
     }
 
