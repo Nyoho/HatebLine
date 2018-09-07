@@ -25,9 +25,9 @@ class Page: NSManagedObject {
         } else {
             DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
                 do {
-                    let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?</cite>(?:.*?<img src=\"(http.*?entryimage.*?)\".*?)?<p>(.*?)</p>", options: [.caseInsensitive])
+                    let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?<\\/cite>.*?<img src=\"(.*?)\".*?<p>(.*?)<\\/p>", options: [.caseInsensitive, .dotMatchesLineSeparators])
 
-                    let matches = regex.matches(in: str as String, options: [], range: NSMakeRange(0, str.characters.count))
+                    let matches = regex.matches(in: str as String, options: [], range: NSMakeRange(0, str.count))
                     if let match = matches.first {
                         var r: NSRange
                         r = match.range(at: 2)
