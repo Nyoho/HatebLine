@@ -11,16 +11,16 @@ import CoreData
 import Foundation
 
 class Bookmark: NSManagedObject {
-    var commentWithTags: NSAttributedString? {
+    @objc var commentWithTags: NSAttributedString? {
         let stringTags = tags?.compactMap { ($0 as! Tag).name ?? "" }
         return Helper.commentWithTags(comment, tags: stringTags)
     }
 
-    var timeAgo: String? {
+    @objc var timeAgo: String? {
         return date?.timeAgo
     }
 
-    var isCommentEmpty: Bool {
+    @objc var isCommentEmpty: Bool {
         return ((comment ?? "").isEmpty && (tags == nil || tags?.count == 0)) ? true : false
     }
 }

@@ -15,7 +15,7 @@ class User: NSManagedObject {
     // Insert code here to add functionality to your managed object subclass
     var __profileImage: NSImage?
 
-    var profileImage: NSImage? {
+    @objc var profileImage: NSImage? {
         if let image = self.__profileImage {
             return image
         } else {

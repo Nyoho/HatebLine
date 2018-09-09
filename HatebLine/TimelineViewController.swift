@@ -29,11 +29,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         return cache
     }()
 
-    lazy var managedObjectContext: NSManagedObjectContext = {
+    @objc lazy var managedObjectContext: NSManagedObjectContext = {
         (NSApplication.shared.delegate
             as? AppDelegate)?.managedObjectContext }()!
 
-    var sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
+    @objc var sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
 
     func favoriteUrl() -> URL? {
         guard let hatenaID = UserDefaults.standard.value(forKey: "hatenaID") as? String else {

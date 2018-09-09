@@ -16,7 +16,7 @@ class Page: NSManagedObject {
     var __summary: String?
     var __entryImage: NSImage?
 
-    var favicon: NSImage? {
+    @objc var favicon: NSImage? {
         guard let str = content else {
             return nil
         }
@@ -58,17 +58,17 @@ class Page: NSManagedObject {
         return nil
     }
 
-    var summary: String? {
+    @objc var summary: String? {
         return __summary
     }
 
     var entryImageUrl: String?
 
-    var entryImage: NSImage? {
+    @objc var entryImage: NSImage? {
         return __entryImage
     }
 
-    var countString: String? {
+    @objc var countString: String? {
         if let n = count {
             return n.intValue > 1 ? "\(n) users" : "\(n) user"
         } else {
@@ -76,7 +76,7 @@ class Page: NSManagedObject {
         }
     }
 
-    var manyBookmarked: Bool {
+    @objc var manyBookmarked: Bool {
         guard let n = count else {
             return false
         }

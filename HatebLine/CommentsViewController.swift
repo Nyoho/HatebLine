@@ -135,11 +135,11 @@ class CommentsViewController: NSViewController {
 
     // MARK: - TableView
 
-    func numberOfRowsInTableView(_: NSTableView) -> Int {
+    @objc func numberOfRowsInTableView(_: NSTableView) -> Int {
         return items.count
     }
 
-    func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
+    @objc func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if tableColumn?.identifier.rawValue == "CommentColumn" {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView,
                 let item = items[row] as Comment? {
@@ -186,7 +186,7 @@ class CommentsViewController: NSViewController {
         return nil
     }
 
-    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+    @objc func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
         var heightOfRow: CGFloat = 48
         let item = items[row] as Comment
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView {
