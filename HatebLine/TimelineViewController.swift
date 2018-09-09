@@ -74,20 +74,20 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         guard let url = favoriteUrl() else { return }
         parser.feedUrl = url
         deleteOldBookmarks()
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
+        DispatchQueue.global().async {
             self.parser.parse(completionHandler: { items in
                 self.mergeBookmarks(items)
 
                 guard let url = self.myFeedUrl() else { return }
                 self.parserOfMyFeed.feedUrl = url
-                DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.background).async(execute: {
+                DispatchQueue.global().async {
                     self.parserOfMyFeed.parse(completionHandler: { items in
                         self.mergeBookmarks(items)
                     })
-                })
+                }
 
             })
-        })
+        }
     }
 
     func deleteOldBookmarks() {
