@@ -142,7 +142,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             cache[u] = nil
         }
         if let count = item["count"] as? String, let bcount = b.page?.count {
-            if let n = Int(count), n != Int(bcount) {
+            if let n = Int(count), n != Int(truncating: bcount) {
                 b.page?.count = NSNumber(value: n)
             }
         }
@@ -471,7 +471,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             return heightOfRow
         }
         if let u = bookmark.bookmarkUrl, let height = cache[u] {
-            return CGFloat(height)
+            return CGFloat(truncating: height)
         }
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Bookmark"), owner: self) as? BookmarkCellView {
             tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
