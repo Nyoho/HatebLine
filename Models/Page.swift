@@ -23,7 +23,7 @@ class Page: NSManagedObject {
         if let image = self.__favicon {
             return image
         } else {
-            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: {
+            DispatchQueue.global().async {
                 do {
                     let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?<\\/cite>.*?<img src=\"(.*?)\".*?<p>(.*?)<\\/p>", options: [.caseInsensitive, .dotMatchesLineSeparators])
 
@@ -53,7 +53,7 @@ class Page: NSManagedObject {
                 } catch let error {
                     print("\(error)")
                 }
-            })
+            }
         }
         return nil
     }
