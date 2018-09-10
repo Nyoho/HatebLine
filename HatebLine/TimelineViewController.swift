@@ -280,11 +280,21 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 }
                 notification.informativeText = "\(countString)\(commentString)\(separator)\(title)"
             }
-            //            notification.contentImage = bookmark.user?.profileImage
-            if let url = bookmark.bookmarkUrl {
-                notification.userInfo = ["bookmarkUrl": url]
+
+            bookmark.page?.computeComputedProperties { (_: Bool) in
+                notification.contentImage = bookmark.page?.entryImage
+
+                print("notification: \(notification)")
+                print("bookmark: \(bookmark)")
+
+                if let url = bookmark.bookmarkUrl {
+                    notification.userInfo = ["bookmarkUrl": url]
+                }
+
+                DispatchQueue.main.async {
+                    NSUserNotificationCenter.default.deliver(notification)
+                }
             }
-            NSUserNotificationCenter.default.deliver(notification)
         }
     }
 

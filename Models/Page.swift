@@ -15,56 +15,68 @@ class Page: NSManagedObject {
     var __favicon: NSImage?
     var __summary: String?
     var __entryImage: NSImage?
+    var prepared: Bool = false
 
-    @objc var favicon: NSImage? {
-        guard let str = content else {
-            return nil
+    public func computeComputedProperties(_ completion: ((Bool) -> Void)? = nil) {
+        guard !prepared else {
+            if let completion = completion {
+                completion(true)
+            }
+            return
         }
-        if let image = self.__favicon {
-            return image
-        } else {
-            DispatchQueue.global().async {
-                do {
-                    let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?<\\/cite>.*?<img src=\"(.*?)\".*?<p>(.*?)<\\/p>", options: [.caseInsensitive, .dotMatchesLineSeparators])
+        guard let str = content else {
+            if let completion = completion {
+                completion(true)
+            }
+            return
+        }
 
-                    let matches = regex.matches(in: str as String, options: [], range: NSMakeRange(0, str.count))
-                    if let match = matches.first {
-                        var r: NSRange
-                        r = match.range(at: 2)
-                        if r.length != 0 {
-                            self.entryImageUrl = (str as NSString).substring(with: r)
-                            if let url = self.entryImageUrl, let u = URL(string: url) {
-                                self.__entryImage = NSImage(contentsOf: u)
-                            }
-                        }
-                        r = match.range(at: 3)
-                        if r.length != 0 {
-                            self.willChangeValue(forKey: "summary")
-                            self.__summary = (str as NSString).substring(with: r)
-                            self.didChangeValue(forKey: "summary")
-                        }
-                        let faviconUrl = (str as NSString).substring(with: match.range(at: 1))
-                        if let u = URL(string: faviconUrl) {
-                            self.willChangeValue(forKey: "favicon")
-                            self.__favicon = NSImage(contentsOf: u)
-                            self.didChangeValue(forKey: "favicon")
-                        }
+        do {
+            let regex = try NSRegularExpression(pattern: "<cite><img.*?src=\"(.*?)\".*?>.*?<\\/cite>.*?<img src=\"(.*?)\".*?<p>(.*?)<\\/p>", options: [.caseInsensitive, .dotMatchesLineSeparators])
+
+            let matches = regex.matches(in: str as String, options: [], range: NSMakeRange(0, str.count))
+            if let match = matches.first {
+                var r: NSRange
+                r = match.range(at: 2)
+                if r.length != 0 {
+                    entryImageUrl = (str as NSString).substring(with: r)
+                    if let url = self.entryImageUrl, let u = URL(string: url) {
+                        __entryImage = NSImage(contentsOf: u)
                     }
-                } catch let error {
-                    print("\(error)")
+                }
+                r = match.range(at: 3)
+                if r.length != 0 {
+                    __summary = (str as NSString).substring(with: r)
+                }
+                let faviconUrl = (str as NSString).substring(with: match.range(at: 1))
+                if let u = URL(string: faviconUrl) {
+                    __favicon = NSImage(contentsOf: u)
                 }
             }
+            prepared = true
+        } catch let error {
+            print("Error: \(error)")
+            prepared = false
         }
-        return nil
+        if let completion = completion {
+            completion(prepared)
+        }
+    }
+
+    @objc var favicon: NSImage? {
+        computeComputedProperties()
+        return __favicon
     }
 
     @objc var summary: String? {
+        computeComputedProperties()
         return __summary
     }
 
     var entryImageUrl: String?
 
     @objc var entryImage: NSImage? {
+        computeComputedProperties()
         return __entryImage
     }
 
