@@ -119,7 +119,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     try moc.save()
                     self.managedObjectContext.performAndWait {
                         if let enabled = UserDefaults.standard.value(forKey: "enableNotification") as? Bool, enabled {
-                            self.notififyNewObjects(newBookmarks)
+                            self.notifyNewObjects(newBookmarks)
                         }
                     }
                 } catch {
@@ -262,7 +262,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         return nil
     }
 
-    func notififyNewObjects(_ bookmarks: [Bookmark]) {
+    func notifyNewObjects(_ bookmarks: [Bookmark]) {
         for bookmark: Bookmark in bookmarks {
             let notification = NSUserNotification()
             if let creator = bookmark.user?.name {
