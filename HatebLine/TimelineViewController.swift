@@ -537,7 +537,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
 
-    func userNotificationCenter(_: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
+    // MARK: - NSUserNotification
+
+    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
         if let info = notification.userInfo as? [String: String] {
             if let bookmarkUrl = info["bookmarkUrl"] {
                 let moc = managedObjectContext
@@ -552,7 +554,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                         NSAnimationContext.runAnimationGroup({ context in
                             context.allowsImplicitAnimation = true
                             self.tableView.scrollRowToVisible(self.tableView.selectedRow)
-                        }, completionHandler: nil)
+                        }, completionHandler: {
+                            center.removeDeliveredNotification(notification)
+                        })
                     }
                 } catch {
                     fatalError("Failure: \(error)")
