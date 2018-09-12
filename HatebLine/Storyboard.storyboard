@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14113"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="14113"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="14313.18"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
-        <capability name="system font weights other than Regular or Bold" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -680,13 +678,13 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="HatebLine" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="475.5" y="249"/>
+            <point key="canvasLocation" x="470" y="551"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="GYs-k3-juC">
             <objects>
                 <windowController id="17K-n7-ydr" customClass="MainWindowController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="YLc-hD-hzf">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="YLc-hD-hzf">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
@@ -1208,7 +1206,7 @@
                 </tabViewController>
                 <customObject id="NKg-Ff-YfN" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1089" y="426"/>
+            <point key="canvasLocation" x="1077" y="1068"/>
         </scene>
         <!--Acknowledgments View Controller-->
         <scene sceneID="Mgw-O5-gUv">
@@ -1220,20 +1218,20 @@
                         <subviews>
                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CRa-d9-hBG">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                                <clipView key="contentView" id="Cnm-fT-Z6I">
+                                <clipView key="contentView" drawsBackground="NO" id="Cnm-fT-Z6I">
                                     <rect key="frame" x="1" y="1" width="448" height="298"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView editable="NO" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="jKx-lk-fEG">
                                             <rect key="frame" x="0.0" y="0.0" width="448" height="298"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <size key="minSize" width="448" height="298"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                         </textView>
                                     </subviews>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="56l-m8-Osh">
                                     <rect key="frame" x="-100" y="-100" width="87" height="18"/>
@@ -1258,7 +1256,7 @@
                 </viewController>
                 <customObject id="CAo-yL-hxF" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1135" y="-42"/>
+            <point key="canvasLocation" x="1100" y="551"/>
         </scene>
         <!--General-->
         <scene sceneID="Lpw-Eu-VLC">
@@ -1285,7 +1283,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="Nzo-y4-bAO" name="value" keyPath="defaults.values.includeBookmarkCount" id="78m-2J-AcC"/>
+                                    <binding destination="Ls3-EZ-9mw" name="value" keyPath="values.includeBookmarkCount" id="mII-65-HPv"/>
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qav-BO-KGQ">
@@ -1296,7 +1294,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <binding destination="Nzo-y4-bAO" name="value" keyPath="defaults.values.enableNotification" id="7qH-Rz-LFo"/>
+                                    <binding destination="Ls3-EZ-9mw" name="value" keyPath="values.enableNotification" id="PXD-hr-4UN"/>
                                 </connections>
                             </button>
                             <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ttm-TZ-YCz">
@@ -1304,11 +1302,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Gbb-Bc-hiG">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Nzo-y4-bAO" name="value" keyPath="defaults.values.feedToken" id="Jb6-6t-MQ0"/>
+                                    <binding destination="Ls3-EZ-9mw" name="value" keyPath="values.feedToken" id="YAm-ee-ni6"/>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-P7-jbp">
@@ -1334,11 +1332,11 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="J7W-hb-kRz">
                                     <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                                 <connections>
-                                    <binding destination="Nzo-y4-bAO" name="value" keyPath="defaults.values.hatenaID" id="ct4-Ur-nlD"/>
+                                    <binding destination="Ls3-EZ-9mw" name="value" keyPath="values.hatenaID" id="DTD-h5-Mpu"/>
                                 </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2vD-U8-Lcg">
@@ -1349,21 +1347,14 @@
                                     <color key="textColor" red="1" green="0.15069167520000001" blue="0.25635681919999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
-                                <connections>
-                                    <binding destination="Nzo-y4-bAO" name="hidden" keyPath="self.defaults.values.hatenaID" id="6Yj-wh-MZx">
-                                        <dictionary key="options">
-                                            <string key="NSValueTransformerName">NSIsNotNil</string>
-                                        </dictionary>
-                                    </binding>
-                                </connections>
                             </textField>
                         </subviews>
                     </view>
                 </viewController>
                 <customObject id="Pj8-Kr-jQX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="Nzo-y4-bAO" userLabel="SharedUserDefaultsControllerProxy" customClass="SharedUserDefaultsControllerProxy"/>
+                <userDefaultsController id="Ls3-EZ-9mw"/>
             </objects>
-            <point key="canvasLocation" x="1673" y="365"/>
+            <point key="canvasLocation" x="1607" y="1068"/>
         </scene>
         <!--Comments View Controller-->
         <scene sceneID="jWg-JX-0Dx">
@@ -1629,6 +1620,6 @@
         <image name="NSShareTemplate" width="11" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="cwI-oc-Fym"/>
+        <segue reference="ewP-el-gjQ"/>
     </inferredMetricsTieBreakers>
 </document>
