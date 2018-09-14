@@ -276,9 +276,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 let separator = commentString == "" ? "" : " / "
                 var countString = ""
                 if let enabled = UserDefaults.standard.value(forKey: "includeBookmarkCount") as? Bool, enabled {
-                    countString = "(\(count)) "
+                    countString = "\(count)🔖 "
                 }
-                notification.informativeText = "\(countString)\(commentString)\(separator)\(title)"
+                // \(separator)
+                notification.subtitle = "\(countString)\(title)"
+                notification.informativeText = bookmark.comment // "\(commentString)"
             }
 
             bookmark.page?.computeComputedProperties { (_: Bool) in
