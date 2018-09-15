@@ -293,9 +293,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                     notification.userInfo = ["bookmarkUrl": url]
                 }
 
-                DispatchQueue.main.async {
-                    NSUserNotificationCenter.default.deliver(notification)
-                }
+                NSUserNotificationCenter.default.deliver(notification)
             }
         }
     }
