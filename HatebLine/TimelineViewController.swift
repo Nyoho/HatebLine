@@ -59,7 +59,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     func setup() {
-        // QuestionBookmarkManager.sharedManager().setConsumerKey("ov8uPcRifosmAg==", consumerSecret: "/AMycQm6+fNeEFtvl1GPMWsKEFI=")
+        // QuestionBookmarkManager.sharedManager().setConsumerKey("consumerkey==", consumerSecret: "consumer secret=")
         guard let url = favoriteUrl() else { return }
         parser = RSSParser(url: url)
         guard let myUrl = myFeedUrl() else { return }
