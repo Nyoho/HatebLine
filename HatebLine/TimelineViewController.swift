@@ -146,6 +146,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 b.page?.count = NSNumber(value: n)
             }
         }
+        if let title = item["title"] as? String, let btitle = b.page?.title {
+            if title != btitle {
+                b.page?.title = title
+            }
+        }
         if let comment = item["comment"] as? String {
             if comment != b.comment {
                 b.comment = comment
