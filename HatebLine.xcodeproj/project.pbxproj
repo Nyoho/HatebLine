@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		55048C471C8DDC17000A3A64 /* Question.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55048C461C8DDC17000A3A64 /* Question.framework */; };
 		55048C481C8DDC17000A3A64 /* Question.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55048C461C8DDC17000A3A64 /* Question.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		5517EF18216F2DA600828501 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5517EF17216F2DA600828501 /* Cocoa.framework */; };
+		5517EF1B216F2DA600828501 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517EF1A216F2DA600828501 /* SafariExtensionHandler.swift */; };
+		5517EF1D216F2DA600828501 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517EF1C216F2DA600828501 /* SafariExtensionViewController.swift */; };
+		5517EF20216F2DA600828501 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF1E216F2DA600828501 /* SafariExtensionViewController.xib */; };
+		5517EF23216F2DA600828501 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF22216F2DA600828501 /* script.js */; };
+		5517EF25216F2DA600828501 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF24216F2DA600828501 /* ToolbarItemIcon.pdf */; };
+		5517EF29216F2DA600828501 /* HatebLine for Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5517EF16216F2DA600828501 /* HatebLine for Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5517EF2E2171766B00828501 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; };
 		551BC62B1C9C7250003F0AF1 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */; };
 		551BC62C1C9C7250003F0AF1 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		551BC62E1C9C7279003F0AF1 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */; };
@@ -59,6 +67,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		5517EF27216F2DA600828501 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 55415B621C3961F90079B118 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5517EF15216F2DA600828501;
+			remoteInfo = "HatebLine for Safari";
+		};
 		55415B7D1C3961F90079B118 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 55415B621C3961F90079B118 /* Project object */;
@@ -76,6 +91,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		5517EF2D216F2DA600828501 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5517EF29216F2DA600828501 /* HatebLine for Safari.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55415B9E1C3962970079B118 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,6 +123,15 @@
 
 /* Begin PBXFileReference section */
 		55048C461C8DDC17000A3A64 /* Question.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Question.framework; path = Carthage/Build/Mac/Question.framework; sourceTree = "<group>"; };
+		5517EF16216F2DA600828501 /* HatebLine for Safari.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HatebLine for Safari.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5517EF17216F2DA600828501 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		5517EF1A216F2DA600828501 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		5517EF1C216F2DA600828501 /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
+		5517EF1F216F2DA600828501 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
+		5517EF21216F2DA600828501 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5517EF22216F2DA600828501 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
+		5517EF24216F2DA600828501 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
+		5517EF26216F2DA600828501 /* HatebLine_for_Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HatebLine_for_Safari.entitlements; sourceTree = "<group>"; };
 		551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/Mac/KeychainAccess.framework; sourceTree = "<group>"; };
 		551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/Mac/OAuthSwift.framework; sourceTree = "<group>"; };
 		551DB4F91C42CD0300B198A8 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookmark.swift; path = Models/Bookmark.swift; sourceTree = "<group>"; };
@@ -148,6 +183,15 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		5517EF13216F2DA600828501 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5517EF2E2171766B00828501 /* Alamofire.framework in Frameworks */,
+				5517EF18216F2DA600828501 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55415B671C3961F90079B118 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,6 +223,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5517EF19216F2DA600828501 /* HatebLine for Safari */ = {
+			isa = PBXGroup;
+			children = (
+				5517EF1A216F2DA600828501 /* SafariExtensionHandler.swift */,
+				5517EF1C216F2DA600828501 /* SafariExtensionViewController.swift */,
+				5517EF1E216F2DA600828501 /* SafariExtensionViewController.xib */,
+				5517EF21216F2DA600828501 /* Info.plist */,
+				5517EF22216F2DA600828501 /* script.js */,
+				5517EF24216F2DA600828501 /* ToolbarItemIcon.pdf */,
+				5517EF26216F2DA600828501 /* HatebLine_for_Safari.entitlements */,
+			);
+			path = "HatebLine for Safari";
+			sourceTree = "<group>";
+		};
 		551DB4FC1C42CD1A00B198A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,6 +269,7 @@
 				55415B6C1C3961F90079B118 /* HatebLine */,
 				55415B7F1C3961F90079B118 /* HatebLineTests */,
 				55415B8A1C3961F90079B118 /* HatebLineUITests */,
+				5517EF19216F2DA600828501 /* HatebLine for Safari */,
 				55415B9B1C3962780079B118 /* Frameworks */,
 				55415B6B1C3961F90079B118 /* Products */,
 			);
@@ -222,6 +281,7 @@
 				55415B6A1C3961F90079B118 /* HatebLine.app */,
 				55415B7C1C3961F90079B118 /* HatebLineTests.xctest */,
 				55415B871C3961F90079B118 /* HatebLineUITests.xctest */,
+				5517EF16216F2DA600828501 /* HatebLine for Safari.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -283,6 +343,7 @@
 				55415B991C39626C0079B118 /* Alamofire.framework */,
 				552453741C4E211B00F4EAA1 /* WebKit.framework */,
 				55AB0D991C63961800132CE0 /* Himotoki.framework */,
+				5517EF17216F2DA600828501 /* Cocoa.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -310,6 +371,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		5517EF15216F2DA600828501 /* HatebLine for Safari */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5517EF2C216F2DA600828501 /* Build configuration list for PBXNativeTarget "HatebLine for Safari" */;
+			buildPhases = (
+				5517EF12216F2DA600828501 /* Sources */,
+				5517EF13216F2DA600828501 /* Frameworks */,
+				5517EF14216F2DA600828501 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "HatebLine for Safari";
+			productName = "HatebLine for Safari";
+			productReference = 5517EF16216F2DA600828501 /* HatebLine for Safari.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		55415B691C3961F90079B118 /* HatebLine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55415B901C3961F90079B118 /* Build configuration list for PBXNativeTarget "HatebLine" */;
@@ -319,10 +397,12 @@
 				55415B671C3961F90079B118 /* Frameworks */,
 				55415B681C3961F90079B118 /* Resources */,
 				55415B9E1C3962970079B118 /* Embed Frameworks */,
+				5517EF2D216F2DA600828501 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				5517EF28216F2DA600828501 /* PBXTargetDependency */,
 			);
 			name = HatebLine;
 			productName = HatebLine;
@@ -371,12 +451,18 @@
 		55415B621C3961F90079B118 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
+				LastSwiftUpdateCheck = 1000;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "北䑓 如法";
 				TargetAttributes = {
+					5517EF15216F2DA600828501 = {
+						CreatedOnToolsVersion = 10.0;
+						DevelopmentTeam = 5L9DL58E3J;
+						ProvisioningStyle = Automatic;
+					};
 					55415B691C3961F90079B118 = {
 						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 5L9DL58E3J;
 						LastSwiftMigration = 0940;
 					};
 					55415B7B1C3961F90079B118 = {
@@ -407,11 +493,22 @@
 				55415B691C3961F90079B118 /* HatebLine */,
 				55415B7B1C3961F90079B118 /* HatebLineTests */,
 				55415B861C3961F90079B118 /* HatebLineUITests */,
+				5517EF15216F2DA600828501 /* HatebLine for Safari */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		5517EF14216F2DA600828501 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5517EF25216F2DA600828501 /* ToolbarItemIcon.pdf in Resources */,
+				5517EF20216F2DA600828501 /* SafariExtensionViewController.xib in Resources */,
+				5517EF23216F2DA600828501 /* script.js in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55415B681C3961F90079B118 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -456,6 +553,15 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		5517EF12216F2DA600828501 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5517EF1D216F2DA600828501 /* SafariExtensionViewController.swift in Sources */,
+				5517EF1B216F2DA600828501 /* SafariExtensionHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		55415B661C3961F90079B118 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -511,6 +617,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5517EF28216F2DA600828501 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5517EF15216F2DA600828501 /* HatebLine for Safari */;
+			targetProxy = 5517EF27216F2DA600828501 /* PBXContainerItemProxy */;
+		};
 		55415B7E1C3961F90079B118 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 55415B691C3961F90079B118 /* HatebLine */;
@@ -523,7 +634,81 @@
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		5517EF1E216F2DA600828501 /* SafariExtensionViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5517EF1F216F2DA600828501 /* Base */,
+			);
+			name = SafariExtensionViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
+		5517EF2A216F2DA600828501 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L9DL58E3J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HatebLine for Safari/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.nyoho.HatebLine.HatebLine-for-Safari";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		5517EF2B216F2DA600828501 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5L9DL58E3J;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = "HatebLine for Safari/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "jp.nyoho.HatebLine.HatebLine-for-Safari";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
 		55415B8E1C3961F90079B118 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -630,8 +815,11 @@
 		55415B911C3961F90079B118 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -649,6 +837,7 @@
 		55415B921C3961F90079B118 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -736,6 +925,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		5517EF2C216F2DA600828501 /* Build configuration list for PBXNativeTarget "HatebLine for Safari" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5517EF2A216F2DA600828501 /* Debug */,
+				5517EF2B216F2DA600828501 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		55415B651C3961F90079B118 /* Build configuration list for PBXProject "HatebLine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
