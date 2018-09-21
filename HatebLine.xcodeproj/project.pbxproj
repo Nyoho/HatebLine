@@ -458,7 +458,7 @@
 					5517EF15216F2DA600828501 = {
 						CreatedOnToolsVersion = 10.0;
 						DevelopmentTeam = 5L9DL58E3J;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					55415B691C3961F90079B118 = {
 						CreatedOnToolsVersion = 7.2;
@@ -657,7 +657,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -689,7 +689,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

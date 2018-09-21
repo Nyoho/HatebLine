@@ -1,9 +1,11 @@
 language: objective-c
-osx_image: xcode9.4
+osx_image: xcode10.1
 xcode_project: HatebLine.xcodeproj
+xcode_scheme: HatebLine
+xcode_destination: platform=macOS
 
 before_install:
-- brew update
+# - brew update
 - carthage update --platform Mac
 
 script:
