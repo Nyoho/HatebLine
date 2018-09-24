@@ -117,7 +117,7 @@ class CommentsViewController: NSViewController {
             regulars = allRegulars
         } else {
             populars = allPopulars.filter {
-                ($0.comment ?? "").isEmpty || !($0.tags ?? []).isEmpty
+                !($0.comment ?? "").isEmpty || !($0.tags ?? []).isEmpty
             }
             regulars = allRegulars.filter {
                 !($0.comment ?? "").isEmpty || !($0.tags ?? []).isEmpty
