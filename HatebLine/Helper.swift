@@ -13,14 +13,14 @@ class Helper {
     static func commentWithTags(_ comment: String?, tags: [String]?) -> NSAttributedString? {
         let t = NSMutableAttributedString()
         if let s = comment {
-            t.append(NSAttributedString(string: s))
+            t.append(NSAttributedString(string: s, attributes: [.foregroundColor: NSColor.labelColor]))
         }
         if let set = tags {
             var first = true
             for tag in set {
                 let space = t.isEqual(to: NSAttributedString()) ? "" : " "
                 let comma = first ? "" : ","
-                let attributes = [NSAttributedStringKey.foregroundColor: NSColor.headerColor, NSAttributedStringKey.font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)]
+                let attributes = [NSAttributedStringKey.foregroundColor: NSColor.secondaryLabelColor, NSAttributedStringKey.font: NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)]
                 t.append(NSAttributedString(string: comma + space + "\(tag)", attributes: attributes))
                 first = false
             }
