@@ -41,8 +41,7 @@ class RSSParser: NSObject, XMLParserDelegate {
         parser.parse()
     }
 
-    func parserDidStartDocument(_: XMLParser) {
-    }
+    func parserDidStartDocument(_: XMLParser) {}
 
     func parserDidEndDocument(_: XMLParser) {
         if let handler = handler {

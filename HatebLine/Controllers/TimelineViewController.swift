@@ -280,7 +280,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if let title = bookmark.page?.title, let count = bookmark.page?.count {
                 var countString = ""
                 if let enabled = UserDefaults.standard.value(forKey: "includeBookmarkCount") as? Bool, enabled {
-                    countString = "\(count)🔖 "
+                    countString = "[\(count)] "
                 }
                 notification.subtitle = "\(countString)\(title)"
                 notification.informativeText = bookmark.comment // "\(commentString)"
@@ -303,6 +303,11 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     @IBAction func reload(_: AnyObject) {
         perform()
+        let notifications = NSUserNotificationCenter.default.deliveredNotifications
+        print("# of notifications = \(notifications.count)")
+        for n in notifications {
+            print("\(n.informativeText ?? "") (\(n.title ?? ""))")
+        }
     }
 
     @IBAction func openInBrowser(_: AnyObject) {
