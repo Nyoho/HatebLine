@@ -170,8 +170,8 @@
 		55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "Models/Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55D2E7391C51DC75006D2475 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Models/Page.swift; sourceTree = "<group>"; };
 		55D2E7401C51FDBE006D2475 /* JKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKTableView.swift; sourceTree = "<group>"; };
-		55D2E7421C523187006D2475 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSDate+Extension.swift"; path = "NSDate+TimeAgo/NSDate+Extension.swift"; sourceTree = "<group>"; };
-		55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = NSDateTimeAgo.bundle; path = "NSDate+TimeAgo/NSDateTimeAgo.bundle"; sourceTree = "<group>"; };
+		55D2E7421C523187006D2475 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
+		55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
 		55DE81BB1C6CA07A008D8392 /* GeneralPrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPrefViewController.swift; sourceTree = "<group>"; };
 		55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		55E079CB1C3D583800A72C05 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/Mac/AlamofireImage.framework; sourceTree = "<group>"; };
@@ -240,6 +240,7 @@
 		551DB4FC1C42CD1A00B198A8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				55415B6F1C3961F90079B118 /* HatebLine.xcdatamodeld */,
 				551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */,
 				551DB4FE1C4374F400B198A8 /* User.swift */,
 				552F4A1D1C5C624A006962E9 /* Bookmark+CoreDataProperties.swift */,
@@ -290,26 +291,14 @@
 			isa = PBXGroup;
 			children = (
 				551DB4FC1C42CD1A00B198A8 /* Models */,
-				55415B6D1C3961F90079B118 /* AppDelegate.swift */,
-				55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */,
-				55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */,
-				552453721C4E1E9E00F4EAA1 /* WebViewController.swift */,
-				552251671C5D1133004C2B48 /* QuickLookWebViewController.swift */,
-				55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */,
-				55415B9F1C3A3C880079B118 /* RSSParser.swift */,
-				55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */,
-				55AB0D941C63828D00132CE0 /* CommentCellView.swift */,
-				55415B721C3961F90079B118 /* Assets.xcassets */,
-				55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */,
-				55415B771C3961F90079B118 /* Info.plist */,
-				55415B6F1C3961F90079B118 /* HatebLine.xcdatamodeld */,
-				55D2E7421C523187006D2475 /* NSDate+Extension.swift */,
-				55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */,
 				55556F521C4FD33C00419440 /* Views */,
+				55C0AB7B21C08EBE00716637 /* Controllers */,
+				55C0AB7C21C08F1900716637 /* Bootstrap */,
+				55C0AB7D21C08F5F00716637 /* Utils */,
+				55C0AB7A21C08E7200716637 /* Resources */,
+				55C0AB7921C08AAC00716637 /* Helpers */,
 				551E72051C52680500C366EF /* Prefs */,
 				557906851C656507003DA09F /* Acknowledgments */,
-				55F8E5BB1C658B71009D2F79 /* Helper.swift */,
-				55EC3B011C6C7DA4009EB474 /* SharedUserDefaultsControllerProxy.swift */,
 			);
 			path = HatebLine;
 			sourceTree = "<group>";
@@ -351,6 +340,8 @@
 		55556F521C4FD33C00419440 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */,
+				55AB0D941C63828D00132CE0 /* CommentCellView.swift */,
 				55556F501C4FD33600419440 /* GrowingTextField.swift */,
 				55D2E7401C51FDBE006D2475 /* JKTableView.swift */,
 				5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */,
@@ -366,6 +357,55 @@
 				557906881C656525003DA09F /* AcknowledgmentsViewController.swift */,
 			);
 			path = Acknowledgments;
+			sourceTree = "<group>";
+		};
+		55C0AB7921C08AAC00716637 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				55F8E5BB1C658B71009D2F79 /* Helper.swift */,
+				55EC3B011C6C7DA4009EB474 /* SharedUserDefaultsControllerProxy.swift */,
+				55D2E7421C523187006D2475 /* NSDate+Extension.swift */,
+				55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		55C0AB7A21C08E7200716637 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				55415B721C3961F90079B118 /* Assets.xcassets */,
+				55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */,
+				55415B771C3961F90079B118 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		55C0AB7B21C08EBE00716637 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */,
+				55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */,
+				552453721C4E1E9E00F4EAA1 /* WebViewController.swift */,
+				552251671C5D1133004C2B48 /* QuickLookWebViewController.swift */,
+				55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		55C0AB7C21C08F1900716637 /* Bootstrap */ = {
+			isa = PBXGroup;
+			children = (
+				55415B6D1C3961F90079B118 /* AppDelegate.swift */,
+			);
+			path = Bootstrap;
+			sourceTree = "<group>";
+		};
+		55C0AB7D21C08F5F00716637 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				55415B9F1C3A3C880079B118 /* RSSParser.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -824,7 +864,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = HatebLine/Info.plist;
+				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
@@ -846,7 +886,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = HatebLine/Info.plist;
+				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
