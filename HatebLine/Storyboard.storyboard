@@ -822,13 +822,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="102" horizontalPageScroll="10" verticalLineScroll="102" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
-                                <rect key="frame" x="0.0" y="0.0" width="433" height="400"/>
+                                <rect key="frame" x="0.0" y="195" width="433" height="205"/>
                                 <clipView key="contentView" drawsBackground="NO" id="vOr-cm-ozy">
-                                    <rect key="frame" x="1" y="1" width="431" height="398"/>
+                                    <rect key="frame" x="1" y="1" width="431" height="203"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView wantsLayer="YES" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="100" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH" customClass="JKTableView" customModule="HatebLine" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="431" height="398"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="431" height="203"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1161,7 +1161,7 @@
                             <constraint firstAttribute="trailing" secondItem="5mF-t4-IJO" secondAttribute="trailing" id="2u7-Ib-4DK"/>
                             <constraint firstAttribute="bottom" secondItem="5mF-t4-IJO" secondAttribute="bottom" id="JYD-QQ-5SB"/>
                             <constraint firstItem="5mF-t4-IJO" firstAttribute="leading" secondItem="QEn-qU-JRA" secondAttribute="leading" id="VhP-5x-QZk"/>
-                            <constraint firstAttribute="bottom" secondItem="VcD-Ui-scv" secondAttribute="bottom" id="gwU-ec-RgG"/>
+                            <constraint firstItem="5mF-t4-IJO" firstAttribute="top" secondItem="VcD-Ui-scv" secondAttribute="bottom" id="WrR-CS-7xJ"/>
                             <constraint firstItem="VcD-Ui-scv" firstAttribute="leading" secondItem="QEn-qU-JRA" secondAttribute="leading" id="i8z-BQ-cPn"/>
                             <constraint firstItem="VcD-Ui-scv" firstAttribute="top" secondItem="QEn-qU-JRA" secondAttribute="top" id="p6P-wJ-1c4"/>
                         </constraints>
