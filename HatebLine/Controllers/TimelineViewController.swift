@@ -273,7 +273,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if let creator = bookmark.user?.name {
                 notification.title = "\(creator) がブックマークを追加しました"
             }
-            var commentString = ""
             if let comment = bookmark.comment {
                 commentString = comment
             }
