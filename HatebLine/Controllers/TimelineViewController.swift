@@ -273,16 +273,14 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if let creator = bookmark.user?.name {
                 notification.title = "\(creator) がブックマークを追加しました"
             }
-            if let comment = bookmark.comment {
-                commentString = comment
-            }
+
             if let title = bookmark.page?.title, let count = bookmark.page?.count {
                 var countString = ""
                 if let enabled = UserDefaults.standard.value(forKey: "includeBookmarkCount") as? Bool, enabled {
                     countString = "[\(count)] "
                 }
                 notification.subtitle = "\(countString)\(title)"
-                notification.informativeText = bookmark.comment // "\(commentString)"
+                notification.informativeText = bookmark.comment
             }
 
             bookmark.page?.computeComputedProperties { (_: Bool) in
