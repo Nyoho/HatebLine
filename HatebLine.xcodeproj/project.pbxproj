@@ -55,6 +55,7 @@
 		55D2E7411C51FDBE006D2475 /* JKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7401C51FDBE006D2475 /* JKTableView.swift */; };
 		55D2E7441C523187006D2475 /* NSDate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7421C523187006D2475 /* NSDate+Extension.swift */; };
 		55D2E7451C523187006D2475 /* NSDateTimeAgo.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */; };
+		55D74DC221CA36F30001D2E3 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D74DC121CA36F20001D2E3 /* NSImage+Extension.swift */; };
 		55DE81BC1C6CA07A008D8392 /* GeneralPrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE81BB1C6CA07A008D8392 /* GeneralPrefViewController.swift */; };
 		55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */; };
 		55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; };
@@ -172,6 +173,7 @@
 		55D2E7401C51FDBE006D2475 /* JKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKTableView.swift; sourceTree = "<group>"; };
 		55D2E7421C523187006D2475 /* NSDate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extension.swift"; sourceTree = "<group>"; };
 		55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NSDateTimeAgo.bundle; sourceTree = "<group>"; };
+		55D74DC121CA36F20001D2E3 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		55DE81BB1C6CA07A008D8392 /* GeneralPrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPrefViewController.swift; sourceTree = "<group>"; };
 		55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
 		55E079CB1C3D583800A72C05 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/Mac/AlamofireImage.framework; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 				55EC3B011C6C7DA4009EB474 /* SharedUserDefaultsControllerProxy.swift */,
 				55D2E7421C523187006D2475 /* NSDate+Extension.swift */,
 				55D2E7431C523187006D2475 /* NSDateTimeAgo.bundle */,
+				55D74DC121CA36F20001D2E3 /* NSImage+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 			files = (
 				55AB0D8E1C63146E00132CE0 /* CommentsViewController.swift in Sources */,
 				551E72041C5267FC00C366EF /* AccountPrefViewController.swift in Sources */,
+				55D74DC221CA36F30001D2E3 /* NSImage+Extension.swift in Sources */,
 				55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */,
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */,
