@@ -868,7 +868,7 @@
                                                                         <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="245" verticalHuggingPriority="750" horizontalCompressionResistancePriority="745" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0Z-vo-dLS">
                                                                             <rect key="frame" x="64" y="0.0" width="348" height="162"/>
                                                                             <subviews>
-                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="751" verticalCompressionResistancePriority="751" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVK-eq-lRS" userLabel="Name Stack View">
+                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVK-eq-lRS" userLabel="Name Stack View">
                                                                                     <rect key="frame" x="0.0" y="145" width="348" height="17"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="261" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
@@ -907,7 +907,7 @@
                                                                                         <real value="3.4028234663852886e+38"/>
                                                                                     </customSpacing>
                                                                                 </stackView>
-                                                                                <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="751" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
                                                                                     <rect key="frame" x="-2" y="90" width="352" height="51"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" allowsEditingTextAttributes="YES" id="QoV-rO-qPS">
                                                                                         <font key="font" metaFont="system"/>
@@ -956,7 +956,7 @@
                                                                                         <real value="3.4028234663852886e+38"/>
                                                                                     </customSpacing>
                                                                                 </stackView>
-                                                                                <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-P8-ETC">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-P8-ETC">
                                                                                     <rect key="frame" x="-2" y="0.0" width="50" height="14"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="OQN-Pz-Pg6"/>
