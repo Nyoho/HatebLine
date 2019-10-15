@@ -1,6 +1,6 @@
 github "Alamofire/Alamofire" ~> 4.4
 github "Alamofire/AlamofireImage" ~> 3.2
-github "ikesyo/Himotoki" ~> 3.0
+github "ikesyo/Himotoki" ~> 4.0
 github "Nyoho/AwesomeCache" "add-osx-support"
 github "Nyoho/Question" "master"
 
