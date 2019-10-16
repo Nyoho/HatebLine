@@ -155,11 +155,11 @@ class CommentsViewController: NSViewController {
                 Alamofire.request("http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(item.userName)/profile.gif")
                     .responseImage { response in
                         if let image = response.result.value {
-                            DispatchQueue.main.async(execute: {
+                            DispatchQueue.main.async {
                                 //                                cell.profileImageView.wantsLayer = true
                                 //                                cell.profileImageView?.layer?.cornerRadius = 5.0
                                 cell.profileImageView?.image = image
-                            })
+                            }
                         }
                     }
 
@@ -173,9 +173,9 @@ class CommentsViewController: NSViewController {
                         Alamofire.request("http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
                             .responseImage { response in
                                 if let image = response.result.value {
-                                    DispatchQueue.main.async(execute: {
+                                    DispatchQueue.main.async {
                                         cell.starImageView?.image = image
-                                    })
+                                    }
                                 }
                             }
                     }

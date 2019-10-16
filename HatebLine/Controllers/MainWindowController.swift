@@ -36,7 +36,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         guard let identifier = segue.identifier else {
             return
         }
-        switch identifier.rawValue {
+        switch identifier {
         case "QuickLook":
             if let qvc = segue.destinationController as? QuickLookWebViewController {
                 qvc.representedObject = ""

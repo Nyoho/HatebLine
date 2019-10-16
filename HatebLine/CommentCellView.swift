@@ -46,8 +46,8 @@ class CommentCellView: NSTableCellView {
             transform.rotate(byDegrees: -90.0)
             context.saveGraphicsState()
             (transform as NSAffineTransform).concat()
-            var attr: [NSAttributedStringKey: AnyObject]?
-            attr = [NSAttributedStringKey.font: NSFont.boldSystemFont(ofSize: size), NSAttributedStringKey.foregroundColor: NSColor.white]
+            var attr: [NSAttributedString.Key: AnyObject]?
+            attr = [NSAttributedString.Key.font: NSFont.boldSystemFont(ofSize: size), NSAttributedString.Key.foregroundColor: NSColor.white]
             NSString(string: "Popular").draw(at: NSPoint(x: 0, y: 0), withAttributes: attr)
 
             context.restoreGraphicsState()
