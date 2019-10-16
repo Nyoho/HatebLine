@@ -31,7 +31,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     @objc lazy var managedObjectContext: NSManagedObjectContext = {
         (NSApplication.shared.delegate
-            as? AppDelegate)?.managedObjectContext }()!
+            as? AppDelegate)?.managedObjectContext
+    }()!
 
     @objc var sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
 
@@ -67,7 +68,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         NSUserNotificationCenter.default.delegate = self
         timer = Timer(timeInterval: 60, target: self, selector: #selector(TimelineViewController.updateData), userInfo: nil, repeats: true)
         let runLoop = RunLoop.current
-        runLoop.add(timer, forMode: RunLoopMode.commonModes)
+        runLoop.add(timer, forMode: RunLoop.Mode.common)
     }
 
     func perform() {
@@ -384,7 +385,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     override func prepare(for segue: NSStoryboardSegue, sender _: Any?) {
         if let identifierString = segue.identifier,
-            let identifier = SegueIdentifier(rawValue: identifierString.rawValue) { // TODO: 変換に失敗したときはログにだすべき
+            let identifier = SegueIdentifier(rawValue: identifierString) { // TODO: 変換に失敗したときはログにだすべき
             switch identifier {
             case .quickLook:
                 guard let tps = segue as? TablePopoverSegue else {
@@ -579,7 +580,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     }
 
     func performSegueHelper(identifier: SegueIdentifier) {
-        performSegue(withIdentifier: NSStoryboardSegue.Identifier(rawValue: identifier.rawValue), sender: self)
+        performSegue(withIdentifier: identifier.rawValue, sender: self)
     }
 
     func performSegueShowAccountSetting() {

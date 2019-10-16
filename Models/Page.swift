@@ -54,7 +54,7 @@ class Page: NSManagedObject {
                 }
             }
             prepared = true
-        } catch let error {
+        } catch {
             print("Error: \(error)")
             prepared = false
         }

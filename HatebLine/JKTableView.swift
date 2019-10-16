@@ -38,7 +38,6 @@ class JKTableView: NSTableView {
             _ = delegate?.perform(#selector(TimelineViewController.showComments(_:)), with: self)
         default:
             super.keyDown(with: theEvent)
-            break
         }
     }
 }
