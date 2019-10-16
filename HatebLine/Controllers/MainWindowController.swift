@@ -48,7 +48,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
             if let vc: TimelineViewController = self.contentViewController as? TimelineViewController,
                 let obj = vc.bookmarkArrayController.selectedObjects.first as? Bookmark {
                 print(vc.bookmarkArrayController.selectedObjects.count)
-                print(obj.page?.title)
+                print("\(String(describing: obj.page?.title))")
                 webvc.representedObject = obj.page?.content
             }
         default:
