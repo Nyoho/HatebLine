@@ -29,7 +29,7 @@ class CommentsViewController: NSViewController {
                 userName: e <| "user",
                 comment: e <|? "comment",
                 date: date,
-                tags: e <||? "tags"
+                tags: e <|? "tags"
             )
         }
 
@@ -54,7 +54,7 @@ class CommentsViewController: NSViewController {
                 eid = String(eidNum)
             }
             return try Comments(
-                comments: e <|| ["bookmarks"],
+                comments: e <| ["bookmarks"],
                 eid: eid,
                 entryUrl: e <| "entry_url"
             )
