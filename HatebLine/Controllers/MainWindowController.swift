@@ -45,8 +45,9 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
             guard let webvc = segue.destinationController as? WebViewController else {
                 preconditionFailure("segue.destinationController must be WebViewController")
             }
-            if let vc: TimelineViewController = self.contentViewController as? TimelineViewController,
-                let obj = vc.bookmarkArrayController.selectedObjects.first as? Bookmark {
+            if let vc: TimelineViewController = contentViewController as? TimelineViewController,
+               let obj = vc.bookmarkArrayController.selectedObjects.first as? Bookmark
+            {
                 print(vc.bookmarkArrayController.selectedObjects.count)
                 print("\(String(describing: obj.page?.title))")
                 webvc.representedObject = obj.page?.content

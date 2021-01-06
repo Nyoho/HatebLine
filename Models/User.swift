@@ -16,7 +16,7 @@ class User: NSManagedObject {
     var __profileImage: NSImage?
 
     @objc var profileImage: NSImage? {
-        if let image = self.__profileImage {
+        if let image = __profileImage {
             return image
         } else {
             if let n = name {
