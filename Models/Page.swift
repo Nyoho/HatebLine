@@ -40,7 +40,7 @@ class Page: NSManagedObject {
                 r = match.range(at: 2)
                 if r.length != 0 {
                     entryImageUrl = (str as NSString).substring(with: r)
-                    if let url = self.entryImageUrl, let u = URL(string: url) {
+                    if let url = entryImageUrl, let u = URL(string: url) {
                         __entryImage = NSImage(contentsOf: u)
                     }
                 }

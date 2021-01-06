@@ -139,7 +139,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     func updateBookmark(moc: NSManagedObjectContext, fetchedBookmarks: [Bookmark], item: [String: Any]) {
         let b = fetchedBookmarks.first! as Bookmark
-        if let cache = self.heightCache, let u = b.bookmarkUrl {
+        if let cache = heightCache, let u = b.bookmarkUrl {
             cache[u] = nil
         }
         if let count = item["count"] as? String, let bcount = b.page?.count {

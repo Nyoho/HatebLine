@@ -10,29 +10,29 @@ import CoreData
 import Foundation
 
 extension Page {
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Page> {
+    @nonobjc class func fetchRequest() -> NSFetchRequest<Page> {
         return NSFetchRequest<Page>(entityName: "Page")
     }
 
-    @NSManaged public var content: String?
-    @NSManaged public var count: NSNumber?
-    @NSManaged public var title: String?
-    @NSManaged public var url: String?
-    @NSManaged public var bookmarks: NSSet?
+    @NSManaged var content: String?
+    @NSManaged var count: NSNumber?
+    @NSManaged var title: String?
+    @NSManaged var url: String?
+    @NSManaged var bookmarks: NSSet?
 }
 
 // MARK: Generated accessors for bookmarks
 
 extension Page {
     @objc(addBookmarksObject:)
-    @NSManaged public func addToBookmarks(_ value: Bookmark)
+    @NSManaged func addToBookmarks(_ value: Bookmark)
 
     @objc(removeBookmarksObject:)
-    @NSManaged public func removeFromBookmarks(_ value: Bookmark)
+    @NSManaged func removeFromBookmarks(_ value: Bookmark)
 
     @objc(addBookmarks:)
-    @NSManaged public func addToBookmarks(_ values: NSSet)
+    @NSManaged func addToBookmarks(_ values: NSSet)
 
     @objc(removeBookmarks:)
-    @NSManaged public func removeFromBookmarks(_ values: NSSet)
+    @NSManaged func removeFromBookmarks(_ values: NSSet)
 }
