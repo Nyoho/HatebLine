@@ -4,7 +4,7 @@
 //
 //  Created by 北䑓 如法 on 16/1/31.
 //  Copyright © 2016年 北䑓 如法. All rights reserved.
-//  Thx: http://stackoverflow.com/questions/24353446/how-do-you-specify-the-origin-of-the-arrow-on-a-popover-segue-with-os-x-10-10-st
+//  Thx: https://stackoverflow.com/questions/24353446/how-do-you-specify-the-origin-of-the-arrow-on-a-popover-segue-with-os-x-10-10-st
 
 import Cocoa
 

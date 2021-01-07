@@ -13,7 +13,7 @@ class GrowingTextField: NSTextField {
         super.draw(dirtyRect)
     }
 
-    // Thank you, http://stackoverflow.com/questions/10463680/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
+    // Thank you, https://stackoverflow.com/questions/10463680/how-to-let-nstextfield-grow-with-the-text-in-auto-layout
     override var intrinsicContentSize: NSSize {
         if !self.cell!.wraps {
             return super.intrinsicContentSize
