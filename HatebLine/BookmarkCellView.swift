@@ -20,7 +20,7 @@ class BookmarkCellView: NSTableCellView {
         // Drawing code here.
     }
 
-    // Thx http://stackoverflow.com/questions/28187909/why-nstablecellview-backgroundstyle-is-never-set-to-nsbackgroundstyle-dark-for-s
+    // Thx https://stackoverflow.com/questions/28187909/why-nstablecellview-backgroundstyle-is-never-set-to-nsbackgroundstyle-dark-for-s
     override var backgroundStyle: NSView.BackgroundStyle {
         set {
             if let rowView = superview as? NSTableRowView {
