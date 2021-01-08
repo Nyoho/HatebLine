@@ -142,7 +142,8 @@ class CommentsViewController: NSViewController {
     @objc func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
         if tableColumn?.identifier.rawValue == "CommentColumn" {
             if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView,
-                let item = items[row] as Comment? {
+               let item = items[row] as Comment?
+            {
                 cell.isPopular = row < populars.count
                 cell.needsDisplay = true
                 cell.userNameField?.stringValue = item.userName

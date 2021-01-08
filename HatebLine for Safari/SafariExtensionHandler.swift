@@ -36,7 +36,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                     validationHandler(false, "")
                     return
                 }
-                page.getPropertiesWithCompletionHandler({ safariPageProperties in
+                page.getPropertiesWithCompletionHandler { safariPageProperties in
                     if let url = safariPageProperties?.url {
                         Alamofire.request("https://bookmark.hatenaapis.com/count/entry", method: .get, parameters: ["url": url], encoding: URLEncoding.default).response { response in
                             if let data = response.data, let str = String(data: data, encoding: .utf8) {
@@ -49,7 +49,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
                             }
                         }
                     }
-                })
+                }
             })
         }
     }
