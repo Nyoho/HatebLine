@@ -45,7 +45,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             performSegueShowAccountSetting()
             return nil
         }
-        guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/favorite.rss?key=\(feedToken)") else { return nil }
+        guard let url = URL(string: "https://b.hatena.ne.jp/\(hatenaID)/favorite.rss?key=\(feedToken)") else { return nil }
         // NSURL(string: "file:///tmp/favorite.rss")
         return url
     }
@@ -55,7 +55,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             performSegueShowAccountSetting()
             return nil
         }
-        guard let url = URL(string: "http://b.hatena.ne.jp/\(hatenaID)/rss") else { return nil }
+        guard let url = URL(string: "https://b.hatena.ne.jp/\(hatenaID)/rss") else { return nil }
         return url
     }
 
@@ -331,7 +331,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             preconditionFailure("selectedObjects must be Bookmark")
         }
         if array.count > 0 {
-            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: "http://b.hatena.ne.jp/entry/\(urlString)") {
+            if let bookmark = array.first, let urlString = bookmark.page?.url, let url = URL(string: "https://b.hatena.ne.jp/entry/\(urlString)") {
                 NSWorkspace.shared.open(url)
             }
         }

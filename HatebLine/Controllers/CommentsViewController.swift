@@ -81,7 +81,7 @@ class CommentsViewController: NSViewController {
 
     func parse(_ url: String) {
         progressIndicator.startAnimation(self)
-        Alamofire.request("http://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
+        Alamofire.request("https://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
             .responseJSON { response in
                 if let json = response.result.value {
                     let comments = try? Comments.decodeValue(json)
@@ -91,7 +91,7 @@ class CommentsViewController: NSViewController {
                     if let e = comments?.eid {
                         self.eid = e
                     }
-                    Alamofire.request("http://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
+                    Alamofire.request("https://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
                         .responseJSON { response in
                             if let json = response.result.value {
                                 let comments: Comments? = try? decodeValue(json)
@@ -151,8 +151,7 @@ class CommentsViewController: NSViewController {
                 }
                 cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
 
-                let twoLetters = (item.userName as NSString).substring(to: 2)
-                Alamofire.request("http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(item.userName)/profile.gif")
+                Alamofire.request("https://cdn.profile-image.st-hatena.com/users/\(item.userName)/profile.gif")
                     .responseImage { response in
                         if let image = response.result.value {
                             DispatchQueue.main.async {
@@ -168,9 +167,9 @@ class CommentsViewController: NSViewController {
                     let formatter = DateFormatter()
                     formatter.dateFormat = "yyyyMMdd"
                     let dateString = formatter.string(from: date)
-                    let permalink = "http://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
+                    let permalink = "https://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
                     if let encodedString = permalink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-                        Alamofire.request("http://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
+                        Alamofire.request("https://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
                             .responseImage { response in
                                 if let image = response.result.value {
                                     DispatchQueue.main.async {

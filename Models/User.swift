@@ -20,8 +20,7 @@ class User: NSManagedObject {
             return image
         } else {
             if let n = name {
-                let twoLetters = (n as NSString).substring(to: 2)
-                if let url = URL(string: "http://cdn1.www.st-hatena.com/users/\(twoLetters)/\(n)/profile.gif") {
+                if let url = URL(string: "https://cdn.profile-image.st-hatena.com/users/\(n)/profile.gif") {
                     Alamofire.request(url).response { response in
                         if let d = response.data {
                             self.willChangeValue(forKey: "profileImage")
