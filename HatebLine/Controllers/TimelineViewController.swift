@@ -342,7 +342,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             preconditionFailure("selectedObjects must be Bookmark")
         }
         if array.count > 0 {
-            if let bookmark = array.first, let name = bookmark.user?.name, let url = URL(string: "http://b.hatena.ne.jp/\(name)/") {
+            if let bookmark = array.first, let name = bookmark.user?.name, let url = URL(string: "https://b.hatena.ne.jp/\(name)/") {
                 NSWorkspace.shared.open(url)
             }
         }
