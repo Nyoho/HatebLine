@@ -278,9 +278,9 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             if let title = bookmark.page?.title, let count = bookmark.page?.count {
                 var countString = ""
                 if let enabled = UserDefaults.standard.value(forKey: "includeBookmarkCount") as? Bool, enabled {
-                    countString = "[\(count)] "
+                    countString = " [\(count) users]"
                 }
-                notification.subtitle = "\(countString)\(title)"
+                notification.subtitle = "\(title)\(countString)"
                 notification.informativeText = bookmark.comment
             }
 
