@@ -108,6 +108,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     func mergeBookmarks(_ items: [[String: Any]]) {
         let moc = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         moc.parent = managedObjectContext
+        moc.parent?.mergePolicy = NSOverwriteMergePolicy
         moc.perform {
             var newBookmarks = [Bookmark]()
             for item in items.reversed() {
