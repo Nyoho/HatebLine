@@ -386,7 +386,8 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     override func prepare(for segue: NSStoryboardSegue, sender _: Any?) {
         if let identifierString = segue.identifier,
-            let identifier = SegueIdentifier(rawValue: identifierString) { // TODO: 変換に失敗したときはログにだすべき
+           let identifier = SegueIdentifier(rawValue: identifierString)
+        { // TODO: 変換に失敗したときはログにだすべき
             switch identifier {
             case .quickLook:
                 guard let tps = segue as? TablePopoverSegue else {
