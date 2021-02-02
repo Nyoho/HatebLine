@@ -475,47 +475,37 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
      }
      */
 
+    // sizeThatFitsを使う?
     func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var heightOfRow: CGFloat = 48
+        var heightOfRow: CGFloat = 128
         guard let array = bookmarkArrayController.arrangedObjects as? NSArray, let bookmark = array[row] as? Bookmark else {
             return heightOfRow
         }
         guard let cache = heightCache else {
             return heightOfRow
         }
+        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Bookmark"), owner: self) as? BookmarkCellView else {
+            return heightOfRow
+        }
+
         if let u = bookmark.bookmarkUrl, let height = cache[u] {
             return CGFloat(truncating: height)
         }
-        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Bookmark"), owner: self) as? BookmarkCellView {
-            tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
-            let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
-            //            if let username = bookmark.user?.name {
-            //                cell.textField?.stringValue = username
-            //            }
-            if let comment = bookmark.commentWithTags {
-                cell.commentTextField?.attributedStringValue = comment
-                cell.commentTextField?.preferredMaxLayoutWidth = size.width - (5 + 8 + 3 + 48)
-            }
-            if bookmark.isCommentEmpty {
-                cell.commentTextField?.isHidden = true
-            }
-            if let title = bookmark.page?.title {
-                cell.titleTextField?.stringValue = title
-                // FIXME: temporarily, minus titleTextField's paddings
-                cell.titleTextField?.preferredMaxLayoutWidth = size.width - (5 + 8 + 3 + 48 + 16)
-            }
-            // cell.countTextField?.stringValue = "\(bookmark.count) users"
-            //            cell.needsLayout = true
-            //            cell.layoutSubtreeIfNeeded()
-            //            NSAnimationContext.beginGrouping()
-            //            NSAnimationContext.currentContext().duration = 0.0
-            heightOfRow = cell.fittingSize.height
-            //            NSAnimationContext.endGrouping()
-            if let u = bookmark.bookmarkUrl {
-                cache[u] = NSNumber(value: Float(heightOfRow) as Float)
-            }
+
+        if let comment = bookmark.commentWithTags {
+            cell.commentTextField?.attributedStringValue = comment
+//            cell.commentTextField?.preferredMaxLayoutWidth = size.width - (5 + 8 + 3 + 48)
         }
-        return heightOfRow < 48 ? 48 : heightOfRow
+        if bookmark.isCommentEmpty {
+            cell.commentTextField?.isHidden = true
+        }
+        heightOfRow = cell.fittingSize.height
+        if let u = bookmark.bookmarkUrl {
+            cache[u] = NSNumber(value: Float(heightOfRow) as Float)
+        }
+
+//        print("\(row)th height: \(heightOfRow)")
+        return heightOfRow
     }
 
     func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for _: NSTableColumn?, row: Int) {
