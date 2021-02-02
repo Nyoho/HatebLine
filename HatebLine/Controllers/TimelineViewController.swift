@@ -302,11 +302,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     @IBAction func reload(_: AnyObject) {
         perform()
-        let notifications = NSUserNotificationCenter.default.deliveredNotifications
-        print("# of notifications = \(notifications.count)")
-        for n in notifications {
-            print("\(n.informativeText ?? "") (\(n.title ?? ""))")
-        }
     }
 
     @IBAction func openInBrowser(_: AnyObject) {
