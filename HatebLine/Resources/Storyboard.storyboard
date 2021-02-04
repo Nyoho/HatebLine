@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="14460.31"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="17701"/>
         <capability name="System colors introduced in macOS 10.14" minToolsVersion="10.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -822,21 +822,20 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="181" horizontalPageScroll="10" verticalLineScroll="181" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
-                                <rect key="frame" x="0.0" y="195" width="433" height="205"/>
+                                <rect key="frame" x="0.0" y="192" width="433" height="208"/>
                                 <clipView key="contentView" drawsBackground="NO" id="vOr-cm-ozy">
-                                    <rect key="frame" x="1" y="1" width="431" height="203"/>
+                                    <rect key="frame" x="1" y="1" width="431" height="206"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <tableView wantsLayer="YES" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="179" rowSizeStyle="automatic" viewBased="YES" id="2eC-bg-4UH" customClass="JKTableView" customModule="HatebLine" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="431" height="203"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                        <tableView wantsLayer="YES" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="179" usesAutomaticRowHeights="YES" viewBased="YES" id="2eC-bg-4UH" customClass="JKTableView" customModule="HatebLine" customModuleProvider="target">
+                                            <rect key="frame" x="0.0" y="0.0" width="431" height="206"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="Bookmark" width="428" minWidth="40" maxWidth="2000" id="IBl-pq-0Eu">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -865,16 +864,16 @@
                                                                                 <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.profileImage" id="sLr-2V-VdW"/>
                                                                             </connections>
                                                                         </imageView>
-                                                                        <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="245" verticalHuggingPriority="750" horizontalCompressionResistancePriority="745" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0Z-vo-dLS">
+                                                                        <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="245" verticalHuggingPriority="750" horizontalCompressionResistancePriority="745" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0Z-vo-dLS">
                                                                             <rect key="frame" x="64" y="0.0" width="348" height="162"/>
                                                                             <subviews>
-                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVK-eq-lRS" userLabel="Name Stack View">
+                                                                                <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVK-eq-lRS" userLabel="Name Stack View">
                                                                                     <rect key="frame" x="0.0" y="145" width="348" height="17"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="261" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
-                                                                                            <rect key="frame" x="-2" y="0.0" width="264" height="17"/>
+                                                                                            <rect key="frame" x="-2" y="1" width="264" height="16"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="8kb-Qm-j4H">
-                                                                                                <font key="font" size="13" name=".HelveticaNeueDeskInterface-Heavy"/>
+                                                                                                <font key="font" metaFont="system"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
@@ -907,8 +906,8 @@
                                                                                         <real value="3.4028234663852886e+38"/>
                                                                                     </customSpacing>
                                                                                 </stackView>
-                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
-                                                                                    <rect key="frame" x="-2" y="90" width="352" height="51"/>
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" ambiguous="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
+                                                                                    <rect key="frame" x="-2" y="91" width="352" height="48"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" allowsEditingTextAttributes="YES" id="QoV-rO-qPS">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <string key="title">Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
@@ -920,11 +919,11 @@
                                                                                         <binding destination="qGh-RN-KYb" name="hidden" keyPath="objectValue.isCommentEmpty" id="TKW-Ji-ZKt"/>
                                                                                     </connections>
                                                                                 </textField>
-                                                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="230" verticalHuggingPriority="750" horizontalCompressionResistancePriority="230" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-xS-DS1" userLabel="Title Stack View">
-                                                                                    <rect key="frame" x="0.0" y="18" width="348" height="68"/>
+                                                                                <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="230" verticalHuggingPriority="750" horizontalCompressionResistancePriority="230" ambiguous="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-xS-DS1" userLabel="Title Stack View">
+                                                                                    <rect key="frame" x="0.0" y="20" width="348" height="64"/>
                                                                                     <subviews>
                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lsI-Ug-kRn" userLabel="Favicon Image View">
-                                                                                            <rect key="frame" x="0.0" y="52" width="16" height="16"/>
+                                                                                            <rect key="frame" x="0.0" y="48" width="16" height="16"/>
                                                                                             <constraints>
                                                                                                 <constraint firstAttribute="width" constant="16" id="UpA-x2-8tE"/>
                                                                                                 <constraint firstAttribute="height" constant="16" id="oH5-sY-v0l"/>
@@ -935,7 +934,7 @@
                                                                                             </connections>
                                                                                         </imageView>
                                                                                         <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
-                                                                                            <rect key="frame" x="22" y="0.0" width="328" height="68"/>
+                                                                                            <rect key="frame" x="22" y="0.0" width="328" height="64"/>
                                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="DnH-3B-zF7">
                                                                                                 <font key="font" metaFont="system"/>
                                                                                                 <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
@@ -1046,7 +1045,7 @@
                                     <nil key="backgroundColor"/>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="ZDc-fa-z5r">
-                                    <rect key="frame" x="1" y="76" width="271" height="16"/>
+                                    <rect key="frame" x="1" y="191" width="431" height="16"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="hbN-cU-c7C">
@@ -1055,13 +1054,13 @@
                                 </scroller>
                             </scrollView>
                             <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="5mF-t4-IJO">
-                                <rect key="frame" x="0.0" y="0.0" width="433" height="195"/>
+                                <rect key="frame" x="0.0" y="0.0" width="433" height="192"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuk-wK-r14">
-                                        <rect key="frame" x="8" y="8" width="417" height="179"/>
+                                        <rect key="frame" x="8" y="8" width="417" height="176"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XMM-ET-3I2" userLabel="Favicon Image View">
-                                                <rect key="frame" x="0.0" y="163" width="16" height="16"/>
+                                                <rect key="frame" x="0.0" y="160" width="16" height="16"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="16" id="3Aa-1D-Q4s"/>
                                                     <constraint firstAttribute="height" constant="16" id="Vkg-04-b8M"/>
@@ -1072,10 +1071,10 @@
                                                 </connections>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vd7-RD-5cZ">
-                                                <rect key="frame" x="24" y="0.0" width="335" height="179"/>
+                                                <rect key="frame" x="24" y="0.0" width="335" height="176"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-sZ-ZgT" userLabel="Title">
-                                                        <rect key="frame" x="-2" y="128" width="339" height="51"/>
+                                                        <rect key="frame" x="-2" y="128" width="339" height="48"/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="0vZ-ti-W86">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
@@ -1128,7 +1127,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
-                                                <rect key="frame" x="367" y="129" width="50" height="50"/>
+                                                <rect key="frame" x="367" y="126" width="50" height="50"/>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="MWJ-vD-euT"/>
                                                 <connections>
                                                     <binding destination="bBU-oK-nBz" name="value" keyPath="selection.page.entryImage" id="ylE-Md-8hR"/>
@@ -1266,9 +1265,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hfa-3e-mVk">
-                                <rect key="frame" x="62" y="141" width="300" height="11"/>
+                                <rect key="frame" x="62" y="141" width="305" height="11"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="From link[rel=alternate] element in http://b.hatena.ne.jp/my/favorite" allowsEditingTextAttributes="YES" id="CGw-VF-g7j">
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="From link[rel=alternate] element in https://b.hatena.ne.jp/my/favorite" allowsEditingTextAttributes="YES" id="CGw-VF-g7j">
                                     <font key="font" metaFont="miniSystem"/>
                                     <color key="textColor" name="knobColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -1371,14 +1370,13 @@
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="364" rowSizeStyle="automatic" viewBased="YES" id="zzz-tt-SJ0">
                                             <rect key="frame" x="0.0" y="0.0" width="432" height="560"/>
-                                            <autoresizingMask key="autoresizingMask"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
                                                 <tableColumn identifier="CommentColumn" width="429" minWidth="40" maxWidth="1000" id="DIQ-FJ-v7q">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1405,16 +1403,16 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="6Rg-07-QmO"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="p2k-9x-aGV">
-                                                                            <rect key="frame" x="50" y="191" width="363" height="157"/>
+                                                                            <rect key="frame" x="50" y="200" width="363" height="148"/>
                                                                             <subviews>
                                                                                 <stackView distribution="equalSpacing" orientation="horizontal" alignment="firstBaseline" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aQT-6e-lDr">
-                                                                                    <rect key="frame" x="0.0" y="140" width="363" height="17"/>
+                                                                                    <rect key="frame" x="0.0" y="132" width="363" height="16"/>
                                                                                     <subviews>
                                                                                         <stackView distribution="fill" orientation="horizontal" alignment="baseline" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GN1-vE-uYX">
-                                                                                            <rect key="frame" x="0.0" y="0.0" width="129" height="17"/>
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="129" height="16"/>
                                                                                             <subviews>
                                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fcr-HE-XlL">
-                                                                                                    <rect key="frame" x="-2" y="0.0" width="80" height="17"/>
+                                                                                                    <rect key="frame" x="-2" y="0.0" width="80" height="16"/>
                                                                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="Yqs-dR-ass">
                                                                                                         <font key="font" metaFont="systemHeavy" size="13"/>
                                                                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -1457,7 +1455,7 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="QkQ-B2-vKy">
-                                                                                    <rect key="frame" x="-2" y="0.0" width="367" height="136"/>
+                                                                                    <rect key="frame" x="-2" y="0.0" width="367" height="128"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" allowsEditingTextAttributes="YES" id="Hkm-wp-urv">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <string key="title">Comment: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
@@ -1528,7 +1526,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <progressIndicator wantsLayer="YES" canDrawConcurrently="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-ct-ARM">
                                 <rect key="frame" x="217" y="8" width="16" height="16"/>
                             </progressIndicator>
                             <button translatesAutoresizingMaskIntoConstraints="NO" id="uWC-5P-xDx">
@@ -1614,12 +1612,12 @@
             <point key="canvasLocation" x="751" y="1773"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="cwI-oc-Fym"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSShareTemplate" width="11" height="16"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="cwI-oc-Fym"/>
-    </inferredMetricsTieBreakers>
 </document>
