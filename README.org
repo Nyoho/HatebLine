@@ -7,7 +7,7 @@ A Mac application that shows your favorites of Hatena Bookmark as a time line li
 
 ** Requirements
 
-macOS 10.12+
+macOS 10.13+
 
 
 ** Build
