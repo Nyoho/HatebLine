@@ -7,7 +7,6 @@
 //
 
 import Alamofire
-import AwesomeCache
 import Cocoa
 import Question
 
@@ -18,16 +17,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBOutlet var bookmarkArrayController: NSArrayController!
     var bookmarks = NSMutableArray()
     var timer = Timer()
-    var heightCache: Cache<NSNumber>? = { () -> Cache<NSNumber>? in
-        var cache: Cache<NSNumber>
-        do {
-            cache = try Cache<NSNumber>(name: "heightCache")
-        } catch _ {
-            print("Something went wrong :(")
-            return nil
-        }
-        return cache
-    }()
 
     @objc lazy var managedObjectContext: NSManagedObjectContext = {
         (NSApplication.shared.delegate
@@ -140,9 +129,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
 
     func updateBookmark(moc: NSManagedObjectContext, fetchedBookmarks: [Bookmark], item: [String: Any]) {
         let b = fetchedBookmarks.first! as Bookmark
-        if let cache = heightCache, let u = b.bookmarkUrl {
-            cache[u] = nil
-        }
         if let count = item["count"] as? String, let bcount = b.page?.count {
             if let n = Int(count), n != Int(truncating: bcount) {
                 b.page?.count = NSNumber(value: n)
@@ -474,39 +460,6 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
      return nil
      }
      */
-
-    // sizeThatFitsを使う?
-    func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var heightOfRow: CGFloat = 128
-        guard let array = bookmarkArrayController.arrangedObjects as? NSArray, let bookmark = array[row] as? Bookmark else {
-            return heightOfRow
-        }
-        guard let cache = heightCache else {
-            return heightOfRow
-        }
-        guard let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "Bookmark"), owner: self) as? BookmarkCellView else {
-            return heightOfRow
-        }
-
-        if let u = bookmark.bookmarkUrl, let height = cache[u] {
-            return CGFloat(truncating: height)
-        }
-
-        if let comment = bookmark.commentWithTags {
-            cell.commentTextField?.attributedStringValue = comment
-//            cell.commentTextField?.preferredMaxLayoutWidth = size.width - (5 + 8 + 3 + 48)
-        }
-        if bookmark.isCommentEmpty {
-            cell.commentTextField?.isHidden = true
-        }
-        heightOfRow = cell.fittingSize.height
-        if let u = bookmark.bookmarkUrl {
-            cache[u] = NSNumber(value: Float(heightOfRow) as Float)
-        }
-
-//        print("\(row)th height: \(heightOfRow)")
-        return heightOfRow
-    }
 
     func tableView(_ tableView: NSTableView, willDisplayCell cell: Any, for _: NSTableColumn?, row: Int) {
         if let c = cell as? NSTableRowView {
