@@ -81,9 +81,9 @@ class CommentsViewController: NSViewController {
 
     func parse(_ url: String) {
         progressIndicator.startAnimation(self)
-        Alamofire.request("https://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
+        AF.request("https://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
             .responseJSON { response in
-                if let json = response.result.value {
+                if let json = response.value {
                     let comments = try? Comments.decodeValue(json)
                     if let a = comments?.comments {
                         self.allRegulars = a
@@ -91,9 +91,9 @@ class CommentsViewController: NSViewController {
                     if let e = comments?.eid {
                         self.eid = e
                     }
-                    Alamofire.request("https://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
+                    AF.request("https://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
                         .responseJSON { response in
-                            if let json = response.result.value {
+                            if let json = response.value {
                                 let comments: Comments? = try? decodeValue(json)
                                 if let a = comments?.comments {
                                     self.allPopulars = a
@@ -152,9 +152,9 @@ class CommentsViewController: NSViewController {
                 }
                 cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
 
-                Alamofire.request("https://cdn.profile-image.st-hatena.com/users/\(item.userName)/profile.gif")
+                AF.request("https://cdn.profile-image.st-hatena.com/users/\(item.userName)/profile.gif")
                     .responseImage { response in
-                        if let image = response.result.value {
+                        if let image = response.value {
                             DispatchQueue.main.async {
                                 //                                cell.profileImageView.wantsLayer = true
                                 //                                cell.profileImageView?.layer?.cornerRadius = 5.0
@@ -170,9 +170,9 @@ class CommentsViewController: NSViewController {
                     let dateString = formatter.string(from: date)
                     let permalink = "https://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
                     if let encodedString = permalink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-                        Alamofire.request("https://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
+                        AF.request("https://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
                             .responseImage { response in
-                                if let image = response.result.value {
+                                if let image = response.value {
                                     DispatchQueue.main.async {
                                         cell.starImageView?.image = image
                                     }

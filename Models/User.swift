@@ -21,7 +21,7 @@ class User: NSManagedObject {
         } else {
             if let n = name {
                 if let url = URL(string: "https://cdn.profile-image.st-hatena.com/users/\(n)/profile.gif") {
-                    Alamofire.request(url).response { response in
+                    AF.request(url).response { response in
                         if let d = response.data {
                             self.willChangeValue(forKey: "profileImage")
                             self.__profileImage = NSImage(data: d)
