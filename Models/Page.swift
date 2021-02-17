@@ -41,7 +41,7 @@ class Page: NSManagedObject {
                 if r.length != 0 {
                     entryImageUrl = (str as NSString).substring(with: r)
                     if let url = entryImageUrl, let u = URL(string: url) {
-                        __entryImage = NSImage(contentsOf: u)
+                        __entryImage = NSImage(fromURL: u) // NSImage(contentsOf: u)
                     }
                 }
                 r = match.range(at: 3)
@@ -50,7 +50,7 @@ class Page: NSManagedObject {
                 }
                 let faviconUrl = (str as NSString).substring(with: match.range(at: 1))
                 if let u = URL(string: faviconUrl) {
-                    __favicon = NSImage(contentsOf: u)
+                    __favicon = NSImage(fromURL: u) // NSImage(contentsOf: u)
                 }
             }
             prepared = true
