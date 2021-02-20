@@ -3,12 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		55048C471C8DDC17000A3A64 /* Question.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55048C461C8DDC17000A3A64 /* Question.framework */; };
-		55048C481C8DDC17000A3A64 /* Question.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55048C461C8DDC17000A3A64 /* Question.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5517EF18216F2DA600828501 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5517EF17216F2DA600828501 /* Cocoa.framework */; };
 		5517EF1B216F2DA600828501 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517EF1A216F2DA600828501 /* SafariExtensionHandler.swift */; };
 		5517EF1D216F2DA600828501 /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5517EF1C216F2DA600828501 /* SafariExtensionViewController.swift */; };
@@ -16,11 +14,6 @@
 		5517EF23216F2DA600828501 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF22216F2DA600828501 /* script.js */; };
 		5517EF25216F2DA600828501 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF24216F2DA600828501 /* ToolbarItemIcon.pdf */; };
 		5517EF29216F2DA600828501 /* HatebLine for Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5517EF16216F2DA600828501 /* HatebLine for Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5517EF2E2171766B00828501 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; };
-		551BC62B1C9C7250003F0AF1 /* KeychainAccess.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */; };
-		551BC62C1C9C7250003F0AF1 /* KeychainAccess.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		551BC62E1C9C7279003F0AF1 /* OAuthSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */; };
-		551BC62F1C9C7279003F0AF1 /* OAuthSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		551DB4FB1C42CD0300B198A8 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4F91C42CD0300B198A8 /* Bookmark.swift */; };
 		551DB5011C4374F400B198A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4FE1C4374F400B198A8 /* User.swift */; };
 		551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */; };
@@ -37,19 +30,20 @@
 		55415B731C3961F90079B118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55415B721C3961F90079B118 /* Assets.xcassets */; };
 		55415B811C3961F90079B118 /* HatebLineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B801C3961F90079B118 /* HatebLineTests.swift */; };
 		55415B8C1C3961F90079B118 /* HatebLineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B8B1C3961F90079B118 /* HatebLineUITests.swift */; };
-		55415B9A1C39626C0079B118 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; };
-		55415B9D1C3962970079B118 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55415B991C39626C0079B118 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B9F1C3A3C880079B118 /* RSSParser.swift */; };
 		5542D74E1C5DB0F40056CA91 /* TablePopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */; };
 		5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */; };
-		554E42541C7830CA00958E84 /* AwesomeCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 554E42531C7830CA00958E84 /* AwesomeCache.framework */; };
-		554E42551C7830CA00958E84 /* AwesomeCache.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 554E42531C7830CA00958E84 /* AwesomeCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55556F501C4FD33600419440 /* GrowingTextField.swift */; };
 		557906871C656507003DA09F /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 557906861C656507003DA09F /* Acknowledgments.rtf */; };
 		557906891C656525003DA09F /* AcknowledgmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557906881C656525003DA09F /* AcknowledgmentsViewController.swift */; };
 		55AB0D8E1C63146E00132CE0 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */; };
 		55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D941C63828D00132CE0 /* CommentCellView.swift */; };
-		55AB0D9A1C63961800132CE0 /* Himotoki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55AB0D991C63961800132CE0 /* Himotoki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		55B49A09264D117800A1D309 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 55B49A08264D117800A1D309 /* Alamofire */; };
+		55B49A0F264D119800A1D309 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 55B49A0E264D119800A1D309 /* AlamofireImage */; };
+		55B49A15264D11AD00A1D309 /* Himotoki in Frameworks */ = {isa = PBXBuildFile; productRef = 55B49A14264D11AD00A1D309 /* Himotoki */; };
+		55B49A50264D210500A1D309 /* Question in Frameworks */ = {isa = PBXBuildFile; productRef = 55B49A4F264D210500A1D309 /* Question */; };
+		55B49A5E264D21A600A1D309 /* Question in Frameworks */ = {isa = PBXBuildFile; productRef = 55B49A5D264D21A600A1D309 /* Question */; };
+		55B49A63264D21C400A1D309 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 55B49A62264D21C400A1D309 /* Alamofire */; };
 		55D2E73C1C51DC76006D2475 /* Page+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */; };
 		55D2E73D1C51DC76006D2475 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7391C51DC75006D2475 /* Page.swift */; };
 		55D2E7411C51FDBE006D2475 /* JKTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D2E7401C51FDBE006D2475 /* JKTableView.swift */; };
@@ -58,8 +52,6 @@
 		55D74DC221CA36F30001D2E3 /* NSImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D74DC121CA36F20001D2E3 /* NSImage+Extension.swift */; };
 		55DE81BC1C6CA07A008D8392 /* GeneralPrefViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55DE81BB1C6CA07A008D8392 /* GeneralPrefViewController.swift */; };
 		55E079CA1C3CFBD900A72C05 /* BookmarkCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */; };
-		55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; };
-		55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 55E079CB1C3D583800A72C05 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		55E9B8DC1C3FE42F00742E49 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */; };
 		55E9B8DE1C3FE9C400742E49 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */; };
 		55EC3B021C6C7DA4009EB474 /* SharedUserDefaultsControllerProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55EC3B011C6C7DA4009EB474 /* SharedUserDefaultsControllerProxy.swift */; };
@@ -109,13 +101,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				551BC62C1C9C7250003F0AF1 /* KeychainAccess.framework in Embed Frameworks */,
-				55415B9D1C3962970079B118 /* Alamofire.framework in Embed Frameworks */,
-				55E079CD1C3D583800A72C05 /* AlamofireImage.framework in Embed Frameworks */,
-				55AB0D9A1C63961800132CE0 /* Himotoki.framework in Embed Frameworks */,
-				55048C481C8DDC17000A3A64 /* Question.framework in Embed Frameworks */,
-				554E42551C7830CA00958E84 /* AwesomeCache.framework in Embed Frameworks */,
-				551BC62F1C9C7279003F0AF1 /* OAuthSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -123,7 +108,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		55048C461C8DDC17000A3A64 /* Question.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Question.framework; path = Carthage/Build/Mac/Question.framework; sourceTree = "<group>"; };
 		5517EF16216F2DA600828501 /* HatebLine for Safari.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "HatebLine for Safari.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5517EF17216F2DA600828501 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		5517EF1A216F2DA600828501 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
@@ -133,8 +117,6 @@
 		5517EF22216F2DA600828501 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
 		5517EF24216F2DA600828501 /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
 		5517EF26216F2DA600828501 /* HatebLine_for_Safari.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HatebLine_for_Safari.entitlements; sourceTree = "<group>"; };
-		551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainAccess.framework; path = Carthage/Build/Mac/KeychainAccess.framework; sourceTree = "<group>"; };
-		551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OAuthSwift.framework; path = Carthage/Build/Mac/OAuthSwift.framework; sourceTree = "<group>"; };
 		551DB4F91C42CD0300B198A8 /* Bookmark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bookmark.swift; path = Models/Bookmark.swift; sourceTree = "<group>"; };
 		551DB4FE1C4374F400B198A8 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Models/User.swift; sourceTree = "<group>"; };
 		551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "User+CoreDataProperties.swift"; path = "Models/User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -157,17 +139,14 @@
 		55415B871C3961F90079B118 /* HatebLineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HatebLineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		55415B8B1C3961F90079B118 /* HatebLineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HatebLineUITests.swift; sourceTree = "<group>"; };
 		55415B8D1C3961F90079B118 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55415B991C39626C0079B118 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/Mac/Alamofire.framework; sourceTree = "<group>"; };
 		55415B9F1C3A3C880079B118 /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
 		5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePopoverSegue.swift; sourceTree = "<group>"; };
 		5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManyNumberToColorTransformer.swift; sourceTree = "<group>"; };
-		554E42531C7830CA00958E84 /* AwesomeCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AwesomeCache.framework; path = Carthage/Build/Mac/AwesomeCache.framework; sourceTree = "<group>"; };
 		55556F501C4FD33600419440 /* GrowingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextField.swift; sourceTree = "<group>"; };
 		557906861C656507003DA09F /* Acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Acknowledgments.rtf; sourceTree = "<group>"; };
 		557906881C656525003DA09F /* AcknowledgmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgmentsViewController.swift; sourceTree = "<group>"; };
 		55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		55AB0D941C63828D00132CE0 /* CommentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCellView.swift; sourceTree = "<group>"; };
-		55AB0D991C63961800132CE0 /* Himotoki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Himotoki.framework; path = Carthage/Build/Mac/Himotoki.framework; sourceTree = "<group>"; };
 		55D2E7381C51DC75006D2475 /* Page+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Page+CoreDataProperties.swift"; path = "Models/Page+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55D2E7391C51DC75006D2475 /* Page.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Page.swift; path = Models/Page.swift; sourceTree = "<group>"; };
 		55D2E7401C51FDBE006D2475 /* JKTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JKTableView.swift; sourceTree = "<group>"; };
@@ -176,7 +155,6 @@
 		55D74DC121CA36F20001D2E3 /* NSImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSImage+Extension.swift"; sourceTree = "<group>"; };
 		55DE81BB1C6CA07A008D8392 /* GeneralPrefViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralPrefViewController.swift; sourceTree = "<group>"; };
 		55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookmarkCellView.swift; sourceTree = "<group>"; };
-		55E079CB1C3D583800A72C05 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/Mac/AlamofireImage.framework; sourceTree = "<group>"; };
 		55E9B8DB1C3FE42F00742E49 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		55E9B8DD1C3FE9C400742E49 /* MainWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		55EC3B011C6C7DA4009EB474 /* SharedUserDefaultsControllerProxy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedUserDefaultsControllerProxy.swift; sourceTree = "<group>"; };
@@ -189,7 +167,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5517EF2E2171766B00828501 /* Alamofire.framework in Frameworks */,
+				55B49A63264D21C400A1D309 /* Alamofire in Frameworks */,
+				55B49A5E264D21A600A1D309 /* Question in Frameworks */,
 				5517EF18216F2DA600828501 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,13 +177,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				551BC62B1C9C7250003F0AF1 /* KeychainAccess.framework in Frameworks */,
-				55048C471C8DDC17000A3A64 /* Question.framework in Frameworks */,
+				55B49A09264D117800A1D309 /* Alamofire in Frameworks */,
+				55B49A0F264D119800A1D309 /* AlamofireImage in Frameworks */,
 				552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */,
-				55415B9A1C39626C0079B118 /* Alamofire.framework in Frameworks */,
-				55E079CC1C3D583800A72C05 /* AlamofireImage.framework in Frameworks */,
-				554E42541C7830CA00958E84 /* AwesomeCache.framework in Frameworks */,
-				551BC62E1C9C7279003F0AF1 /* OAuthSwift.framework in Frameworks */,
+				55B49A15264D11AD00A1D309 /* Himotoki in Frameworks */,
+				55B49A50264D210500A1D309 /* Question in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,14 +303,7 @@
 		55415B9B1C3962780079B118 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				551BC62D1C9C7279003F0AF1 /* OAuthSwift.framework */,
-				551BC62A1C9C7250003F0AF1 /* KeychainAccess.framework */,
-				55048C461C8DDC17000A3A64 /* Question.framework */,
-				554E42531C7830CA00958E84 /* AwesomeCache.framework */,
-				55E079CB1C3D583800A72C05 /* AlamofireImage.framework */,
-				55415B991C39626C0079B118 /* Alamofire.framework */,
 				552453741C4E211B00F4EAA1 /* WebKit.framework */,
-				55AB0D991C63961800132CE0 /* Himotoki.framework */,
 				5517EF17216F2DA600828501 /* Cocoa.framework */,
 			);
 			name = Frameworks;
@@ -427,6 +397,10 @@
 			dependencies = (
 			);
 			name = "HatebLine for Safari";
+			packageProductDependencies = (
+				55B49A5D264D21A600A1D309 /* Question */,
+				55B49A62264D21C400A1D309 /* Alamofire */,
+			);
 			productName = "HatebLine for Safari";
 			productReference = 5517EF16216F2DA600828501 /* HatebLine for Safari.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -448,6 +422,12 @@
 				5517EF28216F2DA600828501 /* PBXTargetDependency */,
 			);
 			name = HatebLine;
+			packageProductDependencies = (
+				55B49A08264D117800A1D309 /* Alamofire */,
+				55B49A0E264D119800A1D309 /* AlamofireImage */,
+				55B49A14264D11AD00A1D309 /* Himotoki */,
+				55B49A4F264D210500A1D309 /* Question */,
+			);
 			productName = HatebLine;
 			productReference = 55415B6A1C3961F90079B118 /* HatebLine.app */;
 			productType = "com.apple.product-type.application";
@@ -522,14 +502,19 @@
 			};
 			buildConfigurationList = 55415B651C3961F90079B118 /* Build configuration list for PBXProject "HatebLine" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
 			mainGroup = 55415B611C3961F90079B118;
+			packageReferences = (
+				55B49A07264D117700A1D309 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				55B49A0D264D119800A1D309 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
+				55B49A13264D11AD00A1D309 /* XCRemoteSwiftPackageReference "Himotoki" */,
+				55B49A4E264D210500A1D309 /* XCRemoteSwiftPackageReference "Question" */,
+			);
 			productRefGroup = 55415B6B1C3961F90079B118 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -701,7 +686,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -710,7 +695,11 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "HatebLine for Safari/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -733,7 +722,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -742,7 +731,11 @@
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "HatebLine for Safari/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @executable_path/../../../../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@executable_path/../../../../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.nyoho.HatebLine.HatebLine-for-Safari";
@@ -864,16 +857,19 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -886,15 +882,18 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -913,7 +912,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = HatebLineTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -932,7 +935,11 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = HatebLineTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -946,7 +953,11 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HatebLineUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -961,7 +972,11 @@
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = HatebLineUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -1020,6 +1035,74 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		55B49A07264D117700A1D309 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+		55B49A0D264D119800A1D309 /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.0;
+			};
+		};
+		55B49A13264D11AD00A1D309 /* XCRemoteSwiftPackageReference "Himotoki" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ikesyo/Himotoki";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+		55B49A4E264D210500A1D309 /* XCRemoteSwiftPackageReference "Question" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Nyoho/Question";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		55B49A08264D117800A1D309 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B49A07264D117700A1D309 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		55B49A0E264D119800A1D309 /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B49A0D264D119800A1D309 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
+		};
+		55B49A14264D11AD00A1D309 /* Himotoki */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B49A13264D11AD00A1D309 /* XCRemoteSwiftPackageReference "Himotoki" */;
+			productName = Himotoki;
+		};
+		55B49A4F264D210500A1D309 /* Question */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B49A4E264D210500A1D309 /* XCRemoteSwiftPackageReference "Question" */;
+			productName = Question;
+		};
+		55B49A5D264D21A600A1D309 /* Question */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B49A4E264D210500A1D309 /* XCRemoteSwiftPackageReference "Question" */;
+			productName = Question;
+		};
+		55B49A62264D21C400A1D309 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B49A07264D117700A1D309 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		55415B6F1C3961F90079B118 /* HatebLine.xcdatamodeld */ = {
