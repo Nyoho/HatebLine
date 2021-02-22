@@ -1,12 +1,12 @@
 language: objective-c
-osx_image: xcode11.2
+osx_image: xcode12.4
 xcode_project: HatebLine.xcodeproj
 xcode_scheme: HatebLine
 xcode_destination: platform=macOS
 
 before_install:
 # - brew update
-- carthage update --platform Mac
+- echo hello
 
 script:
 - xcodebuild -project $TRAVIS_XCODE_PROJECT -target HatebLine
