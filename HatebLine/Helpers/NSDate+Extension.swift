@@ -136,17 +136,17 @@ extension Date {
         return ""
     }
 
-    fileprivate func dateComponents() -> DateComponents {
+    private func dateComponents() -> DateComponents {
         let calander = Calendar.current
         return (calander as NSCalendar).components([.second, .minute, .hour, .day, .month, .year], from: self, to: Date(), options: [])
     }
 
-    fileprivate func stringFromFormat(_ format: String, withValue value: Int) -> String {
+    private func stringFromFormat(_ format: String, withValue value: Int) -> String {
         let localeFormat = String(format: format, getLocaleFormatUnderscoresWithValue(Double(value)))
         return String(format: NSDateTimeAgoLocalizedStrings(localeFormat), value)
     }
 
-    fileprivate func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String {
+    private func getLocaleFormatUnderscoresWithValue(_ value: Double) -> String {
         guard let localeCode = Locale.preferredLanguages.first else {
             return ""
         }
