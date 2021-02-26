@@ -688,10 +688,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "HatebLine for Safari/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -724,10 +720,6 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "HatebLine for Safari/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -859,10 +851,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -884,10 +872,6 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
 				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
