@@ -24,7 +24,7 @@ extension NSImage {
         let srcRect = NSMakeRect(x, y, length, length)
         let distRect = NSMakeRect(0, 0, length, length)
 
-        var squaredImage = NSImage(size: NSMakeSize(length, length))
+        let squaredImage = NSImage(size: NSMakeSize(length, length))
         squaredImage.lockFocus()
         defer { squaredImage.unlockFocus() }
         draw(in: distRect, from: srcRect, operation: NSCompositingOperation.copy, fraction: 1.0, respectFlipped: false, hints: [:])
