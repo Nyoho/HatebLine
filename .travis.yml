@@ -9,4 +9,4 @@ before_install:
 - echo hello
 
 script:
-- xcodebuild -project $TRAVIS_XCODE_PROJECT -target HatebLine
+- xcodebuild test -project $TRAVIS_XCODE_PROJECT -target HatebLine | xcpretty -c
