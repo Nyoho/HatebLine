@@ -1129,7 +1129,7 @@
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
                                                 <rect key="frame" x="367" y="48" width="50" height="128"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="256" id="x51-mR-DiP"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="x51-mR-DiP"/>
                                                 </constraints>
                                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="MWJ-vD-euT"/>
                                                 <connections>
