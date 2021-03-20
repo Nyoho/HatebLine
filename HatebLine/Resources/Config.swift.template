@@ -1,0 +1,11 @@
+//
+//  Config.swift
+//  HatebLine
+//
+
+import Foundation
+
+struct Config {
+    static let consumerKey = ""
+    static let consumerSecret = ""
+}
