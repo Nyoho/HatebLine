@@ -1053,7 +1053,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
-                            <visualEffectView blendingMode="behindWindow" material="appearanceBased" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="5mF-t4-IJO">
+                            <visualEffectView blendingMode="withinWindow" material="sheet" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="5mF-t4-IJO">
                                 <rect key="frame" x="0.0" y="0.0" width="433" height="192"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuk-wK-r14">
@@ -1630,7 +1630,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ewP-el-gjQ"/>
+        <segue reference="cwI-oc-Fym"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSQuickLookTemplate" width="19" height="12"/>
