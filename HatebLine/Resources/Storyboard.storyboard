@@ -1029,6 +1029,7 @@
                                                                 <outlet property="dateTextField" destination="PkE-gD-a7k" id="gdG-du-Ejb"/>
                                                                 <outlet property="imageView" destination="tj6-8X-qXR" id="sD0-bp-8FC"/>
                                                                 <outlet property="textField" destination="YKK-aq-6lI" id="60a-U3-FVA"/>
+                                                                <outlet property="titleTextField" destination="JlA-6m-wo4" id="bsB-90-nVV"/>
                                                             </connections>
                                                         </tableCellView>
                                                     </prototypeCellViews>
