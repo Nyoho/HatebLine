@@ -38,10 +38,10 @@ class BookmarkCellView: NSTableCellView {
     func updateSelectionHighlight() {
         if backgroundStyle == NSView.BackgroundStyle.dark {
             commentTextField?.textColor = NSColor.white
-            titleTextField?.textColor = NSColor.controlColor
+            titleTextField?.textColor = NSColor.white
         } else {
             commentTextField?.textColor = NSColor.black
-            titleTextField?.textColor = NSColor.selectedMenuItemColor
+            titleTextField?.textColor = NSColor.linkColor
         }
     }
 }
