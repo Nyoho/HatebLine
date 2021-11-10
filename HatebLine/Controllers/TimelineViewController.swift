@@ -416,8 +416,22 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         perform()
     }
 
+    // MARK: - Sign in/out
+
+    @IBAction func performAuth(_: Any) {
+        guard !QuestionBookmarkManager.shared.authorized else { return }
+        let vc = QuestionAuthViewController.loadFromNib()
+        presentAsModalWindow(vc)
+        QuestionBookmarkManager.shared.authenticate(viewController: vc)
+    }
+
+    @IBAction func signOut(_: Any) {
+        QuestionBookmarkManager.shared.signOut()
+    }
+
+    // MARK: - TableView
+
     /*
-     // MARK: - TableView
      func numberOfRowsInTableView(tableView: NSTableView) -> Int {
      return bookmarks.count
      }
