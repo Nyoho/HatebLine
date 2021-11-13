@@ -10,9 +10,12 @@ import Cocoa
 import Question
 
 class GeneralPrefViewController: NSViewController {
+    @IBOutlet var usernameLabel: NSTextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        setUsername()
     }
 
     @IBAction func signin(_: Any) {
@@ -24,5 +27,13 @@ class GeneralPrefViewController: NSViewController {
 
     @IBAction func signOut(_: Any) {
         QuestionBookmarkManager.shared.signOut()
+    }
+
+    func setUsername() {
+        if QuestionBookmarkManager.shared.authorized, let name = QuestionBookmarkManager.shared.displayName {
+            usernameLabel.stringValue = name
+        } else {
+            usernameLabel.stringValue = "(Not singed in yet)"
+        }
     }
 }
