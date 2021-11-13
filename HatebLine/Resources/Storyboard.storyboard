@@ -688,7 +688,7 @@
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
                         <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="JZp-Xv-O40"/>
@@ -1379,8 +1379,20 @@
                                     <action selector="signOut:" target="QOF-DU-SET" id="Orv-ci-LZb"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-KK-Jzd">
+                                <rect key="frame" x="245" y="13" width="107" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Not signed in yet" id="E9f-19-VnC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
+                    <connections>
+                        <outlet property="usernameLabel" destination="4t1-KK-Jzd" id="LHc-4h-M0A"/>
+                    </connections>
                 </viewController>
                 <customObject id="Pj8-Kr-jQX" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController id="Ls3-EZ-9mw"/>
@@ -1631,7 +1643,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cwI-oc-Fym"/>
+        <segue reference="ewP-el-gjQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSQuickLookTemplate" width="19" height="12"/>
