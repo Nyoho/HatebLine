@@ -13,7 +13,7 @@ class Helper {
     static func commentWithTags(_ comment: String?, tags: [String]?) -> NSAttributedString? {
         let t = NSMutableAttributedString()
         if let s = comment {
-            t.append(NSAttributedString(string: s, attributes: [.foregroundColor: NSColor.labelColor]))
+            t.append(NSAttributedString(string: s, attributes: [.foregroundColor: NSColor.controlTextColor]))
         }
         if let set = tags {
             var first = true
