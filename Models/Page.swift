@@ -41,7 +41,12 @@ class Page: NSManagedObject {
                 if r.length != 0 {
                     entryImageUrl = (str as NSString).substring(with: r)
                     if let url = entryImageUrl, let u = URL(string: url) {
-                        __entryImage = NSImage(fromURL: u) // NSImage(contentsOf: u)
+                        let task = URLSession.shared.dataTask(with: u) { data, urlResponse, _ in
+                            guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
+                                return
+                            }
+                            self.__entryImage = NSImage(data: data)
+                        }
                     }
                 }
                 r = match.range(at: 3)
@@ -50,7 +55,12 @@ class Page: NSManagedObject {
                 }
                 let faviconUrl = (str as NSString).substring(with: match.range(at: 1))
                 if let u = URL(string: faviconUrl) {
-                    __favicon = NSImage(fromURL: u) // NSImage(contentsOf: u)
+                    let task = URLSession.shared.dataTask(with: u) { data, urlResponse, _ in
+                        guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
+                            return
+                        }
+                        self.__favicon = NSImage(data: data)
+                    }
                 }
             }
             prepared = true
