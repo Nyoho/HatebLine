@@ -38,6 +38,7 @@
 		555BC14D26500E0E00715457 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14C26500E0E00715457 /* AlamofireImage */; };
 		555BC15026500FD200715457 /* Himotoki in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14F26500FD200715457 /* Himotoki */; };
 		555BC15E2650102600715457 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC15D2650102600715457 /* Alamofire */; };
+		5572EFE82963D7BA00C402F7 /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 5572EFE72963D7BA00C402F7 /* SwiftFormat */; };
 		557906871C656507003DA09F /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 557906861C656507003DA09F /* Acknowledgments.rtf */; };
 		557906891C656525003DA09F /* AcknowledgmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557906881C656525003DA09F /* AcknowledgmentsViewController.swift */; };
 		559848712650125100B07B5A /* Question in Frameworks */ = {isa = PBXBuildFile; productRef = 559848702650125100B07B5A /* Question */; };
@@ -178,6 +179,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				555BC15026500FD200715457 /* Himotoki in Frameworks */,
+				5572EFE82963D7BA00C402F7 /* SwiftFormat in Frameworks */,
 				552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */,
 				555BC14726500DFB00715457 /* Alamofire in Frameworks */,
 				555BC14D26500E0E00715457 /* AlamofireImage in Frameworks */,
@@ -427,6 +429,7 @@
 				555BC14C26500E0E00715457 /* AlamofireImage */,
 				555BC14F26500FD200715457 /* Himotoki */,
 				559848702650125100B07B5A /* Question */,
+				5572EFE72963D7BA00C402F7 /* SwiftFormat */,
 			);
 			productName = HatebLine;
 			productReference = 55415B6A1C3961F90079B118 /* HatebLine.app */;
@@ -512,6 +515,7 @@
 				555BC14B26500E0E00715457 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 				555BC14E26500FD200715457 /* XCRemoteSwiftPackageReference "Himotoki" */,
 				5598486F2650125100B07B5A /* XCRemoteSwiftPackageReference "Question" */,
+				5572EFE62963D7BA00C402F7 /* XCRemoteSwiftPackageReference "SwiftFormat" */,
 			);
 			productRefGroup = 55415B6B1C3961F90079B118 /* Products */;
 			projectDirPath = "";
@@ -1050,6 +1054,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		5572EFE62963D7BA00C402F7 /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nicklockwood/SwiftFormat";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.6;
+			};
+		};
 		5598486F2650125100B07B5A /* XCRemoteSwiftPackageReference "Question" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Nyoho/Question";
@@ -1080,6 +1092,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 555BC14526500DFB00715457 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		5572EFE72963D7BA00C402F7 /* SwiftFormat */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5572EFE62963D7BA00C402F7 /* XCRemoteSwiftPackageReference "SwiftFormat" */;
+			productName = SwiftFormat;
 		};
 		559848702650125100B07B5A /* Question */ = {
 			isa = XCSwiftPackageProductDependency;
