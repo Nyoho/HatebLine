@@ -186,16 +186,4 @@ class CommentsViewController: NSViewController {
         return nil
     }
 
-    @objc func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
-        var heightOfRow: CGFloat = 48
-        let item = items[row] as Comment
-        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView {
-            tableView.noteHeightOfRows(withIndexesChanged: IndexSet(integer: row))
-            let size = NSMakeSize(tableView.tableColumns[0].width, 43.0)
-            cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
-            cell.commentField?.preferredMaxLayoutWidth = size.width - (8 + 8 + 8 + 42)
-            heightOfRow = cell.fittingSize.height
-        }
-        return heightOfRow < 48 ? 48 : heightOfRow
-    }
 }
