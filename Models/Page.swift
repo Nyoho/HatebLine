@@ -45,8 +45,11 @@ class Page: NSManagedObject {
                             guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                                 return
                             }
+                            self.willChangeValue(forKey: "entryImage")
                             self.__entryImage = NSImage(data: data)
+                            self.didChangeValue(forKey: "entryImage")
                         }
+                        task.resume()
                     }
                 }
                 r = match.range(at: 3)
@@ -59,8 +62,11 @@ class Page: NSManagedObject {
                         guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                             return
                         }
+                        self.willChangeValue(forKey: "favicon")
                         self.__favicon = NSImage(data: data)
+                        self.didChangeValue(forKey: "favicon")
                     }
+                    task.resume()
                 }
             }
             prepared = true
