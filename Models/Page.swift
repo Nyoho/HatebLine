@@ -12,9 +12,6 @@ import Foundation
 
 class Page: NSManagedObject {
     // Insert code here to add functionality to your managed object subclass
-    var __favicon: NSImage?
-    var __summary: String?
-    var __entryImage: NSImage?
     var prepared: Bool = false
 
     public func computeComputedProperties(_ completion: ((Bool) -> Void)? = nil) {
@@ -45,16 +42,14 @@ class Page: NSManagedObject {
                             guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                                 return
                             }
-                            self.willChangeValue(forKey: "entryImage")
-                            self.__entryImage = NSImage(data: data)
-                            self.didChangeValue(forKey: "entryImage")
+                            self.entryImage = NSImage(data: data)
                         }
                         task.resume()
                     }
                 }
                 r = match.range(at: 3)
                 if r.length != 0 {
-                    __summary = (str as NSString).substring(with: r)
+                    self.summary = (str as NSString).substring(with: r)
                 }
                 let faviconUrl = (str as NSString).substring(with: match.range(at: 1))
                 if let u = URL(string: faviconUrl) {
@@ -62,9 +57,7 @@ class Page: NSManagedObject {
                         guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                             return
                         }
-                        self.willChangeValue(forKey: "favicon")
-                        self.__favicon = NSImage(data: data)
-                        self.didChangeValue(forKey: "favicon")
+                        self.favicon = NSImage(data:data)
                     }
                     task.resume()
                 }
@@ -80,23 +73,36 @@ class Page: NSManagedObject {
     }
 
     @objc var favicon: NSImage? {
-        computeComputedProperties()
-        return __favicon
+        willSet {
+            self.willChangeValue(forKey: #keyPath(Page.favicon))
+        }
+        didSet {
+            self.didChangeValue(forKey: #keyPath(Page.favicon))
+        }
     }
 
     @objc var summary: String? {
-        computeComputedProperties()
-        return __summary
+        willSet {
+            self.willChangeValue(forKey: #keyPath(Page.summary))
+        }
+        didSet {
+            self.willChangeValue(forKey: #keyPath(Page.summary))
+        }
     }
 
     var entryImageUrl: String?
 
     @objc var entryImage: NSImage? {
-        computeComputedProperties()
-        return __entryImage
+        willSet {
+            self.willChangeValue(forKey: #keyPath(Page.entryImage))
+        }
+        didSet {
+            self.willChangeValue(forKey: #keyPath(Page.entryImage))
+        }
     }
 
     @objc var countString: String? {
+        computeComputedProperties()
         if let n = count {
             return n.intValue > 1 ? "\(n) users" : "\(n) user"
         } else {
