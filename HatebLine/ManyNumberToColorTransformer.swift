@@ -15,7 +15,7 @@ import Cocoa
 
     override func transformedValue(_ value: Any?) -> Any? {
         if let b = (value as AnyObject).boolValue {
-            return b ? NSColor.systemRed : NSColor.systemBlue
+            return b ? NSColor.systemRed : NSColor.systemBrown
         }
         return NSColor.systemGray
     }
