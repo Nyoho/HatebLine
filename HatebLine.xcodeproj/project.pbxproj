@@ -13,7 +13,7 @@
 		5517EF20216F2DA600828501 /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF1E216F2DA600828501 /* SafariExtensionViewController.xib */; };
 		5517EF23216F2DA600828501 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF22216F2DA600828501 /* script.js */; };
 		5517EF25216F2DA600828501 /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 5517EF24216F2DA600828501 /* ToolbarItemIcon.pdf */; };
-		5517EF29216F2DA600828501 /* HatebLine for Safari.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5517EF16216F2DA600828501 /* HatebLine for Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5517EF29216F2DA600828501 /* HatebLine for Safari.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 5517EF16216F2DA600828501 /* HatebLine for Safari.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		551DB4FB1C42CD0300B198A8 /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4F91C42CD0300B198A8 /* Bookmark.swift */; };
 		551DB5011C4374F400B198A8 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB4FE1C4374F400B198A8 /* User.swift */; };
 		551DB5051C437E4500B198A8 /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551DB5031C437E4500B198A8 /* User+CoreDataProperties.swift */; };
@@ -85,15 +85,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5517EF2D216F2DA600828501 /* Embed App Extensions */ = {
+		5517EF2D216F2DA600828501 /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5517EF29216F2DA600828501 /* HatebLine for Safari.appex in Embed App Extensions */,
+				5517EF29216F2DA600828501 /* HatebLine for Safari.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		55415B9E1C3962970079B118 /* Embed Frameworks */ = {
@@ -416,7 +416,7 @@
 				55415B671C3961F90079B118 /* Frameworks */,
 				55415B681C3961F90079B118 /* Resources */,
 				55415B9E1C3962970079B118 /* Embed Frameworks */,
-				5517EF2D216F2DA600828501 /* Embed App Extensions */,
+				5517EF2D216F2DA600828501 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -478,7 +478,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1420;
 				ORGANIZATIONNAME = "北䑓 如法";
 				TargetAttributes = {
 					5517EF15216F2DA600828501 = {
@@ -691,6 +691,7 @@
 				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -700,7 +701,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.nyoho.HatebLine.HatebLine-for-Safari";
@@ -724,6 +725,7 @@
 				CODE_SIGN_ENTITLEMENTS = "HatebLine for Safari/HatebLine_for_Safari.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Manual;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -733,7 +735,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "jp.nyoho.HatebLine.HatebLine-for-Safari";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -774,6 +776,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -831,6 +834,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -858,6 +862,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
@@ -865,7 +870,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -880,6 +885,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = HatebLine/Resources/Info.plist;
@@ -887,7 +893,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -900,6 +906,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -910,6 +917,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -923,6 +931,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
@@ -933,6 +942,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -945,12 +955,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = HatebLineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
@@ -964,12 +976,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				INFOPLIST_FILE = HatebLineUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@loader_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.nyoho.HatebLineUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
