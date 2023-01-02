@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="21507"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="21507"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1608,12 +1607,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="MgM-zc-NjR">
-                                <rect key="frame" x="12" y="36" width="616" height="592"/>
-                                <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0" javaEnabled="NO">
-                                    <nil key="identifier"/>
-                                </webPreferences>
-                            </webView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aF9-zL-iOB">
                                 <rect key="frame" x="569" y="1" width="66" height="32"/>
                                 <buttonCell key="cell" type="push" title="Done" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Umb-Vj-1BR">
@@ -1627,22 +1620,29 @@
                             <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="jcE-Ke-mtX">
                                 <rect key="frame" x="12" y="621" width="616" height="20"/>
                             </progressIndicator>
+                            <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EEr-HF-dJ9">
+                                <rect key="frame" x="12" y="39" width="616" height="581"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="jcE-Ke-mtX" firstAttribute="leading" secondItem="uG7-JY-aTM" secondAttribute="leading" constant="12" id="1vf-2d-C44"/>
                             <constraint firstAttribute="trailing" secondItem="aF9-zL-iOB" secondAttribute="trailing" constant="12" id="6ko-Gd-pkL"/>
-                            <constraint firstAttribute="trailing" secondItem="MgM-zc-NjR" secondAttribute="trailing" constant="12" id="7tF-Mq-Z6u"/>
-                            <constraint firstItem="MgM-zc-NjR" firstAttribute="top" secondItem="uG7-JY-aTM" secondAttribute="top" constant="12" id="IJ0-mo-SQs"/>
-                            <constraint firstItem="MgM-zc-NjR" firstAttribute="leading" secondItem="uG7-JY-aTM" secondAttribute="leading" constant="12" id="Kbt-Wa-lSd"/>
-                            <constraint firstItem="aF9-zL-iOB" firstAttribute="top" secondItem="MgM-zc-NjR" secondAttribute="bottom" constant="8" id="eaI-Gc-IUT"/>
+                            <constraint firstAttribute="trailing" secondItem="EEr-HF-dJ9" secondAttribute="trailing" constant="12" id="HAe-Sy-gUt"/>
                             <constraint firstAttribute="bottom" secondItem="aF9-zL-iOB" secondAttribute="bottom" constant="8" id="h1r-Ke-Avx"/>
+                            <constraint firstItem="aF9-zL-iOB" firstAttribute="top" secondItem="EEr-HF-dJ9" secondAttribute="bottom" constant="11" id="jzw-PI-bt3"/>
+                            <constraint firstItem="EEr-HF-dJ9" firstAttribute="top" secondItem="jcE-Ke-mtX" secondAttribute="bottom" constant="2" id="tJZ-X0-ZOX"/>
                             <constraint firstAttribute="trailing" secondItem="jcE-Ke-mtX" secondAttribute="trailing" constant="12" id="ty7-tt-wp3"/>
+                            <constraint firstItem="EEr-HF-dJ9" firstAttribute="leading" secondItem="uG7-JY-aTM" secondAttribute="leading" constant="12" id="vTb-sn-dt0"/>
                             <constraint firstItem="jcE-Ke-mtX" firstAttribute="top" secondItem="uG7-JY-aTM" secondAttribute="top" id="zTP-Fo-vDV"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="progressIndicator" destination="jcE-Ke-mtX" id="ajM-9N-Wco"/>
-                        <outlet property="webView" destination="MgM-zc-NjR" id="0ar-xF-kNq"/>
+                        <outlet property="webView" destination="EEr-HF-dJ9" id="mx8-3r-rKF"/>
                     </connections>
                 </viewController>
                 <customObject id="VBX-du-xlm" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
