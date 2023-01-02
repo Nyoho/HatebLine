@@ -10,41 +10,49 @@ import Cocoa
 import WebKit
 
 class QuickLookWebViewController: NSViewController {
-    @IBOutlet var webView: WebView!
+    @IBOutlet var webView: WKWebView!
     @IBOutlet var progressIndicator: NSProgressIndicator!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if let urlString = representedObject as? String, let url = URL(string: urlString) {
             let request = URLRequest(url: url)
-            webView.mainFrame.load(request)
-
-            let nc = NotificationCenter.default
-            nc.addObserver(self, selector: #selector(QuickLookWebViewController.progressNotification(_:)), name: NSNotification.Name.WebViewProgressStarted, object: nil)
-            nc.addObserver(self, selector: #selector(QuickLookWebViewController.progressNotification(_:)), name: NSNotification.Name.WebViewProgressEstimateChanged, object: nil)
-            nc.addObserver(self, selector: #selector(QuickLookWebViewController.progressNotification(_:)), name: NSNotification.Name.WebViewProgressFinished, object: nil)
+            webView.load(request)
+            
+            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.isLoading), options: .new, context: nil)
+            webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
         }
     }
-
+    
     override func viewWillDisappear() {
-        NotificationCenter.default.removeObserver(self)
+        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.isLoading))
+        webView.removeObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress))
     }
-
-    @objc func progressNotification(_ notification: Notification) {
-        switch notification.name {
-        case NSNotification.Name.WebViewProgressStarted:
-            progressIndicator.startAnimation(self)
-            progressIndicator.alphaValue = 1
-        case NSNotification.Name.WebViewProgressEstimateChanged:
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        guard let keyPath = keyPath else {
+            assertionFailure()
+            return
+        }
+        
+        switch keyPath {
+        case #keyPath(WKWebView.isLoading):
+            if webView.isLoading {
+                progressIndicator.startAnimation(self)
+                progressIndicator.alphaValue = 1
+            } else {
+                progressIndicator.stopAnimation(self)
+                NSAnimationContext.runAnimationGroup({ context in
+                    context.duration = 1.0
+                    self.progressIndicator.animator().alphaValue = 0
+                }, completionHandler: nil)
+            }
+        case #keyPath(WKWebView.estimatedProgress):
             progressIndicator.doubleValue = webView.estimatedProgress
-        case NSNotification.Name.WebViewProgressFinished:
-            progressIndicator.stopAnimation(self)
-            NSAnimationContext.runAnimationGroup({ context in
-                context.duration = 1.0
-                self.progressIndicator.animator().alphaValue = 0
-            }, completionHandler: nil)
         default:
+            //do nothing
             break
         }
     }
+    
 }
