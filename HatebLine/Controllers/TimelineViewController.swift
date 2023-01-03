@@ -18,10 +18,12 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     var bookmarks = NSMutableArray()
     var timer = Timer()
 
-    @objc lazy var managedObjectContext: NSManagedObjectContext = {
+    @objc lazy var persistentContainer = {
         (NSApplication.shared.delegate
-            as? AppDelegate)?.managedObjectContext
-    }()!
+           as! AppDelegate).persistentContainer
+    }()
+
+    @objc dynamic var managedObjectContext = (NSApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
 
     @objc var sortDescriptors: [NSSortDescriptor] = [NSSortDescriptor(key: "date", ascending: false)]
 
