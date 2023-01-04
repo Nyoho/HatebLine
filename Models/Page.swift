@@ -42,7 +42,11 @@ class Page: NSManagedObject {
                             guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                                 return
                             }
-                            self.entryImage = NSImage(data: data)
+                            let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
+                            persistentContainer.performBackgroundTask { context in
+                                self.entryImage = NSImage(data: data)
+                                try? context.save()
+                            }
                         }
                         task.resume()
                     }
@@ -57,7 +61,11 @@ class Page: NSManagedObject {
                         guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                             return
                         }
-                        self.favicon = NSImage(data:data)
+                        let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
+                        persistentContainer.performBackgroundTask { context in
+                            self.favicon = NSImage(data:data)
+                            try? context.save()
+                        }
                     }
                     task.resume()
                 }
@@ -74,14 +82,15 @@ class Page: NSManagedObject {
 
     @objc var favicon: NSImage? {
         willSet {
-            self.willChangeValue(forKey: #keyPath(Page.favicon))
+            self.willChangeValue(forKey: #keyPath(favicon))
         }
         didSet {
-            self.didChangeValue(forKey: #keyPath(Page.favicon))
+            self.didChangeValue(forKey: #keyPath(favicon))
         }
     }
 
-    @objc var summary: String? {
+    @objc var summary: String?
+    {
         willSet {
             self.willChangeValue(forKey: #keyPath(Page.summary))
         }
@@ -92,12 +101,13 @@ class Page: NSManagedObject {
 
     var entryImageUrl: String?
 
-    @objc var entryImage: NSImage? {
+    @objc var entryImage: NSImage?
+    {
         willSet {
-            self.willChangeValue(forKey: #keyPath(Page.entryImage))
+            self.willChangeValue(forKey: #keyPath(entryImage))
         }
         didSet {
-            self.willChangeValue(forKey: #keyPath(Page.entryImage))
+            self.willChangeValue(forKey: #keyPath(entryImage))
         }
     }
 
