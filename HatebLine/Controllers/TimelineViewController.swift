@@ -248,7 +248,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
             if fetchedBookmarks.count > 0 { // exists, so update
                 updateBookmark(moc: moc, fetchedBookmarks: fetchedBookmarks, item: item)
-            } else { // does not exsist, so create
+            } else { // does not exist, so create
                 return createBookmark(moc: moc, item: item)
             }
         } catch {
