@@ -42,10 +42,12 @@ class Page: NSManagedObject {
                             guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                                 return
                             }
-                            let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
-                            persistentContainer.performBackgroundTask { context in
-                                self.entryImage = NSImage(data: data)
-                                try? context.save()
+                            DispatchQueue.main.async {
+                                let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
+                                persistentContainer.performBackgroundTask { context in
+                                    self.entryImage = NSImage(data: data)
+                                    try? context.save()
+                                }
                             }
                         }
                         task.resume()
@@ -61,10 +63,12 @@ class Page: NSManagedObject {
                         guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
                             return
                         }
-                        let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
-                        persistentContainer.performBackgroundTask { context in
-                            self.favicon = NSImage(data:data)
-                            try? context.save()
+                        DispatchQueue.main.async {
+                            let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
+                            persistentContainer.performBackgroundTask { context in
+                                self.favicon = NSImage(data:data)
+                                try? context.save()
+                            }
                         }
                     }
                     task.resume()
