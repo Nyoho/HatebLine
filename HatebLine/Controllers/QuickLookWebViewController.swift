@@ -15,6 +15,8 @@ class QuickLookWebViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.frame.size.width = 768
+        self.view.frame.size.height = 768
         if let urlString = representedObject as? String, let url = URL(string: urlString) {
             let request = URLRequest(url: url)
             webView.load(request)
