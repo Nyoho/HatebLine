@@ -274,7 +274,10 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             }
 
             bookmark.page?.computeComputedProperties { (_: Bool) in
-                notification.contentImage = bookmark.page?.entryImage?.squared
+                if let url = bookmark.page?.entryImageUrl, let u = URL(string: url) {
+                    // TODO: don't use synchronous loading
+                    notification.contentImage = NSImage(fromURL: u)
+                }
 
                 if let url = bookmark.bookmarkUrl {
                     notification.userInfo = ["bookmarkUrl": url]

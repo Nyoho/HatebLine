@@ -9,10 +9,13 @@
 import Cocoa
 import CoreData
 import Foundation
+import Alamofire
 
 class Page: NSManagedObject {
     // Insert code here to add functionality to your managed object subclass
     var prepared: Bool = false
+    var __favicon: NSImage? = nil
+    var __entryImage: NSImage? = nil
 
     public func computeComputedProperties(_ completion: ((Bool) -> Void)? = nil) {
         guard !prepared else {
@@ -37,42 +40,12 @@ class Page: NSManagedObject {
                 r = match.range(at: 2)
                 if r.length != 0 {
                     entryImageUrl = (str as NSString).substring(with: r)
-                    if let url = entryImageUrl, let u = URL(string: url) {
-                        let task = URLSession.shared.dataTask(with: u) { data, urlResponse, _ in
-                            guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
-                                return
-                            }
-                            DispatchQueue.main.async {
-                                let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
-                                persistentContainer.performBackgroundTask { context in
-                                    self.entryImage = NSImage(data: data)
-                                    try? context.save()
-                                }
-                            }
-                        }
-                        task.resume()
-                    }
                 }
                 r = match.range(at: 3)
                 if r.length != 0 {
-                    self.summary = (str as NSString).substring(with: r)
+                    summary = (str as NSString).substring(with: r)
                 }
-                let faviconUrl = (str as NSString).substring(with: match.range(at: 1))
-                if let u = URL(string: faviconUrl) {
-                    let task = URLSession.shared.dataTask(with: u) { data, urlResponse, _ in
-                        guard let data = data, let urlResponse = urlResponse as? HTTPURLResponse else {
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            let persistentContainer = (NSApplication.shared.delegate as! AppDelegate).persistentContainer
-                            persistentContainer.performBackgroundTask { context in
-                                self.favicon = NSImage(data:data)
-                                try? context.save()
-                            }
-                        }
-                    }
-                    task.resume()
-                }
+                faviconUrl = (str as NSString).substring(with: match.range(at: 1))
             }
             prepared = true
         } catch {
@@ -84,12 +57,22 @@ class Page: NSManagedObject {
         }
     }
 
+    var faviconUrl: String? = nil
+
     @objc var favicon: NSImage? {
-        willSet {
-            self.willChangeValue(forKey: #keyPath(favicon))
-        }
-        didSet {
-            self.didChangeValue(forKey: #keyPath(favicon))
+        if let image = __favicon {
+            return image
+        } else {
+            if let url = faviconUrl, let u = URL(string: url) {
+                AF.request(u).response { response in
+                    if let d = response.data {
+                        self.willChangeValue(forKey: "favicon")
+                        self.__favicon = NSImage(data: d)
+                        self.didChangeValue(forKey: "favicon")
+                    }
+                }
+            }
+            return nil
         }
     }
 
@@ -103,15 +86,22 @@ class Page: NSManagedObject {
         }
     }
 
-    var entryImageUrl: String?
+    var entryImageUrl: String? = nil
 
-    @objc var entryImage: NSImage?
-    {
-        willSet {
-            self.willChangeValue(forKey: #keyPath(entryImage))
-        }
-        didSet {
-            self.willChangeValue(forKey: #keyPath(entryImage))
+    @objc var entryImage: NSImage? {
+        if let image = __entryImage {
+            return image
+        } else {
+            if let url = entryImageUrl, let u = URL(string: url) {
+                AF.request(u).response { response in
+                    if let d = response.data {
+                        self.willChangeValue(forKey: "entryImage")
+                        self.__entryImage = NSImage(data: d)
+                        self.didChangeValue(forKey: "entryImage")
+                    }
+                }
+            }
+            return nil
         }
     }
 
