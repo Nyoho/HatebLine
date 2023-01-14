@@ -19,8 +19,8 @@ class User: NSManagedObject {
         if let image = __profileImage {
             return image
         } else {
-            if let n = name {
-                if let url = URL(string: "https://cdn.profile-image.st-hatena.com/users/\(n)/profile.gif") {
+            if let n = name,
+               let url = URL(string: "https://cdn.profile-image.st-hatena.com/users/\(n)/profile.gif") {
                     AF.request(url).response { response in
                         if let d = response.data {
                             self.willChangeValue(forKey: "profileImage")
@@ -28,7 +28,6 @@ class User: NSManagedObject {
                             self.didChangeValue(forKey: "profileImage")
                         }
                     }
-                }
             }
             return nil
         }
