@@ -82,7 +82,7 @@ class Page: NSManagedObject {
             self.willChangeValue(forKey: #keyPath(Page.summary))
         }
         didSet {
-            self.willChangeValue(forKey: #keyPath(Page.summary))
+            self.didChangeValue(forKey: #keyPath(Page.summary))
         }
     }
 
