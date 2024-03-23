@@ -46,6 +46,8 @@ class Page: NSManagedObject {
                     summary = (str as NSString).substring(with: r)
                 }
                 faviconUrl = (str as NSString).substring(with: match.range(at: 1))
+                
+                loadFaviconIfNeeded()
             }
             prepared = true
         } catch {
@@ -63,16 +65,40 @@ class Page: NSManagedObject {
         if let image = __favicon {
             return image
         } else {
-            if let url = faviconUrl, let u = URL(string: url) {
-                AF.request(u).response { response in
-                    if let d = response.data {
-                        self.willChangeValue(forKey: "favicon")
-                        self.__favicon = NSImage(data: d)
-                        self.didChangeValue(forKey: "favicon")
-                    }
-                }
+            loadFaviconIfNeeded()
+            return __favicon
+        }
+    }
+
+    func loadFaviconIfNeeded(completion: ((NSImage?) -> Void)? = nil) {
+        if let image = __favicon {
+            completion?(image)
+            return
+        }
+        
+        guard let url = faviconUrl, let u = URL(string: url) else {
+            completion?(nil)
+            return
+        }
+        
+        AF.request(u).response { [weak self] response in
+            guard let self = self else { return }
+            
+            if let d = response.data, let image = NSImage(data: d) {
+                self.willChangeValue(forKey: "favicon")
+                self.__favicon = image
+                self.didChangeValue(forKey: "favicon")
+                
+                completion?(image)
+                
+                NotificationCenter.default.post(
+                    name: Notification.Name("PageFaviconDidLoad"), 
+                    object: self, 
+                    userInfo: ["pageURL": self.url ?? ""]
+                )
+            } else {
+                completion?(nil)
             }
-            return nil
         }
     }
 
