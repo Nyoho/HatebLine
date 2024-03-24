@@ -20,6 +20,14 @@ class BookmarkCellView: NSTableCellView {
         // Drawing code here.
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        imageView?.wantsLayer = true
+        imageView?.layer?.cornerRadius = 24.0
+        imageView?.layer?.masksToBounds = true
+    }
+
     // Thx https://stackoverflow.com/questions/28187909/why-nstablecellview-backgroundstyle-is-never-set-to-nsbackgroundstyle-dark-for-s
     override var backgroundStyle: NSView.BackgroundStyle {
         set {
