@@ -16,6 +16,14 @@ class CommentCellView: NSTableCellView {
     @IBOutlet var starImageView: NSImageView!
     var isPopular = false
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        profileImageView.wantsLayer = true
+        profileImageView.layer?.cornerRadius = 21.0
+        profileImageView.layer?.masksToBounds = true
+    }
+
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
         let path = NSBezierPath()
