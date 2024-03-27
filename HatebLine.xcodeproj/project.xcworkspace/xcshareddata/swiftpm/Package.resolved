@@ -46,15 +46,6 @@
       }
     },
     {
-      "identity" : "himotoki",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ikesyo/Himotoki",
-      "state" : {
-        "revision" : "58736bd328e218b4080b034d19211f0263e29b45",
-        "version" : "4.0.0"
-      }
-    },
-    {
       "identity" : "kanna",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tid-kijyun/Kanna.git",

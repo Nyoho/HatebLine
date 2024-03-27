@@ -8,29 +8,58 @@
 
 import Alamofire
 import Cocoa
-import Himotoki
 
 class CommentsViewController: NSViewController {
-    struct Comment: Himotoki.Decodable {
+    struct Comment: Codable {
         let userName: String
         let comment: String?
         let date: Date?
         let tags: [String]?
 
-        static func decode(_ e: Extractor) throws -> Comment {
-            let timestamp: String = try e <| "timestamp"
+        enum CodingKeys: String, CodingKey {
+            case userName = "user"
+            case comment
+            case timestamp
+            case tags
+        }
+        
+        init(userName: String, comment: String?, date: Date?, tags: [String]?) {
+            self.userName = userName
+            self.comment = comment
+            self.date = date
+            self.tags = tags
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            userName = try container.decode(String.self, forKey: .userName)
+            comment = try container.decodeIfPresent(String.self, forKey: .comment)
+            tags = try container.decodeIfPresent([String].self, forKey: .tags)
+            
+            let timestamp = try container.decode(String.self, forKey: .timestamp)
             let dateFormatter = DateFormatter()
             let locale = Locale(identifier: "en_US_POSIX")
             dateFormatter.locale = locale
-            dateFormatter.dateFormat = containingSecondDate(timestamp) ? "yyyy/MM/dd HH:mm:ss" : "yyyy/MM/dd HH:mm"
+            dateFormatter.dateFormat = Self.containingSecondDate(timestamp) ? "yyyy/MM/dd HH:mm:ss" : "yyyy/MM/dd HH:mm"
             dateFormatter.timeZone = TimeZone(abbreviation: "JST")
-            let date = dateFormatter.date(from: timestamp)
-            return try Comment(
-                userName: e <| "user",
-                comment: e <|? "comment",
-                date: date,
-                tags: e <|? "tags"
-            )
+            date = dateFormatter.date(from: timestamp)
+        }
+        
+        func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            
+            try container.encode(userName, forKey: .userName)
+            try container.encodeIfPresent(comment, forKey: .comment)
+            try container.encodeIfPresent(tags, forKey: .tags)
+            
+            if let date = date {
+                let dateFormatter = DateFormatter()
+                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+                dateFormatter.timeZone = TimeZone(abbreviation: "JST")
+                let timestamp = dateFormatter.string(from: date)
+                try container.encode(timestamp, forKey: .timestamp)
+            }
         }
 
         static func containingSecondDate(_ string: String) -> Bool {
@@ -41,23 +70,30 @@ class CommentsViewController: NSViewController {
         }
     }
 
-    struct Comments: Himotoki.Decodable {
+    struct Comments: Codable {
         let comments: [Comment]
         let eid: String
         let entryUrl: String
-        static func decode(_ e: Extractor) throws -> Comments {
-            var eid = ""
-            do {
-                eid = try e <| "eid"
-            } catch {
-                let eidNum: Int = try e <| "eid"
+
+        enum CodingKeys: String, CodingKey {
+            case comments = "bookmarks"
+            case eid
+            case entryUrl = "entry_url"
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            
+            comments = try container.decode([Comment].self, forKey: .comments)
+            entryUrl = try container.decode(String.self, forKey: .entryUrl)
+            
+            // eidは文字列かIntの場合がある
+            if let eidString = try? container.decode(String.self, forKey: .eid) {
+                eid = eidString
+            } else {
+                let eidNum = try container.decode(Int.self, forKey: .eid)
                 eid = String(eidNum)
             }
-            return try Comments(
-                comments: e <| ["bookmarks"],
-                eid: eid,
-                entryUrl: e <| "entry_url"
-            )
         }
     }
 
@@ -82,22 +118,15 @@ class CommentsViewController: NSViewController {
     func parse(_ url: String) {
         progressIndicator.startAnimation(self)
         AF.request("https://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
-            .responseJSON { response in
-                if let json = response.value {
-                    let comments = try? Comments.decodeValue(json)
-                    if let a = comments?.comments {
-                        self.allRegulars = a
-                    }
-                    if let e = comments?.eid {
-                        self.eid = e
-                    }
+            .responseDecodable(of: Comments.self) { response in
+                if let comments = response.value {
+                    self.allRegulars = comments.comments
+                    self.eid = comments.eid
+
                     AF.request("https://b.hatena.ne.jp/api/viewer.popular_bookmarks", parameters: ["url": url])
-                        .responseJSON { response in
-                            if let json = response.value {
-                                let comments: Comments? = try? decodeValue(json)
-                                if let a = comments?.comments {
-                                    self.allPopulars = a
-                                }
+                        .responseDecodable(of: Comments.self) { response in
+                            if let comments = response.value {
+                                self.allPopulars = comments.comments
                                 self.filter()
                                 self.tableView.reloadData()
                                 NSAnimationContext.runAnimationGroup({ context in
