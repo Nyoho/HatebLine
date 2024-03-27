@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21507"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="21507"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="23727"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -688,7 +688,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-                        <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
+                        <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="JZp-Xv-O40"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="jHQ-xa-KEq"/>
@@ -815,24 +815,24 @@
         <scene sceneID="LCo-im-LHN">
             <objects>
                 <viewController id="Fxg-Ub-YNW" customClass="TimelineViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="QEn-qU-JRA">
-                        <rect key="frame" x="0.0" y="0.0" width="578" height="400"/>
+                    <view key="view" wantsLayer="YES" misplaced="YES" id="QEn-qU-JRA">
+                        <rect key="frame" x="0.0" y="0.0" width="564" height="400"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="181" horizontalPageScroll="10" verticalLineScroll="181" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
-                                <rect key="frame" x="0.0" y="192" width="578" height="208"/>
+                                <rect key="frame" x="0.0" y="192" width="549" height="208"/>
                                 <clipView key="contentView" drawsBackground="NO" id="vOr-cm-ozy">
-                                    <rect key="frame" x="1" y="1" width="576" height="206"/>
+                                    <rect key="frame" x="1" y="1" width="547" height="206"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView wantsLayer="YES" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" rowHeight="179" usesAutomaticRowHeights="YES" viewBased="YES" id="2eC-bg-4UH" customClass="JKTableView" customModule="HatebLine" customModuleProvider="target">
-                                            <rect key="frame" x="0.0" y="0.0" width="576" height="208"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="547" height="206"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="2"/>
                                             <color key="backgroundColor" name="windowBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="Bookmark" width="564" minWidth="40" maxWidth="2000" id="IBl-pq-0Eu">
+                                                <tableColumn identifier="Bookmark" width="535" minWidth="40" maxWidth="2000" id="IBl-pq-0Eu">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
@@ -845,11 +845,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="530" height="158"/>
+                                                            <rect key="frame" x="1" y="1" width="544" height="158"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wJG-2C-kr5">
-                                                                    <rect key="frame" x="8" y="9" width="514" height="141"/>
+                                                                    <rect key="frame" x="8" y="9" width="528" height="141"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tj6-8X-qXR" userLabel="Profile Image View">
                                                                             <rect key="frame" x="0.0" y="93" width="48" height="48"/>
@@ -863,13 +863,13 @@
                                                                             </connections>
                                                                         </imageView>
                                                                         <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="245" verticalHuggingPriority="750" horizontalCompressionResistancePriority="745" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0Z-vo-dLS">
-                                                                            <rect key="frame" x="64" y="9" width="450" height="132"/>
+                                                                            <rect key="frame" x="64" y="9" width="464" height="132"/>
                                                                             <subviews>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVK-eq-lRS" userLabel="Name Stack View">
-                                                                                    <rect key="frame" x="0.0" y="115" width="450" height="17"/>
+                                                                                    <rect key="frame" x="0.0" y="115" width="464" height="17"/>
                                                                                     <subviews>
                                                                                         <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="261" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
-                                                                                            <rect key="frame" x="-2" y="1" width="366" height="16"/>
+                                                                                            <rect key="frame" x="-2" y="1" width="380" height="16"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="8kb-Qm-j4H">
                                                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -880,7 +880,7 @@
                                                                                             </connections>
                                                                                         </textField>
                                                                                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
-                                                                                            <rect key="frame" x="368" y="2" width="84" height="14"/>
+                                                                                            <rect key="frame" x="382" y="2" width="84" height="14"/>
                                                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="10 minutes ago" id="vwn-Hu-luB">
                                                                                                 <font key="font" metaFont="smallSystem"/>
                                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
@@ -905,7 +905,7 @@
                                                                                     </customSpacing>
                                                                                 </stackView>
                                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
-                                                                                    <rect key="frame" x="-2" y="76" width="454" height="32"/>
+                                                                                    <rect key="frame" x="-2" y="76" width="468" height="32"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" allowsEditingTextAttributes="YES" id="QoV-rO-qPS">
                                                                                         <font key="font" metaFont="system"/>
                                                                                         <string key="title">Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
@@ -918,7 +918,7 @@
                                                                                     </connections>
                                                                                 </textField>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="230" verticalHuggingPriority="750" horizontalCompressionResistancePriority="230" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-xS-DS1" userLabel="Title Stack View">
-                                                                                    <rect key="frame" x="0.0" y="21" width="450" height="48"/>
+                                                                                    <rect key="frame" x="0.0" y="21" width="464" height="48"/>
                                                                                     <subviews>
                                                                                         <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lsI-Ug-kRn" userLabel="Favicon Image View">
                                                                                             <rect key="frame" x="0.0" y="32" width="16" height="16"/>
@@ -932,7 +932,7 @@
                                                                                             </connections>
                                                                                         </imageView>
                                                                                         <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
-                                                                                            <rect key="frame" x="22" y="0.0" width="430" height="48"/>
+                                                                                            <rect key="frame" x="22" y="0.0" width="444" height="48"/>
                                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="DnH-3B-zF7">
                                                                                                 <font key="font" metaFont="system"/>
                                                                                                 <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</string>
@@ -1007,7 +1007,7 @@
                                                                     </customSpacing>
                                                                 </stackView>
                                                                 <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="tYG-Uj-StO">
-                                                                    <rect key="frame" x="4" y="-2" width="522" height="5"/>
+                                                                    <rect key="frame" x="4" y="-2" width="536" height="5"/>
                                                                 </box>
                                                             </subviews>
                                                             <constraints>
@@ -1053,10 +1053,10 @@
                                 </scroller>
                             </scrollView>
                             <visualEffectView blendingMode="withinWindow" material="sheet" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="5mF-t4-IJO">
-                                <rect key="frame" x="0.0" y="0.0" width="578" height="192"/>
+                                <rect key="frame" x="0.0" y="0.0" width="549" height="192"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wuk-wK-r14">
-                                        <rect key="frame" x="8" y="8" width="562" height="176"/>
+                                        <rect key="frame" x="8" y="8" width="533" height="176"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XMM-ET-3I2" userLabel="Favicon Image View">
                                                 <rect key="frame" x="0.0" y="160" width="16" height="16"/>
@@ -1070,10 +1070,10 @@
                                                 </connections>
                                             </imageView>
                                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vd7-RD-5cZ">
-                                                <rect key="frame" x="24" y="30" width="480" height="146"/>
+                                                <rect key="frame" x="24" y="30" width="451" height="146"/>
                                                 <subviews>
                                                     <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dEm-sZ-ZgT" userLabel="Title">
-                                                        <rect key="frame" x="-2" y="114" width="484" height="32"/>
+                                                        <rect key="frame" x="-2" y="114" width="455" height="32"/>
                                                         <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="0vZ-ti-W86">
                                                             <font key="font" metaFont="system"/>
                                                             <string key="title">Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
@@ -1085,7 +1085,7 @@
                                                         </connections>
                                                     </textField>
                                                     <textField wantsLayer="YES" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PMZ-k0-mKt" userLabel="Summary" customClass="GrowingTextField" customModule="HatebLine" customModuleProvider="target">
-                                                        <rect key="frame" x="-2" y="22" width="484" height="84"/>
+                                                        <rect key="frame" x="-2" y="22" width="455" height="84"/>
                                                         <textFieldCell key="cell" controlSize="mini" sendsActionOnEndEditing="YES" id="Vch-IP-imz">
                                                             <font key="font" metaFont="smallSystem"/>
                                                             <string key="title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
@@ -1126,7 +1126,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mog-7A-RM4">
-                                                <rect key="frame" x="512" y="48" width="50" height="128"/>
+                                                <rect key="frame" x="483" y="48" width="50" height="128"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="x51-mR-DiP"/>
                                                 </constraints>
@@ -1659,6 +1659,6 @@
     <resources>
         <image name="NSQuickLookTemplate" width="26" height="17"/>
         <image name="NSRefreshTemplate" width="18" height="21"/>
-        <image name="NSShareTemplate" width="19" height="22"/>
+        <image name="NSShareTemplate" width="19" height="23"/>
     </resources>
 </document>

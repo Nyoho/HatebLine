@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,7 +36,6 @@
 		55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55556F501C4FD33600419440 /* GrowingTextField.swift */; };
 		555BC14726500DFB00715457 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14626500DFB00715457 /* Alamofire */; };
 		555BC14D26500E0E00715457 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14C26500E0E00715457 /* AlamofireImage */; };
-		555BC15026500FD200715457 /* Himotoki in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14F26500FD200715457 /* Himotoki */; };
 		555BC15E2650102600715457 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC15D2650102600715457 /* Alamofire */; };
 		5572EFE82963D7BA00C402F7 /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 5572EFE72963D7BA00C402F7 /* SwiftFormat */; };
 		557906871C656507003DA09F /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 557906861C656507003DA09F /* Acknowledgments.rtf */; };
@@ -178,7 +177,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				555BC15026500FD200715457 /* Himotoki in Frameworks */,
 				5572EFE82963D7BA00C402F7 /* SwiftFormat in Frameworks */,
 				552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */,
 				555BC14726500DFB00715457 /* Alamofire in Frameworks */,
@@ -426,7 +424,6 @@
 			packageProductDependencies = (
 				555BC14626500DFB00715457 /* Alamofire */,
 				555BC14C26500E0E00715457 /* AlamofireImage */,
-				555BC14F26500FD200715457 /* Himotoki */,
 				559848702650125100B07B5A /* Question */,
 				5572EFE72963D7BA00C402F7 /* SwiftFormat */,
 			);
@@ -482,7 +479,6 @@
 				TargetAttributes = {
 					5517EF15216F2DA600828501 = {
 						CreatedOnToolsVersion = 10.0;
-						DevelopmentTeam = 5L9DL58E3J;
 					};
 					55415B691C3961F90079B118 = {
 						CreatedOnToolsVersion = 7.2;
@@ -512,7 +508,6 @@
 			packageReferences = (
 				555BC14526500DFB00715457 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				555BC14B26500E0E00715457 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
-				555BC14E26500FD200715457 /* XCRemoteSwiftPackageReference "Himotoki" */,
 				5598486F2650125100B07B5A /* XCRemoteSwiftPackageReference "Question" */,
 				5572EFE62963D7BA00C402F7 /* XCRemoteSwiftPackageReference "SwiftFormat" */,
 			);
@@ -675,7 +670,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 5L9DL58E3J;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "HatebLine for Safari/Info.plist";
@@ -1043,14 +1038,6 @@
 				minimumVersion = 4.2.0;
 			};
 		};
-		555BC14E26500FD200715457 /* XCRemoteSwiftPackageReference "Himotoki" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ikesyo/Himotoki";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
 		5572EFE62963D7BA00C402F7 /* XCRemoteSwiftPackageReference "SwiftFormat" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/nicklockwood/SwiftFormat";
@@ -1079,11 +1066,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 555BC14B26500E0E00715457 /* XCRemoteSwiftPackageReference "AlamofireImage" */;
 			productName = AlamofireImage;
-		};
-		555BC14F26500FD200715457 /* Himotoki */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 555BC14E26500FD200715457 /* XCRemoteSwiftPackageReference "Himotoki" */;
-			productName = Himotoki;
 		};
 		555BC15D2650102600715457 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
