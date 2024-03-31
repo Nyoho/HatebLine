@@ -57,7 +57,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate {
         }
     }
 
-    func performFindPanelAction(_ sender: AnyObject) {
+    @IBAction func performFindPanelAction(_ sender: AnyObject) {
         searchField.selectText(sender)
     }
 }
