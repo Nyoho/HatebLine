@@ -420,7 +420,12 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         setup()
         perform()
     }
-
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        tableView.sizeToFit()
+    }
+    
     // MARK: - Sign in/out
 
     @IBAction func performAuth(_: Any) {
