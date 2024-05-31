@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="17K-n7-ydr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="23727"/>
-        <plugIn identifier="com.apple.WebKit2IBPlugin" version="23727"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
+        <plugIn identifier="com.apple.WebKit2IBPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -704,6 +704,9 @@
                                             <font key="font" metaFont="systemHeavy" size="13"/>
                                         </buttonCell>
                                     </button>
+                                    <connections>
+                                        <action selector="openBookmarkComposer:" target="9rp-fB-EiC" id="bKc-Qm-7Xf"/>
+                                    </connections>
                                 </toolbarItem>
                                 <toolbarItem implicitItemIdentifier="8904398C-4487-4354-9A03-0074A06B23C8" label="Search" paletteLabel="Search" id="sfg-Ze-hyS">
                                     <nil key="toolTip"/>

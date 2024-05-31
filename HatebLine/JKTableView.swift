@@ -36,6 +36,8 @@ class JKTableView: NSTableView {
             selectRowIndexes(IndexSet(), byExtendingSelection: false)
         case 8: // c
             _ = delegate?.perform(#selector(TimelineViewController.showComments(_:)), with: self)
+        case 11: // b
+            _ = delegate?.perform(#selector(TimelineViewController.openBookmarkComposer(_:)), with: self)
         default:
             super.keyDown(with: theEvent)
         }

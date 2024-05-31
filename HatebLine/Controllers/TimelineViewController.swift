@@ -439,6 +439,39 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         QuestionBookmarkManager.shared.signOut()
     }
 
+    // MARK: - Bookmark Composer
+
+    @IBAction func openBookmarkComposer(_: Any) {
+        guard let bookmark = selectedBookmark(),
+              let urlString = bookmark.page?.url,
+              let url = URL(string: urlString) else { return }
+
+        guard QuestionBookmarkManager.shared.authorized else {
+            performAuth(self)
+            return
+        }
+
+        do {
+            let title = bookmark.page?.title
+            let count = bookmark.page?.count
+            let countText = count.map { "\($0) users" }
+            let composer = try QuestionBookmarkManager.shared.makeBookmarkComposer(
+                permalink: url,
+                title: title,
+                bookmarkCountText: countText
+            )
+            presentAsModalWindow(composer)
+        } catch {
+            NSLog("Failed to open bookmark composer: \(error)")
+        }
+    }
+
+    private func selectedBookmark() -> Bookmark? {
+        guard let array = bookmarkArrayController.selectedObjects as? [Bookmark],
+              let bookmark = array.first else { return nil }
+        return bookmark
+    }
+
     // MARK: - TableView
 
     /*
