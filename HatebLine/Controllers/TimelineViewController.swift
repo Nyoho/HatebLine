@@ -17,6 +17,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     @IBOutlet var bookmarkArrayController: NSArrayController!
     var bookmarks = NSMutableArray()
     var timer = Timer()
+    private var composerObserver: NSObjectProtocol?
 
     @objc lazy var persistentContainer = {
         (NSApplication.shared.delegate
@@ -460,9 +461,56 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
                 title: title,
                 bookmarkCountText: countText
             )
+
+            let observer = NotificationCenter.default.addObserver(
+                forName: NSWindow.willCloseNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] notification in
+                guard let window = notification.object as? NSWindow,
+                      window.contentViewController === composer else { return }
+                self?.checkAndRemoveDeletedBookmark(url: url)
+            }
+            composerObserver = observer
+
             presentAsModalWindow(composer)
         } catch {
             NSLog("Failed to open bookmark composer: \(error)")
+        }
+    }
+
+    private func checkAndRemoveDeletedBookmark(url: URL) {
+        if let observer = composerObserver {
+            NotificationCenter.default.removeObserver(observer)
+            composerObserver = nil
+        }
+        QuestionBookmarkManager.shared.getMyBookmark(url: url) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    break
+                case .failure:
+                    self?.removeBookmarkFromCoreData(pageUrl: url.absoluteString)
+                }
+            }
+        }
+    }
+
+    private func removeBookmarkFromCoreData(pageUrl: String) {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
+        request.predicate = NSPredicate(format: "page.url == %@", pageUrl)
+        do {
+            guard let bookmarks = try managedObjectContext.fetch(request) as? [Bookmark] else { return }
+            for bookmark in bookmarks {
+                if bookmark.user?.name == QuestionBookmarkManager.shared.username {
+                    managedObjectContext.delete(bookmark)
+                }
+            }
+            if managedObjectContext.hasChanges {
+                try managedObjectContext.save()
+            }
+        } catch {
+            NSLog("Failed to remove bookmark from Core Data: \(error)")
         }
     }
 
