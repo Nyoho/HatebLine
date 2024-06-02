@@ -15,19 +15,31 @@ class JKTableView: NSTableView {
         // Drawing code here.
     }
 
+    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+        if let mainMenu = NSApp.mainMenu, mainMenu.performKeyEquivalent(with: event) {
+            return true
+        }
+        return super.performKeyEquivalent(with: event)
+    }
+
     override func keyDown(with theEvent: NSEvent) {
+        if theEvent.modifierFlags.contains(.command) {
+            super.keyDown(with: theEvent)
+            return
+        }
+
         var row = selectedRow
         switch theEvent.keyCode {
         case 38: // j
             row += 1
             selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
             scrollRowToVisible(row)
-            setNeedsDisplay()
+            needsDisplay = true
         case 40: // k
             row -= 1
             selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
             scrollRowToVisible(row)
-            setNeedsDisplay()
+            needsDisplay = true
         case 37: // l
             _ = delegate?.perform(#selector(TimelineViewController.openInBrowser(_:)), with: self)
         case 49: // space

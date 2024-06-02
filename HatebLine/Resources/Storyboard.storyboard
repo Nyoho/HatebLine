@@ -161,7 +161,9 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Delete" id="pa3-QI-u2k">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <string key="keyEquivalent" base64-UTF8="YES">
+CA
+</string>
                                             <connections>
                                                 <action selector="delete:" target="Ady-hI-5gd" id="0Mk-Ml-PaM"/>
                                             </connections>
@@ -1658,7 +1660,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="cwI-oc-Fym"/>
+        <segue reference="ewP-el-gjQ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSQuickLookTemplate" width="26" height="17"/>

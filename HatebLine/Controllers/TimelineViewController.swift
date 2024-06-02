@@ -10,7 +10,7 @@ import Alamofire
 import Cocoa
 import Question
 
-class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSUserNotificationCenterDelegate {
+class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableViewDelegate, NSUserNotificationCenterDelegate, NSMenuItemValidation {
     var parser: RSSParser!
     var parserOfMyFeed: RSSParser!
     @IBOutlet var tableView: NSTableView!
@@ -518,6 +518,46 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         guard let array = bookmarkArrayController.selectedObjects as? [Bookmark],
               let bookmark = array.first else { return nil }
         return bookmark
+    }
+
+    private func isMyBookmarkSelected() -> Bool {
+        guard let bookmark = selectedBookmark(),
+              let userName = bookmark.user?.name,
+              let myName = QuestionBookmarkManager.shared.username else { return false }
+        return userName == myName
+    }
+
+    // MARK: - Delete Bookmark
+
+    @IBAction func delete(_ sender: Any?) {
+        guard isMyBookmarkSelected(),
+              let bookmark = selectedBookmark(),
+              let urlString = bookmark.page?.url,
+              let url = URL(string: urlString) else { return }
+
+        guard QuestionBookmarkManager.shared.authorized else {
+            performAuth(self)
+            return
+        }
+
+        QuestionBookmarkManager.shared.deleteMyBookmark(url: url) { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self?.removeBookmarkFromCoreData(pageUrl: urlString)
+                case .failure(let error):
+                    NSSound.beep()
+                    NSLog("Failed to delete bookmark: \(error)")
+                }
+            }
+        }
+    }
+
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        if menuItem.action == #selector(delete(_:)) {
+            return isMyBookmarkSelected() && QuestionBookmarkManager.shared.authorized
+        }
+        return true
     }
 
     // MARK: - TableView
