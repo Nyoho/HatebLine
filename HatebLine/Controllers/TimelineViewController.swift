@@ -469,7 +469,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             ) { [weak self] notification in
                 guard let window = notification.object as? NSWindow,
                       window.contentViewController === composer else { return }
-                self?.checkAndRemoveDeletedBookmark(url: url)
+                self?.checkBookmarkAndUpdateTimeline(url: url)
             }
             composerObserver = observer
 
@@ -479,7 +479,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         }
     }
 
-    private func checkAndRemoveDeletedBookmark(url: URL) {
+    private func checkBookmarkAndUpdateTimeline(url: URL) {
         if let observer = composerObserver {
             NotificationCenter.default.removeObserver(observer)
             composerObserver = nil
@@ -488,10 +488,20 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    break
+                    self?.refreshMyFeed()
                 case .failure:
                     self?.removeBookmarkFromCoreData(pageUrl: url.absoluteString)
                 }
+            }
+        }
+    }
+
+    private func refreshMyFeed() {
+        guard let url = myFeedUrl() else { return }
+        parserOfMyFeed.feedUrl = url
+        DispatchQueue.global().async {
+            self.parserOfMyFeed.parse { [weak self] items in
+                self?.mergeBookmarks(items)
             }
         }
     }
