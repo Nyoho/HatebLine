@@ -18,6 +18,7 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
     var bookmarks = NSMutableArray()
     var timer = Timer()
     private var composerObserver: NSObjectProtocol?
+    private var previousBookmarkURLs: Set<String> = []
 
     @objc lazy var persistentContainer = {
         (NSApplication.shared.delegate
@@ -61,6 +62,58 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         timer = Timer(timeInterval: 60, target: self, selector: #selector(TimelineViewController.updateData), userInfo: nil, repeats: true)
         let runLoop = RunLoop.current
         runLoop.add(timer, forMode: RunLoop.Mode.common)
+
+        setupArrayControllerObserver()
+    }
+
+    private func setupArrayControllerObserver() {
+        bookmarkArrayController.addObserver(
+            self,
+            forKeyPath: "arrangedObjects",
+            options: [.old, .new],
+            context: nil
+        )
+    }
+
+    override func observeValue(forKeyPath keyPath: String?,
+                               of object: Any?,
+                               change: [NSKeyValueChangeKey: Any]?,
+                               context: UnsafeMutableRawPointer?) {
+        guard keyPath == "arrangedObjects",
+              let newObjects = bookmarkArrayController.arrangedObjects as? [Bookmark] else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+
+        let newURLs = Set(newObjects.compactMap { $0.bookmarkUrl })
+
+        let insertedURLs = newURLs.subtracting(previousBookmarkURLs)
+        let deletedURLs = previousBookmarkURLs.subtracting(newURLs)
+
+        if !insertedURLs.isEmpty || !deletedURLs.isEmpty {
+            animateTableViewChanges(inserted: insertedURLs, deleted: deletedURLs, currentObjects: newObjects)
+        }
+
+        previousBookmarkURLs = newURLs
+    }
+
+    private func animateTableViewChanges(inserted: Set<String>, deleted: Set<String>, currentObjects: [Bookmark]) {
+        tableView.beginUpdates()
+
+        // 削除のアニメーション（削除されたインデックスを計算する必要があるが、既に削除済みなので難しい）
+        // 挿入のアニメーション
+        var insertedIndexes = IndexSet()
+        for (index, bookmark) in currentObjects.enumerated() {
+            if let url = bookmark.bookmarkUrl, inserted.contains(url) {
+                insertedIndexes.insert(index)
+            }
+        }
+
+        if !insertedIndexes.isEmpty {
+            tableView.insertRows(at: insertedIndexes, withAnimation: .slideDown)
+        }
+
+        tableView.endUpdates()
     }
 
     func perform() {
