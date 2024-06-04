@@ -563,15 +563,39 @@ class TimelineViewController: NSViewController, NSTableViewDataSource, NSTableVi
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
         request.predicate = NSPredicate(format: "page.url == %@", pageUrl)
         do {
-            guard let bookmarks = try managedObjectContext.fetch(request) as? [Bookmark] else { return }
-            for bookmark in bookmarks {
+            guard let fetchedBookmarks = try managedObjectContext.fetch(request) as? [Bookmark] else { return }
+            guard let arrangedObjects = bookmarkArrayController.arrangedObjects as? [Bookmark] else { return }
+
+            var bookmarksToDelete: [Bookmark] = []
+            var indexesToRemove = IndexSet()
+
+            for bookmark in fetchedBookmarks {
                 if bookmark.user?.name == QuestionBookmarkManager.shared.username {
-                    managedObjectContext.delete(bookmark)
+                    if let index = arrangedObjects.firstIndex(of: bookmark) {
+                        indexesToRemove.insert(index)
+                    }
+                    if let url = bookmark.bookmarkUrl {
+                        previousBookmarkURLs.remove(url)
+                    }
+                    bookmarksToDelete.append(bookmark)
                 }
             }
-            if managedObjectContext.hasChanges {
-                try managedObjectContext.save()
-            }
+
+            guard !bookmarksToDelete.isEmpty else { return }
+
+            NSAnimationContext.runAnimationGroup({ context in
+                context.duration = 0.3
+                context.allowsImplicitAnimation = true
+                tableView.removeRows(at: indexesToRemove, withAnimation: .effectFade)
+            }, completionHandler: { [weak self] in
+                guard let self = self else { return }
+                for bookmark in bookmarksToDelete {
+                    self.managedObjectContext.delete(bookmark)
+                }
+                if self.managedObjectContext.hasChanges {
+                    try? self.managedObjectContext.save()
+                }
+            })
         } catch {
             NSLog("Failed to remove bookmark from Core Data: \(error)")
         }
