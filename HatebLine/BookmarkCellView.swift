@@ -13,6 +13,11 @@ class BookmarkCellView: NSTableCellView {
     @IBOutlet var commentTextField: NSTextField!
     @IBOutlet var countTextField: NSTextField!
     @IBOutlet var dateTextField: NSTextField!
+    @IBOutlet var faviconImageView: NSImageView!
+
+    private var userObservation: NSKeyValueObservation?
+    private var pageObservation: NSKeyValueObservation?
+    private weak var currentBookmark: Bookmark?
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -22,10 +27,17 @@ class BookmarkCellView: NSTableCellView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+
         imageView?.wantsLayer = true
         imageView?.layer?.cornerRadius = 24.0
         imageView?.layer?.masksToBounds = true
+    }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userObservation = nil
+        pageObservation = nil
+        currentBookmark = nil
     }
 
     // Thx https://stackoverflow.com/questions/28187909/why-nstablecellview-backgroundstyle-is-never-set-to-nsbackgroundstyle-dark-for-s
@@ -48,6 +60,38 @@ class BookmarkCellView: NSTableCellView {
             titleTextField?.textColor = NSColor.white
         } else {
             titleTextField?.textColor = NSColor.linkColor
+        }
+    }
+
+    func configure(with bookmark: Bookmark) {
+        currentBookmark = bookmark
+
+        imageView?.image = bookmark.user?.profileImage
+        textField?.stringValue = bookmark.user?.name ?? ""
+        dateTextField?.stringValue = bookmark.timeAgo ?? ""
+        commentTextField?.attributedStringValue = bookmark.commentWithTags ?? NSAttributedString()
+        commentTextField?.isHidden = bookmark.isCommentEmpty
+        titleTextField?.stringValue = bookmark.page?.title ?? ""
+        faviconImageView?.image = bookmark.page?.favicon
+        countTextField?.stringValue = bookmark.page?.countString ?? ""
+        if bookmark.page?.manyBookmarked == true {
+            countTextField?.font = NSFont.boldSystemFont(ofSize: countTextField.font?.pointSize ?? 12)
+            countTextField?.textColor = NSColor.systemRed
+        } else {
+            countTextField?.font = NSFont.systemFont(ofSize: countTextField.font?.pointSize ?? 12)
+            countTextField?.textColor = NSColor.labelColor
+        }
+
+        userObservation = bookmark.user?.observe(\.profileImage, options: [.new]) { [weak self] user, _ in
+            DispatchQueue.main.async {
+                self?.imageView?.image = user.profileImage
+            }
+        }
+
+        pageObservation = bookmark.page?.observe(\.favicon, options: [.new]) { [weak self] page, _ in
+            DispatchQueue.main.async {
+                self?.faviconImageView?.image = page.favicon
+            }
         }
     }
 }

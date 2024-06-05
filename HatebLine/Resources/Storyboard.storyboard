@@ -849,7 +849,7 @@ CA
                                                     </textFieldCell>
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
-                                                        <tableCellView id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
+                                                        <tableCellView identifier="BookmarkCell" id="qGh-RN-KYb" customClass="BookmarkCellView" customModule="HatebLine" customModuleProvider="target">
                                                             <rect key="frame" x="1" y="1" width="515" height="158"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
@@ -863,9 +863,6 @@ CA
                                                                                 <constraint firstAttribute="width" constant="48" id="wTR-A3-2BS"/>
                                                                             </constraints>
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="bDa-og-8dz"/>
-                                                                            <connections>
-                                                                                <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.profileImage" id="sLr-2V-VdW"/>
-                                                                            </connections>
                                                                         </imageView>
                                                                         <stackView distribution="equalSpacing" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="245" verticalHuggingPriority="750" horizontalCompressionResistancePriority="745" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="d0Z-vo-dLS">
                                                                             <rect key="frame" x="64" y="9" width="435" height="132"/>
@@ -880,9 +877,6 @@ CA
                                                                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
-                                                                                            <connections>
-                                                                                                <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.user.name" id="nRV-ac-0zE"/>
-                                                                                            </connections>
                                                                                         </textField>
                                                                                         <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
                                                                                             <rect key="frame" x="353" y="2" width="84" height="14"/>
@@ -891,9 +885,6 @@ CA
                                                                                                 <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
-                                                                                            <connections>
-                                                                                                <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.timeAgo" id="4bd-ge-rJh"/>
-                                                                                            </connections>
                                                                                         </textField>
                                                                                     </subviews>
                                                                                     <constraints>
@@ -917,10 +908,6 @@ CA
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
-                                                                                    <connections>
-                                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.commentWithTags" id="6aB-vq-Ukm"/>
-                                                                                        <binding destination="qGh-RN-KYb" name="hidden" keyPath="objectValue.isCommentEmpty" id="TKW-Ji-ZKt"/>
-                                                                                    </connections>
                                                                                 </textField>
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="230" verticalHuggingPriority="750" horizontalCompressionResistancePriority="230" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-xS-DS1" userLabel="Title Stack View">
                                                                                     <rect key="frame" x="0.0" y="21" width="435" height="48"/>
@@ -932,9 +919,6 @@ CA
                                                                                                 <constraint firstAttribute="height" constant="16" id="oH5-sY-v0l"/>
                                                                                             </constraints>
                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="QvO-db-zYI"/>
-                                                                                            <connections>
-                                                                                                <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.favicon" id="OU0-p0-wmP"/>
-                                                                                            </connections>
                                                                                         </imageView>
                                                                                         <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
                                                                                             <rect key="frame" x="22" y="0.0" width="415" height="48"/>
@@ -944,9 +928,6 @@ CA
                                                                                                 <color key="textColor" name="linkColor" catalog="System" colorSpace="catalog"/>
                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
-                                                                                            <connections>
-                                                                                                <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.title" id="y46-Nf-QJa"/>
-                                                                                            </connections>
                                                                                         </textField>
                                                                                     </subviews>
                                                                                     <visibilityPriorities>
@@ -968,15 +949,6 @@ CA
                                                                                         <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                                                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                     </textFieldCell>
-                                                                                    <connections>
-                                                                                        <binding destination="qGh-RN-KYb" name="value" keyPath="objectValue.page.countString" id="dvM-5m-ehD"/>
-                                                                                        <binding destination="qGh-RN-KYb" name="fontBold" keyPath="objectValue.page.manyBookmarked" id="bYp-tz-cLx"/>
-                                                                                        <binding destination="qGh-RN-KYb" name="textColor" keyPath="objectValue.page.manyBookmarked" id="cX2-NC-fbJ">
-                                                                                            <dictionary key="options">
-                                                                                                <string key="NSValueTransformerName">ManyNumberToColorTransformer</string>
-                                                                                            </dictionary>
-                                                                                        </binding>
-                                                                                    </connections>
                                                                                 </textField>
                                                                             </subviews>
                                                                             <constraints>
@@ -1029,6 +1001,7 @@ CA
                                                                 <outlet property="commentTextField" destination="Rlt-J0-ujV" id="0W4-Ao-ORj"/>
                                                                 <outlet property="countTextField" destination="ywu-P8-ETC" id="8wB-X0-Xqm"/>
                                                                 <outlet property="dateTextField" destination="PkE-gD-a7k" id="gdG-du-Ejb"/>
+                                                                <outlet property="faviconImageView" destination="lsI-Ug-kRn" id="fav-Ic-On1"/>
                                                                 <outlet property="imageView" destination="tj6-8X-qXR" id="sD0-bp-8FC"/>
                                                                 <outlet property="textField" destination="YKK-aq-6lI" id="60a-U3-FVA"/>
                                                                 <outlet property="titleTextField" destination="JlA-6m-wo4" id="bsB-90-nVV"/>
@@ -1039,9 +1012,6 @@ CA
                                             </tableColumns>
                                             <connections>
                                                 <action trigger="doubleAction" selector="quickLookPreviewItems:" target="Fxg-Ub-YNW" id="JnS-Kn-Bvm"/>
-                                                <binding destination="bBU-oK-nBz" name="content" keyPath="arrangedObjects" id="bff-aH-BP5"/>
-                                                <binding destination="bBU-oK-nBz" name="selectionIndexes" keyPath="selectionIndexes" previousBinding="bff-aH-BP5" id="CIL-zJ-XyG"/>
-                                                <outlet property="dataSource" destination="Fxg-Ub-YNW" id="CcQ-gQ-zcq"/>
                                                 <outlet property="delegate" destination="Fxg-Ub-YNW" id="x6N-WJ-yfl"/>
                                             </connections>
                                         </tableView>
@@ -1173,7 +1143,6 @@ CA
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bookmarkArrayController" destination="bBU-oK-nBz" id="vML-tQ-gjA"/>
                         <outlet property="tableView" destination="2eC-bg-4UH" id="Lmj-SK-UYq"/>
                         <segue destination="Hiq-ow-l6i" kind="custom" identifier="QuickLook" customClass="TablePopoverSegue" customModule="HatebLine" customModuleProvider="target" id="gAh-ho-Wvz"/>
                         <segue destination="RuE-us-RLc" kind="custom" identifier="ShowComments" customClass="TablePopoverSegue" customModule="HatebLine" customModuleProvider="target" id="Ary-SU-k7l"/>
@@ -1181,12 +1150,7 @@ CA
                     </connections>
                 </viewController>
                 <customObject id="HHK-ti-pmZ" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController mode="entity" entityName="Bookmark" editable="NO" automaticallyPreparesContent="YES" id="bBU-oK-nBz" userLabel="Bookmark Array Controller">
-                    <connections>
-                        <binding destination="Fxg-Ub-YNW" name="managedObjectContext" keyPath="managedObjectContext" id="SDc-Hc-oeO"/>
-                        <binding destination="Fxg-Ub-YNW" name="sortDescriptors" keyPath="sortDescriptors" id="6JY-Zr-vRM"/>
-                    </connections>
-                </arrayController>
+                <arrayController mode="entity" entityName="Bookmark" editable="NO" automaticallyPreparesContent="YES" id="bBU-oK-nBz" userLabel="Bookmark Array Controller"/>
             </objects>
             <point key="canvasLocation" x="524" y="1068"/>
         </scene>
@@ -1660,7 +1624,7 @@ CA
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="ewP-el-gjQ"/>
+        <segue reference="cwI-oc-Fym"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="NSQuickLookTemplate" width="26" height="17"/>
