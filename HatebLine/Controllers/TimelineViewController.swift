@@ -121,7 +121,17 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         var snapshot = NSDiffableDataSourceSnapshot<Section, NSManagedObjectID>()
         snapshot.appendSections([.main])
         snapshot.appendItems(bookmarks.map { $0.objectID })
-        dataSource.apply(snapshot, animatingDifferences: animatingDifferences)
+
+        if animatingDifferences {
+            NSAnimationContext.runAnimationGroup { context in
+                context.duration = 0.3
+                context.timingFunction = CAMediaTimingFunction(name: .easeOut)
+                context.allowsImplicitAnimation = true
+                dataSource.apply(snapshot, animatingDifferences: true)
+            }
+        } else {
+            dataSource.apply(snapshot, animatingDifferences: false)
+        }
     }
 
     func perform() {
