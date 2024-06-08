@@ -699,6 +699,19 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         if let tv = notification.object as? NSTableView {
             (view.window?.windowController as? MainWindowController)?.changeTabbarItemsWithState(tv.selectedRow >= 0)
         }
+        updateInfoPanelIfVisible()
+    }
+
+    // MARK: - Info Panel
+
+    @IBAction func showInfoPanel(_ sender: Any?) {
+        BookmarkInfoPanelController.shared.toggle()
+        updateInfoPanelIfVisible()
+    }
+
+    private func updateInfoPanelIfVisible() {
+        guard BookmarkInfoPanelController.shared.isVisible else { return }
+        BookmarkInfoPanelController.shared.update(with: selectedBookmark())
     }
 
     // MARK: - NSUserNotification

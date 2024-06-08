@@ -33,6 +33,8 @@
 		55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55415B9F1C3A3C880079B118 /* RSSParser.swift */; };
 		5542D74E1C5DB0F40056CA91 /* TablePopoverSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */; };
 		5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */; };
+		554F5D832F04E92A00453E0B /* BookmarkInfoPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F5D822F04E92A00453E0B /* BookmarkInfoPanelController.swift */; };
+		554F5D852F04EA8B00453E0B /* BookmarkInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F5D842F04EA8B00453E0B /* BookmarkInfoView.swift */; };
 		55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55556F501C4FD33600419440 /* GrowingTextField.swift */; };
 		555BC14726500DFB00715457 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14626500DFB00715457 /* Alamofire */; };
 		555BC14D26500E0E00715457 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14C26500E0E00715457 /* AlamofireImage */; };
@@ -142,6 +144,8 @@
 		55415B9F1C3A3C880079B118 /* RSSParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSSParser.swift; sourceTree = "<group>"; };
 		5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TablePopoverSegue.swift; sourceTree = "<group>"; };
 		5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManyNumberToColorTransformer.swift; sourceTree = "<group>"; };
+		554F5D822F04E92A00453E0B /* BookmarkInfoPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkInfoPanelController.swift; sourceTree = "<group>"; };
+		554F5D842F04EA8B00453E0B /* BookmarkInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookmarkInfoView.swift; path = Views/BookmarkInfoView.swift; sourceTree = "<group>"; };
 		55556F501C4FD33600419440 /* GrowingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextField.swift; sourceTree = "<group>"; };
 		557906861C656507003DA09F /* Acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Acknowledgments.rtf; sourceTree = "<group>"; };
 		557906881C656525003DA09F /* AcknowledgmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgmentsViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +316,7 @@
 		55556F521C4FD33C00419440 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				554F5D842F04EA8B00453E0B /* BookmarkInfoView.swift */,
 				55E079C91C3CFBD900A72C05 /* BookmarkCellView.swift */,
 				55AB0D941C63828D00132CE0 /* CommentCellView.swift */,
 				55556F501C4FD33600419440 /* GrowingTextField.swift */,
@@ -362,6 +367,7 @@
 				552453721C4E1E9E00F4EAA1 /* WebViewController.swift */,
 				552251671C5D1133004C2B48 /* QuickLookWebViewController.swift */,
 				55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */,
+				554F5D822F04E92A00453E0B /* BookmarkInfoPanelController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -579,6 +585,7 @@
 				551E72041C5267FC00C366EF /* AccountPrefViewController.swift in Sources */,
 				5598488D2650BC1A00B07B5A /* Config.swift in Sources */,
 				55D74DC221CA36F30001D2E3 /* NSImage+Extension.swift in Sources */,
+				554F5D852F04EA8B00453E0B /* BookmarkInfoView.swift in Sources */,
 				55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */,
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */,
@@ -588,6 +595,7 @@
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
 				551E72071C52682200C366EF /* NotificationPrefViewController.swift in Sources */,
 				55EC3B021C6C7DA4009EB474 /* SharedUserDefaultsControllerProxy.swift in Sources */,
+				554F5D832F04E92A00453E0B /* BookmarkInfoPanelController.swift in Sources */,
 				552251681C5D1133004C2B48 /* QuickLookWebViewController.swift in Sources */,
 				55D2E73C1C51DC76006D2475 /* Page+CoreDataProperties.swift in Sources */,
 				55D2E73D1C51DC76006D2475 /* Page.swift in Sources */,
