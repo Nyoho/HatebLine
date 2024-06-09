@@ -61,7 +61,7 @@ class Page: NSManagedObject {
 
     var faviconUrl: String? = nil
 
-    @objc var favicon: NSImage? {
+    @objc dynamic var favicon: NSImage? {
         if let image = __favicon {
             return image
         } else {
@@ -114,7 +114,7 @@ class Page: NSManagedObject {
 
     var entryImageUrl: String? = nil
 
-    @objc var entryImage: NSImage? {
+    @objc dynamic var entryImage: NSImage? {
         if let image = __entryImage {
             return image
         } else {
