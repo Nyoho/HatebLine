@@ -198,7 +198,35 @@ struct TagsView: View {
 class BookmarkInfoViewModel: ObservableObject {
     @Published var bookmark: Bookmark?
 
+    private var entryImageObservation: NSKeyValueObservation?
+    private var faviconObservation: NSKeyValueObservation?
+    private var profileImageObservation: NSKeyValueObservation?
+
     func update(with bookmark: Bookmark?) {
+        entryImageObservation = nil
+        faviconObservation = nil
+        profileImageObservation = nil
+
         self.bookmark = bookmark
+
+        guard let bookmark = bookmark else { return }
+
+        entryImageObservation = bookmark.page?.observe(\.entryImage, options: [.new]) { [weak self] _, _ in
+            DispatchQueue.main.async {
+                self?.objectWillChange.send()
+            }
+        }
+
+        faviconObservation = bookmark.page?.observe(\.favicon, options: [.new]) { [weak self] _, _ in
+            DispatchQueue.main.async {
+                self?.objectWillChange.send()
+            }
+        }
+
+        profileImageObservation = bookmark.user?.observe(\.profileImage, options: [.new]) { [weak self] _, _ in
+            DispatchQueue.main.async {
+                self?.objectWillChange.send()
+            }
+        }
     }
 }
