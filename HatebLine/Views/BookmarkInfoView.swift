@@ -40,7 +40,7 @@ struct BookmarkInfoView: View {
             } else {
                 VStack {
                     Spacer()
-                    Text("ブックマークが選択されていません")
+                    Text(NSLocalizedString("info.noBookmarkSelected", value: "No bookmark selected", comment: ""))
                         .foregroundColor(.secondary)
                     Spacer()
                 }
@@ -63,7 +63,7 @@ struct BookmarkInfoView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(bookmark.page?.title ?? "タイトルなし")
+                    Text(bookmark.page?.title ?? NSLocalizedString("info.noTitle", value: "No title", comment: ""))
                         .font(.headline)
                         .lineLimit(3)
 
@@ -92,7 +92,7 @@ struct BookmarkInfoView: View {
     @ViewBuilder
     private func entryImageSection(image: NSImage) -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("プレビュー")
+            Text(NSLocalizedString("info.preview", value: "Preview", comment: ""))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
@@ -107,7 +107,7 @@ struct BookmarkInfoView: View {
     @ViewBuilder
     private func summarySection(summary: String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("概要")
+            Text(NSLocalizedString("info.summary", value: "Summary", comment: ""))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
@@ -120,7 +120,7 @@ struct BookmarkInfoView: View {
     @ViewBuilder
     private func bookmarkInfoSection(bookmark: Bookmark) -> some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("ブックマーク情報")
+            Text(NSLocalizedString("info.bookmarkInfo", value: "Bookmark Info", comment: ""))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
@@ -149,7 +149,7 @@ struct BookmarkInfoView: View {
             // Comment
             if let comment = bookmark.comment, !comment.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("コメント")
+                    Text(NSLocalizedString("info.comment", value: "Comment", comment: ""))
                         .font(.caption)
                         .foregroundColor(.secondary)
                     Text(comment)
@@ -160,7 +160,7 @@ struct BookmarkInfoView: View {
             // Tags
             if let tags = bookmark.tags as? Set<Tag>, !tags.isEmpty {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("タグ")
+                    Text(NSLocalizedString("info.tags", value: "Tags", comment: ""))
                         .font(.caption)
                         .foregroundColor(.secondary)
 
