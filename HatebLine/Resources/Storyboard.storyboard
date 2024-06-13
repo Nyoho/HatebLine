@@ -832,7 +832,7 @@ CA
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="181" horizontalPageScroll="10" verticalLineScroll="181" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VcD-Ui-scv">
-                                <rect key="frame" x="0.0" y="192" width="578" height="208"/>
+                                <rect key="frame" x="0.0" y="0.0" width="578" height="208"/>
                                 <clipView key="contentView" drawsBackground="NO" id="vOr-cm-ozy">
                                     <rect key="frame" x="1" y="1" width="576" height="206"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
