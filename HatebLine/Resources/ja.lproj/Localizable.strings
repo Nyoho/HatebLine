@@ -6,3 +6,6 @@
 "info.bookmarkInfo" = "ブックマーク情報";
 "info.comment" = "コメント";
 "info.tags" = "タグ";
+
+/* BookmarkInfoPanelController */
+"info.panelTitle" = "情報";
