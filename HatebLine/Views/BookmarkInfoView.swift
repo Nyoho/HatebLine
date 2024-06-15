@@ -18,15 +18,12 @@ struct BookmarkInfoView: View {
 
                         Divider()
 
-                        // Entry Image
-                        if let entryImage = bookmark.page?.entryImage {
-                            entryImageSection(image: entryImage)
-                            Divider()
-                        }
-
-                        // Summary
+                        // Summary with Entry Image
                         if let summary = bookmark.page?.summary, !summary.isEmpty {
-                            summarySection(summary: summary)
+                            summarySection(summary: summary, entryImage: bookmark.page?.entryImage)
+                            Divider()
+                        } else if let entryImage = bookmark.page?.entryImage {
+                            entryImageOnlySection(image: entryImage)
                             Divider()
                         }
 
@@ -90,7 +87,30 @@ struct BookmarkInfoView: View {
     }
 
     @ViewBuilder
-    private func entryImageSection(image: NSImage) -> some View {
+    private func summarySection(summary: String, entryImage: NSImage?) -> some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text(NSLocalizedString("info.summary", value: "Summary", comment: ""))
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
+            HStack(alignment: .top, spacing: 12) {
+                Text(summary)
+                    .font(.body)
+                    .lineLimit(nil)
+
+                if let image = entryImage {
+                    Image(nsImage: image)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(maxWidth: 80, maxHeight: 80)
+                        .cornerRadius(4)
+                }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private func entryImageOnlySection(image: NSImage) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(NSLocalizedString("info.preview", value: "Preview", comment: ""))
                 .font(.subheadline)
@@ -99,21 +119,8 @@ struct BookmarkInfoView: View {
             Image(nsImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(maxHeight: 200)
-                .cornerRadius(8)
-        }
-    }
-
-    @ViewBuilder
-    private func summarySection(summary: String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(NSLocalizedString("info.summary", value: "Summary", comment: ""))
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
-            Text(summary)
-                .font(.body)
-                .lineLimit(5)
+                .frame(maxWidth: 120, maxHeight: 90)
+                .cornerRadius(4)
         }
     }
 
