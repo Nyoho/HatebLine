@@ -18,12 +18,9 @@ struct BookmarkInfoView: View {
 
                         Divider()
 
-                        // Summary with Entry Image
+                        // Summary
                         if let summary = bookmark.page?.summary, !summary.isEmpty {
-                            summarySection(summary: summary, entryImage: bookmark.page?.entryImage)
-                            Divider()
-                        } else if let entryImage = bookmark.page?.entryImage {
-                            entryImageOnlySection(image: entryImage)
+                            summarySection(summary: summary)
                             Divider()
                         }
 
@@ -50,77 +47,63 @@ struct BookmarkInfoView: View {
 
     @ViewBuilder
     private func pageHeaderSection(bookmark: Bookmark) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack(alignment: .top, spacing: 10) {
-                if let favicon = bookmark.page?.favicon {
-                    Image(nsImage: favicon)
-                        .resizable()
-                        .frame(width: 32, height: 32)
-                        .cornerRadius(4)
-                }
-
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(bookmark.page?.title ?? NSLocalizedString("info.noTitle", value: "No title", comment: ""))
-                        .font(.headline)
-                        .lineLimit(3)
-
-                    if let urlString = bookmark.page?.url {
-                        Link(urlString, destination: URL(string: urlString) ?? URL(string: "about:blank")!)
-                            .font(.caption)
-                            .lineLimit(1)
-                            .truncationMode(.middle)
+        VStack(alignment: .leading) {
+            HStack(alignment: .top, spacing: 8) {
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack(alignment: .top, spacing: 6) {
+                        if let favicon = bookmark.page?.favicon {
+                            Image(nsImage: favicon)
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                        }
+                        
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(bookmark.page?.title ?? NSLocalizedString("info.noTitle", value: "No title", comment: ""))
+                                .font(.headline)
+                                .lineLimit(3)
+                            if let count = bookmark.page?.count {
+                                Text("\(count) users")
+                                    .font(.subheadline)
+                                    .foregroundColor(count.intValue > 5 ? .red : .secondary)
+                                    .fontWeight(count.intValue > 5 ? .bold : .regular)
+                            }
+                        }
                     }
                 }
-            }
 
-            if let count = bookmark.page?.count {
-                HStack {
-                    Image(systemName: "bookmark.fill")
-                        .foregroundColor(.orange)
-                    Text("\(count) users")
-                        .font(.subheadline)
-                        .foregroundColor(count.intValue > 5 ? .red : .secondary)
-                        .fontWeight(count.intValue > 5 ? .bold : .regular)
+                Spacer()
+                
+                if let entryImage = bookmark.page?.entryImage {
+                    Image(nsImage: entryImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 64, height: 64)
+                        .clipped()
+                        .cornerRadius(6)
                 }
+            }
+            
+            if let urlString = bookmark.page?.url,
+               let url = URL(string: urlString) {
+                Link(destination: url) {
+                    Text(urlString)
+                        .lineLimit(1)
+                        .truncationMode(.middle)
+                }
+                .font(.caption)
             }
         }
     }
 
     @ViewBuilder
-    private func summarySection(summary: String, entryImage: NSImage?) -> some View {
+    private func summarySection(summary: String) -> some View {
         VStack(alignment: .leading, spacing: 8) {
             Text(NSLocalizedString("info.summary", value: "Summary", comment: ""))
                 .font(.subheadline)
                 .foregroundColor(.secondary)
 
-            HStack(alignment: .top, spacing: 12) {
-                Text(summary)
-                    .font(.body)
-                    .lineLimit(nil)
-
-                if let image = entryImage {
-                    Image(nsImage: image)
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 80, maxHeight: 80)
-                        .cornerRadius(4)
-                }
-            }
-        }
-    }
-
-    @ViewBuilder
-    private func entryImageOnlySection(image: NSImage) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text(NSLocalizedString("info.preview", value: "Preview", comment: ""))
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
-            Image(nsImage: image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: 120, maxHeight: 90)
-                .cornerRadius(4)
+            Text(summary)
+                .font(.body)
         }
     }
 
