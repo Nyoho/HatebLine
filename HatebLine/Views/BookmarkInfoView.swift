@@ -128,8 +128,8 @@ struct BookmarkInfoView: View {
                         .font(.subheadline)
                         .fontWeight(.medium)
 
-                    if let timeAgo = bookmark.timeAgo {
-                        Text(timeAgo)
+                    if let date = bookmark.date {
+                        (Text(date, style: .date) + Text(" ") + Text(date, style: .time))
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
