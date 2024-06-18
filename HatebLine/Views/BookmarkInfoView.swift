@@ -175,8 +175,7 @@ struct TagsView: View {
                         .font(.caption)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
-                        .background(Color.accentColor.opacity(0.1))
-                        .cornerRadius(4)
+                        .background(Capsule().fill(Color.accentColor.opacity(0.1)))
                 }
             }
         }
