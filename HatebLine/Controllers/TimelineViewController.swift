@@ -64,6 +64,24 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
         setupDataSource()
         setupCoreDataObserver()
+        setupAuthObserver()
+    }
+
+    private func setupAuthObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleAuthenticationRequired),
+            name: .questionAuthenticationRequired,
+            object: nil
+        )
+    }
+
+    @objc private func handleAuthenticationRequired() {
+        DispatchQueue.main.async { [weak self] in
+            QuestionBookmarkManager.shared.signOut {
+                self?.performAuth(self as Any)
+            }
+        }
     }
 
     private func setupDataSource() {
@@ -554,7 +572,8 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                 switch result {
                 case .success:
                     self?.refreshMyFeed()
-                case .failure:
+                case .failure(let error):
+                    NSLog("Failed to get my bookmark: \(error)")
                     self?.removeBookmarkFromCoreData(pageUrl: url.absoluteString)
                 }
             }
