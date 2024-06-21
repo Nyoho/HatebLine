@@ -35,5 +35,16 @@
 	<string>Storyboard</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>jp.nyoho.HatebLine</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>hatebline</string>
+			</array>
+		</dict>
+	</array>
 </dict>
 </plist>
