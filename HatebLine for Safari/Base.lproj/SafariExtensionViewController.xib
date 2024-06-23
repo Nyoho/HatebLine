@@ -8,45 +8,84 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="SafariExtensionViewController" customModule="HatebLine_for_Safari" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="c22-O7-iKe" id="vwT-Xx-Aiz"/>
+                <outlet property="bookmarkButton" destination="bkm-btn" id="bkm-btn-out"/>
+                <outlet property="bookmarkCountButton" destination="bkm-cnt-btn" id="bkm-btn-001"/>
+                <outlet property="showCommentsButton" destination="cmt-btn" id="cmt-btn-out"/>
+                <outlet property="showCountCheckbox" destination="show-cnt-chk" id="shw-chk-001"/>
+                <outlet property="titleLabel" destination="ttl-lbl" id="ttl-lbl-001"/>
+                <outlet property="urlLabel" destination="url-lbl" id="url-lbl-001"/>
+                <outlet property="view" destination="root-view" id="vwT-Xx-Aiz"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="c22-O7-iKe">
-            <rect key="frame" x="0.0" y="0.0" width="330" height="185"/>
+        <customView id="root-view">
+            <rect key="frame" x="0.0" y="0.0" width="280" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="CiC-Ry-2tR">
-                    <rect key="frame" x="8" y="69" width="314" height="66"/>
-                    <constraints>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="SlJ-9k-m4z"/>
-                    </constraints>
-                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="CMs-20-oII">
-                        <font key="font" metaFont="system"/>
-                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                <!-- Title Label -->
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttl-lbl">
+                    <rect key="frame" x="10" y="94" width="180" height="17"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page Title" id="ttl-cel">
+                        <font key="font" metaFont="systemBold"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <stackView distribution="fill" orientation="vertical" alignment="trailing" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b0q-L6-T3q">
-                    <rect key="frame" x="233" y="18" width="89" height="43"/>
+                <!-- Bookmark Count Button -->
+                <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bkm-cnt-btn">
+                    <rect key="frame" x="200" y="90" width="72" height="22"/>
+                    <buttonCell key="cell" type="roundRect" title="0 users" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkm-cnt-cel">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="bookmarkCountClicked:" target="-2" id="bkm-cnt-act"/>
+                    </connections>
+                </button>
+                <!-- URL Label -->
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="url-lbl">
+                    <rect key="frame" x="10" y="74" width="260" height="14"/>
+                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="https://example.com/" id="url-cel">
+                        <font key="font" metaFont="smallSystem"/>
+                        <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <!-- Show bookmark count checkbox -->
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="show-cnt-chk">
+                    <rect key="frame" x="8" y="48" width="180" height="18"/>
+                    <buttonCell key="cell" type="check" title="Show bookmark count" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="show-cnt-cel">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="smallSystem"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="showCountChanged:" target="-2" id="shw-cnt-act"/>
+                    </connections>
+                </button>
+                <!-- Buttons stack -->
+                <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="8" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btn-stack">
+                    <rect key="frame" x="10" y="10" width="260" height="32"/>
                     <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vQc-xe-wqo">
-                            <rect key="frame" x="57" y="29" width="34" height="14"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" title="0/100" id="HKT-od-nCv">
-                                <font key="font" metaFont="smallSystem"/>
-                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xL1-qX-DVd">
-                            <rect key="frame" x="-6" y="-7" width="101" height="32"/>
-                            <buttonCell key="cell" type="push" title="Bookmark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="34N-MU-6cY">
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bkm-btn">
+                            <rect key="frame" x="0" y="0" width="126" height="32"/>
+                            <buttonCell key="cell" type="push" title="Bookmark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkm-btn-cel">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
                             <connections>
-                                <action selector="didPressButton:" target="-2" id="9j2-ZP-OgC"/>
+                                <action selector="didPressButton:" target="-2" id="bkm-btn-act"/>
+                            </connections>
+                        </button>
+                        <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cmt-btn">
+                            <rect key="frame" x="134" y="0" width="126" height="32"/>
+                            <buttonCell key="cell" type="push" title="Show Comments" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmt-btn-cel">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="showCommentsClicked:" target="-2" id="cmt-btn-act"/>
                             </connections>
                         </button>
                     </subviews>
@@ -59,44 +98,26 @@
                         <real value="3.4028234663852886e+38"/>
                     </customSpacing>
                 </stackView>
-                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="3" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="O7j-zj-WNK">
-                    <rect key="frame" x="8" y="143" width="121" height="34"/>
-                    <subviews>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Iy-aV-wGF">
-                            <rect key="frame" x="-2" y="17" width="125" height="17"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="HatebLine for Safari" id="2Ec-kd-q2K">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Dnk-lV-LFS">
-                            <rect key="frame" x="-2" y="0.0" width="120" height="14"/>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="https://nyoho.jp/diary/" id="Yyr-gv-KHM">
-                                <font key="font" metaFont="smallSystem"/>
-                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                    <visibilityPriorities>
-                        <integer value="1000"/>
-                        <integer value="1000"/>
-                    </visibilityPriorities>
-                    <customSpacing>
-                        <real value="3.4028234663852886e+38"/>
-                        <real value="3.4028234663852886e+38"/>
-                    </customSpacing>
-                </stackView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="b0q-L6-T3q" secondAttribute="trailing" constant="8" id="DHI-jN-xAd"/>
-                <constraint firstAttribute="trailing" secondItem="CiC-Ry-2tR" secondAttribute="trailing" constant="8" id="J9u-kb-WPu"/>
-                <constraint firstItem="CiC-Ry-2tR" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="UL6-XU-wbO"/>
-                <constraint firstItem="O7j-zj-WNK" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="ZaO-Qc-pFa"/>
-                <constraint firstItem="O7j-zj-WNK" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="8" id="d2b-jc-iJc"/>
-                <constraint firstItem="CiC-Ry-2tR" firstAttribute="top" secondItem="O7j-zj-WNK" secondAttribute="bottom" constant="8" id="wjq-3u-C9G"/>
-                <constraint firstItem="b0q-L6-T3q" firstAttribute="top" secondItem="CiC-Ry-2tR" secondAttribute="bottom" constant="8" id="xal-Em-JFW"/>
+                <!-- Title constraints -->
+                <constraint firstItem="ttl-lbl" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="ttl-lead"/>
+                <constraint firstItem="ttl-lbl" firstAttribute="top" secondItem="root-view" secondAttribute="top" constant="10" id="ttl-top"/>
+                <constraint firstItem="bkm-cnt-btn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ttl-lbl" secondAttribute="trailing" constant="8" id="ttl-cnt-space"/>
+                <!-- Bookmark count button constraints -->
+                <constraint firstAttribute="trailing" secondItem="bkm-cnt-btn" secondAttribute="trailing" constant="12" id="cnt-trail"/>
+                <constraint firstItem="bkm-cnt-btn" firstAttribute="centerY" secondItem="ttl-lbl" secondAttribute="centerY" id="cnt-centery"/>
+                <!-- URL constraints -->
+                <constraint firstItem="url-lbl" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="url-lead"/>
+                <constraint firstAttribute="trailing" secondItem="url-lbl" secondAttribute="trailing" constant="12" id="url-trail"/>
+                <constraint firstItem="url-lbl" firstAttribute="top" secondItem="ttl-lbl" secondAttribute="bottom" constant="4" id="url-top"/>
+                <!-- Checkbox constraints -->
+                <constraint firstItem="show-cnt-chk" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="chk-lead"/>
+                <constraint firstItem="show-cnt-chk" firstAttribute="top" secondItem="url-lbl" secondAttribute="bottom" constant="8" id="chk-top"/>
+                <!-- Button stack constraints -->
+                <constraint firstItem="btn-stack" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="btn-lead"/>
+                <constraint firstAttribute="trailing" secondItem="btn-stack" secondAttribute="trailing" constant="12" id="btn-trail"/>
+                <constraint firstAttribute="bottom" secondItem="btn-stack" secondAttribute="bottom" constant="10" id="btn-bottom"/>
             </constraints>
             <point key="canvasLocation" x="140" y="249.5"/>
         </customView>

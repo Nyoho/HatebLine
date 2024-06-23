@@ -9,3 +9,8 @@
 
 /* BookmarkInfoPanelController */
 "info.panelTitle" = "情報";
+
+/* CommentsViewController */
+"No bookmarks" = "ブックマークなし";
+"This page has no bookmarks yet." = "このページにはまだブックマークがありません。";
+"OK" = "OK";

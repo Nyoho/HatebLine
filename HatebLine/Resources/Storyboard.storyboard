@@ -1290,7 +1290,7 @@ CA
         <!--Comments View Controller-->
         <scene sceneID="jWg-JX-0Dx">
             <objects>
-                <viewController id="RuE-us-RLc" customClass="CommentsViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CommentsViewController" id="RuE-us-RLc" customClass="CommentsViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" misplaced="YES" id="gfJ-He-968">
                         <rect key="frame" x="0.0" y="0.0" width="440" height="600"/>
                         <autoresizingMask key="autoresizingMask"/>

@@ -25,7 +25,21 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
     override func toolbarItemClicked(in _: SFSafariWindow) {}
 
+    private static let showBookmarkCountKey = "showBookmarkCount"
+
+    private var showBookmarkCount: Bool {
+        if UserDefaults.standard.object(forKey: Self.showBookmarkCountKey) == nil {
+            return true
+        }
+        return UserDefaults.standard.bool(forKey: Self.showBookmarkCountKey)
+    }
+
     override func validateToolbarItem(in safariWindow: SFSafariWindow, validationHandler: @escaping ((Bool, String) -> Void)) {
+        guard showBookmarkCount else {
+            validationHandler(true, "")
+            return
+        }
+
         safariWindow.getActiveTab { safariTab in
             guard let safariTab = safariTab else {
                 validationHandler(false, "")

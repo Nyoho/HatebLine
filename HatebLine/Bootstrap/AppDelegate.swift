@@ -10,6 +10,11 @@ import Alamofire
 import AlamofireImage
 import Cocoa
 
+extension Notification.Name {
+    static let openBookmarkComposerFromURL = Notification.Name("openBookmarkComposerFromURL")
+    static let showCommentsFromURL = Notification.Name("showCommentsFromURL")
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     @IBOutlet var window: NSWindow!
@@ -18,6 +23,75 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
 
     func applicationDidFinishLaunching(_: Notification) {
         UserDefaults.standard.register(defaults: ["jp.nyoho.HatebLine": true])
+    }
+
+    func application(_ application: NSApplication, open urls: [URL]) {
+        for url in urls {
+            handleURL(url)
+        }
+    }
+
+    private func handleURL(_ url: URL) {
+        guard url.scheme == "hatebline" else { return }
+
+        switch url.host {
+        case "bookmark":
+            handleBookmarkURL(url)
+        case "comments":
+            handleCommentsURL(url)
+        default:
+            break
+        }
+    }
+
+    private func handleBookmarkURL(_ url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let queryItems = components.queryItems else { return }
+
+        var pageURL: URL?
+        var title: String?
+
+        for item in queryItems {
+            switch item.name {
+            case "url":
+                if let value = item.value {
+                    pageURL = URL(string: value)
+                }
+            case "title":
+                title = item.value
+            default:
+                break
+            }
+        }
+
+        guard let targetURL = pageURL else { return }
+
+        NotificationCenter.default.post(
+            name: .openBookmarkComposerFromURL,
+            object: nil,
+            userInfo: ["url": targetURL, "title": title as Any]
+        )
+    }
+
+    private func handleCommentsURL(_ url: URL) {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              let queryItems = components.queryItems else { return }
+
+        var pageURL: URL?
+
+        for item in queryItems {
+            if item.name == "url", let value = item.value {
+                pageURL = URL(string: value)
+            }
+        }
+
+        guard let targetURL = pageURL else { return }
+
+        NotificationCenter.default.post(
+            name: .showCommentsFromURL,
+            object: nil,
+            userInfo: ["url": targetURL]
+        )
     }
 
     func applicationWillTerminate(_: Notification) {

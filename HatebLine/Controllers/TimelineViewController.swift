@@ -65,6 +65,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         setupDataSource()
         setupCoreDataObserver()
         setupAuthObserver()
+        setupURLSchemeObserver()
     }
 
     private func setupAuthObserver() {
@@ -74,6 +75,56 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
             name: .questionAuthenticationRequired,
             object: nil
         )
+    }
+
+    private func setupURLSchemeObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleOpenBookmarkComposerFromURL(_:)),
+            name: .openBookmarkComposerFromURL,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleShowCommentsFromURL(_:)),
+            name: .showCommentsFromURL,
+            object: nil
+        )
+    }
+
+    @objc private func handleOpenBookmarkComposerFromURL(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let url = userInfo["url"] as? URL else { return }
+        let title = userInfo["title"] as? String
+
+        DispatchQueue.main.async { [weak self] in
+            self?.openBookmarkComposer(for: url, title: title)
+        }
+    }
+
+    @objc private func handleShowCommentsFromURL(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let url = userInfo["url"] as? URL else { return }
+
+        DispatchQueue.main.async { [weak self] in
+            self?.showComments(for: url)
+        }
+    }
+
+    private func showComments(for url: URL) {
+        let storyboard = NSStoryboard(name: "Storyboard", bundle: nil)
+        guard let vc = storyboard.instantiateController(withIdentifier: "CommentsViewController") as? CommentsViewController else {
+            return
+        }
+        vc.representedObject = url.absoluteString
+
+        let window = NSWindow(contentViewController: vc)
+        window.title = "Comments"
+        window.setContentSize(NSSize(width: 400, height: 500))
+        window.styleMask = [.titled, .closable, .resizable, .miniaturizable]
+
+        let windowController = NSWindowController(window: window)
+        windowController.showWindow(self)
     }
 
     @objc private func handleAuthenticationRequired() {
@@ -543,6 +594,36 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                 permalink: url,
                 title: title,
                 bookmarkCountText: countText
+            )
+
+            let observer = NotificationCenter.default.addObserver(
+                forName: NSWindow.willCloseNotification,
+                object: nil,
+                queue: .main
+            ) { [weak self] notification in
+                guard let window = notification.object as? NSWindow,
+                      window.contentViewController === composer else { return }
+                self?.checkBookmarkAndUpdateTimeline(url: url)
+            }
+            composerObserver = observer
+
+            presentAsModalWindow(composer)
+        } catch {
+            NSLog("Failed to open bookmark composer: \(error)")
+        }
+    }
+
+    private func openBookmarkComposer(for url: URL, title: String?) {
+        guard QuestionBookmarkManager.shared.authorized else {
+            performAuth(self)
+            return
+        }
+
+        do {
+            let composer = try QuestionBookmarkManager.shared.makeBookmarkComposer(
+                permalink: url,
+                title: title,
+                bookmarkCountText: nil
             )
 
             let observer = NotificationCenter.default.addObserver(

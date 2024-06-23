@@ -1,0 +1,9 @@
+/* Safari Extension UI */
+"Bookmark" = "Bookmark";
+"Show Comments" = "Show Comments";
+"Show bookmark count" = "Show bookmark count";
+
+/* Alerts */
+"No bookmarks" = "No bookmarks";
+"This page has no bookmarks yet." = "This page has no bookmarks yet.";
+"OK" = "OK";

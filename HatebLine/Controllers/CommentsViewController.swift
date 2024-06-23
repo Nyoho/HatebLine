@@ -119,7 +119,8 @@ class CommentsViewController: NSViewController {
         progressIndicator.startAnimation(self)
         AF.request("https://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
             .responseDecodable(of: Comments.self) { response in
-                if let comments = response.value {
+                switch response.result {
+                case .success(let comments):
                     self.allRegulars = comments.comments
                     self.eid = comments.eid
 
@@ -127,17 +128,37 @@ class CommentsViewController: NSViewController {
                         .responseDecodable(of: Comments.self) { response in
                             if let comments = response.value {
                                 self.allPopulars = comments.comments
-                                self.filter()
-                                self.tableView.reloadData()
-                                NSAnimationContext.runAnimationGroup({ context in
-                                    context.duration = 0.3
-                                    self.progressIndicator.animator().alphaValue = 0
-                                    self.progressIndicator.stopAnimation(self)
-                                }, completionHandler: nil)
                             }
+                            self.filter()
+                            self.tableView.reloadData()
+                            self.stopProgressIndicator()
                         }
+                case .failure:
+                    self.stopProgressIndicator()
+                    self.showNoBookmarksMessage()
                 }
             }
+    }
+
+    private func stopProgressIndicator() {
+        NSAnimationContext.runAnimationGroup({ context in
+            context.duration = 0.3
+            self.progressIndicator.animator().alphaValue = 0
+            self.progressIndicator.stopAnimation(self)
+        }, completionHandler: nil)
+    }
+
+    private func showNoBookmarksMessage() {
+        let alert = NSAlert()
+        alert.messageText = NSLocalizedString("No bookmarks", comment: "")
+        alert.informativeText = NSLocalizedString("This page has no bookmarks yet.", comment: "")
+        alert.alertStyle = .informational
+        alert.addButton(withTitle: NSLocalizedString("OK", comment: ""))
+        if let window = self.view.window {
+            alert.beginSheetModal(for: window) { _ in
+                window.close()
+            }
+        }
     }
 
     func filter() {
