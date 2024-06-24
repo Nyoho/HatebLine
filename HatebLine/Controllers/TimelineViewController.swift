@@ -17,9 +17,43 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     var timer = Timer()
     private var composerObserver: NSObjectProtocol?
 
-    enum Section { case main }
-    private var dataSource: NSTableViewDiffableDataSource<Section, NSManagedObjectID>!
+    // MARK: - Display Mode
+
+    enum DisplayMode: Int {
+        case bookmarks = 0
+        case pages = 1
+    }
+
+    private var currentDisplayMode: DisplayMode = .bookmarks {
+        didSet {
+            if oldValue != currentDisplayMode {
+                fetchAndApplySnapshot(animatingDifferences: true)
+            }
+        }
+    }
+
+    enum Section: Hashable {
+        case main
+        case page(NSManagedObjectID)
+    }
+
+    enum Item: Hashable {
+        case bookmark(NSManagedObjectID)
+        case pageHeader(NSManagedObjectID)
+        case userInPage(NSManagedObjectID)
+    }
+
+    private var dataSource: NSTableViewDiffableDataSource<Section, Item>!
     private var currentBookmarks: [Bookmark] = []
+    private var currentPageGroups: [PageGroup] = []
+
+    struct PageGroup {
+        let page: Page
+        let bookmarks: [Bookmark]
+        var latestBookmarkDate: Date? {
+            bookmarks.compactMap { $0.date }.max()
+        }
+    }
 
     @objc lazy var persistentContainer = {
         (NSApplication.shared.delegate
@@ -136,21 +170,35 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     }
 
     private func setupDataSource() {
-        dataSource = NSTableViewDiffableDataSource(tableView: tableView) { [weak self] tableView, tableColumn, row, objectID in
-            guard let self = self,
-                  row < self.currentBookmarks.count else {
+        dataSource = NSTableViewDiffableDataSource(tableView: tableView) { [weak self] tableView, tableColumn, row, item in
+            guard let self = self else { return NSView() }
+
+            switch item {
+            case .bookmark(let objectID):
+                guard let bookmark = self.currentBookmarks.first(where: { $0.objectID == objectID }) else {
+                    return NSView()
+                }
+                let cellIdentifier = NSUserInterfaceItemIdentifier("BookmarkCell")
+                guard let cell = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? BookmarkCellView else {
+                    return NSView()
+                }
+                cell.configure(with: bookmark)
+                return cell
+
+            case .pageHeader(let objectID):
+                guard let pageGroup = self.currentPageGroups.first(where: { $0.page.objectID == objectID }) else {
+                    return NSView()
+                }
+                let cellIdentifier = NSUserInterfaceItemIdentifier("PageGroupCell")
+                guard let cell = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? PageGroupCellView else {
+                    return NSView()
+                }
+                cell.configure(with: pageGroup.page, bookmarks: pageGroup.bookmarks)
+                return cell
+
+            case .userInPage:
                 return NSView()
             }
-
-            let bookmark = self.currentBookmarks[row]
-
-            let cellIdentifier = NSUserInterfaceItemIdentifier("BookmarkCell")
-            guard let cell = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? BookmarkCellView else {
-                return NSView()
-            }
-
-            cell.configure(with: bookmark)
-            return cell
         }
     }
 
@@ -187,9 +235,20 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     }
 
     private func applySnapshot(bookmarks: [Bookmark], animatingDifferences: Bool) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, NSManagedObjectID>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(bookmarks.map { $0.objectID })
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+
+        switch currentDisplayMode {
+        case .bookmarks:
+            snapshot.appendSections([.main])
+            snapshot.appendItems(bookmarks.map { .bookmark($0.objectID) })
+
+        case .pages:
+            for pageGroup in currentPageGroups {
+                let section = Section.page(pageGroup.page.objectID)
+                snapshot.appendSections([section])
+                snapshot.appendItems([.pageHeader(pageGroup.page.objectID)], toSection: section)
+            }
+        }
 
         if animatingDifferences {
             NSAnimationContext.runAnimationGroup { context in
@@ -433,6 +492,10 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         perform()
     }
 
+    @IBAction func displayModeChanged(_ sender: NSSegmentedControl) {
+        currentDisplayMode = DisplayMode(rawValue: sender.selectedSegment) ?? .bookmarks
+    }
+
     @IBAction func openInBrowser(_: AnyObject) {
         guard let bookmark = selectedBookmark(),
               let urlString = bookmark.page?.url,
@@ -487,10 +550,37 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         do {
             let bookmarks = try managedObjectContext.fetch(request)
             currentBookmarks = bookmarks
+
+            if currentDisplayMode == .pages {
+                buildPageGroups(from: bookmarks)
+            }
+
             applySnapshot(bookmarks: bookmarks, animatingDifferences: animatingDifferences)
         } catch {
             NSLog("Failed to fetch bookmarks: \(error)")
         }
+    }
+
+    private func buildPageGroups(from bookmarks: [Bookmark]) {
+        var pageDict: [NSManagedObjectID: [Bookmark]] = [:]
+
+        for bookmark in bookmarks {
+            guard let page = bookmark.page else { continue }
+            let pageID = page.objectID
+            if pageDict[pageID] == nil {
+                pageDict[pageID] = []
+            }
+            pageDict[pageID]?.append(bookmark)
+        }
+
+        var groups: [PageGroup] = []
+        for (_, bookmarksInPage) in pageDict {
+            guard let page = bookmarksInPage.first?.page else { continue }
+            let sortedBookmarks = bookmarksInPage.sorted { ($0.date ?? .distantPast) > ($1.date ?? .distantPast) }
+            groups.append(PageGroup(page: page, bookmarks: sortedBookmarks))
+        }
+
+        currentPageGroups = groups.sorted { ($0.latestBookmarkDate ?? .distantPast) > ($1.latestBookmarkDate ?? .distantPast) }
     }
 
     @IBAction func showComments(_: AnyObject) {
