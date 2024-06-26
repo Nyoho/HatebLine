@@ -805,25 +805,8 @@ CA
                                         <action selector="showInfoPanel:" target="9rp-fB-EiC" id="cva-4y-c3q"/>
                                     </connections>
                                 </toolbarItem>
-                                <toolbarItem implicitItemIdentifier="DisplayModeSegmentedControl" label="Display Mode" paletteLabel="Display Mode" id="dM5-Sg-2Xz">
-                                    <nil key="toolTip"/>
-                                    <size key="minSize" width="120" height="24"/>
-                                    <size key="maxSize" width="180" height="24"/>
-                                    <segmentedControl key="view" horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" segmentStyle="texturedRounded" trackingMode="selectOne" id="sg7-Kr-9Pn">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="24"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                        <segments>
-                                            <segment label="Bookmarks" selected="YES"/>
-                                            <segment label="Pages"/>
-                                        </segments>
-                                        <connections>
-                                            <action selector="displayModeChanged:" target="9rp-fB-EiC" id="aD1-Fm-8Rz"/>
-                                        </connections>
-                                    </segmentedControl>
-                                </toolbarItem>
                             </allowedToolbarItems>
                             <defaultToolbarItems>
-                                <toolbarItem reference="dM5-Sg-2Xz"/>
                                 <toolbarItem reference="78m-WC-aMX"/>
                                 <toolbarItem reference="61z-Yt-3XC"/>
                                 <toolbarItem reference="VK7-Dk-n3E"/>

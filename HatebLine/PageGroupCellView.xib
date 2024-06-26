@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="21701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="21701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <tableCellView identifier="PageGroupCell" id="cell-1" customClass="PageGroupCellView" customModule="HatebLine" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="200"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="8" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mainStack">
+                    <rect key="frame" x="8" y="8" width="484" height="184"/>
+                    <subviews>
+                        <!-- Page Header -->
+                        <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="12" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="headerStack">
+                            <rect key="frame" x="0.0" y="120" width="484" height="64"/>
+                            <subviews>
+                                <!-- Left side: favicon + title + count -->
+                                <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="titleStack">
+                                    <rect key="frame" x="0.0" y="0.0" width="400" height="64"/>
+                                    <subviews>
+                                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="6" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="faviconTitleStack">
+                                            <rect key="frame" x="0.0" y="30" width="400" height="34"/>
+                                            <subviews>
+                                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="faviconImageView">
+                                                    <rect key="frame" x="0.0" y="9" width="16" height="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="16" id="fav-w"/>
+                                                        <constraint firstAttribute="height" constant="16" id="fav-h"/>
+                                                    </constraints>
+                                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="faviconCell"/>
+                                                </imageView>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="titleTextField">
+                                                    <rect key="frame" x="22" y="0.0" width="378" height="34"/>
+                                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page Title" id="titleCell">
+                                                        <font key="font" metaFont="systemBold" size="14"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                            <visibilityPriorities>
+                                                <integer value="1000"/>
+                                                <integer value="1000"/>
+                                            </visibilityPriorities>
+                                            <customSpacing>
+                                                <real value="3.4028234663852886e+38"/>
+                                                <real value="3.4028234663852886e+38"/>
+                                            </customSpacing>
+                                        </stackView>
+                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="countTextField">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+                                            <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="100 users" id="countCell">
+                                                <font key="font" metaFont="system" size="12"/>
+                                                <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </subviews>
+                                    <visibilityPriorities>
+                                        <integer value="1000"/>
+                                        <integer value="1000"/>
+                                    </visibilityPriorities>
+                                    <customSpacing>
+                                        <real value="3.4028234663852886e+38"/>
+                                        <real value="3.4028234663852886e+38"/>
+                                    </customSpacing>
+                                </stackView>
+                                <!-- Right side: entry image -->
+                                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="entryImageView">
+                                    <rect key="frame" x="420" y="0.0" width="64" height="64"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="64" id="entry-w"/>
+                                        <constraint firstAttribute="height" constant="64" id="entry-h"/>
+                                    </constraints>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="entryCell"/>
+                                </imageView>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <!-- Separator -->
+                        <box boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="separator">
+                            <rect key="frame" x="0.0" y="115" width="484" height="5"/>
+                        </box>
+                        <!-- Users Stack -->
+                        <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="4" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usersStackView">
+                            <rect key="frame" x="0.0" y="0.0" width="484" height="100"/>
+                        </stackView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="mainStack" firstAttribute="leading" secondItem="cell-1" secondAttribute="leading" constant="8" id="lead"/>
+                <constraint firstAttribute="trailing" secondItem="mainStack" secondAttribute="trailing" constant="8" id="trail"/>
+                <constraint firstItem="mainStack" firstAttribute="top" secondItem="cell-1" secondAttribute="top" constant="8" id="top"/>
+                <constraint firstAttribute="bottom" secondItem="mainStack" secondAttribute="bottom" constant="8" id="bottom"/>
+                <constraint firstItem="separator" firstAttribute="width" secondItem="mainStack" secondAttribute="width" id="sep-width"/>
+                <constraint firstItem="headerStack" firstAttribute="width" secondItem="mainStack" secondAttribute="width" id="header-width"/>
+                <constraint firstItem="usersStackView" firstAttribute="width" secondItem="mainStack" secondAttribute="width" id="users-width"/>
+            </constraints>
+            <connections>
+                <outlet property="countTextField" destination="countTextField" id="count-outlet"/>
+                <outlet property="entryImageView" destination="entryImageView" id="entry-outlet"/>
+                <outlet property="faviconImageView" destination="faviconImageView" id="favicon-outlet"/>
+                <outlet property="titleTextField" destination="titleTextField" id="title-outlet"/>
+                <outlet property="usersStackView" destination="usersStackView" id="users-outlet"/>
+            </connections>
+        </tableCellView>
+    </objects>
+</document>
