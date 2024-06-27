@@ -8,17 +8,77 @@
 
 import Cocoa
 
-class MainWindowController: NSWindowController, NSWindowDelegate {
+extension NSToolbarItem.Identifier {
+    static let displayModeGroup = NSToolbarItem.Identifier("DisplayModeGroup")
+}
+
+class MainWindowController: NSWindowController, NSWindowDelegate, NSToolbarDelegate {
     @IBOutlet var searchField: NSSearchField!
     @IBOutlet var shareButton: NSButton!
     var tableRowSelected: Bool = true
 
+    private var displayModeGroup: NSToolbarItemGroup?
+
     override func windowDidLoad() {
         super.windowDidLoad()
 
-        // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
         window?.titleVisibility = .hidden
         shareButton.sendAction(on: NSEvent.EventTypeMask(rawValue: UInt64(Int(NSEvent.EventTypeMask.leftMouseDown.rawValue))))
+
+        setupDisplayModeToolbarItem()
+    }
+
+    private func setupDisplayModeToolbarItem() {
+        guard let toolbar = window?.toolbar else { return }
+
+        toolbar.delegate = self
+
+        let group = NSToolbarItemGroup(itemIdentifier: .displayModeGroup, images: [
+            NSImage(systemSymbolName: "list.bullet", accessibilityDescription: "Bookmarks")!,
+            NSImage(systemSymbolName: "rectangle.stack", accessibilityDescription: "Pages")!
+        ], selectionMode: .selectOne, labels: ["Bookmarks", "Pages"], target: self, action: #selector(displayModeChanged(_:)))
+        group.label = "Display Mode"
+        group.paletteLabel = "Display Mode"
+        group.controlRepresentation = .collapsed
+        group.selectedIndex = 0
+        displayModeGroup = group
+
+        if let index = toolbar.items.firstIndex(where: { $0.itemIdentifier.rawValue == "DisplayModeSegmentedControl" }) {
+            toolbar.removeItem(at: index)
+            toolbar.insertItem(withItemIdentifier: .displayModeGroup, at: index)
+        }
+    }
+
+    // MARK: - NSToolbarDelegate
+
+    func toolbar(_ toolbar: NSToolbar, itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier, willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+        if itemIdentifier == .displayModeGroup {
+            return displayModeGroup
+        }
+        return nil
+    }
+
+    func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        return [.displayModeGroup]
+    }
+
+    func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
+        return []
+    }
+
+    @objc private func displayModeChanged(_ sender: Any?) {
+        let selectedIndex: Int
+        if let group = sender as? NSToolbarItemGroup {
+            selectedIndex = group.selectedIndex
+        } else if let item = sender as? NSToolbarItem {
+            selectedIndex = item.tag
+        } else {
+            return
+        }
+
+        if let vc = contentViewController as? TimelineViewController {
+            vc.setDisplayMode(selectedIndex)
+        }
     }
 
     // MARK: - NSWindowDelegate
