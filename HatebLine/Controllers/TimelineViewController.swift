@@ -96,10 +96,16 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         let runLoop = RunLoop.current
         runLoop.add(timer, forMode: RunLoop.Mode.common)
 
+        registerCellViews()
         setupDataSource()
         setupCoreDataObserver()
         setupAuthObserver()
         setupURLSchemeObserver()
+    }
+
+    private func registerCellViews() {
+        let nib = NSNib(nibNamed: "PageGroupCellView", bundle: nil)
+        tableView.register(nib, forIdentifier: NSUserInterfaceItemIdentifier("PageGroupCell"))
     }
 
     private func setupAuthObserver() {
@@ -494,6 +500,10 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
     @IBAction func displayModeChanged(_ sender: NSSegmentedControl) {
         currentDisplayMode = DisplayMode(rawValue: sender.selectedSegment) ?? .bookmarks
+    }
+
+    func setDisplayMode(_ index: Int) {
+        currentDisplayMode = DisplayMode(rawValue: index) ?? .bookmarks
     }
 
     @IBAction func openInBrowser(_: AnyObject) {
