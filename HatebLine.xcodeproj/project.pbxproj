@@ -44,6 +44,11 @@
 		557906871C656507003DA09F /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 557906861C656507003DA09F /* Acknowledgments.rtf */; };
 		557906891C656525003DA09F /* AcknowledgmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557906881C656525003DA09F /* AcknowledgmentsViewController.swift */; };
 		559848712650125100B07B5A /* Question in Frameworks */ = {isa = PBXBuildFile; productRef = 559848702650125100B07B5A /* Question */; };
+		5588AD882F07563E0030DABA /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD832F07563E0030DABA /* SafariExtensionViewController.xib */; };
+		5588AD892F07563E0030DABA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD862F07563E0030DABA /* Localizable.strings */; };
+		5588AD8A2F07563E0030DABA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD812F07563E0030DABA /* Localizable.strings */; };
+		5588AD8D2F0798F20030DABA /* PageGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588AD8B2F0798F20030DABA /* PageGroupCellView.swift */; };
+		5588AD8E2F0798F20030DABA /* PageGroupCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD8C2F0798F20030DABA /* PageGroupCellView.xib */; };
 		5598488D2650BC1A00B07B5A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598488C2650BC1A00B07B5A /* Config.swift */; };
 		55AB0D8E1C63146E00132CE0 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */; };
 		55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D941C63828D00132CE0 /* CommentCellView.swift */; };
@@ -154,6 +159,8 @@
 		5588AD802F07563E0030DABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Localizable.strings; sourceTree = "<group>"; };
 		5588AD822F07563E0030DABA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		5588AD852F07563E0030DABA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Localizable.strings; sourceTree = "<group>"; };
+		5588AD8B2F0798F20030DABA /* PageGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageGroupCellView.swift; sourceTree = "<group>"; };
+		5588AD8C2F0798F20030DABA /* PageGroupCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageGroupCellView.xib; sourceTree = "<group>"; };
 		5598488C2650BC1A00B07B5A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		55AB0D941C63828D00132CE0 /* CommentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCellView.swift; sourceTree = "<group>"; };
@@ -338,6 +345,8 @@
 				55D2E7401C51FDBE006D2475 /* JKTableView.swift */,
 				5542D74D1C5DB0F40056CA91 /* TablePopoverSegue.swift */,
 				5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */,
+				5588AD8B2F0798F20030DABA /* PageGroupCellView.swift */,
+				5588AD8C2F0798F20030DABA /* PageGroupCellView.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -570,6 +579,9 @@
 			files = (
 				5517EF25216F2DA600828501 /* ToolbarItemIcon.pdf in Resources */,
 				5517EF20216F2DA600828501 /* SafariExtensionViewController.xib in Resources */,
+				5588AD882F07563E0030DABA /* SafariExtensionViewController.xib in Resources */,
+				5588AD892F07563E0030DABA /* Localizable.strings in Resources */,
+				5588AD8A2F07563E0030DABA /* Localizable.strings in Resources */,
 				5517EF23216F2DA600828501 /* script.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -583,6 +595,7 @@
 				557906871C656507003DA09F /* Acknowledgments.rtf in Resources */,
 				55D2E7451C523187006D2475 /* NSDateTimeAgo.bundle in Resources */,
 				55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */,
+				5588AD8E2F0798F20030DABA /* PageGroupCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +638,7 @@
 				55415B711C3961F90079B118 /* HatebLine.xcdatamodeld in Sources */,
 				5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */,
 				55F8E5BC1C658B71009D2F79 /* Helper.swift in Sources */,
+				5588AD8D2F0798F20030DABA /* PageGroupCellView.swift in Sources */,
 				552F4A1B1C5C6100006962E9 /* Tag+CoreDataProperties.swift in Sources */,
 				552453731C4E1E9E00F4EAA1 /* WebViewController.swift in Sources */,
 				55415BA01C3A3C880079B118 /* RSSParser.swift in Sources */,
