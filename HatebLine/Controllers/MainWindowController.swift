@@ -18,6 +18,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate, NSToolbarDeleg
     var tableRowSelected: Bool = true
 
     private var displayModeGroup: NSToolbarItemGroup?
+    private weak var storyboardToolbarDelegate: NSToolbarDelegate?
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -31,6 +32,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate, NSToolbarDeleg
     private func setupDisplayModeToolbarItem() {
         guard let toolbar = window?.toolbar else { return }
 
+        storyboardToolbarDelegate = toolbar.delegate
         toolbar.delegate = self
 
         let group = NSToolbarItemGroup(itemIdentifier: .displayModeGroup, images: [
@@ -43,9 +45,14 @@ class MainWindowController: NSWindowController, NSWindowDelegate, NSToolbarDeleg
         group.selectedIndex = 0
         displayModeGroup = group
 
+        // DisplayModeSegmentedControl を削除
         if let index = toolbar.items.firstIndex(where: { $0.itemIdentifier.rawValue == "DisplayModeSegmentedControl" }) {
             toolbar.removeItem(at: index)
-            toolbar.insertItem(withItemIdentifier: .displayModeGroup, at: index)
+        }
+
+        // DisplayModeGroup がなければ先頭に挿入
+        if !toolbar.items.contains(where: { $0.itemIdentifier == .displayModeGroup }) {
+            toolbar.insertItem(withItemIdentifier: .displayModeGroup, at: 0)
         }
     }
 
@@ -55,15 +62,25 @@ class MainWindowController: NSWindowController, NSWindowDelegate, NSToolbarDeleg
         if itemIdentifier == .displayModeGroup {
             return displayModeGroup
         }
-        return nil
+        // Storyboard の delegate に転送
+        return storyboardToolbarDelegate?.toolbar?(toolbar, itemForItemIdentifier: itemIdentifier, willBeInsertedIntoToolbar: flag)
     }
 
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.displayModeGroup]
+        var identifiers = storyboardToolbarDelegate?.toolbarAllowedItemIdentifiers?(toolbar) ?? []
+        if !identifiers.contains(.displayModeGroup) {
+            identifiers.append(.displayModeGroup)
+        }
+        return identifiers
     }
 
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return []
+        var identifiers = storyboardToolbarDelegate?.toolbarDefaultItemIdentifiers?(toolbar) ?? []
+        // 先頭に displayModeGroup を追加
+        if !identifiers.contains(.displayModeGroup) {
+            identifiers.insert(.displayModeGroup, at: 0)
+        }
+        return identifiers
     }
 
     @objc private func displayModeChanged(_ sender: Any?) {

@@ -697,7 +697,7 @@ CA
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-                        <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" autosavesConfiguration="NO" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
+                        <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" autosavesConfiguration="YES" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="JZp-Xv-O40"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="jHQ-xa-KEq"/>
