@@ -27,6 +27,22 @@ class MainWindowController: NSWindowController, NSWindowDelegate, NSToolbarDeleg
         shareButton.sendAction(on: NSEvent.EventTypeMask(rawValue: UInt64(Int(NSEvent.EventTypeMask.leftMouseDown.rawValue))))
 
         setupDisplayModeToolbarItem()
+        setupDisplayModeObserver()
+    }
+
+    private func setupDisplayModeObserver() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(handleDisplayModeDidChange(_:)),
+            name: .displayModeDidChange,
+            object: nil
+        )
+    }
+
+    @objc private func handleDisplayModeDidChange(_ notification: Notification) {
+        guard let userInfo = notification.userInfo,
+              let index = userInfo["index"] as? Int else { return }
+        displayModeGroup?.selectedIndex = index
     }
 
     private func setupDisplayModeToolbarItem() {

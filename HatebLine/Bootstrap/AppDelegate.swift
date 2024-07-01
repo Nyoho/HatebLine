@@ -13,6 +13,7 @@ import Cocoa
 extension Notification.Name {
     static let openBookmarkComposerFromURL = Notification.Name("openBookmarkComposerFromURL")
     static let showCommentsFromURL = Notification.Name("showCommentsFromURL")
+    static let displayModeDidChange = Notification.Name("displayModeDidChange")
 }
 
 @NSApplicationMain

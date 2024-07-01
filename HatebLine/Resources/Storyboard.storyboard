@@ -610,6 +610,18 @@ CA
                                                 <action selector="runToolbarCustomizationPalette:" target="Ady-hI-5gd" id="pQI-g3-MTW"/>
                                             </connections>
                                         </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="sep-dm-001"/>
+                                        <menuItem title="Bookmarks" keyEquivalent="1" tag="0" id="dm-bookmarks-001">
+                                            <connections>
+                                                <action selector="selectDisplayModeFromMenu:" target="Ady-hI-5gd" id="dm-action-001"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Pages" keyEquivalent="2" tag="1" id="dm-pages-001">
+                                            <connections>
+                                                <action selector="selectDisplayModeFromMenu:" target="Ady-hI-5gd" id="dm-action-002"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="sep-dm-002"/>
                                         <menuItem title="Reload" keyEquivalent="r" id="W5X-Y7-R9o">
                                             <connections>
                                                 <action selector="reload:" target="Ady-hI-5gd" id="XYX-Zc-oC1"/>

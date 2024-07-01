@@ -504,6 +504,11 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
     func setDisplayMode(_ index: Int) {
         currentDisplayMode = DisplayMode(rawValue: index) ?? .bookmarks
+        NotificationCenter.default.post(name: .displayModeDidChange, object: self, userInfo: ["index": index])
+    }
+
+    @IBAction func selectDisplayModeFromMenu(_ sender: NSMenuItem) {
+        setDisplayMode(sender.tag)
     }
 
     @IBAction func openInBrowser(_: AnyObject) {
@@ -832,6 +837,10 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if menuItem.action == #selector(delete(_:)) {
             return isMyBookmarkSelected() && QuestionBookmarkManager.shared.authorized
+        }
+        if menuItem.action == #selector(selectDisplayModeFromMenu(_:)) {
+            menuItem.state = (menuItem.tag == currentDisplayMode.rawValue) ? .on : .off
+            return true
         }
         return true
     }
