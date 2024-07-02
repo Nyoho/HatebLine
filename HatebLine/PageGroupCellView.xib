@@ -33,7 +33,7 @@
                                                     </constraints>
                                                     <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="faviconCell"/>
                                                 </imageView>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="titleTextField">
+                                                <textField horizontalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="titleTextField">
                                                     <rect key="frame" x="22" y="0.0" width="378" height="34"/>
                                                     <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page Title" id="titleCell">
                                                         <font key="font" metaFont="systemBold" size="14"/>

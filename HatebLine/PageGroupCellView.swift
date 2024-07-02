@@ -96,12 +96,14 @@ class PageGroupCellView: NSTableCellView {
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.font = NSFont.systemFont(ofSize: 11, weight: .medium)
         nameLabel.textColor = NSColor.labelColor
+        nameLabel.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         containerView.addSubview(nameLabel)
 
         let dateLabel = NSTextField(labelWithString: bookmark.timeAgo ?? "")
         dateLabel.translatesAutoresizingMaskIntoConstraints = false
         dateLabel.font = NSFont.systemFont(ofSize: 10)
         dateLabel.textColor = NSColor.secondaryLabelColor
+        dateLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
         containerView.addSubview(dateLabel)
 
         let commentLabel = NSTextField(wrappingLabelWithString: bookmark.comment ?? "")
@@ -111,8 +113,10 @@ class PageGroupCellView: NSTableCellView {
         commentLabel.isHidden = bookmark.isCommentEmpty
         containerView.addSubview(commentLabel)
 
+        let leftMargin: CGFloat = 12
+
         NSLayoutConstraint.activate([
-            profileImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            profileImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: leftMargin),
             profileImageView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 4),
             profileImageView.widthAnchor.constraint(equalToConstant: 24),
             profileImageView.heightAnchor.constraint(equalToConstant: 24),
@@ -122,11 +126,11 @@ class PageGroupCellView: NSTableCellView {
 
             dateLabel.leadingAnchor.constraint(equalTo: nameLabel.trailingAnchor, constant: 8),
             dateLabel.centerYAnchor.constraint(equalTo: nameLabel.centerYAnchor),
-            dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor),
+            dateLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -8),
 
             commentLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
             commentLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 2),
-            commentLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            commentLabel.trailingAnchor.constraint(lessThanOrEqualTo: containerView.trailingAnchor, constant: -8),
             commentLabel.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -4)
         ])
 
