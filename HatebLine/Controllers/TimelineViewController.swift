@@ -625,9 +625,9 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                 tps.preferredEdge = NSRectEdge.maxX
                 tps.popoverBehavior = .transient
                 tps.anchorTableView = tableView
-                if let bookmark = selectedBookmark() {
+                if let page = selectedPage() {
                     let vc = segue.destinationController as? QuickLookWebViewController
-                    vc?.representedObject = bookmark.page?.url
+                    vc?.representedObject = page.url
                 }
             case .showComments:
                 guard let tps = segue as? TablePopoverSegue else {
@@ -636,9 +636,9 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                 tps.preferredEdge = NSRectEdge.maxX
                 tps.popoverBehavior = .transient
                 tps.anchorTableView = tableView
-                if let bookmark = selectedBookmark() {
+                if let page = selectedPage() {
                     let vc = segue.destinationController as? CommentsViewController
-                    vc?.representedObject = bookmark.page?.url
+                    vc?.representedObject = page.url
                 }
             case .showAccountSetting:
                 break
@@ -797,8 +797,36 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
     func selectedBookmark() -> Bookmark? {
         let row = tableView.selectedRow
-        guard row >= 0, row < currentBookmarks.count else { return nil }
-        return currentBookmarks[row]
+        guard row >= 0 else { return nil }
+
+        switch currentDisplayMode {
+        case .bookmarks:
+            guard row < currentBookmarks.count else { return nil }
+            return currentBookmarks[row]
+        case .pages:
+            guard row < currentPageGroups.count else { return nil }
+            return currentPageGroups[row].bookmarks.first
+        }
+    }
+
+    func selectedPage() -> Page? {
+        let row = tableView.selectedRow
+        guard row >= 0 else { return nil }
+
+        switch currentDisplayMode {
+        case .bookmarks:
+            guard row < currentBookmarks.count else { return nil }
+            return currentBookmarks[row].page
+        case .pages:
+            guard row < currentPageGroups.count else { return nil }
+            return currentPageGroups[row].page
+        }
+    }
+
+    func selectedPageGroup() -> PageGroup? {
+        let row = tableView.selectedRow
+        guard row >= 0, currentDisplayMode == .pages, row < currentPageGroups.count else { return nil }
+        return currentPageGroups[row]
     }
 
     private func isMyBookmarkSelected() -> Bool {
