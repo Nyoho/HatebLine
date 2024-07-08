@@ -26,6 +26,17 @@ class PageGroupCellView: NSTableCellView {
         usersStackView?.arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
 
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        configureTitleTextField()
+    }
+
+    private func configureTitleTextField() {
+        titleTextField?.maximumNumberOfLines = 3
+        titleTextField?.cell?.wraps = true
+        titleTextField?.cell?.truncatesLastVisibleLine = true
+    }
+
     func configure(with page: Page, bookmarks: [Bookmark]) {
         currentPage = page
 
