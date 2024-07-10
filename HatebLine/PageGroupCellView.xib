@@ -74,7 +74,7 @@
                                         <constraint firstAttribute="height" constant="48" id="entry-h"/>
                                         <constraint firstAttribute="width" constant="48" id="entry-w"/>
                                     </constraints>
-                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="entryCell"/>
+                                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="entryCell"/>
                                 </imageView>
                             </subviews>
                             <visibilityPriorities>
@@ -123,6 +123,7 @@
                 <outlet property="titleTextField" destination="titleTextField" id="title-outlet"/>
                 <outlet property="usersStackView" destination="usersStackView" id="users-outlet"/>
             </connections>
+            <point key="canvasLocation" x="139" y="154"/>
         </tableCellView>
     </objects>
 </document>
