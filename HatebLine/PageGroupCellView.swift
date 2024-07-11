@@ -124,7 +124,7 @@ class PageGroupCellView: NSTableCellView {
         commentLabel.isHidden = bookmark.isCommentEmpty
         containerView.addSubview(commentLabel)
 
-        let leftMargin: CGFloat = 12
+        let leftMargin: CGFloat = 18
 
         NSLayoutConstraint.activate([
             profileImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: leftMargin),
