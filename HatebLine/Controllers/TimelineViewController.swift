@@ -19,6 +19,8 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
     // MARK: - Display Mode
 
+    private static let displayModeKey = "DisplayMode"
+
     enum DisplayMode: Int {
         case bookmarks = 0
         case pages = 1
@@ -27,9 +29,16 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     private var currentDisplayMode: DisplayMode = .bookmarks {
         didSet {
             if oldValue != currentDisplayMode {
+                UserDefaults.standard.set(currentDisplayMode.rawValue, forKey: Self.displayModeKey)
                 fetchAndApplySnapshot(animatingDifferences: true)
             }
         }
+    }
+
+    private func loadSavedDisplayMode() {
+        let savedValue = UserDefaults.standard.integer(forKey: Self.displayModeKey)
+        currentDisplayMode = DisplayMode(rawValue: savedValue) ?? .bookmarks
+        NotificationCenter.default.post(name: .displayModeDidChange, object: self, userInfo: ["index": currentDisplayMode.rawValue])
     }
 
     enum Section: Hashable {
@@ -657,6 +666,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        loadSavedDisplayMode()
         fetchAndApplySnapshot(animatingDifferences: false)
         perform()
     }
