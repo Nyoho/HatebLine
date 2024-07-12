@@ -58,7 +58,7 @@ class MainWindowController: NSWindowController, NSWindowDelegate, NSToolbarDeleg
         group.label = "Display Mode"
         group.paletteLabel = "Display Mode"
         group.controlRepresentation = .collapsed
-        group.selectedIndex = 0
+        group.selectedIndex = UserDefaults.standard.integer(forKey: "DisplayMode")
         displayModeGroup = group
 
         // DisplayModeSegmentedControl を削除
