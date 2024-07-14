@@ -611,12 +611,12 @@ CA
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="sep-dm-001"/>
-                                        <menuItem title="Bookmarks" keyEquivalent="1" tag="0" id="dm-bookmarks-001">
+                                        <menuItem title="Bookmarks" keyEquivalent="1" id="dm-bookmarks-001">
                                             <connections>
                                                 <action selector="selectDisplayModeFromMenu:" target="Ady-hI-5gd" id="dm-action-001"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Pages" keyEquivalent="2" tag="1" id="dm-pages-001">
+                                        <menuItem title="Pages" tag="1" keyEquivalent="2" id="dm-pages-001">
                                             <connections>
                                                 <action selector="selectDisplayModeFromMenu:" target="Ady-hI-5gd" id="dm-action-002"/>
                                             </connections>
@@ -709,7 +709,7 @@ CA
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="245" y="301" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1177"/>
-                        <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" autosavesConfiguration="YES" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
+                        <toolbar key="toolbar" implicitIdentifier="935A37EE-5048-4258-BC1E-107E8268DE26" showsBaselineSeparator="NO" displayMode="iconAndLabel" sizeMode="regular" id="WCM-9r-tDD">
                             <allowedToolbarItems>
                                 <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="JZp-Xv-O40"/>
                                 <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="jHQ-xa-KEq"/>
@@ -1078,7 +1078,7 @@ CA
             <objects>
                 <tabViewController showSeguePresentationStyle="single" tabStyle="toolbar" id="HxD-mZ-4Sf" userLabel="Preference Tab View Controller" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem identifier="" id="Rkt-NB-i1G"/>
+                        <tabViewItem label="General" image="gearshape" catalog="system" identifier="" id="Rkt-NB-i1G"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="YE0-GA-z1g">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
