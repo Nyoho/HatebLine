@@ -1078,7 +1078,7 @@ CA
             <objects>
                 <tabViewController showSeguePresentationStyle="single" tabStyle="toolbar" id="HxD-mZ-4Sf" userLabel="Preference Tab View Controller" sceneMemberID="viewController">
                     <tabViewItems>
-                        <tabViewItem label="General" image="gearshape" catalog="system" identifier="" id="Rkt-NB-i1G"/>
+                        <tabViewItem label="General" identifier="" image="gearshape" catalog="system" id="Rkt-NB-i1G"/>
                     </tabViewItems>
                     <tabView key="tabView" type="noTabsNoBorder" id="YE0-GA-z1g">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
@@ -1290,6 +1290,8 @@ CA
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="signInButton" destination="Ze0-y5-DRZ" id="signin-btn-outlet"/>
+                        <outlet property="signOutButton" destination="gHr-WX-n41" id="signout-btn-outlet"/>
                         <outlet property="usernameLabel" destination="tks-op-8qi" id="NoW-ad-gdS"/>
                     </connections>
                 </viewController>
@@ -1549,6 +1551,7 @@ CA
         <image name="NSQuickLookTemplate" width="26" height="17"/>
         <image name="NSRefreshTemplate" width="18" height="21"/>
         <image name="NSShareTemplate" width="19" height="23"/>
+        <image name="gearshape" catalog="system" width="16" height="16"/>
         <image name="info.circle" catalog="system" width="15" height="15"/>
     </resources>
 </document>
