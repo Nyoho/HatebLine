@@ -33,7 +33,7 @@ class GeneralPrefViewController: NSViewController {
         if QuestionBookmarkManager.shared.authorized, let name = QuestionBookmarkManager.shared.displayName {
             usernameLabel.stringValue = name
         } else {
-            usernameLabel.stringValue = "(Not singed in yet)"
+            usernameLabel.stringValue = "(Not signed in yet)"
         }
     }
 }
