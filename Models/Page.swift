@@ -82,18 +82,21 @@ class Page: NSManagedObject {
         }
         
         AF.request(u).response { [weak self] response in
-            guard let self = self else { return }
-            
+            guard let self = self, !self.isDeleted, self.managedObjectContext != nil else {
+                completion?(nil)
+                return
+            }
+
             if let d = response.data, let image = NSImage(data: d) {
                 self.willChangeValue(forKey: "favicon")
                 self.__favicon = image
                 self.didChangeValue(forKey: "favicon")
-                
+
                 completion?(image)
-                
+
                 NotificationCenter.default.post(
-                    name: Notification.Name("PageFaviconDidLoad"), 
-                    object: self, 
+                    name: Notification.Name("PageFaviconDidLoad"),
+                    object: self,
                     userInfo: ["pageURL": self.url ?? ""]
                 )
             } else {
@@ -119,7 +122,8 @@ class Page: NSManagedObject {
             return image
         } else {
             if let url = entryImageUrl, let u = URL(string: url) {
-                AF.request(u).response { response in
+                AF.request(u).response { [weak self] response in
+                    guard let self = self, !self.isDeleted, self.managedObjectContext != nil else { return }
                     if let d = response.data {
                         self.willChangeValue(forKey: "entryImage")
                         self.__entryImage = NSImage(data: d)
