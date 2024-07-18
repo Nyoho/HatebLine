@@ -258,11 +258,35 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
             snapshot.appendItems(bookmarks.map { .bookmark($0.objectID) })
 
         case .pages:
+            let existingPageIDs = Set(dataSource.snapshot().itemIdentifiers.compactMap { item -> NSManagedObjectID? in
+                if case .pageHeader(let objectID) = item { return objectID }
+                return nil
+            })
             for pageGroup in currentPageGroups {
                 let section = Section.page(pageGroup.page.objectID)
                 snapshot.appendSections([section])
                 snapshot.appendItems([.pageHeader(pageGroup.page.objectID)], toSection: section)
             }
+            let pageIDsToReload = Set(currentPageGroups.filter { existingPageIDs.contains($0.page.objectID) }.map { $0.page.objectID })
+
+            if animatingDifferences {
+                NSAnimationContext.runAnimationGroup({ context in
+                    context.duration = 0.3
+                    context.timingFunction = CAMediaTimingFunction(name: .easeOut)
+                    context.allowsImplicitAnimation = true
+                    dataSource.apply(snapshot, animatingDifferences: true)
+                }, completionHandler: { [weak self] in
+                    guard let self = self, !pageIDsToReload.isEmpty else { return }
+                    for (row, pageGroup) in self.currentPageGroups.enumerated() {
+                        if pageIDsToReload.contains(pageGroup.page.objectID) {
+                            self.tableView.reloadData(forRowIndexes: IndexSet(integer: row), columnIndexes: IndexSet(integer: 0))
+                        }
+                    }
+                })
+            } else {
+                dataSource.apply(snapshot, animatingDifferences: false)
+            }
+            return
         }
 
         if animatingDifferences {
