@@ -43,7 +43,7 @@
 		5572EFE82963D7BA00C402F7 /* SwiftFormat in Frameworks */ = {isa = PBXBuildFile; productRef = 5572EFE72963D7BA00C402F7 /* SwiftFormat */; };
 		557906871C656507003DA09F /* Acknowledgments.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 557906861C656507003DA09F /* Acknowledgments.rtf */; };
 		557906891C656525003DA09F /* AcknowledgmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557906881C656525003DA09F /* AcknowledgmentsViewController.swift */; };
-		559848712650125100B07B5A /* Question in Frameworks */ = {isa = PBXBuildFile; productRef = 559848702650125100B07B5A /* Question */; };
+		5588AD7F2F066D990030DABA /* Question in Frameworks */ = {isa = PBXBuildFile; productRef = 5588AD7E2F066D990030DABA /* Question */; };
 		5588AD882F07563E0030DABA /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD832F07563E0030DABA /* SafariExtensionViewController.xib */; };
 		5588AD892F07563E0030DABA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD862F07563E0030DABA /* Localizable.strings */; };
 		5588AD8A2F07563E0030DABA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD812F07563E0030DABA /* Localizable.strings */; };
@@ -197,7 +197,7 @@
 				552453751C4E211B00F4EAA1 /* WebKit.framework in Frameworks */,
 				555BC14726500DFB00715457 /* Alamofire in Frameworks */,
 				555BC14D26500E0E00715457 /* AlamofireImage in Frameworks */,
-				559848712650125100B07B5A /* Question in Frameworks */,
+				5588AD7F2F066D990030DABA /* Question in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -472,8 +472,8 @@
 			packageProductDependencies = (
 				555BC14626500DFB00715457 /* Alamofire */,
 				555BC14C26500E0E00715457 /* AlamofireImage */,
-				559848702650125100B07B5A /* Question */,
 				5572EFE72963D7BA00C402F7 /* SwiftFormat */,
+				5588AD7E2F066D990030DABA /* Question */,
 			);
 			productName = HatebLine;
 			productReference = 55415B6A1C3961F90079B118 /* HatebLine.app */;
@@ -557,8 +557,8 @@
 			packageReferences = (
 				555BC14526500DFB00715457 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				555BC14B26500E0E00715457 /* XCRemoteSwiftPackageReference "AlamofireImage" */,
-				5598486F2650125100B07B5A /* XCRemoteSwiftPackageReference "Question" */,
 				5572EFE62963D7BA00C402F7 /* XCRemoteSwiftPackageReference "SwiftFormat" */,
+				55B191CA2F08A49E00492E6F /* XCRemoteSwiftPackageReference "Question" */,
 			);
 			productRefGroup = 55415B6B1C3961F90079B118 /* Products */;
 			projectDirPath = "";
@@ -1135,7 +1135,7 @@
 				minimumVersion = 0.9.6;
 			};
 		};
-		5598486F2650125100B07B5A /* XCRemoteSwiftPackageReference "Question" */ = {
+		55B191CA2F08A49E00492E6F /* XCRemoteSwiftPackageReference "Question" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Nyoho/Question";
 			requirement = {
@@ -1166,9 +1166,8 @@
 			package = 5572EFE62963D7BA00C402F7 /* XCRemoteSwiftPackageReference "SwiftFormat" */;
 			productName = SwiftFormat;
 		};
-		559848702650125100B07B5A /* Question */ = {
+		5588AD7E2F066D990030DABA /* Question */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5598486F2650125100B07B5A /* XCRemoteSwiftPackageReference "Question" */;
 			productName = Question;
 		};
 /* End XCSwiftPackageProductDependency section */
