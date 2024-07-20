@@ -43,7 +43,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
     enum Section: Hashable {
         case main
-        case page(NSManagedObjectID)
+        case pages
     }
 
     enum Item: Hashable {
@@ -59,8 +59,13 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     struct PageGroup {
         let page: Page
         let bookmarks: [Bookmark]
-        var latestBookmarkDate: Date? {
-            bookmarks.compactMap { $0.date }.max()
+        let latestBookmarkDate: Date?
+
+        init(page: Page, bookmarks: [Bookmark]) {
+            self.page = page
+            self.bookmarks = bookmarks
+            // bookmarksは日付降順なので最初の要素が最新
+            self.latestBookmarkDate = bookmarks.first?.date
         }
     }
 
@@ -262,11 +267,9 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                 if case .pageHeader(let objectID) = item { return objectID }
                 return nil
             })
-            for pageGroup in currentPageGroups {
-                let section = Section.page(pageGroup.page.objectID)
-                snapshot.appendSections([section])
-                snapshot.appendItems([.pageHeader(pageGroup.page.objectID)], toSection: section)
-            }
+            snapshot.appendSections([.pages])
+            snapshot.appendItems(currentPageGroups.map { .pageHeader($0.page.objectID) }, toSection: .pages)
+
             let pageIDsToReload = Set(currentPageGroups.filter { existingPageIDs.contains($0.page.objectID) }.map { $0.page.objectID })
 
             if animatingDifferences {
@@ -610,24 +613,20 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     }
 
     private func buildPageGroups(from bookmarks: [Bookmark]) {
-        var pageDict: [NSManagedObjectID: [Bookmark]] = [:]
+        // bookmarksは既にdate降順でソート済み
+        // Dictionary(grouping:by:)で効率的にグループ化
+        let grouped = Dictionary(grouping: bookmarks.filter { $0.page != nil }) { $0.page!.objectID }
 
-        for bookmark in bookmarks {
-            guard let page = bookmark.page else { continue }
-            let pageID = page.objectID
-            if pageDict[pageID] == nil {
-                pageDict[pageID] = []
-            }
-            pageDict[pageID]?.append(bookmark)
-        }
+        var groups = [PageGroup]()
+        groups.reserveCapacity(grouped.count)
 
-        var groups: [PageGroup] = []
-        for (_, bookmarksInPage) in pageDict {
+        for (_, bookmarksInPage) in grouped {
+            // bookmarksは既にソート済みなので再ソート不要
             guard let page = bookmarksInPage.first?.page else { continue }
-            let sortedBookmarks = bookmarksInPage.sorted { ($0.date ?? .distantPast) > ($1.date ?? .distantPast) }
-            groups.append(PageGroup(page: page, bookmarks: sortedBookmarks))
+            groups.append(PageGroup(page: page, bookmarks: bookmarksInPage))
         }
 
+        // 最新ブックマーク日時でソート
         currentPageGroups = groups.sorted { ($0.latestBookmarkDate ?? .distantPast) > ($1.latestBookmarkDate ?? .distantPast) }
     }
 
