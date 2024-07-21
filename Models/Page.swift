@@ -75,32 +75,46 @@ class Page: NSManagedObject {
             completion?(image)
             return
         }
-        
+
         guard let url = faviconUrl, let u = URL(string: url) else {
             completion?(nil)
             return
         }
-        
+
+        let objectID = self.objectID
+
         AF.request(u).response { [weak self] response in
-            guard let self = self, !self.isDeleted, self.managedObjectContext != nil else {
+            guard let self = self else {
                 completion?(nil)
                 return
             }
 
-            if let d = response.data, let image = NSImage(data: d) {
-                self.willChangeValue(forKey: "favicon")
-                self.__favicon = image
-                self.didChangeValue(forKey: "favicon")
-
-                completion?(image)
-
-                NotificationCenter.default.post(
-                    name: Notification.Name("PageFaviconDidLoad"),
-                    object: self,
-                    userInfo: ["pageURL": self.url ?? ""]
-                )
-            } else {
+            // コンテキスト上で安全に実行
+            guard let context = self.managedObjectContext else {
                 completion?(nil)
+                return
+            }
+
+            context.perform {
+                // オブジェクトがまだ有効か確認
+                guard context.registeredObject(for: objectID) != nil, !self.isDeleted else {
+                    completion?(nil)
+                    return
+                }
+
+                if let d = response.data, let image = NSImage(data: d) {
+                    self.__favicon = image
+
+                    completion?(image)
+
+                    NotificationCenter.default.post(
+                        name: Notification.Name("PageFaviconDidLoad"),
+                        object: self,
+                        userInfo: nil
+                    )
+                } else {
+                    completion?(nil)
+                }
             }
         }
     }
@@ -122,12 +136,14 @@ class Page: NSManagedObject {
             return image
         } else {
             if let url = entryImageUrl, let u = URL(string: url) {
+                let objectID = self.objectID
                 AF.request(u).response { [weak self] response in
-                    guard let self = self, !self.isDeleted, self.managedObjectContext != nil else { return }
-                    if let d = response.data {
-                        self.willChangeValue(forKey: "entryImage")
-                        self.__entryImage = NSImage(data: d)
-                        self.didChangeValue(forKey: "entryImage")
+                    guard let self = self, let context = self.managedObjectContext else { return }
+                    context.perform {
+                        guard context.registeredObject(for: objectID) != nil, !self.isDeleted else { return }
+                        if let d = response.data {
+                            self.__entryImage = NSImage(data: d)
+                        }
                     }
                 }
             }
