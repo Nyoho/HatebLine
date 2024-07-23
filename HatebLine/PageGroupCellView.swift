@@ -71,7 +71,10 @@ class PageGroupCellView: NSTableCellView {
     }
 
     private func configureUsersStack(with bookmarks: [Bookmark]) {
-        usersStackView?.arrangedSubviews.forEach { $0.removeFromSuperview() }
+        for subview in usersStackView?.arrangedSubviews ?? [] {
+            usersStackView?.removeArrangedSubview(subview)
+            subview.removeFromSuperview()
+        }
         userObservations.removeAll()
 
         for bookmark in bookmarks {
@@ -89,6 +92,11 @@ class PageGroupCellView: NSTableCellView {
                 userObservations.append(observation)
             }
         }
+
+        usersStackView?.needsLayout = true
+        usersStackView?.layoutSubtreeIfNeeded()
+        self.needsLayout = true
+        self.invalidateIntrinsicContentSize()
     }
 
     private func createUserView(for bookmark: Bookmark) -> NSView {
