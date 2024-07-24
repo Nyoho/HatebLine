@@ -97,7 +97,12 @@ class CommentsViewController: NSViewController {
         }
     }
 
-    var items = [Comment]()
+    enum Row {
+        case sectionHeader(String)
+        case comment(Comment, isPopular: Bool)
+    }
+
+    var rows = [Row]()
     var regulars = [Comment]()
     var allRegulars = [Comment]()
     var populars = [Comment]()
@@ -174,8 +179,15 @@ class CommentsViewController: NSViewController {
             }
         }
 
-        items = populars
-        items.append(contentsOf: regulars)
+        rows.removeAll()
+        if !populars.isEmpty {
+            rows.append(.sectionHeader("Popular"))
+            rows.append(contentsOf: populars.map { .comment($0, isPopular: true) })
+        }
+        if !regulars.isEmpty {
+            rows.append(.sectionHeader("All Comments"))
+            rows.append(contentsOf: regulars.map { .comment($0, isPopular: false) })
+        }
     }
 
     @IBAction func updateFiltering(_: AnyObject) {
@@ -186,54 +198,90 @@ class CommentsViewController: NSViewController {
     // MARK: - TableView
 
     @objc func numberOfRowsInTableView(_: NSTableView) -> Int {
-        return items.count
+        return rows.count
+    }
+
+    @objc func tableView(_ tableView: NSTableView, isGroupRow row: Int) -> Bool {
+        if case .sectionHeader = rows[row] {
+            return true
+        }
+        return false
+    }
+
+    @objc func tableView(_ tableView: NSTableView, heightOfRow row: Int) -> CGFloat {
+        switch rows[row] {
+        case .sectionHeader:
+            return 24
+        case .comment:
+            return 72
+        }
     }
 
     @objc func tableView(_ tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        if tableColumn?.identifier.rawValue == "CommentColumn" {
-            if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView,
-               let item = items[row] as Comment?
-            {
-                cell.isPopular = row < populars.count
-                cell.needsDisplay = true
-                cell.userNameField?.stringValue = item.userName
-                if let date = item.date {
-                    cell.dateField?.stringValue = date.timeAgo
-                }
-                cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
+        switch rows[row] {
+        case .sectionHeader(let title):
+            let cellIdentifier = NSUserInterfaceItemIdentifier("SectionHeaderCell")
+            let cell: NSTableCellView
+            if let existingCell = tableView.makeView(withIdentifier: cellIdentifier, owner: self) as? NSTableCellView {
+                cell = existingCell
+            } else {
+                cell = NSTableCellView()
+                cell.identifier = cellIdentifier
+                let textField = NSTextField(labelWithString: "")
+                textField.font = NSFont.systemFont(ofSize: 12, weight: .semibold)
+                textField.textColor = NSColor.secondaryLabelColor
+                textField.translatesAutoresizingMaskIntoConstraints = false
+                cell.addSubview(textField)
+                cell.textField = textField
+                NSLayoutConstraint.activate([
+                    textField.leadingAnchor.constraint(equalTo: cell.leadingAnchor, constant: 8),
+                    textField.topAnchor.constraint(equalTo: cell.topAnchor, constant: 6),
+                    textField.bottomAnchor.constraint(equalTo: cell.bottomAnchor, constant: -6)
+                ])
+            }
+            cell.textField?.stringValue = title
+            return cell
 
-                AF.request("https://cdn.profile-image.st-hatena.com/users/\(item.userName)/profile.gif")
-                    .responseImage { response in
-                        if let image = response.value {
-                            DispatchQueue.main.async {
-                                //                                cell.profileImageView.wantsLayer = true
-                                //                                cell.profileImageView?.layer?.cornerRadius = 5.0
-                                cell.profileImageView?.image = image
-                            }
+        case .comment(let item, _):
+            guard tableColumn?.identifier.rawValue == "CommentColumn",
+                  let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: "CommentColumn"), owner: self) as? CommentCellView else {
+                return nil
+            }
+
+            cell.userNameField?.stringValue = item.userName
+            if let date = item.date {
+                cell.dateField?.stringValue = date.timeAgo
+            }
+            cell.commentField?.attributedStringValue = Helper.commentWithTags(item.comment, tags: item.tags) ?? NSAttributedString()
+
+            AF.request("https://cdn.profile-image.st-hatena.com/users/\(item.userName)/profile.gif")
+                .responseImage { response in
+                    if let image = response.value {
+                        DispatchQueue.main.async {
+                            cell.profileImageView?.image = image
                         }
                     }
+                }
 
-                // star
-                if let date = item.date {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "yyyyMMdd"
-                    let dateString = formatter.string(from: date)
-                    let permalink = "https://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
-                    if let encodedString = permalink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
-                        AF.request("https://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
-                            .responseImage { response in
-                                if let image = response.value {
-                                    DispatchQueue.main.async {
-                                        cell.starImageView?.image = image
-                                    }
+            // star
+            if let date = item.date {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "yyyyMMdd"
+                let dateString = formatter.string(from: date)
+                let permalink = "https://b.hatena.ne.jp/\(item.userName)/\(dateString)#bookmark-\(eid)"
+                if let encodedString = permalink.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed) {
+                    AF.request("https://s.st-hatena.com/entry.count.image?uri=\(encodedString)&q=1")
+                        .responseImage { response in
+                            if let image = response.value {
+                                DispatchQueue.main.async {
+                                    cell.starImageView?.image = image
                                 }
                             }
-                    }
+                        }
                 }
-                return cell
             }
+            return cell
         }
-        return nil
     }
 
 }
