@@ -249,12 +249,39 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     }
 
     @objc private func contextObjectsDidChange(_ notification: Notification) {
+        // 変更されたPageのIDを収集
+        var changedPageIDs = Set<NSManagedObjectID>()
+
+        if let updated = notification.userInfo?[NSUpdatedObjectsKey] as? Set<NSManagedObject> {
+            for obj in updated {
+                if let page = obj as? Page {
+                    changedPageIDs.insert(page.objectID)
+                } else if let bookmark = obj as? Bookmark, let page = bookmark.page {
+                    changedPageIDs.insert(page.objectID)
+                }
+            }
+        }
+        if let deleted = notification.userInfo?[NSDeletedObjectsKey] as? Set<NSManagedObject> {
+            for obj in deleted {
+                if let bookmark = obj as? Bookmark, let page = bookmark.page {
+                    changedPageIDs.insert(page.objectID)
+                }
+            }
+        }
+        if let inserted = notification.userInfo?[NSInsertedObjectsKey] as? Set<NSManagedObject> {
+            for obj in inserted {
+                if let bookmark = obj as? Bookmark, let page = bookmark.page {
+                    changedPageIDs.insert(page.objectID)
+                }
+            }
+        }
+
         DispatchQueue.main.async { [weak self] in
-            self?.fetchAndApplySnapshot()
+            self?.fetchAndApplySnapshot(changedPageIDs: changedPageIDs)
         }
     }
 
-    private func applySnapshot(bookmarks: [Bookmark], animatingDifferences: Bool) {
+    private func applySnapshot(bookmarks: [Bookmark], animatingDifferences: Bool, changedPageIDs: Set<NSManagedObjectID> = []) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
 
         switch currentDisplayMode {
@@ -263,14 +290,8 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
             snapshot.appendItems(bookmarks.map { .bookmark($0.objectID) })
 
         case .pages:
-            let existingPageIDs = Set(dataSource.snapshot().itemIdentifiers.compactMap { item -> NSManagedObjectID? in
-                if case .pageHeader(let objectID) = item { return objectID }
-                return nil
-            })
             snapshot.appendSections([.pages])
             snapshot.appendItems(currentPageGroups.map { .pageHeader($0.page.objectID) }, toSection: .pages)
-
-            let pageIDsToReload = Set(currentPageGroups.filter { existingPageIDs.contains($0.page.objectID) }.map { $0.page.objectID })
 
             if animatingDifferences {
                 NSAnimationContext.runAnimationGroup({ context in
@@ -279,11 +300,19 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                     context.allowsImplicitAnimation = true
                     dataSource.apply(snapshot, animatingDifferences: true)
                 }, completionHandler: { [weak self] in
-                    guard let self = self, !pageIDsToReload.isEmpty else { return }
+                    guard let self = self, !changedPageIDs.isEmpty else { return }
+                    var rowsToUpdate = IndexSet()
                     for (row, pageGroup) in self.currentPageGroups.enumerated() {
-                        if pageIDsToReload.contains(pageGroup.page.objectID) {
-                            self.tableView.reloadData(forRowIndexes: IndexSet(integer: row), columnIndexes: IndexSet(integer: 0))
+                        if changedPageIDs.contains(pageGroup.page.objectID) {
+                            rowsToUpdate.insert(row)
                         }
+                    }
+                    if !rowsToUpdate.isEmpty {
+                        // DiffableDataSourceをバイパスして強制的に行を再読み込み
+                        self.tableView.beginUpdates()
+                        self.tableView.removeRows(at: rowsToUpdate, withAnimation: [])
+                        self.tableView.insertRows(at: rowsToUpdate, withAnimation: [])
+                        self.tableView.endUpdates()
                     }
                 })
             } else {
@@ -587,7 +616,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         fetchAndApplySnapshot()
     }
 
-    private func fetchAndApplySnapshot(animatingDifferences: Bool = true) {
+    private func fetchAndApplySnapshot(animatingDifferences: Bool = true, changedPageIDs: Set<NSManagedObjectID> = []) {
         let request = NSFetchRequest<Bookmark>(entityName: "Bookmark")
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
 
@@ -606,7 +635,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                 buildPageGroups(from: bookmarks)
             }
 
-            applySnapshot(bookmarks: bookmarks, animatingDifferences: animatingDifferences)
+            applySnapshot(bookmarks: bookmarks, animatingDifferences: animatingDifferences, changedPageIDs: changedPageIDs)
         } catch {
             NSLog("Failed to fetch bookmarks: \(error)")
         }
