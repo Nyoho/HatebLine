@@ -17,8 +17,12 @@ class AcknowledgmentsViewController: NSViewController {
     }
 
     func loadRTF() {
-        if let path = Bundle.main.path(forResource: "Acknowledgments", ofType: "rtf") {
-            textView.readRTFD(fromFile: path)
+        if let path = Bundle.main.path(forResource: "Acknowledgments", ofType: "rtf"),
+           let data = FileManager.default.contents(atPath: path),
+           let attrString = NSMutableAttributedString(rtf: data, documentAttributes: nil) {
+            let range = NSRange(location: 0, length: attrString.length)
+            attrString.addAttribute(.foregroundColor, value: NSColor.textColor, range: range)
+            textView.textStorage?.setAttributedString(attrString)
         }
     }
 }
