@@ -103,7 +103,9 @@ class Page: NSManagedObject {
                 }
 
                 if let d = response.data, let image = NSImage(data: d) {
+                    self.willChangeValue(forKey: "favicon")
                     self.__favicon = image
+                    self.didChangeValue(forKey: "favicon")
 
                     completion?(image)
 
@@ -142,7 +144,9 @@ class Page: NSManagedObject {
                     context.perform {
                         guard context.registeredObject(for: objectID) != nil, !self.isDeleted else { return }
                         if let d = response.data {
+                            self.willChangeValue(forKey: "entryImage")
                             self.__entryImage = NSImage(data: d)
+                            self.didChangeValue(forKey: "entryImage")
                         }
                     }
                 }
