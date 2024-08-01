@@ -35,7 +35,6 @@
 		5542D7501C5F195D0056CA91 /* ManyNumberToColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */; };
 		554F5D832F04E92A00453E0B /* BookmarkInfoPanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F5D822F04E92A00453E0B /* BookmarkInfoPanelController.swift */; };
 		554F5D852F04EA8B00453E0B /* BookmarkInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 554F5D842F04EA8B00453E0B /* BookmarkInfoView.swift */; };
-		554F5D892F0505F000453E0B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 554F5D872F0505F000453E0B /* Localizable.strings */; };
 		55556F511C4FD33600419440 /* GrowingTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55556F501C4FD33600419440 /* GrowingTextField.swift */; };
 		555BC14726500DFB00715457 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14626500DFB00715457 /* Alamofire */; };
 		555BC14D26500E0E00715457 /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = 555BC14C26500E0E00715457 /* AlamofireImage */; };
@@ -49,6 +48,7 @@
 		5588AD8A2F07563E0030DABA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD812F07563E0030DABA /* Localizable.strings */; };
 		5588AD8D2F0798F20030DABA /* PageGroupCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5588AD8B2F0798F20030DABA /* PageGroupCellView.swift */; };
 		5588AD8E2F0798F20030DABA /* PageGroupCellView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5588AD8C2F0798F20030DABA /* PageGroupCellView.xib */; };
+		558BADA82F1536FA00CB69B2 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 558BADA72F1536FA00CB69B2 /* Localizable.xcstrings */; };
 		5598488D2650BC1A00B07B5A /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598488C2650BC1A00B07B5A /* Config.swift */; };
 		55AB0D8E1C63146E00132CE0 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */; };
 		55AB0D951C63828D00132CE0 /* CommentCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AB0D941C63828D00132CE0 /* CommentCellView.swift */; };
@@ -152,7 +152,6 @@
 		5542D74F1C5F195D0056CA91 /* ManyNumberToColorTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManyNumberToColorTransformer.swift; sourceTree = "<group>"; };
 		554F5D822F04E92A00453E0B /* BookmarkInfoPanelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkInfoPanelController.swift; sourceTree = "<group>"; };
 		554F5D842F04EA8B00453E0B /* BookmarkInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BookmarkInfoView.swift; path = Views/BookmarkInfoView.swift; sourceTree = "<group>"; };
-		554F5D862F0505F000453E0B /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Localizable.strings; sourceTree = "<group>"; };
 		55556F501C4FD33600419440 /* GrowingTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GrowingTextField.swift; sourceTree = "<group>"; };
 		557906861C656507003DA09F /* Acknowledgments.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = Acknowledgments.rtf; sourceTree = "<group>"; };
 		557906881C656525003DA09F /* AcknowledgmentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcknowledgmentsViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +160,7 @@
 		5588AD852F07563E0030DABA /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Localizable.strings; sourceTree = "<group>"; };
 		5588AD8B2F0798F20030DABA /* PageGroupCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageGroupCellView.swift; sourceTree = "<group>"; };
 		5588AD8C2F0798F20030DABA /* PageGroupCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PageGroupCellView.xib; sourceTree = "<group>"; };
+		558BADA72F1536FA00CB69B2 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		5598488C2650BC1A00B07B5A /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		55AB0D8D1C63146E00132CE0 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		55AB0D941C63828D00132CE0 /* CommentCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentCellView.swift; sourceTree = "<group>"; };
@@ -327,14 +327,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		554F5D882F0505F000453E0B /* ja.lproj */ = {
-			isa = PBXGroup;
-			children = (
-				554F5D872F0505F000453E0B /* Localizable.strings */,
-			);
-			path = ja.lproj;
-			sourceTree = "<group>";
-		};
 		55556F521C4FD33C00419440 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,7 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				55415B721C3961F90079B118 /* Assets.xcassets */,
-				554F5D882F0505F000453E0B /* ja.lproj */,
+				558BADA72F1536FA00CB69B2 /* Localizable.xcstrings */,
 				55FA8FC31C3FC77600F9C5E5 /* Storyboard.storyboard */,
 				55415B771C3961F90079B118 /* Info.plist */,
 				5598488C2650BC1A00B07B5A /* Config.swift */,
@@ -590,11 +582,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				554F5D892F0505F000453E0B /* Localizable.strings in Resources */,
 				55415B731C3961F90079B118 /* Assets.xcassets in Resources */,
 				557906871C656507003DA09F /* Acknowledgments.rtf in Resources */,
 				55D2E7451C523187006D2475 /* NSDateTimeAgo.bundle in Resources */,
 				55FA8FC41C3FC77600F9C5E5 /* Storyboard.storyboard in Resources */,
+				558BADA82F1536FA00CB69B2 /* Localizable.xcstrings in Resources */,
 				5588AD8E2F0798F20030DABA /* PageGroupCellView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -709,14 +701,6 @@
 				5517EF1F216F2DA600828501 /* Base */,
 			);
 			name = SafariExtensionViewController.xib;
-			sourceTree = "<group>";
-		};
-		554F5D872F0505F000453E0B /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				554F5D862F0505F000453E0B /* ja */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		5588AD812F07563E0030DABA /* Localizable.strings */ = {
@@ -865,6 +849,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
@@ -917,6 +902,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 5.0;
 			};
