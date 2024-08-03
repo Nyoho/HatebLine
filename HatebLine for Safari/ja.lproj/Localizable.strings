@@ -1,9 +1,0 @@
-/* Safari Extension UI */
-"Bookmark" = "ブックマーク";
-"Show Comments" = "コメントを見る";
-"Show bookmark count" = "ブックマーク数を表示";
-
-/* Alerts */
-"No bookmarks" = "ブックマークなし";
-"This page has no bookmarks yet." = "このページにはまだブックマークがありません。";
-"OK" = "OK";

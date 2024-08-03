@@ -1,0 +1,2370 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "0aH-SK-toA.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"10 minutes ago\"; ObjectID = \"0aH-SK-toA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10 minutes ago"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10分前"
+          }
+        }
+      }
+    },
+    "0R6-R3-4Kb.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Include users with no comment\"; ObjectID = \"0R6-R3-4Kb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Include users with no comment"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "コメントのないユーザも含める"
+          }
+        }
+      }
+    },
+    "1b7-l0-nxx.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Find\"; ObjectID = \"1b7-l0-nxx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Find"
+          }
+        }
+      }
+    },
+    "1tx-W0-xDw.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Lower\"; ObjectID = \"1tx-W0-xDw\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Lower"
+          }
+        }
+      }
+    },
+    "1UK-8n-QPP.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Customize Toolbar…\"; ObjectID = \"1UK-8n-QPP\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Customize Toolbar…"
+          }
+        }
+      }
+    },
+    "1Xt-HY-uBw.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"HatebLine\"; ObjectID = \"1Xt-HY-uBw\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "HatebLine"
+          }
+        }
+      }
+    },
+    "2h7-ER-AoG.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Raise\"; ObjectID = \"2h7-ER-AoG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Raise"
+          }
+        }
+      }
+    },
+    "2oI-Rn-ZJC.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Transformations\"; ObjectID = \"2oI-Rn-ZJC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Transformations"
+          }
+        }
+      }
+    },
+    "2QB-mK-nyw.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Hatena ID:\"; ObjectID = \"2QB-mK-nyw\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hatena ID:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "はてなID:"
+          }
+        }
+      }
+    },
+    "2Sz-6o-7DH.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"⬇ Input your Hatena ID\"; ObjectID = \"2Sz-6o-7DH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "⬇ Input your Hatena ID"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "⬇ あなたのHatena IDを入れて下さい"
+          }
+        }
+      }
+    },
+    "3IN-sU-3Bg.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Spelling\"; ObjectID = \"3IN-sU-3Bg\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Spelling"
+          }
+        }
+      }
+    },
+    "3Om-Ey-2VK.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Use Default\"; ObjectID = \"3Om-Ey-2VK\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use Default"
+          }
+        }
+      }
+    },
+    "3rS-ZA-NoH.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Speech\"; ObjectID = \"3rS-ZA-NoH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Speech"
+          }
+        }
+      }
+    },
+    "4EN-yA-p0u.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Find\"; ObjectID = \"4EN-yA-p0u\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Find"
+          }
+        }
+      }
+    },
+    "4sb-4s-VLi.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Quit HatebLine\"; ObjectID = \"4sb-4s-VLi\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quit HatebLine"
+          }
+        }
+      }
+    },
+    "5kV-Vb-QxS.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"About HatebLine\"; ObjectID = \"5kV-Vb-QxS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "About HatebLine"
+          }
+        }
+      }
+    },
+    "5QF-Oa-p0T.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Edit\"; ObjectID = \"5QF-Oa-p0T\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Edit"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集"
+          }
+        }
+      }
+    },
+    "5Vv-lz-BsD.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Copy Style\"; ObjectID = \"5Vv-lz-BsD\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copy Style"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "スタイルをコピー"
+          }
+        }
+      }
+    },
+    "6dh-zS-Vam.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Redo\"; ObjectID = \"6dh-zS-Vam\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Redo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "やり直し"
+          }
+        }
+      }
+    },
+    "8e4-tu-rBM.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"C!\"; ObjectID = \"8e4-tu-rBM\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "C!"
+          }
+        }
+      }
+    },
+    "8kb-Qm-j4H.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"John Smith\"; ObjectID = \"8kb-Qm-j4H\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "John Smith"
+          }
+        }
+      }
+    },
+    "8mr-sm-Yjd.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Writing Direction\"; ObjectID = \"8mr-sm-Yjd\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Writing Direction"
+          }
+        }
+      }
+    },
+    "9ic-FL-obx.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Substitutions\"; ObjectID = \"9ic-FL-obx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Substitutions"
+          }
+        }
+      }
+    },
+    "9yt-4B-nSM.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Smart Copy/Paste\"; ObjectID = \"9yt-4B-nSM\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Smart Copy/Paste"
+          }
+        }
+      }
+    },
+    "46P-cB-AYj.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Tighten\"; ObjectID = \"46P-cB-AYj\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Tighten"
+          }
+        }
+      }
+    },
+    "61z-Yt-3XC.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Bookmark\"; ObjectID = \"61z-Yt-3XC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bookmark"
+          }
+        }
+      }
+    },
+    "61z-Yt-3XC.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Bookmark\"; ObjectID = \"61z-Yt-3XC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bookmark"
+          }
+        }
+      }
+    },
+    "78m-WC-aMX.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Reload\"; ObjectID = \"78m-WC-aMX\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reload"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再読み込み"
+          }
+        }
+      }
+    },
+    "78m-WC-aMX.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Reload\"; ObjectID = \"78m-WC-aMX\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reload"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再読み込み"
+          }
+        }
+      }
+    },
+    "78Y-hA-62v.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Correct Spelling Automatically\"; ObjectID = \"78Y-hA-62v\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Correct Spelling Automatically"
+          }
+        }
+      }
+    },
+    "agt-UL-0e3.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Use Default\"; ObjectID = \"agt-UL-0e3\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use Default"
+          }
+        }
+      }
+    },
+    "AOB-M1-uST.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Sign in\"; ObjectID = \"AOB-M1-uST\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign in"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイン・イン"
+          }
+        }
+      }
+    },
+    "aTl-1u-JFS.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Print…\"; ObjectID = \"aTl-1u-JFS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Print…"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "印刷…"
+          }
+        }
+      }
+    },
+    "aUF-d1-5bR.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Window\"; ObjectID = \"aUF-d1-5bR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Window"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウ"
+          }
+        }
+      }
+    },
+    "Auy-c0-88Q.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Feed token:\"; ObjectID = \"Auy-c0-88Q\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Feed token:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フィード・トークン:"
+          }
+        }
+      }
+    },
+    "av4-Ry-E3d.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Open User Page in Browser\"; ObjectID = \"av4-Ry-E3d\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open User Page in Browser"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザページをブラウザで開く"
+          }
+        }
+      }
+    },
+    "aXa-aM-Jaq.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Font\"; ObjectID = \"aXa-aM-Jaq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Font"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォント"
+          }
+        }
+      }
+    },
+    "AYu-sK-qS6.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Main Menu\"; ObjectID = \"AYu-sK-qS6\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Main Menu"
+          }
+        }
+      }
+    },
+    "BgM-ve-c93.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"\\tLeft to Right\"; ObjectID = \"BgM-ve-c93\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\tLeft to Right"
+          }
+        }
+      }
+    },
+    "bgn-CT-cEk.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Colors\"; ObjectID = \"bgn-CT-cEk\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Colors"
+          }
+        }
+      }
+    },
+    "bib-Uj-vzu.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"File\"; ObjectID = \"bib-Uj-vzu\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "File"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイル"
+          }
+        }
+      }
+    },
+    "BOF-NM-1cW.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Preferences…\"; ObjectID = \"BOF-NM-1cW\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Preferences…"
+          }
+        }
+      }
+    },
+    "buJ-ug-pKt.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Use Selection for Find\"; ObjectID = \"buJ-ug-pKt\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use Selection for Find"
+          }
+        }
+      }
+    },
+    "Bw7-FT-i3A.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Save As…\"; ObjectID = \"Bw7-FT-i3A\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save As…"
+          }
+        }
+      }
+    },
+    "c8a-y6-VQd.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Transformations\"; ObjectID = \"c8a-y6-VQd\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Transformations"
+          }
+        }
+      }
+    },
+    "cDB-IK-hbR.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Use None\"; ObjectID = \"cDB-IK-hbR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use None"
+          }
+        }
+      }
+    },
+    "CGw-VF-g7j.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"From link[rel=alternate] element in https://b.hatena.ne.jp/my/favorite\"; ObjectID = \"CGw-VF-g7j\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "From link[rel=alternate] element in https://b.hatena.ne.jp/my/favorite"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "https://b.hatena.ne.jp/my/favorite の中の link[rel=alternate] 要素から"
+          }
+        }
+      }
+    },
+    "cqv-fj-IhA.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Selection\"; ObjectID = \"cqv-fj-IhA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Selection"
+          }
+        }
+      }
+    },
+    "cSL-C8-QlI.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"32 users\"; ObjectID = \"cSL-C8-QlI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "32 users"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "32 users"
+          }
+        }
+      }
+    },
+    "cwL-P1-jid.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Smart Links\"; ObjectID = \"cwL-P1-jid\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Smart Links"
+          }
+        }
+      }
+    },
+    "d9c-me-L2H.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Text\"; ObjectID = \"d9c-me-L2H\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text"
+          }
+        }
+      }
+    },
+    "d9M-CD-aMd.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Make Lower Case\"; ObjectID = \"d9M-CD-aMd\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Make Lower Case"
+          }
+        }
+      }
+    },
+    "dm-bookmarks-001.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Bookmarks\"; ObjectID = \"dm-bookmarks-001\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bookmarks"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ブックマーク"
+          }
+        }
+      }
+    },
+    "dm-pages-001.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Pages\"; ObjectID = \"dm-pages-001\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Pages"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ページ"
+          }
+        }
+      }
+    },
+    "dMs-cI-mzQ.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"File\"; ObjectID = \"dMs-cI-mzQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "File"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ファイル"
+          }
+        }
+      }
+    },
+    "DnH-3B-zF7.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam\"; ObjectID = \"DnH-3B-zF7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Title - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam"
+          }
+        }
+      }
+    },
+    "dRJ-4n-Yzg.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Undo\"; ObjectID = \"dRJ-4n-Yzg\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Undo"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "取り消す"
+          }
+        }
+      }
+    },
+    "Dv1-io-Yv7.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Spelling and Grammar\"; ObjectID = \"Dv1-io-Yv7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Spelling and Grammar"
+          }
+        }
+      }
+    },
+    "DVo-aG-piG.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Close\"; ObjectID = \"DVo-aG-piG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Close"
+          }
+        }
+      }
+    },
+    "Dz9-hQ-Enr.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Acknowledgments\"; ObjectID = \"Dz9-hQ-Enr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Acknowledgments"
+          }
+        }
+      }
+    },
+    "E9f-19-VnC.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"username:\"; ObjectID = \"E9f-19-VnC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "username:"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ユーザ名:"
+          }
+        }
+      }
+    },
+    "F2S-fz-NVQ.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Help\"; ObjectID = \"F2S-fz-NVQ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Help"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ヘルプ"
+          }
+        }
+      }
+    },
+    "Fal-I4-PZk.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Text\"; ObjectID = \"Fal-I4-PZk\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "テキスト"
+          }
+        }
+      }
+    },
+    "FCO-Ww-BVq.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"John\"; ObjectID = \"FCO-Ww-BVq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "John"
+          }
+        }
+      }
+    },
+    "FeM-D8-WVr.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Substitutions\"; ObjectID = \"FeM-D8-WVr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Substitutions"
+          }
+        }
+      }
+    },
+    "FKE-Sm-Kum.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"HatebLine Help\"; ObjectID = \"FKE-Sm-Kum\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "HatebLine Help"
+          }
+        }
+      }
+    },
+    "GB9-OM-e27.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Bold\"; ObjectID = \"GB9-OM-e27\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bold"
+          }
+        }
+      }
+    },
+    "GEO-Iw-cKr.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Format\"; ObjectID = \"GEO-Iw-cKr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Format"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォーマット"
+          }
+        }
+      }
+    },
+    "Gi5-1S-RQB.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Font\"; ObjectID = \"Gi5-1S-RQB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Font"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "フォント"
+          }
+        }
+      }
+    },
+    "GUa-eO-cwY.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Use Default\"; ObjectID = \"GUa-eO-cwY\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use Default"
+          }
+        }
+      }
+    },
+    "gVA-U4-sdL.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Paste\"; ObjectID = \"gVA-U4-sdL\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paste"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ペースト"
+          }
+        }
+      }
+    },
+    "H1b-Si-o9J.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Writing Direction\"; ObjectID = \"H1b-Si-o9J\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Writing Direction"
+          }
+        }
+      }
+    },
+    "H8h-7b-M4v.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"View\"; ObjectID = \"H8h-7b-M4v\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示"
+          }
+        }
+      }
+    },
+    "HFo-cy-zxI.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Spelling and Grammar\"; ObjectID = \"HFo-cy-zxI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Spelling and Grammar"
+          }
+        }
+      }
+    },
+    "HFQ-gK-NFA.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Text Replacement\"; ObjectID = \"HFQ-gK-NFA\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Text Replacement"
+          }
+        }
+      }
+    },
+    "Hkm-wp-urv.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Comment: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\"; ObjectID = \"Hkm-wp-urv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Comment: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          }
+        }
+      }
+    },
+    "hQb-2v-fYv.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Smart Quotes\"; ObjectID = \"hQb-2v-fYv\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Smart Quotes"
+          }
+        }
+      }
+    },
+    "HyV-fh-RgO.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"View\"; ObjectID = \"HyV-fh-RgO\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "View"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "表示"
+          }
+        }
+      }
+    },
+    "hz2-CU-CR7.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Check Document Now\"; ObjectID = \"hz2-CU-CR7\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check Document Now"
+          }
+        }
+      }
+    },
+    "hz9-B4-Xy5.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Services\"; ObjectID = \"hz9-B4-Xy5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Services"
+          }
+        }
+      }
+    },
+    "I0S-gh-46l.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Subscript\"; ObjectID = \"I0S-gh-46l\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Subscript"
+          }
+        }
+      }
+    },
+    "i1d-Er-qST.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Smaller\"; ObjectID = \"i1d-Er-qST\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Smaller"
+          }
+        }
+      }
+    },
+    "i5Z-N5-8L5.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Enable Notification\"; ObjectID = \"i5Z-N5-8L5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Enable Notification"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知を有効にする"
+          }
+        }
+      }
+    },
+    "IAo-SY-fd9.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Open…\"; ObjectID = \"IAo-SY-fd9\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open…"
+          }
+        }
+      }
+    },
+    "ijk-EB-dga.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Baseline\"; ObjectID = \"ijk-EB-dga\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Baseline"
+          }
+        }
+      }
+    },
+    "inf-pan-001.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Info\"; ObjectID = \"inf-pan-001\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Info"
+          }
+        }
+      }
+    },
+    "J5U-5w-g23.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Justify\"; ObjectID = \"J5U-5w-g23\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Justify"
+          }
+        }
+      }
+    },
+    "J7y-lM-qPV.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Use None\"; ObjectID = \"J7y-lM-qPV\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use None"
+          }
+        }
+      }
+    },
+    "jBQ-r6-VK2.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Kern\"; ObjectID = \"jBQ-r6-VK2\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kern"
+          }
+        }
+      }
+    },
+    "jFq-tB-4Kx.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"\\tRight to Left\"; ObjectID = \"jFq-tB-4Kx\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\tRight to Left"
+          }
+        }
+      }
+    },
+    "jxT-CU-nIS.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Format\"; ObjectID = \"jxT-CU-nIS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Format"
+          }
+        }
+      }
+    },
+    "KaW-ft-85H.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Revert to Saved\"; ObjectID = \"KaW-ft-85H\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Revert to Saved"
+          }
+        }
+      }
+    },
+    "Kd2-mp-pUS.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show All\"; ObjectID = \"Kd2-mp-pUS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show All"
+          }
+        }
+      }
+    },
+    "Lbh-J2-qVU.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"\\tLeft to Right\"; ObjectID = \"Lbh-J2-qVU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\tLeft to Right"
+          }
+        }
+      }
+    },
+    "LE2-aR-0XJ.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Bring All to Front\"; ObjectID = \"LE2-aR-0XJ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bring All to Front"
+          }
+        }
+      }
+    },
+    "LVM-kO-fVI.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Paste Ruler\"; ObjectID = \"LVM-kO-fVI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paste Ruler"
+          }
+        }
+      }
+    },
+    "mK6-2p-4JG.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Check Grammar With Spelling\"; ObjectID = \"mK6-2p-4JG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check Grammar With Spelling"
+          }
+        }
+      }
+    },
+    "MkV-Pr-PK5.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Copy Ruler\"; ObjectID = \"MkV-Pr-PK5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copy Ruler"
+          }
+        }
+      }
+    },
+    "MWi-ID-abz.title" : {
+      "comment" : "Class = \"NSViewController\"; title = \"Acknowledgments\"; ObjectID = \"MWi-ID-abz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Acknowledgments"
+          }
+        }
+      }
+    },
+    "NMo-om-nkz.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Services\"; ObjectID = \"NMo-om-nkz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Services"
+          }
+        }
+      }
+    },
+    "Nop-cj-93Q.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"\\tDefault\"; ObjectID = \"Nop-cj-93Q\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\tDefault"
+          }
+        }
+      }
+    },
+    "o6e-r0-MWq.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Ligatures\"; ObjectID = \"o6e-r0-MWq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ligatures"
+          }
+        }
+      }
+    },
+    "OaQ-X3-Vso.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Baseline\"; ObjectID = \"OaQ-X3-Vso\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Baseline"
+          }
+        }
+      }
+    },
+    "oas-Oc-fiZ.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Open Recent\"; ObjectID = \"oas-Oc-fiZ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Recent"
+          }
+        }
+      }
+    },
+    "ogc-rX-tC1.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Loosen\"; ObjectID = \"ogc-rX-tC1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Loosen"
+          }
+        }
+      }
+    },
+    "okT-Ql-UCa.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Sign out\"; ObjectID = \"okT-Ql-UCa\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Sign out"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "サイン・アウト"
+          }
+        }
+      }
+    },
+    "Olw-nP-bQN.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Hide HatebLine\"; ObjectID = \"Olw-nP-bQN\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hide HatebLine"
+          }
+        }
+      }
+    },
+    "OwM-mh-QMV.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Find Previous\"; ObjectID = \"OwM-mh-QMV\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Find Previous"
+          }
+        }
+      }
+    },
+    "OY7-WF-poV.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Minimize\"; ObjectID = \"OY7-WF-poV\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Minimize"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "しまう"
+          }
+        }
+      }
+    },
+    "Oyz-dy-DGm.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Stop Speaking\"; ObjectID = \"Oyz-dy-DGm\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Stop Speaking"
+          }
+        }
+      }
+    },
+    "pa3-QI-u2k.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Delete\"; ObjectID = \"pa3-QI-u2k\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "paB-h3-wC4.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Include Bookmark Count in Notification\"; ObjectID = \"paB-h3-wC4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Include Bookmark Count in Notification"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "通知にブックマーク数を含める"
+          }
+        }
+      }
+    },
+    "pg6-L4-Wp8.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Open in Browser\"; ObjectID = \"pg6-L4-Wp8\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open in Browser"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ブラウザで開く"
+          }
+        }
+      }
+    },
+    "PqD-h4-zgH.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Open Bookmark Page in Browser\"; ObjectID = \"PqD-h4-zgH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Bookmark Page in Browser"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ブックマークページをブラウザで開く"
+          }
+        }
+      }
+    },
+    "Ptp-SP-VEL.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Bigger\"; ObjectID = \"Ptp-SP-VEL\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bigger"
+          }
+        }
+      }
+    },
+    "pxx-59-PXV.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Save…\"; ObjectID = \"pxx-59-PXV\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Save…"
+          }
+        }
+      }
+    },
+    "Q5e-8K-NDq.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Fonts\"; ObjectID = \"Q5e-8K-NDq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Fonts"
+          }
+        }
+      }
+    },
+    "q09-fT-Sye.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Find Next\"; ObjectID = \"q09-fT-Sye\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Find Next"
+          }
+        }
+      }
+    },
+    "qIS-W8-SiK.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Page Setup…\"; ObjectID = \"qIS-W8-SiK\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Page Setup…"
+          }
+        }
+      }
+    },
+    "QOF-DU-SET.title" : {
+      "comment" : "Class = \"NSViewController\"; title = \"General\"; ObjectID = \"QOF-DU-SET\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "General"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
+          }
+        }
+      }
+    },
+    "QoV-rO-qPS.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \"; ObjectID = \"QoV-rO-qPS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Comment - Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+          }
+        }
+      }
+    },
+    "R4o-n2-Eq4.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Zoom\"; ObjectID = \"R4o-n2-Eq4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Zoom"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拡大/縮小"
+          }
+        }
+      }
+    },
+    "RB4-Sm-HuC.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"\\tRight to Left\"; ObjectID = \"RB4-Sm-HuC\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\tRight to Left"
+          }
+        }
+      }
+    },
+    "rbD-Rh-wIN.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Check Spelling While Typing\"; ObjectID = \"rbD-Rh-wIN\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Check Spelling While Typing"
+          }
+        }
+      }
+    },
+    "rgM-f4-ycn.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Smart Dashes\"; ObjectID = \"rgM-f4-ycn\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Smart Dashes"
+          }
+        }
+      }
+    },
+    "Rkt-NB-i1G.label" : {
+      "comment" : "Class = \"NSTabViewItem\"; label = \"General\"; ObjectID = \"Rkt-NB-i1G\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "General"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "一般"
+          }
+        }
+      }
+    },
+    "Rqc-34-cIF.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Superscript\"; ObjectID = \"Rqc-34-cIF\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Superscript"
+          }
+        }
+      }
+    },
+    "Ruw-6m-B2m.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Select All\"; ObjectID = \"Ruw-6m-B2m\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Select All"
+          }
+        }
+      }
+    },
+    "S0p-oC-mLd.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Jump to Selection\"; ObjectID = \"S0p-oC-mLd\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Jump to Selection"
+          }
+        }
+      }
+    },
+    "sfg-Ze-hyS.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Search\"; ObjectID = \"sfg-Ze-hyS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "sfg-Ze-hyS.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Search\"; ObjectID = \"sfg-Ze-hyS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Search"
+          }
+        }
+      }
+    },
+    "snW-S8-Cw5.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Toolbar\"; ObjectID = \"snW-S8-Cw5\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Toolbar"
+          }
+        }
+      }
+    },
+    "Td7-aD-5lo.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Window\"; ObjectID = \"Td7-aD-5lo\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Window"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ウインドウ"
+          }
+        }
+      }
+    },
+    "tlD-Oa-oAM.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Kern\"; ObjectID = \"tlD-Oa-oAM\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Kern"
+          }
+        }
+      }
+    },
+    "tRr-pd-1PS.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Data Detectors\"; ObjectID = \"tRr-pd-1PS\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Data Detectors"
+          }
+        }
+      }
+    },
+    "tXI-mr-wws.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Open Recent\"; ObjectID = \"tXI-mr-wws\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Open Recent"
+          }
+        }
+      }
+    },
+    "UEZ-Bs-lqG.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Capitalize\"; ObjectID = \"UEZ-Bs-lqG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Capitalize"
+          }
+        }
+      }
+    },
+    "Umb-Vj-1BR.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Done\"; ObjectID = \"Umb-Vj-1BR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "uQy-DD-JDr.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"HatebLine\"; ObjectID = \"uQy-DD-JDr\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "HatebLine"
+          }
+        }
+      }
+    },
+    "uRl-iY-unG.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Cut\"; ObjectID = \"uRl-iY-unG\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Cut"
+          }
+        }
+      }
+    },
+    "uZN-ui-dWO.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Show Comments\"; ObjectID = \"uZN-ui-dWO\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Comments"
+          }
+        }
+      }
+    },
+    "uZN-ui-dWO.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Show Comments\"; ObjectID = \"uZN-ui-dWO\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Comments"
+          }
+        }
+      }
+    },
+    "V1z-xh-bvT.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"B!\"; ObjectID = \"V1z-xh-bvT\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "B!"
+          }
+        }
+      }
+    },
+    "Vdr-fp-XzO.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Hide Others\"; ObjectID = \"Vdr-fp-XzO\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Hide Others"
+          }
+        }
+      }
+    },
+    "VIY-Ag-zcb.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Center\"; ObjectID = \"VIY-Ag-zcb\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Center"
+          }
+        }
+      }
+    },
+    "Vjx-xi-njq.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Italic\"; ObjectID = \"Vjx-xi-njq\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Italic"
+          }
+        }
+      }
+    },
+    "VK7-Dk-n3E.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Quick Look\"; ObjectID = \"VK7-Dk-n3E\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quick Look"
+          }
+        }
+      }
+    },
+    "VK7-Dk-n3E.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Quick Look\"; ObjectID = \"VK7-Dk-n3E\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Quick Look"
+          }
+        }
+      }
+    },
+    "vKC-jM-MkH.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Paste Style\"; ObjectID = \"vKC-jM-MkH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paste Style"
+          }
+        }
+      }
+    },
+    "vLm-3I-IUL.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Ruler\"; ObjectID = \"vLm-3I-IUL\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Ruler"
+          }
+        }
+      }
+    },
+    "vmV-6d-7jI.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Make Upper Case\"; ObjectID = \"vmV-6d-7jI\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Make Upper Case"
+          }
+        }
+      }
+    },
+    "vNY-rz-j42.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Clear Menu\"; ObjectID = \"vNY-rz-j42\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Clear Menu"
+          }
+        }
+      }
+    },
+    "vwn-Hu-luB.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"10 minutes ago\"; ObjectID = \"vwn-Hu-luB\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "10 minutes ago"
+          }
+        }
+      }
+    },
+    "w0m-vy-SC9.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Ligatures\"; ObjectID = \"w0m-vy-SC9\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Ligatures"
+          }
+        }
+      }
+    },
+    "W5X-Y7-R9o.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Reload\"; ObjectID = \"W5X-Y7-R9o\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Reload"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再読み込み"
+          }
+        }
+      }
+    },
+    "W48-6f-4Dl.title" : {
+      "comment" : "Class = \"NSMenu\"; title = \"Edit\"; ObjectID = \"W48-6f-4Dl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Edit"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "編集"
+          }
+        }
+      }
+    },
+    "Was-JA-tGl.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"New\"; ObjectID = \"Was-JA-tGl\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "New"
+          }
+        }
+      }
+    },
+    "wb2-vD-lq4.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Align Right\"; ObjectID = \"wb2-vD-lq4\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Align Right"
+          }
+        }
+      }
+    },
+    "WeT-3V-zwk.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Paste and Match Style\"; ObjectID = \"WeT-3V-zwk\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paste and Match Style"
+          }
+        }
+      }
+    },
+    "Wkf-RH-zVs.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Info\"; ObjectID = \"Wkf-RH-zVs\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Info"
+          }
+        }
+      }
+    },
+    "Wkf-RH-zVs.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Info\"; ObjectID = \"Wkf-RH-zVs\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Info"
+          }
+        }
+      }
+    },
+    "wpr-3q-Mcd.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Help\"; ObjectID = \"wpr-3q-Mcd\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Help"
+          }
+        }
+      }
+    },
+    "WRG-CD-K1S.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Underline\"; ObjectID = \"WRG-CD-K1S\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Underline"
+          }
+        }
+      }
+    },
+    "x3v-GG-iWU.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Copy\"; ObjectID = \"x3v-GG-iWU\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
+    "xQD-1f-W4t.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Use All\"; ObjectID = \"xQD-1f-W4t\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Use All"
+          }
+        }
+      }
+    },
+    "xrE-MZ-jX0.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Speech\"; ObjectID = \"xrE-MZ-jX0\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Speech"
+          }
+        }
+      }
+    },
+    "XRz-PP-1Na.label" : {
+      "comment" : "Class = \"NSToolbarItem\"; label = \"Share\"; ObjectID = \"XRz-PP-1Na\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Share"
+          }
+        }
+      }
+    },
+    "XRz-PP-1Na.paletteLabel" : {
+      "comment" : "Class = \"NSToolbarItem\"; paletteLabel = \"Share\"; ObjectID = \"XRz-PP-1Na\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Share"
+          }
+        }
+      }
+    },
+    "Xz5-n4-O0W.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Find…\"; ObjectID = \"Xz5-n4-O0W\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Find…"
+          }
+        }
+      }
+    },
+    "YEy-JH-Tfz.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Find and Replace…\"; ObjectID = \"YEy-JH-Tfz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Find and Replace…"
+          }
+        }
+      }
+    },
+    "YGs-j5-SAR.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"\\tDefault\"; ObjectID = \"YGs-j5-SAR\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "\tDefault"
+          }
+        }
+      }
+    },
+    "Ynk-f8-cLZ.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Start Speaking\"; ObjectID = \"Ynk-f8-cLZ\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Start Speaking"
+          }
+        }
+      }
+    },
+    "Yqs-dR-ass.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"John Smith\"; ObjectID = \"Yqs-dR-ass\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "John Smith"
+          }
+        }
+      }
+    },
+    "z6F-FW-3nz.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Show Substitutions\"; ObjectID = \"z6F-FW-3nz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Substitutions"
+          }
+        }
+      }
+    },
+    "ZM1-6Q-yy1.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Align Left\"; ObjectID = \"ZM1-6Q-yy1\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Align Left"
+          }
+        }
+      }
+    },
+    "ZvO-Gk-QUH.title" : {
+      "comment" : "Class = \"NSMenuItem\"; title = \"Paragraph\"; ObjectID = \"ZvO-Gk-QUH\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Paragraph"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}

@@ -3,14 +3,7 @@
   "strings" : {
     "Bookmark" : {
       "comment" : "Safari Extension UI",
-      "extractionState" : "migrated",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bookmark"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -21,7 +14,7 @@
     },
     "No bookmarks" : {
       "comment" : "Alerts",
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -38,7 +31,7 @@
       }
     },
     "OK" : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -55,14 +48,7 @@
       }
     },
     "Show bookmark count" : {
-      "extractionState" : "migrated",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show bookmark count"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -72,14 +58,7 @@
       }
     },
     "Show Comments" : {
-      "extractionState" : "migrated",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Show Comments"
-          }
-        },
         "ja" : {
           "stringUnit" : {
             "state" : "translated",
@@ -89,7 +68,7 @@
       }
     },
     "This page has no bookmarks yet." : {
-      "extractionState" : "migrated",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

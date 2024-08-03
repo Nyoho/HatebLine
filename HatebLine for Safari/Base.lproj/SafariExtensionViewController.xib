@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="24506" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14313.18"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="24506"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,39 +22,34 @@
             <rect key="frame" x="0.0" y="0.0" width="280" height="120"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <!-- Title Label -->
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttl-lbl">
-                    <rect key="frame" x="10" y="94" width="180" height="17"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page Title" id="ttl-cel">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttl-lbl">
+                    <rect key="frame" x="10" y="94" width="69" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="Page Title" id="ttl-cel">
                         <font key="font" metaFont="systemBold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <!-- Bookmark Count Button -->
                 <button hidden="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bkm-cnt-btn">
-                    <rect key="frame" x="200" y="90" width="72" height="22"/>
+                    <rect key="frame" x="215" y="92" width="53" height="19"/>
                     <buttonCell key="cell" type="roundRect" title="0 users" bezelStyle="roundedRect" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkm-cnt-cel">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="smallSystem"/>
-                        <color key="textColor" name="systemRedColor" catalog="System" colorSpace="catalog"/>
                     </buttonCell>
                     <connections>
                         <action selector="bookmarkCountClicked:" target="-2" id="bkm-cnt-act"/>
                     </connections>
                 </button>
-                <!-- URL Label -->
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="url-lbl">
-                    <rect key="frame" x="10" y="74" width="260" height="14"/>
-                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="https://example.com/" id="url-cel">
+                <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="url-lbl">
+                    <rect key="frame" x="10" y="76" width="260" height="14"/>
+                    <textFieldCell key="cell" lineBreakMode="truncatingMiddle" sendsActionOnEndEditing="YES" title="https://example.com/" id="url-cel">
                         <font key="font" metaFont="smallSystem"/>
                         <color key="textColor" name="secondaryLabelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <!-- Show bookmark count checkbox -->
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="show-cnt-chk">
-                    <rect key="frame" x="8" y="48" width="180" height="18"/>
+                    <rect key="frame" x="10" y="52" width="143" height="18"/>
                     <buttonCell key="cell" type="check" title="Show bookmark count" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="show-cnt-cel">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="smallSystem"/>
@@ -64,12 +58,11 @@
                         <action selector="showCountChanged:" target="-2" id="shw-cnt-act"/>
                     </connections>
                 </button>
-                <!-- Buttons stack -->
-                <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" spacing="8" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btn-stack">
-                    <rect key="frame" x="10" y="10" width="260" height="32"/>
+                <stackView distribution="fillEqually" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="btn-stack">
+                    <rect key="frame" x="12" y="10" width="256" height="20"/>
                     <subviews>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bkm-btn">
-                            <rect key="frame" x="0" y="0" width="126" height="32"/>
+                            <rect key="frame" x="-7" y="-7" width="138" height="32"/>
                             <buttonCell key="cell" type="push" title="Bookmark" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkm-btn-cel">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -79,7 +72,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cmt-btn">
-                            <rect key="frame" x="134" y="0" width="126" height="32"/>
+                            <rect key="frame" x="125" y="-7" width="138" height="32"/>
                             <buttonCell key="cell" type="push" title="Show Comments" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cmt-btn-cel">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -100,24 +93,19 @@
                 </stackView>
             </subviews>
             <constraints>
-                <!-- Title constraints -->
-                <constraint firstItem="ttl-lbl" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="ttl-lead"/>
-                <constraint firstItem="ttl-lbl" firstAttribute="top" secondItem="root-view" secondAttribute="top" constant="10" id="ttl-top"/>
-                <constraint firstItem="bkm-cnt-btn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ttl-lbl" secondAttribute="trailing" constant="8" id="ttl-cnt-space"/>
-                <!-- Bookmark count button constraints -->
-                <constraint firstAttribute="trailing" secondItem="bkm-cnt-btn" secondAttribute="trailing" constant="12" id="cnt-trail"/>
-                <constraint firstItem="bkm-cnt-btn" firstAttribute="centerY" secondItem="ttl-lbl" secondAttribute="centerY" id="cnt-centery"/>
-                <!-- URL constraints -->
-                <constraint firstItem="url-lbl" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="url-lead"/>
-                <constraint firstAttribute="trailing" secondItem="url-lbl" secondAttribute="trailing" constant="12" id="url-trail"/>
-                <constraint firstItem="url-lbl" firstAttribute="top" secondItem="ttl-lbl" secondAttribute="bottom" constant="4" id="url-top"/>
-                <!-- Checkbox constraints -->
-                <constraint firstItem="show-cnt-chk" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="chk-lead"/>
-                <constraint firstItem="show-cnt-chk" firstAttribute="top" secondItem="url-lbl" secondAttribute="bottom" constant="8" id="chk-top"/>
-                <!-- Button stack constraints -->
+                <constraint firstAttribute="bottom" secondItem="btn-stack" secondAttribute="bottom" constant="10" id="btn-bottom"/>
                 <constraint firstItem="btn-stack" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="btn-lead"/>
                 <constraint firstAttribute="trailing" secondItem="btn-stack" secondAttribute="trailing" constant="12" id="btn-trail"/>
-                <constraint firstAttribute="bottom" secondItem="btn-stack" secondAttribute="bottom" constant="10" id="btn-bottom"/>
+                <constraint firstItem="show-cnt-chk" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="chk-lead"/>
+                <constraint firstItem="show-cnt-chk" firstAttribute="top" secondItem="url-lbl" secondAttribute="bottom" constant="8" id="chk-top"/>
+                <constraint firstItem="bkm-cnt-btn" firstAttribute="centerY" secondItem="ttl-lbl" secondAttribute="centerY" id="cnt-centery"/>
+                <constraint firstAttribute="trailing" secondItem="bkm-cnt-btn" secondAttribute="trailing" constant="12" id="cnt-trail"/>
+                <constraint firstItem="bkm-cnt-btn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ttl-lbl" secondAttribute="trailing" constant="8" id="ttl-cnt-space"/>
+                <constraint firstItem="ttl-lbl" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="ttl-lead"/>
+                <constraint firstItem="ttl-lbl" firstAttribute="top" secondItem="root-view" secondAttribute="top" constant="10" id="ttl-top"/>
+                <constraint firstItem="url-lbl" firstAttribute="leading" secondItem="root-view" secondAttribute="leading" constant="12" id="url-lead"/>
+                <constraint firstItem="url-lbl" firstAttribute="top" secondItem="ttl-lbl" secondAttribute="bottom" constant="4" id="url-top"/>
+                <constraint firstAttribute="trailing" secondItem="url-lbl" secondAttribute="trailing" constant="12" id="url-trail"/>
             </constraints>
             <point key="canvasLocation" x="140" y="249.5"/>
         </customView>
