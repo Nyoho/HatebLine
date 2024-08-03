@@ -1,0 +1,78 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "bkm-btn-cel.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Bookmark\"; ObjectID = \"bkm-btn-cel\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Bookmark"
+          }
+        }
+      }
+    },
+    "bkm-cnt-cel.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"0 users\"; ObjectID = \"bkm-cnt-cel\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "0 users"
+          }
+        }
+      }
+    },
+    "cmt-btn-cel.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Show Comments\"; ObjectID = \"cmt-btn-cel\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show Comments"
+          }
+        }
+      }
+    },
+    "show-cnt-cel.title" : {
+      "comment" : "Class = \"NSButtonCell\"; title = \"Show bookmark count\"; ObjectID = \"show-cnt-cel\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Show bookmark count"
+          }
+        }
+      }
+    },
+    "ttl-cel.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"Page Title\"; ObjectID = \"ttl-cel\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Page Title"
+          }
+        }
+      }
+    },
+    "url-cel.title" : {
+      "comment" : "Class = \"NSTextFieldCell\"; title = \"https://example.com/\"; ObjectID = \"url-cel\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "https://example.com/"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
