@@ -546,15 +546,23 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
             bookmark.page?.computeComputedProperties { (_: Bool) in
                 if let url = bookmark.page?.entryImageUrl, let u = URL(string: url) {
-                    // TODO: don't use synchronous loading
-                    notification.contentImage = NSImage(fromURL: u)
+                    URLSession.shared.dataTask(with: u) { data, _, _ in
+                        if let data = data, let image = NSImage(data: data) {
+                            notification.contentImage = image
+                        }
+                        if let url = bookmark.bookmarkUrl {
+                            notification.userInfo = ["bookmarkUrl": url]
+                        }
+                        DispatchQueue.main.async {
+                            NSUserNotificationCenter.default.deliver(notification)
+                        }
+                    }.resume()
+                } else {
+                    if let url = bookmark.bookmarkUrl {
+                        notification.userInfo = ["bookmarkUrl": url]
+                    }
+                    NSUserNotificationCenter.default.deliver(notification)
                 }
-
-                if let url = bookmark.bookmarkUrl {
-                    notification.userInfo = ["bookmarkUrl": url]
-                }
-
-                NSUserNotificationCenter.default.deliver(notification)
             }
         }
     }
