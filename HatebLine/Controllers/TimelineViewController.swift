@@ -355,7 +355,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
     func deleteOldBookmarks() {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bookmark")
-        let date = NSDate(timeIntervalSinceNow: -3600 * 24 * 100)
+        let date = NSDate(timeIntervalSinceNow: -3600 * 24 * 365.25)
         fetchRequest.predicate = NSPredicate(format: "date <= %@", date)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
 
