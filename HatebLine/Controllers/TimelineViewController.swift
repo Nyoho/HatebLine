@@ -719,8 +719,23 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         tableView.reloadData()
     }
 
+    private func refreshVisibleTimeAgo() {
+        let visibleRows = tableView.rows(in: tableView.visibleRect)
+        for row in visibleRows.lowerBound..<visibleRows.upperBound {
+            if let cell = tableView.view(atColumn: 0, row: row, makeIfNecessary: false) {
+                if let bookmarkCell = cell as? BookmarkCellView,
+                   let bookmark = bookmarkCell.bookmark {
+                    bookmarkCell.dateTextField?.stringValue = bookmark.timeAgo ?? ""
+                } else if let pageGroupCell = cell as? PageGroupCellView {
+                    pageGroupCell.refreshTimeAgo()
+                }
+            }
+        }
+    }
+
     @objc func updateData() {
         reload(self)
+        refreshVisibleTimeAgo()
     }
 
     override func viewDidLoad() {

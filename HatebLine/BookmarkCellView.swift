@@ -17,7 +17,8 @@ class BookmarkCellView: NSTableCellView {
 
     private var userObservation: NSKeyValueObservation?
     private var pageObservation: NSKeyValueObservation?
-    private weak var currentBookmark: Bookmark?
+    private var faviconNotificationObserver: NSObjectProtocol?
+    private(set) weak var bookmark: Bookmark?
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
@@ -37,7 +38,11 @@ class BookmarkCellView: NSTableCellView {
         super.prepareForReuse()
         userObservation = nil
         pageObservation = nil
-        currentBookmark = nil
+        if let observer = faviconNotificationObserver {
+            NotificationCenter.default.removeObserver(observer)
+            faviconNotificationObserver = nil
+        }
+        bookmark = nil
     }
 
     // Thx https://stackoverflow.com/questions/28187909/why-nstablecellview-backgroundstyle-is-never-set-to-nsbackgroundstyle-dark-for-s
@@ -64,7 +69,7 @@ class BookmarkCellView: NSTableCellView {
     }
 
     func configure(with bookmark: Bookmark) {
-        currentBookmark = bookmark
+        self.bookmark = bookmark
 
         imageView?.image = bookmark.user?.profileImage
         textField?.stringValue = bookmark.user?.name ?? ""
@@ -92,6 +97,15 @@ class BookmarkCellView: NSTableCellView {
             DispatchQueue.main.async {
                 self?.faviconImageView?.image = page.favicon
             }
+        }
+
+        faviconNotificationObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name("PageFaviconDidLoad"),
+            object: bookmark.page,
+            queue: .main
+        ) { [weak self] notification in
+            guard let page = notification.object as? Page else { return }
+            self?.faviconImageView?.image = page.favicon
         }
     }
 }

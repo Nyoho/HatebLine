@@ -14,15 +14,22 @@ class PageGroupCellView: NSTableCellView {
 
     private var faviconObservation: NSKeyValueObservation?
     private var entryImageObservation: NSKeyValueObservation?
+    private var faviconNotificationObserver: NSObjectProtocol?
     private var userObservations: [NSKeyValueObservation] = []
     private weak var currentPage: Page?
+    private var bookmarks: [Bookmark] = []
 
     override func prepareForReuse() {
         super.prepareForReuse()
         faviconObservation = nil
         entryImageObservation = nil
+        if let observer = faviconNotificationObserver {
+            NotificationCenter.default.removeObserver(observer)
+            faviconNotificationObserver = nil
+        }
         userObservations.removeAll()
         currentPage = nil
+        bookmarks = []
         usersStackView?.arrangedSubviews.forEach { $0.removeFromSuperview() }
     }
 
@@ -39,6 +46,7 @@ class PageGroupCellView: NSTableCellView {
 
     func configure(with page: Page, bookmarks: [Bookmark]) {
         currentPage = page
+        self.bookmarks = bookmarks
 
         titleTextField?.stringValue = page.title ?? ""
         countTextField?.stringValue = page.countString ?? ""
@@ -65,6 +73,15 @@ class PageGroupCellView: NSTableCellView {
                 self?.entryImageView?.image = page.entryImage
                 self?.entryImageView?.isHidden = page.entryImage == nil
             }
+        }
+
+        faviconNotificationObserver = NotificationCenter.default.addObserver(
+            forName: Notification.Name("PageFaviconDidLoad"),
+            object: page,
+            queue: .main
+        ) { [weak self] notification in
+            guard let page = notification.object as? Page else { return }
+            self?.faviconImageView?.image = page.favicon
         }
 
         configureUsersStack(with: bookmarks)
@@ -156,5 +173,18 @@ class PageGroupCellView: NSTableCellView {
         containerView.heightAnchor.constraint(greaterThanOrEqualToConstant: 32).isActive = true
 
         return containerView
+    }
+
+    func refreshTimeAgo() {
+        let arrangedSubviews = usersStackView?.arrangedSubviews ?? []
+        for (index, containerView) in arrangedSubviews.enumerated() {
+            guard index < bookmarks.count else { break }
+            let bookmark = bookmarks[index]
+            // dateLabel is the third subview (index 2) in containerView
+            if containerView.subviews.count > 2,
+               let dateLabel = containerView.subviews[2] as? NSTextField {
+                dateLabel.stringValue = bookmark.timeAgo ?? ""
+            }
+        }
     }
 }
