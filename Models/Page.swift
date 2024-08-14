@@ -60,11 +60,15 @@ class Page: NSManagedObject {
     }
 
     var faviconUrl: String? = nil
+    private var isFaviconLoading = false
 
     @objc dynamic var favicon: NSImage? {
         if let image = __favicon {
             return image
         } else {
+            if !prepared {
+                computeComputedProperties()
+            }
             loadFaviconIfNeeded()
             return __favicon
         }
@@ -76,11 +80,16 @@ class Page: NSManagedObject {
             return
         }
 
+        guard !isFaviconLoading else {
+            return
+        }
+
         guard let url = faviconUrl, let u = URL(string: url) else {
             completion?(nil)
             return
         }
 
+        isFaviconLoading = true
         let objectID = self.objectID
 
         AF.request(u).response { [weak self] response in
@@ -91,11 +100,14 @@ class Page: NSManagedObject {
 
             // コンテキスト上で安全に実行
             guard let context = self.managedObjectContext else {
+                self.isFaviconLoading = false
                 completion?(nil)
                 return
             }
 
             context.perform {
+                defer { self.isFaviconLoading = false }
+
                 // オブジェクトがまだ有効か確認
                 guard context.registeredObject(for: objectID) != nil, !self.isDeleted else {
                     completion?(nil)
