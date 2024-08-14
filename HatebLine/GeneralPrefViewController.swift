@@ -48,9 +48,9 @@ class GeneralPrefViewController: NSViewController {
         signOutButton?.isEnabled = isAuthorized
 
         if isAuthorized, let name = QuestionBookmarkManager.shared.displayName {
-            usernameLabel.stringValue = name
+            usernameLabel?.stringValue = name
         } else {
-            usernameLabel.stringValue = "(Not signed in yet)"
+            usernameLabel?.stringValue = "(Not signed in yet)"
         }
     }
 }

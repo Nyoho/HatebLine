@@ -101,20 +101,23 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
 
     func setup() {
         QuestionBookmarkManager.shared.setConsumerKey(consumerKey: Config.consumerKey, consumerSecret: Config.consumerSecret)
-        guard let url = favoriteUrl() else { return }
-        parser = RSSParser(url: url)
-        guard let myUrl = myFeedUrl() else { return }
-        parserOfMyFeed = RSSParser(url: myUrl)
-        NSUserNotificationCenter.default.delegate = self
-        timer = Timer(timeInterval: 60, target: self, selector: #selector(TimelineViewController.updateData), userInfo: nil, repeats: true)
-        let runLoop = RunLoop.current
-        runLoop.add(timer, forMode: RunLoop.Mode.common)
 
+        // Essential initialization (must happen regardless of account state)
         registerCellViews()
         setupDataSource()
         setupCoreDataObserver()
         setupAuthObserver()
         setupURLSchemeObserver()
+        NSUserNotificationCenter.default.delegate = self
+
+        // Account-dependent initialization
+        guard let url = favoriteUrl() else { return }
+        parser = RSSParser(url: url)
+        guard let myUrl = myFeedUrl() else { return }
+        parserOfMyFeed = RSSParser(url: myUrl)
+        timer = Timer(timeInterval: 60, target: self, selector: #selector(TimelineViewController.updateData), userInfo: nil, repeats: true)
+        let runLoop = RunLoop.current
+        runLoop.add(timer, forMode: RunLoop.Mode.common)
     }
 
     private func registerCellViews() {
