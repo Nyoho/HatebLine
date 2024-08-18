@@ -13,8 +13,19 @@ class GeneralPrefViewController: NSViewController {
     @IBOutlet var usernameLabel: NSTextField!
     @IBOutlet var signInButton: NSButton!
     @IBOutlet var signOutButton: NSButton!
-
+    @IBOutlet weak var tokenExplanationLabel: NSTextField!
+    
     override func viewDidLoad() {
+        let text = NSLocalizedString("From link[rel=alternate] element in https://b.hatena.ne.jp/my/favorite", comment: "")
+        
+        let attributedString = NSMutableAttributedString(string: text)
+
+        attributedString.addAttribute(.link, value: "https://b.hatena.ne.jp/my/favorite", range: (text as NSString).range(of: text))
+
+        tokenExplanationLabel.isSelectable = true
+        tokenExplanationLabel.allowsEditingTextAttributes = true
+        tokenExplanationLabel.attributedStringValue = attributedString
+        
         super.viewDidLoad()
         updateUI()
     }
@@ -52,5 +63,7 @@ class GeneralPrefViewController: NSViewController {
         } else {
             usernameLabel?.stringValue = "(Not signed in yet)"
         }
+        
+  
     }
 }
