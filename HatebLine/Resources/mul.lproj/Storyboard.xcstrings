@@ -129,7 +129,7 @@
     },
     "2Sz-6o-7DH.title" : {
       "comment" : "Class = \"NSTextFieldCell\"; title = \"⬇ Input your Hatena ID\"; ObjectID = \"2Sz-6o-7DH\";",
-      "extractionState" : "extracted_with_value",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1231,6 +1231,18 @@
         }
       }
     },
+    "J7W-hb-kRz.placeholderString" : {
+      "comment" : "Class = \"NSTextFieldCell\"; placeholderString = \"Your Hatena ID\"; ObjectID = \"J7W-hb-kRz\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Your Hatena ID"
+          }
+        }
+      }
+    },
     "J7y-lM-qPV.title" : {
       "comment" : "Class = \"NSMenuItem\"; title = \"Use None\"; ObjectID = \"J7y-lM-qPV\";",
       "extractionState" : "extracted_with_value",
@@ -1869,6 +1881,18 @@
           "stringUnit" : {
             "state" : "new",
             "value" : "Open Recent"
+          }
+        }
+      }
+    },
+    "u9x-BP-d0v.ibShadowedToolTip" : {
+      "comment" : "Class = \"NSImageView\"; ibShadowedToolTip = \"Required\"; ObjectID = \"u9x-BP-d0v\";",
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Required"
           }
         }
       }
