@@ -17,6 +17,7 @@ class BookmarkCellView: NSTableCellView {
 
     private var userObservation: NSKeyValueObservation?
     private var pageObservation: NSKeyValueObservation?
+    private var countObservation: NSKeyValueObservation?
     private var faviconNotificationObserver: NSObjectProtocol?
     private(set) weak var bookmark: Bookmark?
 
@@ -38,6 +39,7 @@ class BookmarkCellView: NSTableCellView {
         super.prepareForReuse()
         userObservation = nil
         pageObservation = nil
+        countObservation = nil
         if let observer = faviconNotificationObserver {
             NotificationCenter.default.removeObserver(observer)
             faviconNotificationObserver = nil
@@ -96,6 +98,19 @@ class BookmarkCellView: NSTableCellView {
         pageObservation = bookmark.page?.observe(\.favicon, options: [.new]) { [weak self] page, _ in
             DispatchQueue.main.async {
                 self?.faviconImageView?.image = page.favicon
+            }
+        }
+
+        countObservation = bookmark.page?.observe(\.count, options: [.new]) { [weak self] page, _ in
+            DispatchQueue.main.async {
+                self?.countTextField?.stringValue = page.countString ?? ""
+                if page.manyBookmarked {
+                    self?.countTextField?.font = NSFont.boldSystemFont(ofSize: self?.countTextField?.font?.pointSize ?? 12)
+                    self?.countTextField?.textColor = NSColor.systemRed
+                } else {
+                    self?.countTextField?.font = NSFont.systemFont(ofSize: self?.countTextField?.font?.pointSize ?? 12)
+                    self?.countTextField?.textColor = NSColor.labelColor
+                }
             }
         }
 

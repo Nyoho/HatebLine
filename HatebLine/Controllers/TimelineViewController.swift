@@ -464,6 +464,11 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
                 }
                 if fetchedPages.count > 0 {
                     page = fetchedPages.first!
+                    if let countStr = item["count"] as? String,
+                       let newCount = Int(countStr),
+                       page?.value(forKey: "count") as? Int != newCount {
+                        page?.setValue(newCount, forKey: "count")
+                    }
                 } else {
                     let entity = NSEntityDescription.entity(forEntityName: "Page", in: moc)
                     page = NSManagedObject(entity: entity!, insertInto: moc)
@@ -841,17 +846,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
             NotificationCenter.default.removeObserver(observer)
             composerObserver = nil
         }
-        QuestionBookmarkManager.shared.getMyBookmark(url: url) { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self?.refreshMyFeed()
-                case .failure(let error):
-                    NSLog("Failed to get my bookmark: \(error)")
-                    self?.removeBookmarkFromCoreData(pageUrl: url.absoluteString)
-                }
-            }
-        }
+        refreshMyFeed()
     }
 
     private func refreshMyFeed() {
