@@ -1152,14 +1152,14 @@ CA
             <objects>
                 <viewController title="General" id="QOF-DU-SET" customClass="GeneralPrefViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="agP-F9-Xj6">
-                        <rect key="frame" x="0.0" y="0.0" width="640" height="254"/>
+                        <rect key="frame" x="0.0" y="0.0" width="720" height="254"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPR-2b-RtB">
-                                <rect key="frame" x="30" y="44" width="580" height="180"/>
+                                <rect key="frame" x="30" y="44" width="660" height="180"/>
                                 <subviews>
                                     <gridView xPlacement="fill" yPlacement="fill" rowAlignment="none" rowSpacing="16" columnSpacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-h3-cqI">
-                                        <rect key="frame" x="0.0" y="100" width="580" height="80"/>
+                                        <rect key="frame" x="0.0" y="100" width="660" height="80"/>
                                         <rows>
                                             <gridRow yPlacement="center" id="SCR-Gk-TRO"/>
                                             <gridRow yPlacement="center" id="ctU-NC-DSz"/>
@@ -1182,7 +1182,7 @@ CA
                                             </gridCell>
                                             <gridCell row="SCR-Gk-TRO" column="Mzm-kL-fPg" id="BaH-iu-UNd">
                                                 <textField key="contentView" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hHd-4e-vrb">
-                                                    <rect key="frame" x="146" y="54" width="396" height="21"/>
+                                                    <rect key="frame" x="146" y="54" width="476" height="21"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Your Hatena ID" drawsBackground="YES" id="J7W-hb-kRz">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1195,7 +1195,7 @@ CA
                                             </gridCell>
                                             <gridCell row="SCR-Gk-TRO" column="qls-zd-bcb" id="6Se-mH-Am8">
                                                 <imageView key="contentView" toolTip="Required" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u9x-BP-d0v">
-                                                    <rect key="frame" x="550" y="48" width="30" height="32"/>
+                                                    <rect key="frame" x="630" y="48" width="30" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="nL2-Sc-TD2"/>
                                                     </constraints>
@@ -1221,10 +1221,10 @@ CA
                                             </gridCell>
                                             <gridCell row="ctU-NC-DSz" column="Mzm-kL-fPg" id="P2y-3Q-9be">
                                                 <stackView key="contentView" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ZR-nu-Oon">
-                                                    <rect key="frame" x="146" y="0.0" width="396" height="32"/>
+                                                    <rect key="frame" x="146" y="0.0" width="476" height="32"/>
                                                     <subviews>
                                                         <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttm-TZ-YCz">
-                                                            <rect key="frame" x="0.0" y="11" width="396" height="21"/>
+                                                            <rect key="frame" x="0.0" y="11" width="476" height="21"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Gbb-Bc-hiG">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
