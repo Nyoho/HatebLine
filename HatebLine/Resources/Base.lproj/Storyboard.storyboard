@@ -733,7 +733,7 @@ CA
                                     <nil key="toolTip"/>
                                     <size key="minSize" width="96" height="22"/>
                                     <size key="maxSize" width="96" height="22"/>
-                                    <searchField key="view" wantsLayer="YES" focusRingType="none" verticalHuggingPriority="750" id="ZO6-C0-pXG">
+                                    <searchField key="view" wantsLayer="YES" verticalHuggingPriority="750" id="ZO6-C0-pXG">
                                         <rect key="frame" x="0.0" y="14" width="96" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="g5U-ZQ-cco">
@@ -897,7 +897,7 @@ CA
                                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" verticalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVK-eq-lRS" userLabel="Name Stack View">
                                                                                     <rect key="frame" x="0.0" y="115" width="435" height="17"/>
                                                                                     <subviews>
-                                                                                        <textField focusRingType="none" horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="261" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
+                                                                                        <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="261" translatesAutoresizingMaskIntoConstraints="NO" id="YKK-aq-6lI" userLabel="User Name Text Field">
                                                                                             <rect key="frame" x="-2" y="1" width="351" height="16"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="8kb-Qm-j4H">
                                                                                                 <font key="font" metaFont="systemSemibold" size="13"/>
@@ -905,7 +905,7 @@ CA
                                                                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                                             </textFieldCell>
                                                                                         </textField>
-                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
+                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="PkE-gD-a7k">
                                                                                             <rect key="frame" x="353" y="2" width="84" height="14"/>
                                                                                             <textFieldCell key="cell" controlSize="small" sendsActionOnEndEditing="YES" alignment="right" title="10 minutes ago" id="vwn-Hu-luB">
                                                                                                 <font key="font" metaFont="smallSystem"/>
@@ -927,7 +927,7 @@ CA
                                                                                         <real value="3.4028234663852886e+38"/>
                                                                                     </customSpacing>
                                                                                 </stackView>
-                                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="251" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlt-J0-ujV" userLabel="Comment Text Field">
                                                                                     <rect key="frame" x="-2" y="76" width="439" height="32"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" allowsEditingTextAttributes="YES" id="QoV-rO-qPS">
                                                                                         <font key="font" metaFont="system"/>
@@ -947,7 +947,7 @@ CA
                                                                                             </constraints>
                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="QvO-db-zYI"/>
                                                                                         </imageView>
-                                                                                        <textField focusRingType="none" verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
+                                                                                        <textField verticalHuggingPriority="751" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="751" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JlA-6m-wo4">
                                                                                             <rect key="frame" x="22" y="0.0" width="415" height="48"/>
                                                                                             <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" id="DnH-3B-zF7">
                                                                                                 <font key="font" metaFont="system"/>
@@ -966,7 +966,7 @@ CA
                                                                                         <real value="3.4028234663852886e+38"/>
                                                                                     </customSpacing>
                                                                                 </stackView>
-                                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-P8-ETC">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="ywu-P8-ETC">
                                                                                     <rect key="frame" x="-2" y="0.0" width="50" height="14"/>
                                                                                     <constraints>
                                                                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="14" id="OQN-Pz-Pg6"/>
@@ -1152,14 +1152,14 @@ CA
             <objects>
                 <viewController title="General" id="QOF-DU-SET" customClass="GeneralPrefViewController" customModule="HatebLine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="agP-F9-Xj6">
-                        <rect key="frame" x="0.0" y="0.0" width="720" height="254"/>
+                        <rect key="frame" x="0.0" y="0.0" width="744" height="254"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iPR-2b-RtB">
-                                <rect key="frame" x="30" y="44" width="660" height="180"/>
+                                <rect key="frame" x="30" y="44" width="684" height="180"/>
                                 <subviews>
                                     <gridView xPlacement="fill" yPlacement="fill" rowAlignment="none" rowSpacing="16" columnSpacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="30Z-h3-cqI">
-                                        <rect key="frame" x="0.0" y="100" width="660" height="80"/>
+                                        <rect key="frame" x="0.0" y="100" width="684" height="80"/>
                                         <rows>
                                             <gridRow yPlacement="center" id="SCR-Gk-TRO"/>
                                             <gridRow yPlacement="center" id="ctU-NC-DSz"/>
@@ -1171,7 +1171,7 @@ CA
                                         </columns>
                                         <gridCells>
                                             <gridCell row="SCR-Gk-TRO" column="rGW-jG-1na" id="vpb-EG-q9N">
-                                                <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-P7-jbp">
+                                                <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hUM-P7-jbp">
                                                     <rect key="frame" x="72" y="56" width="68" height="16"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Hatena ID:" id="2QB-mK-nyw">
                                                         <font key="font" metaFont="system"/>
@@ -1181,8 +1181,8 @@ CA
                                                 </textField>
                                             </gridCell>
                                             <gridCell row="SCR-Gk-TRO" column="Mzm-kL-fPg" id="BaH-iu-UNd">
-                                                <textField key="contentView" focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hHd-4e-vrb">
-                                                    <rect key="frame" x="146" y="54" width="476" height="21"/>
+                                                <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hHd-4e-vrb">
+                                                    <rect key="frame" x="146" y="54" width="500" height="21"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Your Hatena ID" drawsBackground="YES" id="J7W-hb-kRz">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1195,7 +1195,7 @@ CA
                                             </gridCell>
                                             <gridCell row="SCR-Gk-TRO" column="qls-zd-bcb" id="6Se-mH-Am8">
                                                 <imageView key="contentView" toolTip="Required" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="u9x-BP-d0v">
-                                                    <rect key="frame" x="630" y="48" width="30" height="32"/>
+                                                    <rect key="frame" x="654" y="48" width="30" height="32"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="30" id="nL2-Sc-TD2"/>
                                                     </constraints>
@@ -1210,7 +1210,7 @@ CA
                                                 </imageView>
                                             </gridCell>
                                             <gridCell row="ctU-NC-DSz" column="rGW-jG-1na" id="kmV-W6-ep5">
-                                                <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pOw-Uz-WEd">
+                                                <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pOw-Uz-WEd">
                                                     <rect key="frame" x="64" y="8" width="76" height="16"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Feed token:" id="Auy-c0-88Q">
                                                         <font key="font" metaFont="system"/>
@@ -1221,10 +1221,10 @@ CA
                                             </gridCell>
                                             <gridCell row="ctU-NC-DSz" column="Mzm-kL-fPg" id="P2y-3Q-9be">
                                                 <stackView key="contentView" distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9ZR-nu-Oon">
-                                                    <rect key="frame" x="146" y="0.0" width="476" height="32"/>
+                                                    <rect key="frame" x="146" y="0.0" width="500" height="32"/>
                                                     <subviews>
-                                                        <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttm-TZ-YCz">
-                                                            <rect key="frame" x="0.0" y="11" width="476" height="21"/>
+                                                        <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ttm-TZ-YCz">
+                                                            <rect key="frame" x="0.0" y="11" width="500" height="21"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="Gbb-Bc-hiG">
                                                                 <font key="font" metaFont="system"/>
                                                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -1234,7 +1234,7 @@ CA
                                                                 <binding destination="Ls3-EZ-9mw" name="value" keyPath="values.feedToken" id="YAm-ee-ni6"/>
                                                             </connections>
                                                         </textField>
-                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" contentType="url" translatesAutoresizingMaskIntoConstraints="NO" id="Hfa-3e-mVk">
+                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" contentType="url" translatesAutoresizingMaskIntoConstraints="NO" id="Hfa-3e-mVk">
                                                             <rect key="frame" x="-2" y="0.0" width="304" height="11"/>
                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" allowsUndo="NO" sendsActionOnEndEditing="YES" title="From link[rel=alternate] element in https://b.hatena.ne.jp/my/favorite" allowsEditingTextAttributes="YES" id="CGw-VF-g7j">
                                                                 <font key="font" metaFont="miniSystem"/>
@@ -1302,7 +1302,7 @@ CA
                                                     <action selector="signOut:" target="QOF-DU-SET" id="Orv-ci-LZb"/>
                                                 </connections>
                                             </button>
-                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-KK-Jzd">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4t1-KK-Jzd">
                                                 <rect key="frame" x="146" y="4" width="68" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="username:" id="E9f-19-VnC">
                                                     <font key="font" metaFont="system"/>
@@ -1310,7 +1310,7 @@ CA
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tks-op-8qi">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tks-op-8qi">
                                                 <rect key="frame" x="218" y="4" width="34" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="John" id="FCO-Ww-BVq">
                                                     <font key="font" metaFont="system"/>
@@ -1427,7 +1427,7 @@ CA
                                                                                 <customView verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="pLX-qT-V6c" userLabel="Name Star Time View">
                                                                                     <rect key="frame" x="0.0" y="130" width="363" height="18"/>
                                                                                     <subviews>
-                                                                                        <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fcr-HE-XlL">
+                                                                                        <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="fcr-HE-XlL">
                                                                                             <rect key="frame" x="-2" y="2" width="80" height="16"/>
                                                                                             <textFieldCell key="cell" lineBreakMode="truncatingTail" sendsActionOnEndEditing="YES" title="John Smith" id="Yqs-dR-ass">
                                                                                                 <font key="font" metaFont="systemHeavy" size="13"/>
@@ -1442,7 +1442,7 @@ CA
                                                                                             </constraints>
                                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="4Pw-FG-wrY"/>
                                                                                         </imageView>
-                                                                                        <textField focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0gi-mb-0Lp">
+                                                                                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="0gi-mb-0Lp">
                                                                                             <rect key="frame" x="281" y="4" width="84" height="14"/>
                                                                                             <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="10 minutes ago" id="0aH-SK-toA">
                                                                                                 <font key="font" metaFont="smallSystem"/>
@@ -1461,7 +1461,7 @@ CA
                                                                                         <constraint firstItem="0gi-mb-0Lp" firstAttribute="top" secondItem="pLX-qT-V6c" secondAttribute="top" id="iTt-Nz-lZg"/>
                                                                                     </constraints>
                                                                                 </customView>
-                                                                                <textField focusRingType="none" verticalHuggingPriority="750" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="QkQ-B2-vKy">
+                                                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="100" translatesAutoresizingMaskIntoConstraints="NO" id="QkQ-B2-vKy">
                                                                                     <rect key="frame" x="-2" y="0.0" width="384" height="128"/>
                                                                                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" allowsEditingTextAttributes="YES" id="Hkm-wp-urv">
                                                                                         <font key="font" metaFont="system"/>
