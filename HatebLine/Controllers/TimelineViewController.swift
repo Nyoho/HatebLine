@@ -376,9 +376,13 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         moc.parent?.mergePolicy = NSOverwriteMergePolicy
         moc.perform {
             var newBookmarks = [Bookmark]()
+            var newPageIDs = [NSManagedObjectID]()
             for item in items.reversed() {
                 if let bookmark = self.newBookmark(moc: moc, item: item) {
                     newBookmarks.append(bookmark)
+                    if let pageID = bookmark.page?.objectID {
+                        newPageIDs.append(pageID)
+                    }
                 }
             }
             if moc.hasChanges {
@@ -396,6 +400,13 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
             self.managedObjectContext.perform {
                 do {
                     try self.managedObjectContext.save()
+
+                    // Preload favicons for new pages
+                    for pageID in newPageIDs {
+                        if let page = try? self.managedObjectContext.existingObject(with: pageID) as? Page {
+                            page.computeComputedProperties()
+                        }
+                    }
                 } catch {
                     fatalError("Failure to save main context: \(error)")
                 }

@@ -90,21 +90,25 @@ class BookmarkCellView: NSTableCellView {
         }
 
         userObservation = bookmark.user?.observe(\.profileImage, options: [.new]) { [weak self] user, _ in
+            let image = user.profileImage
             DispatchQueue.main.async {
-                self?.imageView?.image = user.profileImage
+                self?.imageView?.image = image
             }
         }
 
         pageObservation = bookmark.page?.observe(\.favicon, options: [.new]) { [weak self] page, _ in
+            let favicon = page.favicon
             DispatchQueue.main.async {
-                self?.faviconImageView?.image = page.favicon
+                self?.faviconImageView?.image = favicon
             }
         }
 
         countObservation = bookmark.page?.observe(\.count, options: [.new]) { [weak self] page, _ in
+            let countString = page.countString
+            let manyBookmarked = page.manyBookmarked
             DispatchQueue.main.async {
-                self?.countTextField?.stringValue = page.countString ?? ""
-                if page.manyBookmarked {
+                self?.countTextField?.stringValue = countString ?? ""
+                if manyBookmarked {
                     self?.countTextField?.font = NSFont.boldSystemFont(ofSize: self?.countTextField?.font?.pointSize ?? 12)
                     self?.countTextField?.textColor = NSColor.systemRed
                 } else {
