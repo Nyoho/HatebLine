@@ -376,15 +376,16 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         moc.parent?.mergePolicy = NSOverwriteMergePolicy
         moc.perform {
             var newBookmarks = [Bookmark]()
-            var newPageIDs = [NSManagedObjectID]()
             for item in items.reversed() {
                 if let bookmark = self.newBookmark(moc: moc, item: item) {
                     newBookmarks.append(bookmark)
-                    if let pageID = bookmark.page?.objectID {
-                        newPageIDs.append(pageID)
-                    }
                 }
             }
+            let newPages = newBookmarks.compactMap { $0.page }
+            if !newPages.isEmpty {
+                try? moc.obtainPermanentIDs(for: newPages)
+            }
+            let newPageIDs = newPages.map { $0.objectID }
             if moc.hasChanges {
                 do {
                     try moc.save()

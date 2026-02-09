@@ -16,7 +16,6 @@ class BookmarkCellView: NSTableCellView {
     @IBOutlet var faviconImageView: NSImageView!
 
     private var userObservation: NSKeyValueObservation?
-    private var pageObservation: NSKeyValueObservation?
     private var countObservation: NSKeyValueObservation?
     private var faviconNotificationObserver: NSObjectProtocol?
     private(set) weak var bookmark: Bookmark?
@@ -38,7 +37,6 @@ class BookmarkCellView: NSTableCellView {
     override func prepareForReuse() {
         super.prepareForReuse()
         userObservation = nil
-        pageObservation = nil
         countObservation = nil
         if let observer = faviconNotificationObserver {
             NotificationCenter.default.removeObserver(observer)
@@ -80,6 +78,12 @@ class BookmarkCellView: NSTableCellView {
         commentTextField?.isHidden = bookmark.isCommentEmpty
         titleTextField?.stringValue = bookmark.page?.title ?? ""
         faviconImageView?.image = bookmark.page?.favicon
+        bookmark.page?.loadFaviconIfNeeded { [weak self] image in
+            DispatchQueue.main.async {
+                guard let self = self, self.bookmark === bookmark else { return }
+                self.faviconImageView?.image = image
+            }
+        }
         countTextField?.stringValue = bookmark.page?.countString ?? ""
         if bookmark.page?.manyBookmarked == true {
             countTextField?.font = NSFont.boldSystemFont(ofSize: countTextField.font?.pointSize ?? 12)
@@ -93,13 +97,6 @@ class BookmarkCellView: NSTableCellView {
             let image = user.profileImage
             DispatchQueue.main.async {
                 self?.imageView?.image = image
-            }
-        }
-
-        pageObservation = bookmark.page?.observe(\.favicon, options: [.new]) { [weak self] page, _ in
-            let favicon = page.favicon
-            DispatchQueue.main.async {
-                self?.faviconImageView?.image = favicon
             }
         }
 

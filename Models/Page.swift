@@ -61,6 +61,7 @@ class Page: NSManagedObject {
 
     var faviconUrl: String? = nil
     private var isFaviconLoading = false
+    private var faviconLoadCompletions: [(NSImage?) -> Void] = []
 
     @objc dynamic var favicon: NSImage? {
         if let image = __favicon {
@@ -80,37 +81,42 @@ class Page: NSManagedObject {
             return
         }
 
+        if let completion = completion {
+            faviconLoadCompletions.append(completion)
+        }
+
         guard !isFaviconLoading else {
             return
         }
 
         guard let url = faviconUrl, let u = URL(string: url) else {
-            completion?(nil)
+            let completions = faviconLoadCompletions
+            faviconLoadCompletions.removeAll()
+            completions.forEach { $0(nil) }
             return
         }
 
         isFaviconLoading = true
-        let objectID = self.objectID
 
         AF.request(u).response { [weak self] response in
-            guard let self = self else {
-                completion?(nil)
-                return
-            }
+            guard let self = self else { return }
 
-            // コンテキスト上で安全に実行
             guard let context = self.managedObjectContext else {
                 self.isFaviconLoading = false
-                completion?(nil)
+                let completions = self.faviconLoadCompletions
+                self.faviconLoadCompletions.removeAll()
+                completions.forEach { $0(nil) }
                 return
             }
 
             context.perform {
                 defer { self.isFaviconLoading = false }
 
-                // オブジェクトがまだ有効か確認
-                guard context.registeredObject(for: objectID) != nil, !self.isDeleted else {
-                    completion?(nil)
+                let completions = self.faviconLoadCompletions
+                self.faviconLoadCompletions.removeAll()
+
+                guard !self.isDeleted else {
+                    completions.forEach { $0(nil) }
                     return
                 }
 
@@ -119,7 +125,7 @@ class Page: NSManagedObject {
                     self.__favicon = image
                     self.didChangeValue(forKey: "favicon")
 
-                    completion?(image)
+                    completions.forEach { $0(image) }
 
                     NotificationCenter.default.post(
                         name: Notification.Name("PageFaviconDidLoad"),
@@ -127,7 +133,7 @@ class Page: NSManagedObject {
                         userInfo: nil
                     )
                 } else {
-                    completion?(nil)
+                    completions.forEach { $0(nil) }
                 }
             }
         }
