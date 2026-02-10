@@ -9,8 +9,9 @@
 import Alamofire
 import Cocoa
 import Question
+import UserNotifications
 
-class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotificationCenterDelegate, NSMenuItemValidation {
+class TimelineViewController: NSViewController, NSTableViewDelegate, UNUserNotificationCenterDelegate, NSMenuItemValidation {
     var parser: RSSParser!
     var parserOfMyFeed: RSSParser!
     @IBOutlet var tableView: NSTableView!
@@ -108,7 +109,12 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         setupCoreDataObserver()
         setupAuthObserver()
         setupURLSchemeObserver()
-        NSUserNotificationCenter.default.delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { _, error in
+            if let error = error {
+                NSLog("Notification authorization error: \(error)")
+            }
+        }
 
         // Account-dependent initialization
         guard let url = favoriteUrl() else { return }
@@ -549,39 +555,47 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
     }
 
     func notifyNewObjects(_ bookmarks: [Bookmark]) {
-        for bookmark: Bookmark in bookmarks {
-            let notification = NSUserNotification()
+        for bookmark in bookmarks {
+            let content = UNMutableNotificationContent()
             if let creator = bookmark.user?.name {
-                notification.title = "\(creator) がブックマークを追加しました"
+                content.title = "\(creator) がブックマークを追加しました"
             }
-
             if let title = bookmark.page?.title, let count = bookmark.page?.count {
                 var countString = ""
                 if let enabled = UserDefaults.standard.value(forKey: "includeBookmarkCount") as? Bool, enabled {
                     countString = " [\(count) users]"
                 }
-                notification.subtitle = "\(title)\(countString)"
-                notification.informativeText = bookmark.comment
+                content.subtitle = "\(title)\(countString)"
             }
+            if let comment = bookmark.comment, !comment.isEmpty {
+                content.body = comment
+            }
+            if let url = bookmark.bookmarkUrl {
+                content.userInfo = ["bookmarkUrl": url]
+            }
+            content.sound = .default
 
-            bookmark.page?.computeComputedProperties { (_: Bool) in
-                if let url = bookmark.page?.entryImageUrl, let u = URL(string: url) {
-                    URLSession.shared.dataTask(with: u) { data, _, _ in
-                        if let data = data, let image = NSImage(data: data) {
-                            notification.contentImage = image
+            let identifier = bookmark.bookmarkUrl ?? UUID().uuidString
+
+            bookmark.page?.computeComputedProperties { [weak self] (_: Bool) in
+                guard self != nil else { return }
+                if let imageUrlString = bookmark.page?.entryImageUrl,
+                   let imageUrl = URL(string: imageUrlString) {
+                    URLSession.shared.dataTask(with: imageUrl) { data, _, _ in
+                        if let data = data {
+                            let tempFile = FileManager.default.temporaryDirectory
+                                .appendingPathComponent(UUID().uuidString + ".jpg")
+                            if (try? data.write(to: tempFile)) != nil,
+                               let attachment = try? UNNotificationAttachment(identifier: "image", url: tempFile) {
+                                content.attachments = [attachment]
+                            }
                         }
-                        if let url = bookmark.bookmarkUrl {
-                            notification.userInfo = ["bookmarkUrl": url]
-                        }
-                        DispatchQueue.main.async {
-                            NSUserNotificationCenter.default.deliver(notification)
-                        }
+                        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+                        UNUserNotificationCenter.current().add(request)
                     }.resume()
                 } else {
-                    if let url = bookmark.bookmarkUrl {
-                        notification.userInfo = ["bookmarkUrl": url]
-                    }
-                    NSUserNotificationCenter.default.deliver(notification)
+                    let request = UNNotificationRequest(identifier: identifier, content: content, trigger: nil)
+                    UNUserNotificationCenter.current().add(request)
                 }
             }
         }
@@ -1046,21 +1060,34 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, NSUserNotif
         BookmarkInfoPanelController.shared.update(with: selectedBookmark())
     }
 
-    // MARK: - NSUserNotification
+    // MARK: - UNUserNotificationCenterDelegate
 
-    func userNotificationCenter(_ center: NSUserNotificationCenter, didActivate notification: NSUserNotification) {
-        guard let info = notification.userInfo as? [String: String],
-              let bookmarkUrl = info["bookmarkUrl"] else { return }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .sound])
+    }
 
-        if let index = currentBookmarks.firstIndex(where: { $0.bookmarkUrl == bookmarkUrl }) {
-            tableView.selectRowIndexes(IndexSet(integer: index), byExtendingSelection: false)
-            NSAnimationContext.runAnimationGroup({ context in
-                context.allowsImplicitAnimation = true
-                self.tableView.scrollRowToVisible(index)
-            }, completionHandler: {
-                center.removeDeliveredNotification(notification)
-            })
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        defer { completionHandler() }
+
+        guard let bookmarkUrl = response.notification.request.content.userInfo["bookmarkUrl"] as? String else { return }
+
+        let row: Int
+        switch currentDisplayMode {
+        case .bookmarks:
+            guard let index = currentBookmarks.firstIndex(where: { $0.bookmarkUrl == bookmarkUrl }) else { return }
+            row = index
+        case .pages:
+            guard let bookmark = currentBookmarks.first(where: { $0.bookmarkUrl == bookmarkUrl }),
+                  let page = bookmark.page else { return }
+            guard let index = currentPageGroups.firstIndex(where: { $0.page.objectID == page.objectID }) else { return }
+            row = index
         }
+
+        tableView.selectRowIndexes(IndexSet(integer: row), byExtendingSelection: false)
+        NSAnimationContext.runAnimationGroup({ context in
+            context.allowsImplicitAnimation = true
+            self.tableView.scrollRowToVisible(row)
+        })
     }
 
     // MARK: - performSegueHelper
