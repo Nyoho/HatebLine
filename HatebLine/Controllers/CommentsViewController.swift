@@ -100,6 +100,7 @@ class CommentsViewController: NSViewController {
     enum Row {
         case sectionHeader(String)
         case comment(Comment, isPopular: Bool)
+        case skeleton
     }
 
     var rows = [Row]()
@@ -121,7 +122,12 @@ class CommentsViewController: NSViewController {
     }
 
     func parse(_ url: String) {
-        progressIndicator.startAnimation(self)
+        progressIndicator.alphaValue = 0
+        rows = Array(repeating: .skeleton, count: 8)
+        tableView.reloadData()
+
+        // Defer the network request so the skeleton display cycle runs first
+        DispatchQueue.main.async {
         AF.request("https://b.hatena.ne.jp/entry/json/", method: .get, parameters: ["url": url], encoding: URLEncoding.default)
             .responseDecodable(of: Comments.self) { response in
                 switch response.result {
@@ -143,6 +149,7 @@ class CommentsViewController: NSViewController {
                     self.showNoBookmarksMessage()
                 }
             }
+        } // end DispatchQueue.main.async
     }
 
     private func stopProgressIndicator() {
@@ -214,6 +221,8 @@ class CommentsViewController: NSViewController {
             return 24
         case .comment:
             return 72
+        case .skeleton:
+            return 72
         }
     }
 
@@ -241,6 +250,15 @@ class CommentsViewController: NSViewController {
             }
             cell.textField?.stringValue = title
             return cell
+
+        case .skeleton:
+            let id = NSUserInterfaceItemIdentifier("SkeletonCell")
+            if let existing = tableView.makeView(withIdentifier: id, owner: self) as? SkeletonCommentView {
+                return existing
+            }
+            let v = SkeletonCommentView(frame: NSRect(x: 0, y: 0, width: tableView.bounds.width, height: 72))
+            v.identifier = id
+            return v
 
         case .comment(let item, _):
             guard tableColumn?.identifier.rawValue == "CommentColumn",
