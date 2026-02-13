@@ -140,9 +140,19 @@ class CommentsViewController: NSViewController {
                             if let comments = response.value {
                                 self.allPopulars = comments.comments
                             }
-                            self.filter()
-                            self.tableView.reloadData()
-                            self.stopProgressIndicator()
+                            NSAnimationContext.runAnimationGroup({ ctx in
+                                ctx.duration = 0.12
+                                self.tableView.animator().alphaValue = 0
+                            }, completionHandler: {
+                                self.filter()
+                                self.tableView.reloadData()
+                                self.tableView.alphaValue = 0
+                                NSAnimationContext.runAnimationGroup({ ctx in
+                                    ctx.duration = 0.18
+                                    self.tableView.animator().alphaValue = 1
+                                })
+                                self.stopProgressIndicator()
+                            })
                         }
                 case .failure:
                     self.stopProgressIndicator()
