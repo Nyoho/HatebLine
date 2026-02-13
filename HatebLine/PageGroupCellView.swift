@@ -88,32 +88,36 @@ class PageGroupCellView: NSTableCellView {
     }
 
     private func configureUsersStack(with bookmarks: [Bookmark]) {
-        for subview in usersStackView?.arrangedSubviews ?? [] {
-            usersStackView?.removeArrangedSubview(subview)
-            subview.removeFromSuperview()
-        }
-        userObservations.removeAll()
+        NSAnimationContext.runAnimationGroup { context in
+            context.duration = 0
+            context.allowsImplicitAnimation = false
+            for subview in usersStackView?.arrangedSubviews ?? [] {
+                usersStackView?.removeArrangedSubview(subview)
+                subview.removeFromSuperview()
+            }
+            userObservations.removeAll()
 
-        for bookmark in bookmarks {
-            let userView = createUserView(for: bookmark)
-            usersStackView?.addArrangedSubview(userView)
+            for bookmark in bookmarks {
+                let userView = createUserView(for: bookmark)
+                usersStackView?.addArrangedSubview(userView)
 
-            if let user = bookmark.user {
-                let observation = user.observe(\.profileImage, options: [.new]) { [weak userView] user, _ in
-                    DispatchQueue.main.async {
-                        if let imageView = userView?.subviews.first as? NSImageView {
-                            imageView.image = user.profileImage
+                if let user = bookmark.user {
+                    let observation = user.observe(\.profileImage, options: [.new]) { [weak userView] user, _ in
+                        DispatchQueue.main.async {
+                            if let imageView = userView?.subviews.first as? NSImageView {
+                                imageView.image = user.profileImage
+                            }
                         }
                     }
+                    userObservations.append(observation)
                 }
-                userObservations.append(observation)
             }
-        }
 
-        usersStackView?.needsLayout = true
-        usersStackView?.layoutSubtreeIfNeeded()
-        self.needsLayout = true
-        self.invalidateIntrinsicContentSize()
+            usersStackView?.needsLayout = true
+            usersStackView?.layoutSubtreeIfNeeded()
+            self.needsLayout = true
+            self.invalidateIntrinsicContentSize()
+        }
     }
 
     private func createUserView(for bookmark: Bookmark) -> NSView {

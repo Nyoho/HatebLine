@@ -303,27 +303,21 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, UNUserNotif
             snapshot.appendItems(currentPageGroups.map { .pageHeader($0.page.objectID) }, toSection: .pages)
 
             if animatingDifferences {
-                NSAnimationContext.runAnimationGroup({ context in
-                    context.duration = 0.3
-                    context.timingFunction = CAMediaTimingFunction(name: .easeOut)
-                    context.allowsImplicitAnimation = true
-                    dataSource.apply(snapshot, animatingDifferences: true)
-                }, completionHandler: { [weak self] in
-                    guard let self = self, !changedPageIDs.isEmpty else { return }
-                    var rowsToUpdate = IndexSet()
-                    for (row, pageGroup) in self.currentPageGroups.enumerated() {
-                        if changedPageIDs.contains(pageGroup.page.objectID) {
-                            rowsToUpdate.insert(row)
-                        }
+                dataSource.apply(snapshot, animatingDifferences: true)
+                guard !changedPageIDs.isEmpty else { return }
+                var rowsToUpdate = IndexSet()
+                for (row, pageGroup) in self.currentPageGroups.enumerated() {
+                    if changedPageIDs.contains(pageGroup.page.objectID) {
+                        rowsToUpdate.insert(row)
                     }
-                    if !rowsToUpdate.isEmpty {
-                        // DiffableDataSourceをバイパスして強制的に行を再読み込み
-                        self.tableView.beginUpdates()
-                        self.tableView.removeRows(at: rowsToUpdate, withAnimation: [])
-                        self.tableView.insertRows(at: rowsToUpdate, withAnimation: [])
-                        self.tableView.endUpdates()
-                    }
-                })
+                }
+                if !rowsToUpdate.isEmpty {
+                    // DiffableDataSourceをバイパスして強制的に行を再読み込み
+                    self.tableView.beginUpdates()
+                    self.tableView.removeRows(at: rowsToUpdate, withAnimation: [])
+                    self.tableView.insertRows(at: rowsToUpdate, withAnimation: [])
+                    self.tableView.endUpdates()
+                }
             } else {
                 dataSource.apply(snapshot, animatingDifferences: false)
             }
@@ -331,12 +325,7 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, UNUserNotif
         }
 
         if animatingDifferences {
-            NSAnimationContext.runAnimationGroup { context in
-                context.duration = 0.3
-                context.timingFunction = CAMediaTimingFunction(name: .easeOut)
-                context.allowsImplicitAnimation = true
-                dataSource.apply(snapshot, animatingDifferences: true)
-            }
+            dataSource.apply(snapshot, animatingDifferences: true)
         } else {
             dataSource.apply(snapshot, animatingDifferences: false)
         }
