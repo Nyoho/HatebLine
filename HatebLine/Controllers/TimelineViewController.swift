@@ -14,6 +14,7 @@ import UserNotifications
 class TimelineViewController: NSViewController, NSTableViewDelegate, UNUserNotificationCenterDelegate, NSMenuItemValidation {
     var parser: RSSParser!
     var parserOfMyFeed: RSSParser!
+    private let parseQueue = DispatchQueue(label: "jp.nyoho.HatebLine.parseQueue")
     @IBOutlet var tableView: NSTableView!
     var timer = Timer()
     private var composerObserver: NSObjectProtocol?
@@ -335,18 +336,17 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, UNUserNotif
         guard let url = favoriteUrl() else { return }
         parser.feedUrl = url
         deleteOldBookmarks()
-        DispatchQueue.global().async {
+        parseQueue.async {
             self.parser.parse(completionHandler: { items in
                 self.mergeBookmarks(items)
 
                 guard let url = self.myFeedUrl() else { return }
                 self.parserOfMyFeed.feedUrl = url
-                DispatchQueue.global().async {
+                self.parseQueue.async {
                     self.parserOfMyFeed.parse(completionHandler: { items in
                         self.mergeBookmarks(items)
                     })
                 }
-
             })
         }
     }
