@@ -376,6 +376,9 @@ class TimelineViewController: NSViewController, NSTableViewDelegate, UNUserNotif
                     newBookmarks.append(bookmark)
                 }
             }
+            if !newBookmarks.isEmpty {
+                try? moc.obtainPermanentIDs(for: newBookmarks)
+            }
             let newPages = newBookmarks.compactMap { $0.page }
             if !newPages.isEmpty {
                 try? moc.obtainPermanentIDs(for: newPages)
